@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ResumeFront from "./ResumeFront";
+import PixelHero from "./PixelHero";
 
 function Sheet() {
   const [isFlipped, setIsFlipped] = useState(false); //tracks which side of the resume is shown
@@ -51,6 +52,9 @@ function Sheet() {
         </div>
       </div>
       <button className="flip-hint" onClick={() => setIsFlipped(!isFlipped)}>{isFlipped ? "Show Resume" : "Show Secrets"}</button>
+      <div className="pixel-hero">
+      <PixelHero level={heroLevel} />
+      </div>
     </div>
   );
 }
