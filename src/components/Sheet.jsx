@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import ResumeFront from "./ResumeFront";
 
 function Sheet() {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -27,7 +28,7 @@ function Sheet() {
         }}
       >
         <div className="sheet-face front-face" style={{ backfaceVisibility: "hidden" }}>
-          Front: Resume Content Here
+          <ResumeFront />
         </div>
         <div
           className="sheet-face back-face"

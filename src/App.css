@@ -48,9 +48,7 @@
   box-shadow: var(--shadow-paper-hover);
 }
 
-.sheet-front {
-  /* no aditional transform needed here since we start on the front */
-}
+/* .sheet-front { no additional transform needed here since we start on the front} */
 
 .sheet-back {
   transform: rotateY(180deg);
