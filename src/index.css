@@ -1,15 +1,15 @@
 :root {
-  /* colour palette - paper + neon HUD */
-  --colour-paper: #f5f5dc;
-  --colour-paper-shadow: #d4d4c0;
-  --colour-ink: #1a1a1a;
-  --colour-ink-light: #4a4a4a;
+  /* color palette - paper + neon HUD */
+  --color-paper: #f5f5dc;
+  --color-paper-shadow: #d4d4c0;
+  --color-ink: #1a1a1a;
+  --color-ink-light: #4a4a4a;
 
-  --colour-bg-dark: #0a0a0f;
-  --colour-neon-primary: #00ffff;
-  --colour-neon-secondary: #ff00ff;
-  --colour-neon-success: #00ff88;
-  --colour-neon-glow: rgba(0, 255, 255, 0.4);
+  --color-bg-dark: #0a0a0f;
+  --color-neon-primary: #00ffff;
+  --color-neon-secondary: #ff00ff;
+  --color-neon-success: #00ff88;
+  --color-neon-glow: rgba(0, 255, 255, 0.4);
 
   /* typography */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -46,12 +46,12 @@
     0 8px 16px rgba(0, 0, 0, 0.15),
     0 16px 32px rgba(0, 0, 0, 0.12);
   --shadow-neon:
-    0 0 10px var(--colour-neon-glow),
-    0 0 20px var(--colour-neon-glow);
+    0 0 10px var(--color-neon-glow),
+    0 0 20px var(--color-neon-glow);
 
     /* transitions */
   --transition-fast: 150ms ease;
-  --transaction-base: 250ms ease;
+  --transition-base: 250ms ease;
   --transition-slow: 400ms ease;
   --transition-flip: 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }

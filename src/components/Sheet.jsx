@@ -18,7 +18,7 @@ function Sheet() {
   }, []);
 
   return (
-    <div className="sheet-container" style={{ perspective: "1000px" }}>
+    <div className="sheet-container">
       <div
         className="sheet-wrapper"
         style={{
