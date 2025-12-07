@@ -1,9 +1,10 @@
 :root {
   /* color palette - paper + neon HUD */
-  --color-paper: #f5f5dc;
-  --color-paper-shadow: #d4d4c0;
+  --color-paper: #fcf5f5;
+  --color-paper-shadow: #f0f0e9;
   --color-ink: #1a1a1a;
   --color-ink-light: #4a4a4a;
+  --color-ink-blue: #2379c7;
 
   --color-bg-dark: #0a0a0f;
   --color-neon-primary: #00ffff;

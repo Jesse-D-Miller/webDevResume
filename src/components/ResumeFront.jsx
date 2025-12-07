@@ -50,9 +50,9 @@ function ResumeFront() {
               <h3>EXPERIENCE</h3>
               {resumeData.experience.map((job, index) => (
                 <div key={index} className="experience-item">
-                  <h4>{job.role}</h4>
+                  <h4>{job.company} - {job.role}</h4>
                   <p className="company-period">
-                    {job.company} | {job.period}
+                    {job.period}
                   </p>
                   <ul>
                     {job.bullets.map((bullet, i) => (
