@@ -1,6 +1,6 @@
 export const resumeData = {
   meta: {
-    name: "Jesse Miller",
+    name: "JESSE MILLER",
     title: "Junior Full-Stack Developer",
     location: "Greater Vancnouver Area, BC, Canada",
     availability: "Open to full-time",

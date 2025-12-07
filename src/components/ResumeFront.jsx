@@ -5,13 +5,24 @@ function ResumeFront() {
     <div className="resume-front">
       <header className="resume-header">
         <h1>{resumeData.meta.name}</h1>
-        <p className="title">{resumeData.meta.title}</p>
         <p className="contact-info">
-          {resumeData.meta.location} | (604) 698-8224 | {resumeData.meta.links.email}
-        </p>
-        <p className="contact-links">
-          <a href={resumeData.meta.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a> | 
-          <a href={resumeData.meta.links.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+          {resumeData.meta.location} | (604) 698-8224 |{" "}
+          {resumeData.meta.links.email} |{" "}
+          <a
+            href={resumeData.meta.links.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>{" "}
+          |{" "}
+          <a
+            href={resumeData.meta.links.github}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
         </p>
       </header>
       <main>
@@ -38,7 +49,9 @@ function ResumeFront() {
           {resumeData.experience.map((job, index) => (
             <div key={index} className="experience-item">
               <h4>{job.role}</h4>
-              <p className="company-period">{job.company} | {job.period}</p>
+              <p className="company-period">
+                {job.company} | {job.period}
+              </p>
               <ul>
                 {job.bullets.map((bullet, i) => (
                   <li key={i}>{bullet}</li>
@@ -52,7 +65,9 @@ function ResumeFront() {
           {resumeData.education.map((edu, index) => (
             <div key={index} className="education-item">
               <h4>{edu.school}</h4>
-              <p className="program-period">{edu.program} | {edu.period}</p>
+              <p className="program-period">
+                {edu.program} | {edu.period}
+              </p>
               <ul>
                 {edu.details.map((detail, i) => (
                   <li key={i}>{detail}</li>
@@ -94,7 +109,13 @@ function ResumeFront() {
           <h4>Tools & Other:</h4>
           <p>
             {resumeData.skills
-              .filter((skill) => skill.tags.includes("version-control") || skill.tags.includes("tooling") || skill.tags.includes("api") || skill.tags.includes("responsive"))
+              .filter(
+                (skill) =>
+                  skill.tags.includes("version-control") ||
+                  skill.tags.includes("tooling") ||
+                  skill.tags.includes("api") ||
+                  skill.tags.includes("responsive")
+              )
               .map((skill) => skill.name)
               .join(", ")}
           </p>
