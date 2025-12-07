@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import './App.css'
+import {resumeData} from './data/resume.js'
 
 function App() {
   const [count, setCount] = useState(0)
+
+  console.log(resumeData);
 
   return (
     <div className="App">
