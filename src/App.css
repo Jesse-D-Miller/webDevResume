@@ -8,8 +8,8 @@
 
 .sheet-container {
   perspective: 1500px;
-  width: 100%;
-  max-width: 210mm;  /* A4 width */
+  width: 80vw;
+  max-width: 900px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +19,7 @@
 .sheet-wrapper {
   position: relative;
   width: 100%;
-  height: 297mm;  /* Match the A4 height */
+  aspect-ratio: 1 / 1.414;  /* A4 ratio */
   transform-style: preserve-3d;
   transition: transform var(--transition-flip);
   cursor: pointer;
@@ -32,12 +32,13 @@
 .sheet-face {
   position: absolute;
   width: 100%;
-  height: 297mm;  /* Fixed A4 height, not min-height or auto */
+  height: 100%;
+  box-sizing: border-box;
   backface-visibility: hidden;
   background: var(--color-paper);
   color: var(--color-ink);
-  border-radius: var(--radius-md);
-  padding: 1in;
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
   box-shadow: var(--shadow-paper);
   overflow-y: auto;  /* Scroll if content doesn't fit */
   font-family: var(--font-sans);
