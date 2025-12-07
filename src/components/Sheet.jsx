@@ -21,7 +21,11 @@ function Sheet() {
     const handleKeyDown = (event) => {
       if (event.code === "Space") {
         event.preventDefault();
-        setIsFlipped((prev) => !prev);
+        if (heroLevel === 4){
+          setIsFlipped((prev) => !prev);
+        } else {
+          return;
+        }
       }
     };
 
@@ -30,7 +34,7 @@ function Sheet() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [heroLevel]);
 
   return (
     <div className="sheet-container">
@@ -40,6 +44,7 @@ function Sheet() {
           transformStyle: "preserve-3d",
           transform: `rotateY(${isFlipped ? 180 : 0}deg)`,
         }}
+        onClick={() => {setInteractionCount((count) => count + 1)}} //increment interaction count on click
       >
         <div className="sheet-face front-face" style={{ backfaceVisibility: "hidden" }}>
           <ResumeFront />
@@ -51,7 +56,7 @@ function Sheet() {
           Back: Secret Map Stats Here
         </div>
       </div>
-      <button className="flip-hint" onClick={() => setIsFlipped(!isFlipped)}>{isFlipped ? "Show Resume" : "Show Secrets"}</button>
+      {heroLevel === 4 && <button className="flip-hint" onClick={() => setIsFlipped(!isFlipped)}>{isFlipped ? "Show Resume" : "Show Secrets"}</button>}
       <div className="hero-wrapper">
       <PixelHero level={heroLevel} />
       </div>
