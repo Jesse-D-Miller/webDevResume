@@ -2,9 +2,21 @@ import { useState, useEffect } from "react";
 import ResumeFront from "./ResumeFront";
 
 function Sheet() {
-  const [isFlipped, setIsFlipped] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false); //tracks which side of the resume is shown
+  const [interactionCount, setInteractionCount] = useState(0); //tracks number of interactions
+  const [heroLevel, setHeroLevel] = useState(0); //tracks hero level based on interactions
 
   useEffect(() => {
+    // Update hero level based on interaction count
+    if (interactionCount >= 20) setHeroLevel(4);
+    else if (interactionCount >= 15 ) setHeroLevel(3);
+    else if (interactionCount >= 10) setHeroLevel(2);
+    else if (interactionCount >= 5) setHeroLevel(1);
+    else setHeroLevel(0);
+  }, [interactionCount]);
+
+  useEffect(() => {
+    // Handle spacebar press to flip the sheet
     const handleKeyDown = (event) => {
       if (event.code === "Space") {
         event.preventDefault();
@@ -12,6 +24,7 @@ function Sheet() {
       }
     };
 
+    // Add event listener for keydown
     window.addEventListener("keydown", handleKeyDown);
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
