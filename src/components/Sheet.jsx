@@ -52,7 +52,7 @@ function Sheet() {
         </div>
       </div>
       <button className="flip-hint" onClick={() => setIsFlipped(!isFlipped)}>{isFlipped ? "Show Resume" : "Show Secrets"}</button>
-      <div className="pixel-hero">
+      <div className="hero-wrapper">
       <PixelHero level={heroLevel} />
       </div>
     </div>
