@@ -114,7 +114,21 @@
 .resume-front main {
   display: flex;
   flex-direction: column;
+  gap: var(--space-4);
+}
+
+.resume-grid {
+  display: grid;
+  grid-template-columns: 4fr 1fr; 
   gap: var(--space-6);
+}
+
+.resume-grid-left {
+  /* Projects and Experience go here */
+}
+
+.resume-grid-right {
+  /* Skills, Education, Hobbies go here */
 }
 
 .resume-front section {

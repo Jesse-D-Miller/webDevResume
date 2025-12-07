@@ -2,7 +2,7 @@ export const resumeData = {
   meta: {
     name: "JESSE MILLER",
     title: "Junior Full-Stack Developer",
-    location: "Greater Vancnouver Area, BC, Canada",
+    location: "Greater Vancouver Area",
     availability: "Open to full-time",
     links: {
       email: "jessedonaldmiller@gmail.com",
