@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import spriteLevel1 from "../assets/pixelHeroLevel1.png";
+import spriteLevel2 from "../assets/pixelHeroLevel2.png";
+import spriteLevel3 from "../assets/pixelHeroLevel3.png";
 
 function PixelHero({ level }) {
   const [frameIndex, setFrameIndex] = useState(0);
@@ -13,23 +15,32 @@ function PixelHero({ level }) {
   }, []);
 
   const hints = {
-    1: "Hey! My name is Jesse and this is my Resume. Click around to help me grow!",
-    2: "Explore my experience!",
-    3: "Check out my skills!",
+    1: "Hey! My name is Jesse and this is my Resume. Click around to help me level up!",
+    2: "Am...Am I glowing? Neat!",
+    3: "Try clicking that blank space!",
     4: "Almost at max power!",
     5: "Ready to see my secrets?"
   };
 
-  const spriteSize = { width: 128, height: 203 };
-  const frameOffsets = [0, -128, -256]; // X offsets for each frame
+  // Sprite dimensions per level (width is single frame, height is total)
+  const spriteSizes = {
+    1: { width: 128, height: 203 },
+    2: { width: 128, height: 203 },
+    3: { width: 153, height: 203 }
+  };
 
   // Spritesheet mapping for levels 1-5
   const spritesheets = {
-    1: spriteLevel1
+    1: spriteLevel1,
+    2: spriteLevel2,
+    3: spriteLevel3
   };
 
   // If we have a spritesheet for this level, render it
   if (spritesheets[level]) {
+    const spriteSize = spriteSizes[level];
+    const frameOffsets = [0, -spriteSize.width, -spriteSize.width * 2];
+    
     return (
       <div className="pixel-hero">
         <div
