@@ -15,12 +15,10 @@ function ClickableSection({
   return (
     <div
       onClick={handleClick}
-      className={isClicked ? "burned" : ""}
+      className={`clickable-section ${isClicked ? "burned" : ""}`}
       style={{ pointerEvents: isClicked ? "none" : "auto" }}
     >
-      <div className="clickable-content">
-        {children}
-      </div>
+      {children}
     </div>
   );
 }

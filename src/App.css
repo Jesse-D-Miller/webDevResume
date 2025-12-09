@@ -286,21 +286,26 @@
 @keyframes pixelBurn {
   0% {
     opacity: 1;
-    filter: brightness(1) contrast(1);
+    filter: brightness(1) contrast(1) blur(0px);
     transform: scale(1);
   }
-  30% {
-    filter: brightness(1.2) contrast(1.4) saturate(1.3);
+  25% {
+    filter: brightness(1.3) contrast(1.2) blur(0px);
   }
-  60% {
-    opacity: 0.5;
-    filter: brightness(0.8) contrast(2) hue-rotate(20deg) saturate(2);
+  50% {
+    opacity: 0.6;
+    filter: brightness(0.7) contrast(1.5) blur(1px) saturate(0.5);
     transform: scale(0.98);
+  }
+  75% {
+    opacity: 0.2;
+    filter: brightness(0.3) contrast(1.8) blur(2px) saturate(0);
+    transform: scale(0.95);
   }
   100% {
     opacity: 0;
-    filter: brightness(0) contrast(3) hue-rotate(45deg) saturate(3) blur(2px);
-    transform: scale(0.95);
+    filter: brightness(0) contrast(2) blur(3px);
+    transform: scale(0.9);
   }
 }
 
@@ -361,9 +366,7 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(0, 255, 255, 0.3) 25%,
-    transparent 50%,
-    rgba(255, 0, 255, 0.3) 75%,
+    rgba(255, 100, 0, 0.2) 50%,
     transparent 100%
   );
   animation: glitchScan 0.8s ease-out forwards;
