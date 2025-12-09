@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ResumeFront from "./ResumeFront";
 import PixelHero from "./PixelHero";
+import { getRandomNeonColor } from "../utils/neonColor";
 
 function Sheet() {
   const [isFlipped, setIsFlipped] = useState(false); //tracks which side of the resume is shown
@@ -10,7 +11,8 @@ function Sheet() {
 
   const burnPercentage = (clickedSections.size / 11) * 100;
 
-  const handleSectionClick = (sectionId) => {
+  const handleSectionClick = (sectionId, element) => {
+    getRandomNeonColor(element);
     setClickedSections((prev) => new Set(prev).add(sectionId));
     setInteractionCount((count) => count + 1);
   };
