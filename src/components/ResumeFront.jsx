@@ -22,6 +22,7 @@ function ResumeFront({
                 href={resumeData.meta.links.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(e) => onSectionClick("linkedin-xp")}
               >
                 LinkedIn
               </a>{" "}
@@ -30,6 +31,7 @@ function ResumeFront({
                 href={resumeData.meta.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(e) => onSectionClick("github-xp")}
               >
                 GitHub
               </a>
@@ -54,53 +56,49 @@ function ResumeFront({
               </div>
             </ClickableSection>
 
-            <ClickableSection
-              sectionId="projects"
-              clickedSections={clickedSections}
-              onSectionClick={onSectionClick}
-            >
-              <div className="clickable-content">
-                <section className="projects-section">
-                  <h3>PROJECTS</h3>
-                  {resumeData.projects.map((project, index) => (
-                    <div key={index} className="project-item">
-                      <h4>{project.title}</h4>
-                      <p className="tech-stack">{project.stack.join(", ")}</p>
-                      <ul>
-                        {project.highlights.map((highlight, i) => (
-                          <li key={i}>{highlight}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </section>
-              </div>
-            </ClickableSection>
+            {resumeData.projects.map((project, index) => (
+              <ClickableSection
+                sectionId={`project-${index}`}
+                clickedSections={clickedSections}
+                onSectionClick={onSectionClick}
+              >
+                <div className="clickable-content">
+                  <section className="projects-section">
+                    {index === 0 && <h3>PROJECTS</h3>}
+                    <h4>{project.title}</h4>
+                    <p className="tech-stack">{project.stack.join(", ")}</p>
+                    <ul>
+                      {project.highlights.map((highlight, i) => (
+                        <li key={i}>{highlight}</li>
+                      ))}
+                    </ul>
+                  </section>
+                </div>
+              </ClickableSection>
+            ))}
 
-            <ClickableSection
-              sectionId="experience"
-              clickedSections={clickedSections}
-              onSectionClick={onSectionClick}
-            >
-              <div className="clickable-content">
-                <section className="experience-section">
-                  <h3>EXPERIENCE</h3>
-                  {resumeData.experience.map((job, index) => (
-                    <div key={index} className="experience-item">
-                      <h4>
-                        {job.company} - {job.role}
-                      </h4>
-                      <p className="company-period">{job.period}</p>
-                      <ul>
-                        {job.bullets.map((bullet, i) => (
-                          <li key={i}>{bullet}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </section>
-              </div>
-            </ClickableSection>
+            {resumeData.experience.map((job, index) => (
+              <ClickableSection
+                sectionId={`experience-${index}`}
+                clickedSections={clickedSections}
+                onSectionClick={onSectionClick}
+              >
+                <div className="clickable-content">
+                  <section className="experience-section">
+                    {index === 0 && <h3>EXPERIENCE</h3>}
+                    <h4>
+                      {job.company} - {job.role}
+                    </h4>
+                    <p className="company-period">{job.period}</p>
+                    <ul>
+                      {job.bullets.map((bullet, i) => (
+                        <li key={i}>{bullet}</li>
+                      ))}
+                    </ul>
+                  </section>
+                </div>
+              </ClickableSection>
+            ))}
 
             <ClickableSection
               sectionId="education"
