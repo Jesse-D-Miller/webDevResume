@@ -8,6 +8,8 @@ function Sheet() {
   const [heroLevel, setHeroLevel] = useState(1); //tracks hero level based on interactions
   const [clickedSections, setClickedSections] = useState(new Set()); //tracks clicked sections
 
+  const burnPercentage = (clickedSections.size / 11) * 100;
+
   const handleSectionClick = (sectionId) => {
     setClickedSections((prev) => new Set(prev).add(sectionId));
     setInteractionCount((count) => count + 1);
@@ -58,7 +60,10 @@ function Sheet() {
       >
         <div
           className="sheet-face front-face"
-          style={{ backfaceVisibility: "hidden" }}
+          style={{
+            backfaceVisibility: "hidden",
+            "--burn-percentage": burnPercentage / 100,
+          }}
         >
           <ResumeFront
             clickedSections={clickedSections}
