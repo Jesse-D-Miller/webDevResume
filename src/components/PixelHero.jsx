@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import spriteLevel1 from "../assets/pixelHeroLevel1.png";
 import spriteLevel2 from "../assets/pixelHeroLevel2.png";
 import spriteLevel3 from "../assets/pixelHeroLevel3.png";
+import spriteLevel4 from "../assets/pixelHeroLevel4.png";
+import spriteLevel5 from "../assets/pixelHeroLevel5.png";
 
 function PixelHero({ level }) {
   const [frameIndex, setFrameIndex] = useState(0);
@@ -26,14 +28,18 @@ function PixelHero({ level }) {
   const spriteSizes = {
     1: { width: 128, height: 203 },
     2: { width: 128, height: 203 },
-    3: { width: 153, height: 203 }
+    3: { width: 153, height: 203 },
+    4: { width: 225, height: 260 },
+    5: { width: 350, height: 350 }
   };
 
   // Spritesheet mapping for levels 1-5
   const spritesheets = {
     1: spriteLevel1,
     2: spriteLevel2,
-    3: spriteLevel3
+    3: spriteLevel3,
+    4: spriteLevel4,
+    5: spriteLevel5
   };
 
   // If we have a spritesheet for this level, render it
