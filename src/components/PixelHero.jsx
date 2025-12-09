@@ -47,6 +47,15 @@ function PixelHero({ level }) {
     const spriteSize = spriteSizes[level];
     const frameOffsets = [0, -spriteSize.width, -spriteSize.width * 2];
     
+    // Custom positioning per level (x: left/right, y: up/down)
+    const spritePositions = {
+      1: { x: 0, y: 0 },
+      2: { x: 0, y: 0 },
+      3: { x: 15, y: 0 },
+      4: { x: 55, y: 0 },
+      5: { x: 100, y: -55 }
+    };
+    
     return (
       <div className="pixel-hero">
         <div
@@ -58,6 +67,8 @@ function PixelHero({ level }) {
             backgroundSize: `${spriteSize.width * 3}px ${spriteSize.height}px`,
             width: `${spriteSize.width}px`,
             height: `${spriteSize.height}px`,
+            transform: `translate(${spritePositions[level].x}px, ${spritePositions[level].y}px)`,
+            transition: "none"
           }}
         />
         <div className="hero-speech-bubble">{hints[level] || "Welcome!"}</div>
