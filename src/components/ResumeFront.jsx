@@ -1,6 +1,9 @@
 import { resumeData } from "../data/resume.js";
 
-function ResumeFront() {
+function ResumeFront({
+  clickedSections = new Set(),
+  onSectionClick = () => {},
+}) {
   return (
     <div className="resume-front">
       <header className="resume-header">

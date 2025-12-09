@@ -21,7 +21,7 @@ function PixelHero({ level }) {
     2: "Am...Am I glowing? Neat!",
     3: "Try clicking that blank space!",
     4: "Almost at max power!",
-    5: "Ready to see my secrets?"
+    5: "Ready to see my secrets?",
   };
 
   // Sprite dimensions per level (width is single frame, height is total)
@@ -30,7 +30,7 @@ function PixelHero({ level }) {
     2: { width: 128, height: 203 },
     3: { width: 153, height: 203 },
     4: { width: 225, height: 260 },
-    5: { width: 350, height: 350 }
+    5: { width: 350, height: 350 },
   };
 
   // Spritesheet mapping for levels 1-5
@@ -39,32 +39,32 @@ function PixelHero({ level }) {
     2: spriteLevel2,
     3: spriteLevel3,
     4: spriteLevel4,
-    5: spriteLevel5
+    5: spriteLevel5,
   };
 
   // If we have a spritesheet for this level, render it
   if (spritesheets[level]) {
     const spriteSize = spriteSizes[level];
     const frameOffsets = [0, -spriteSize.width, -spriteSize.width * 2];
-    
+
     // Custom positioning per level (x: left/right, y: up/down)
     const spritePositions = {
       1: { x: 0, y: 0 },
       2: { x: 0, y: 0 },
       3: { x: 15, y: 0 },
       4: { x: 55, y: 0 },
-      5: { x: 100, y: -55 }
+      5: { x: 100, y: -55 },
     };
-    
+
     // Bubble positions per level
     const bubblePositions = {
       1: { x: -90, y: 20 },
       2: { x: -90, y: 20 },
       3: { x: -79, y: 20 },
       4: { x: -45, y: 30 },
-      5: { x: 25, y: 0 }
+      5: { x: 25, y: 0 },
     };
-    
+
     return (
       <div className="pixel-hero">
         <div
@@ -77,10 +77,17 @@ function PixelHero({ level }) {
             width: `${spriteSize.width}px`,
             height: `${spriteSize.height}px`,
             transform: `translate(${spritePositions[level].x}px, ${spritePositions[level].y}px)`,
-            transition: "none"
+            transition: "none",
           }}
         />
-        <div className="hero-speech-bubble" style={{ transform: `translate(${bubblePositions[level].x}px, ${bubblePositions[level].y}px)` }}>{hints[level] || "Welcome!"}</div>
+        <div
+          className="hero-speech-bubble"
+          style={{
+            transform: `translate(${bubblePositions[level].x}px, ${bubblePositions[level].y}px)`,
+          }}
+        >
+          {hints[level] || "Welcome!"}
+        </div>
       </div>
     );
   }
@@ -91,7 +98,7 @@ function PixelHero({ level }) {
     2: "🎧",
     3: "🚀",
     4: "⭐",
-    5: "🧙‍♂️"
+    5: "🧙‍♂️",
   };
 
   return (
