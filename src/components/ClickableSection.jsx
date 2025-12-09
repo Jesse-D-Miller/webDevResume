@@ -18,7 +18,9 @@ function ClickableSection({
       className={isClicked ? "burned" : ""}
       style={{ pointerEvents: isClicked ? "none" : "auto" }}
     >
-      {children}
+      <div className="clickable-content">
+        {children}
+      </div>
     </div>
   );
 }
