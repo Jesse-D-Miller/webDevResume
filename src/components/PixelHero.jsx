@@ -8,11 +8,11 @@ import spriteLevel5 from "../assets/pixelHeroLevel5.png";
 function PixelHero({ level }) {
   const [frameIndex, setFrameIndex] = useState(0);
 
-  // Animate sprite frames (600ms per frame)
+  // Animate sprite frames (1000ms per frame)
   useEffect(() => {
     const interval = setInterval(() => {
       setFrameIndex((prevIndex) => (prevIndex + 1) % 3); // 3 frames per level
-    }, 600);
+    }, 1000);
     return () => clearInterval(interval);
   }, []);
 
@@ -56,6 +56,15 @@ function PixelHero({ level }) {
       5: { x: 100, y: -55 }
     };
     
+    // Bubble positions per level
+    const bubblePositions = {
+      1: { x: -90, y: 20 },
+      2: { x: -90, y: 20 },
+      3: { x: -79, y: 20 },
+      4: { x: -45, y: 30 },
+      5: { x: 25, y: 0 }
+    };
+    
     return (
       <div className="pixel-hero">
         <div
@@ -71,7 +80,7 @@ function PixelHero({ level }) {
             transition: "none"
           }}
         />
-        <div className="hero-speech-bubble">{hints[level] || "Welcome!"}</div>
+        <div className="hero-speech-bubble" style={{ transform: `translate(${bubblePositions[level].x}px, ${bubblePositions[level].y}px)` }}>{hints[level] || "Welcome!"}</div>
       </div>
     );
   }
