@@ -323,6 +323,7 @@
   border: 4px solid #ff006e;
   border-radius: 10px;
   animation: neonIgnite 2s ease-out both, neonFlicker 0.15s ease-in-out 1s infinite;
+  animation-delay: 0.7s;
   background: #161414;
 }
 
