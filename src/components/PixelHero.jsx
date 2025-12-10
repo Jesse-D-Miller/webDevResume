@@ -30,7 +30,7 @@ function PixelHero({ level }) {
     2: { width: 128, height: 203 },
     3: { width: 153, height: 203 },
     4: { width: 225, height: 260 },
-    5: { width: 350, height: 350 },
+    5: { width: 256, height: 256 },
   };
 
   // Spritesheet mapping for levels 1-5
