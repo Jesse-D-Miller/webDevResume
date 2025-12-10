@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-8);
+  padding: var(--space-2);
   overflow: visible;
 }
 
@@ -44,7 +44,7 @@
     "box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-9 box-9 box-9 box-9 box-9"
     "box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-9 box-9 box-9 box-9 box-9"
     "box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-9 box-9 box-9 box-9 box-9"
-    "box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-9 box-9 box-9 box-9 box-9"
+    "box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-10 box-10 box-10 box-10 box-10"
     "box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-10 box-10 box-10 box-10 box-10"
     "box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-10 box-10 box-10 box-10 box-10"
     "box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-4 box-10 box-10 box-10 box-10 box-10"
@@ -206,7 +206,7 @@
 
 .resume-front h4 {
   margin: 0;
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   font-weight: 600;
   color: var(--color-ink);
 }
@@ -265,6 +265,18 @@
   margin-top: 16px;
 }
 
+.clickable-section:nth-child(8) {
+  margin-top: 6px;
+}
+
+.clickable-section:nth-child(10) {
+  margin-top: 5px;
+}
+
+.clickable-section:nth-child(11) {
+  margin-top: 1px;
+}
+
 .projects-section h3 {
   margin-top: var(--space-3);
 }
@@ -275,9 +287,9 @@
   margin-bottom: var(--space-2);
 }
 
-.technical-skills-section h4,
-.soft-skills-section h4 {
-  font-size: var(--text-sm);
+.technical-skills-section h4 {
+  font-size: var(--text-xs);
+  font-style: bold;
 }
 
 /* pixel hero */
