@@ -3,6 +3,7 @@ function ClickableSection({
   clickedSections,
   onSectionClick,
   children,
+  style,
 }) {
   const isClicked = clickedSections.has(sectionId);
 
@@ -17,7 +18,7 @@ function ClickableSection({
     <div
       onClick={handleClick}
       className={`clickable-section ${isClicked ? "burned" : ""}`}
-      style={{ pointerEvents: isClicked ? "none" : "auto" }}
+      style={{ ...style, pointerEvents: isClicked ? "none" : "auto" }}
     >
       {children}
     </div>

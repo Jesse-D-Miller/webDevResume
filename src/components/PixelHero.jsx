@@ -51,22 +51,30 @@ function PixelHero({ level }) {
     const spritePositions = {
       1: { x: 0, y: 0 },
       2: { x: 0, y: 0 },
-      3: { x: 15, y: 0 },
-      4: { x: 55, y: 0 },
-      5: { x: 100, y: -55 },
+      3: { x: 0, y: 0 },
+      4: { x: 0, y: 0 },
+      5: { x: 0, y: 0 },
     };
 
     // Bubble positions per level
     const bubblePositions = {
-      1: { x: -90, y: 20 },
-      2: { x: -90, y: 20 },
-      3: { x: -79, y: 20 },
-      4: { x: -45, y: 30 },
-      5: { x: 25, y: 0 },
+      1: { x: 0, y: 0 },
+      2: { x: 0, y: 0 },
+      3: { x: 0, y: 0 },
+      4: { x: 0, y: 0 },
+      5: { x: 0, y: 0 },
     };
 
     return (
       <div className="pixel-hero">
+        <div
+          className="hero-speech-bubble"
+          style={{
+            transform: `translate(${bubblePositions[level].x}px, ${bubblePositions[level].y}px)`,
+          }}
+        >
+          {hints[level] || "Welcome!"}
+        </div>
         <div
           className="hero-sprite"
           style={{
@@ -80,14 +88,6 @@ function PixelHero({ level }) {
             transition: "none",
           }}
         />
-        <div
-          className="hero-speech-bubble"
-          style={{
-            transform: `translate(${bubblePositions[level].x}px, ${bubblePositions[level].y}px)`,
-          }}
-        >
-          {hints[level] || "Welcome!"}
-        </div>
       </div>
     );
   }
