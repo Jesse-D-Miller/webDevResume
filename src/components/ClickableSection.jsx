@@ -6,9 +6,9 @@ function ClickableSection({
 }) {
   const isClicked = clickedSections.has(sectionId);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
     if (!isClicked) {
-      const element = event.currentTarget; //gets the div that was clicked
+      const element = e.currentTarget; //gets the div that was clicked
       onSectionClick(sectionId, element);
     }
   };
