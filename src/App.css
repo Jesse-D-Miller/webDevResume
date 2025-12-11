@@ -200,7 +200,6 @@
   letter-spacing: 0.1px;
   border-bottom: 1px solid var(--color-ink-blue);
   line-height: 0.9;
-  display: inline-block;
   width: auto;
 }
 
@@ -495,16 +494,13 @@
 .resume-front .clickable-section.burned .tech-stack:not(.overlay-item),
 .resume-front .clickable-section.burned .company-period:not(.overlay-item),
 .resume-front .clickable-section.burned .program-period:not(.overlay-item) {
-
   opacity: 0;
   translate: -200px 0;
   transition: opacity 4s ease, filter 2s ease, color 3s ease, translate 2s ease;
   filter: blur(50px) brightness(50) contrast(50);
 
   color: var(--neon-color);
-  text-shadow:
-    0 0 4px var(--neon-color),
-    0 0 12px var(--neon-color);
+  text-shadow: 0 0 4px var(--neon-color), 0 0 12px var(--neon-color);
 }
 
 /* Overlay grid sits above sheet-wrapper, aligned to the outer container */
@@ -514,7 +510,7 @@
   display: grid;
   grid-template-columns: repeat(49, 1fr);
   grid-template-rows: repeat(64, 1fr);
-  pointer-events: none; /* overlays are display-only by default */
+  pointer-events: none; /* allow clicks to pass through */
   z-index: 5;
 }
 
@@ -538,8 +534,6 @@
   text-shadow: 0 0 10px var(--color-neon-secondary);
 }
 
-
-
 .overlay-item p,
 .overlay-item li {
   color: var(--color-neon-success);
@@ -551,36 +545,146 @@
   text-shadow: 0 0 8px var(--color-neon-primary);
 }
 
+/* Header */
 .sheet-overlay .overlay-box-1 {
   grid-column: 14 / 37; /* centered wide header */
   grid-row: 1 / 10;
 }
-
-/* this was the only way i could find to specifically change the colour of the contact info in the header */
 .sheet-overlay .overlay-item .resume-header .contact-info {
   color: var(--color-neon-success);
   text-shadow: 0 0 8px var(--color-neon-success);
 }
 
+/* Summary Section */
 .sheet-overlay .overlay-box-2 {
   grid-column: 1 / 20;
   grid-row: 11 / 24;
   margin: 0;
 }
-
 .sheet-overlay .overlay-item .summary-section {
   text-align: center;
   font-size: var(--text-sm);
   padding: 0;
 }
-
 .sheet-overlay .overlay-item .summary-section h3 {
   font-size: var(--text-2xl);
   padding: 0;
   margin: 0;
 }
 
+/* technical Skills Section */
+.sheet-overlay .overlay-box-9 {
+  grid-column: 35 / span 10;
+  grid-row: 11 / 38;
+}
+.sheet-overlay .overlay-item .technical-skills-section {
+  text-align: center;
+  font-size: var(--text-sm);
+  padding: 0;
+}
+.sheet-overlay .overlay-item .technical-skills-section h3 {
+  font-size: var(--text-2xl);
+  padding: 0;
+  margin: 0;
+}
 
+/* Soft Skills Section */
+.sheet-overlay .overlay-box-10 {
+  grid-column: 46 / span 4;
+  grid-row: 13 / span 25;
+  margin: 0;
+}
+.sheet-overlay .overlay-item .soft-skills-section {
+  text-align: center;
+  font-size: var(--text-sm);
+  padding: 0;
+}
+.sheet-overlay .overlay-item .soft-skills-section h3 {
+  font-size: var(--text-2xl);
+  padding: 0;
+  margin: 0;
+}
+
+/* Hobbies Section */
+.sheet-overlay .overlay-box-11 {
+  grid-column: 35 / span 15;
+  grid-row: 39 / span 6;
+  margin: 0;
+  overflow: hidden;
+}
+.sheet-overlay .overlay-item .hobbies-section {
+  font-size: var(--text-lg);
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+}
+.sheet-overlay .overlay-item .hobbies-section h3 {
+  font-size: var(--text-4xl);
+  flex: 0 0 100%;
+  text-align: center;
+  margin: 0 var(--space-12) 0 0;
+  animation: hobbyHeaderFlash 1s ease infinite, hobbyHeaderScroll 35s linear infinite;
+}
+/* Make the inner DIV the single-row track */
+.sheet-overlay .overlay-item .hobbies-section > div {
+  display: flex;            
+  flex-direction: row;
+  flex-wrap: nowrap;        
+  white-space: nowrap;      
+  gap: var(--space-12);
+  margin: 0;
+  padding: 0;
+  width: auto;
+  max-width: none;
+  animation: hobbyScroll 35s linear infinite;
+}
+.sheet-overlay .overlay-item .hobbies-section > div p {
+  margin: 0;
+  max-width: none;
+}
+
+@keyframes hobbyHeaderScroll {
+    0%, 85% {
+      scale: 0;
+    }
+    /* Rush onto the grid quickly */
+    86% {
+      scale: 1;
+    }
+    /* Hold visible on the grid */
+    99% {
+      scale: 1;
+    }
+    100% {
+      scale: 0;
+    }
+  
+}
+
+@keyframes hobbyHeaderFlash {
+  0%,
+  100% {
+    filter: brightness(.5);
+  }
+  50% {
+    filter: brightness(2);
+    scale: 1.02;
+  }
+}
+
+@keyframes hobbyScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  90% {
+    transform: translateX(-180%);
+  }
+  100% {
+    transform: translateX(-180%);
+  }
+}
 
 @keyframes neonIgnite {
   0% {
