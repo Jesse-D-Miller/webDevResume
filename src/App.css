@@ -372,16 +372,9 @@
   text-shadow: 0 0 8px var(--color-neon-primary);
 }
 
-.clickable-section.burned .resume-header {
-  transform: scale(1.2);
-  transform-origin: top center;
-  translate: 0px -20px;
-  padding: var(--space-6);
-  transition: all 0.4s ease-in-out;
-  border-radius: 10px;
-  animation: neonIgnite 1s ease-out both,
-    neonFlicker 0.15s ease-in-out 1s infinite, sway ease-in-out 2.5s;
-  animation-delay: 0.7s;
+.box-1.burned {
+  grid-column: 1 / -1;
+  grid-row: 1 / span 7;
   background: #161414;
 }
 
