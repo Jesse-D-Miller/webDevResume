@@ -11,7 +11,7 @@ function ResumeFront({
         sectionId="header"
         clickedSections={clickedSections}
         onSectionClick={onSectionClick}
-        style={{ gridArea: "box-1" }}
+        className="clickable-section box-1"
       >
         <header className="resume-header">
           <h1>{resumeData.meta.name}</h1>
@@ -43,7 +43,7 @@ function ResumeFront({
         sectionId="summary"
         clickedSections={clickedSections}
         onSectionClick={onSectionClick}
-        style={{ gridArea: "box-2" }}
+        className="clickable-section box-2"
       >
         <section className="summary-section">
           <h3>SUMMARY</h3>
@@ -57,7 +57,7 @@ function ResumeFront({
           sectionId={`project-${index}`}
           clickedSections={clickedSections}
           onSectionClick={onSectionClick}
-          style={{ gridArea: `box-${index + 3}` }}
+          className={`clickable-section box-${index + 3}`}
         >
           <section className="projects-section">
             {index === 0 && <h3>PROJECTS</h3>}
@@ -78,7 +78,7 @@ function ResumeFront({
           sectionId={`experience-${index}`}
           clickedSections={clickedSections}
           onSectionClick={onSectionClick}
-          style={{ gridArea: `box-${index + 6}` }}
+          className={`clickable-section box-${index + 6}`}
         >
           <section className="experience-section">
             {index === 0 && <h3>EXPERIENCE</h3>}
@@ -99,7 +99,7 @@ function ResumeFront({
         sectionId="education"
         clickedSections={clickedSections}
         onSectionClick={onSectionClick}
-        style={{ gridArea: "box-8" }}
+        className="clickable-section box-8"
       >
         <section className="education-section">
           <h3>EDUCATION</h3>
@@ -123,7 +123,7 @@ function ResumeFront({
         sectionId="tech-skills"
         clickedSections={clickedSections}
         onSectionClick={onSectionClick}
-        style={{ gridArea: "box-9" }}
+        className="clickable-section box-9"
       >
         <section className="technical-skills-section">
           <h3>TECHNICAL SKILLS</h3>
@@ -174,7 +174,7 @@ function ResumeFront({
         sectionId="soft-skills"
         clickedSections={clickedSections}
         onSectionClick={onSectionClick}
-        style={{ gridArea: "box-10" }}
+        className="clickable-section box-10"
       >
         <section className="soft-skills-section">
           <h3>SOFT SKILLS</h3>
@@ -192,7 +192,7 @@ function ResumeFront({
         sectionId="hobbies"
         clickedSections={clickedSections}
         onSectionClick={onSectionClick}
-        style={{ gridArea: "box-11" }}
+        className="clickable-section box-11" 
       >
         <section className="hobbies-section">
           <h3>HOBBIES</h3>
@@ -208,7 +208,7 @@ function ResumeFront({
         sectionId="bottom-right-blank"
         clickedSections={clickedSections}
         onSectionClick={onSectionClick}
-        style={{ gridArea: "box-12" }}
+        className="clickable-section box-12"
       >
         <div>Place Holder</div>
       </ClickableSection>
