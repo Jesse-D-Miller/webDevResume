@@ -485,6 +485,28 @@
   background: #161414;
 } */
 
+.resume-front .clickable-section.burned p:not(.overlay-item),
+.resume-front .clickable-section.burned li:not(.overlay-item),
+.resume-front .clickable-section.burned a:not(.overlay-item),
+.resume-front .clickable-section.burned h1:not(.overlay-item),
+.resume-front .clickable-section.burned h3:not(.overlay-item),
+.resume-front .clickable-section.burned h4:not(.overlay-item),
+.resume-front .clickable-section.burned .contact-info:not(.overlay-item),
+.resume-front .clickable-section.burned .tech-stack:not(.overlay-item),
+.resume-front .clickable-section.burned .company-period:not(.overlay-item),
+.resume-front .clickable-section.burned .program-period:not(.overlay-item) {
+
+  opacity: 0;
+  translate: -200px 0;
+  transition: opacity 4s ease, filter 2s ease, color 3s ease, translate 2s ease;
+  filter: blur(50px) brightness(50) contrast(50);
+
+  color: var(--neon-color);
+  text-shadow:
+    0 0 4px var(--neon-color),
+    0 0 12px var(--neon-color);
+}
+
 /* Overlay grid sits above sheet-wrapper, aligned to the outer container */
 .sheet-overlay {
   position: absolute;
@@ -505,6 +527,7 @@
   transition: all 0.4s ease-out;
   animation: neonIgnite 1s ease-out both,
     neonFlicker 0.15s ease-in-out 1s infinite;
+  animation-delay: 0.8s;
 }
 
 /* Allow text glow within overlays */
@@ -514,6 +537,8 @@
   color: var(--color-neon-secondary);
   text-shadow: 0 0 10px var(--color-neon-secondary);
 }
+
+
 
 .overlay-item p,
 .overlay-item li {
@@ -527,9 +552,34 @@
 }
 
 .sheet-overlay .overlay-box-1 {
-  grid-column: 8 / 43; /* centered wide header */
-  grid-row: 4 / 18;
+  grid-column: 14 / 37; /* centered wide header */
+  grid-row: 1 / 10;
 }
+
+/* this was the only way i could find to specifically change the colour of the contact info in the header */
+.sheet-overlay .overlay-item .resume-header .contact-info {
+  color: var(--color-neon-success);
+  text-shadow: 0 0 8px var(--color-neon-success);
+}
+
+.sheet-overlay .overlay-box-2 {
+  grid-column: 1 / 20;
+  grid-row: 11 / 24;
+  margin: 0;
+}
+
+.sheet-overlay .overlay-item .summary-section {
+  text-align: center;
+  font-size: var(--text-sm);
+  padding: 0;
+}
+
+.sheet-overlay .overlay-item .summary-section h3 {
+  font-size: var(--text-2xl);
+  padding: 0;
+  margin: 0;
+}
+
 
 
 @keyframes neonIgnite {
