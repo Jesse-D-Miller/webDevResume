@@ -21,7 +21,7 @@
   grid-template-columns: repeat(21, 1fr);
   grid-template-rows: repeat(60, 1fr);
 }
-  
+
 .resume-front > .box-1 {
   grid-column: 1 / span 21;
   grid-row: 1 / span 7;
@@ -343,9 +343,9 @@
 /* cyber punk version */
 
 /* Allow overflow when any section is burned, so header can escape */
-.sheet-face:has(.clickable-section.burned) {
+/* .sheet-face:has(.clickable-section.burned) {
   overflow: visible;
-}
+} */
 
 /* .clickable-section.burned {
   background: var(--color-bg-dark);
@@ -354,7 +354,7 @@
   transition: all 0.4s ease-out;
 } */
 
-.clickable-section.burned h1,
+/* .clickable-section.burned h1,
 .clickable-section.burned h3,
 .clickable-section.burned h4 {
   color: var(--color-neon-secondary);
@@ -483,7 +483,54 @@
     neonFlicker 0.15s ease-in-out 1s infinite;
   animation-delay: 1s;
   background: #161414;
+} */
+
+/* Overlay grid sits above sheet-wrapper, aligned to the outer container */
+.sheet-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(49, 1fr);
+  grid-template-rows: repeat(64, 1fr);
+  pointer-events: none; /* overlays are display-only by default */
+  z-index: 5;
 }
+
+/* Generic overlay item visuals; individual sections can override */
+.overlay-item {
+  background: #161414;
+  animation-delay: 1s;
+  border-radius: 10px;
+  padding: var(--space-4);
+  transition: all 0.4s ease-out;
+  animation: neonIgnite 1s ease-out both,
+    neonFlicker 0.15s ease-in-out 1s infinite;
+}
+
+/* Allow text glow within overlays */
+.overlay-item h1,
+.overlay-item h3,
+.overlay-item h4 {
+  color: var(--color-neon-secondary);
+  text-shadow: 0 0 10px var(--color-neon-secondary);
+}
+
+.overlay-item p,
+.overlay-item li {
+  color: var(--color-neon-success);
+  text-shadow: 0 0 8px var(--color-neon-success);
+}
+
+.overlay-item a {
+  color: var(--color-neon-primary);
+  text-shadow: 0 0 8px var(--color-neon-primary);
+}
+
+.sheet-overlay .overlay-box-1 {
+  grid-column: 8 / 43; /* centered wide header */
+  grid-row: 4 / 18;
+}
+
 
 @keyframes neonIgnite {
   0% {

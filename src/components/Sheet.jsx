@@ -50,6 +50,8 @@ function Sheet() {
 
   return (
     <div className="sheet-container">
+      {/* Overlay grid targeting the outer sheet container for burned sections */}
+      <div id="sheet-overlay-root" className="sheet-overlay" />
       <div
         className="sheet-wrapper"
         style={{
