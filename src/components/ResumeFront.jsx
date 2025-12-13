@@ -6,6 +6,7 @@ function ResumeFront({
   clickedSections = new Set(),
   onSectionClick = () => {},
 }) {
+
   return (
     <div className="resume-front">
       <ClickableSection
@@ -193,7 +194,7 @@ function ResumeFront({
         sectionId="hobbies"
         clickedSections={clickedSections}
         onSectionClick={onSectionClick}
-        className="clickable-section box-11" 
+        className="clickable-section box-11"
       >
         <section className="hobbies-section">
           <h3>HOBBIES</h3>
