@@ -1,5 +1,6 @@
 import { createPortal } from "react-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { use } from "react";
 
 function ClickableSection({
   sectionId,
@@ -9,7 +10,27 @@ function ClickableSection({
   style,
   className,
 }) {
+  const [depth, setDepth] = useState(0); // to manage z-index for overlays
+  const [isFront, setIsFront] = useState(false); // to manage which tabs are shown in projects/experiences
   const isClicked = clickedSections.has(sectionId);
+
+  useEffect(() => {
+    const handler = (e) => {
+      const id = e.detail?.id;
+      setIsFront(id === sectionId);
+    };
+    window.addEventListener("overlay:front", handler);
+    return () => {
+      window.removeEventListener("overlay:front", handler);
+    }}, [sectionId]);
+
+  const bringToFront = (e) => {
+    e.stopPropagation();
+    setDepth((d) => Math.min(d + 1, 3)); // optional: pop forward visually
+    window.dispatchEvent(
+      new CustomEvent("overlay:front", { detail: { id: sectionId } })
+    );
+  };
 
   const handleClick = (e) => {
     if (!isClicked) {
@@ -41,12 +62,15 @@ function ClickableSection({
       // to differentiate between project and experience sections for tabbing
       const isProject = sectionId.startsWith("project-");
       const isExperience = sectionId.startsWith("experience-");
-      const [depth, setDepth] = useState(0); // to manage z-index for overlays
 
       // Calculate tab left position based on section type and index
-      const sectionIndex = isProject ? Number(sectionId.split("-")[1]) : isExperience ? Number(sectionId.split("-")[1]) : 0;
-      const tabGap = 90; // px between tabs
-      const tabLeft = 20 + sectionIndex * tabGap; // stagger
+      const sectionIndex = isProject
+        ? Number(sectionId.split("-")[1])
+        : isExperience
+        ? Number(sectionId.split("-")[1])
+        : 0;
+      const tabGap = 100; // px between tabs
+      const tabLeft = 10 + sectionIndex * tabGap; // stagger
 
       // Render an enlarged overlay copy into the outer grid via portal
       // Read neon vars from the base element so overlay matches per-box color
@@ -73,7 +97,7 @@ function ClickableSection({
 
       const overlay = (
         <div
-          className={`overlay-item ${overlayClass ? overlayClass : ""} burned`}
+          className={`overlay-item ${overlayClass ??""} burned ${isFront ? "overlay-front" : ""}`}
           style={inlineStyle}
         >
           {(isProject || isExperience) && (
@@ -81,10 +105,7 @@ function ClickableSection({
               className="folder-tab"
               type="button"
               style={{ left: `${tabLeft}px` }} // Adjust tab position
-              onClick={(e) => {
-                e.stopPropagation();
-                setDepth((d) => (d + 1) % 4);
-              }}
+              onClick={bringToFront}
               aria-label="Cycle project depth"
             >
               {sectionId.toUpperCase()}

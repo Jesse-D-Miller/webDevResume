@@ -517,7 +517,7 @@
 }
 
 /* Generic overlay item visuals; individual sections can override */
-.overlay-item {
+.sheet-overlay .overlay-item {
   background: #262626;
   animation-delay: 1s;
   border-radius: 10px;
@@ -526,21 +526,22 @@
   animation: neonIgnite 1s ease-out both,
     neonFlicker 0.15s ease-in-out 1s infinite;
   animation-delay: 0.8s;
-  position: relative;
   pointer-events: auto; /* enable interaction */
+  position: relative;
+  z-index: 1;
 }
 
-.overlay-item .folder-tab {
+.sheet-overlay .overlay-item .folder-tab {
   position: absolute;
   top: -28px;
-  left: 20px;
   padding: 2px 15px;
   font: 600 var(--text-sm) var(--font-mono);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
   background: #262626;
   color: var(--neon-color);
   animation: neonIgnite 1s ease-out both,
     neonFlicker 0.15s ease-in-out 1s infinite;
+  animation-delay: 0.8s;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   box-shadow: 0 1px var(--neon-color-opacity),
@@ -550,12 +551,13 @@
   pointer-events: auto;
 }
 
+.sheet-overlay .overlay-item.overlay-front { z-index: 999; }
+
 .overlay-item .overlay-content {
   transform-style: preserve-3d;
   transform: translateZ(calc(var(--z, 0) * 24px))
-    scale(calc(1 + (var(--z, 0) * 0.02))) rotateX(calc(var(--z, 0) * 0.3deg));
+    rotateX(calc(var(--z, 0) * 0.3deg));
   transition: transform 300ms ease, filter 300ms ease;
-  filter: brightness(calc(1 + (var(--z, 0) * 0.1)));
 }
 
 /* Allow text glow within overlays */
