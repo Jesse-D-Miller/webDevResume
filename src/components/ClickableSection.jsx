@@ -1,41 +1,48 @@
 import { createPortal } from "react-dom";
-import { useState, useEffect } from "react";
-import { use } from "react";
+import { useState } from "react";
 
 function ClickableSection({
   sectionId,
   clickedSections,
   onSectionClick,
+  frontProjectId,
+  frontExperienceId,
+  onBringToFront,
   children,
   style,
   className,
 }) {
+  
   const [depth, setDepth] = useState(0); // to manage z-index for overlays
-  const [isFront, setIsFront] = useState(false); // to manage which tabs are shown in projects/experiences
   const isClicked = clickedSections.has(sectionId);
 
-  useEffect(() => {
-    const handler = (e) => {
-      const id = e.detail?.id;
-      setIsFront(id === sectionId);
-    };
-    window.addEventListener("overlay:front", handler);
-    return () => {
-      window.removeEventListener("overlay:front", handler);
-    }}, [sectionId]);
+  // Determine group and whether this overlay is currently front
+  const isProject = sectionId.startsWith("project-");
+  const isExperience = sectionId.startsWith("experience-");
+  const isFront = isProject
+    ? frontProjectId === sectionId
+    : isExperience
+    ? frontExperienceId === sectionId
+    : false;
 
   const bringToFront = (e) => {
     e.stopPropagation();
     setDepth((d) => Math.min(d + 1, 3)); // optional: pop forward visually
-    window.dispatchEvent(
-      new CustomEvent("overlay:front", { detail: { id: sectionId } })
-    );
+    if (onBringToFront) {
+      const group = isProject ? "project" : isExperience ? "experience" : null;
+      if (group) onBringToFront(group, sectionId);
+    }
   };
 
   const handleClick = (e) => {
     if (!isClicked) {
       const element = e.currentTarget; //gets the div that was clicked
       onSectionClick(sectionId, element);
+      // Immediately set front so the overlay/tab animates on first reveal
+      if (onBringToFront) {
+        const group = isProject ? "project" : isExperience ? "experience" : null;
+        if (group) onBringToFront(group, sectionId);
+      }
     }
   };
 
@@ -59,10 +66,6 @@ function ClickableSection({
   if (isClicked) {
     const overlayRoot = document.getElementById("sheet-overlay-root");
     if (overlayRoot) {
-      // to differentiate between project and experience sections for tabbing
-      const isProject = sectionId.startsWith("project-");
-      const isExperience = sectionId.startsWith("experience-");
-
       // Calculate tab left position based on section type and index
       const sectionIndex = isProject
         ? Number(sectionId.split("-")[1])

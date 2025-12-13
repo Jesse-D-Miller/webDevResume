@@ -553,7 +553,6 @@
 
 .sheet-overlay .overlay-item:not(.overlay-front) .folder-tab {
   filter: brightness(0.6) saturate(0.8);
-  opacity: 0.9;
   animation: none;
   border: #6a6a6a solid 4px;
 }
@@ -564,7 +563,6 @@
 .sheet-overlay .overlay-item.overlay-box-6:not(.overlay-front),
 .sheet-overlay .overlay-item.overlay-box-7:not(.overlay-front) {
   filter: brightness(0.6) saturate(0.8);
-  opacity: 0.9;
   animation: none;
   border: #6a6a6a solid 4px;
 }
@@ -778,7 +776,7 @@
 
 .sheet-overlay .overlay-box-6,
 .sheet-overlay .overlay-box-7 {
-  grid-column: 1 / span 15;
+  grid-column: 1 / span 15; 
   grid-row: 28 / span 20;
   margin: 0;
   overflow: visible;

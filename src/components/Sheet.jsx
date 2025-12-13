@@ -8,6 +8,9 @@ function Sheet() {
   const [interactionCount, setInteractionCount] = useState(0); //tracks number of interactions
   const [heroLevel, setHeroLevel] = useState(1); //tracks hero level based on interactions
   const [clickedSections, setClickedSections] = useState(new Set()); //tracks clicked sections
+  const [frontProjectId, setFrontProjectId] = useState(null);
+  const [frontExperienceId, setFrontExperienceId] = useState(null);
+  
 
   const burnPercentage = (clickedSections.size / 11) * 100;
   
@@ -15,6 +18,14 @@ function Sheet() {
     getRandomNeonColor(element);
     setClickedSections((prev) => new Set(prev).add(sectionId));
     setInteractionCount((count) => count + 1);
+  };
+
+  const handleBringToFront = (group, sectionId) => {
+    if (group === "project") {
+      setFrontProjectId(sectionId);
+    } else if (group === "experience") {
+      setFrontExperienceId(sectionId);
+    }
   };
   
   const isFullyClicked = clickedSections.size === 12; //12 sections total
@@ -71,6 +82,9 @@ function Sheet() {
           <ResumeFront
             clickedSections={clickedSections}
             onSectionClick={handleSectionClick}
+            frontProjectId={frontProjectId}
+            frontExperienceId={frontExperienceId}
+            onBringToFront={handleBringToFront}
             
           />
         </div>

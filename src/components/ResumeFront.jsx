@@ -5,6 +5,9 @@ import ClickableSection from "./ClickableSection.jsx";
 function ResumeFront({
   clickedSections = new Set(),
   onSectionClick = () => {},
+  frontProjectId = null,
+  frontExperienceId = null,
+  onBringToFront = () => {},
 }) {
 
   return (
@@ -59,6 +62,8 @@ function ResumeFront({
           sectionId={`project-${index}`}
           clickedSections={clickedSections}
           onSectionClick={onSectionClick}
+          frontProjectId={frontProjectId}
+          onBringToFront={onBringToFront}
           className={`clickable-section box-${index + 3}`}
         >
           <section className="projects-section">
@@ -80,6 +85,8 @@ function ResumeFront({
           sectionId={`experience-${index}`}
           clickedSections={clickedSections}
           onSectionClick={onSectionClick}
+          frontExperienceId={frontExperienceId}
+          onBringToFront={onBringToFront}
           className={`clickable-section box-${index + 6}`}
         >
           <section className="experience-section">
