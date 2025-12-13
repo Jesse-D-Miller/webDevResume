@@ -531,6 +531,10 @@
   z-index: 1;
 }
 
+.sheet-overlay .overlay-item:hover {
+  filter: brightness(1.1);
+}
+
 .sheet-overlay .overlay-item .folder-tab {
   position: absolute;
   top: -28px;
@@ -562,7 +566,7 @@
 .sheet-overlay .overlay-item.overlay-box-5:not(.overlay-front),
 .sheet-overlay .overlay-item.overlay-box-6:not(.overlay-front),
 .sheet-overlay .overlay-item.overlay-box-7:not(.overlay-front) {
-  filter: brightness(0.6) saturate(0.8);
+  filter: brightness(0.9) saturate(0.6);
   animation: none;
   border: #6a6a6a solid 4px;
 }
@@ -682,7 +686,9 @@
   display: inline-flex;
   align-items: center;
   width: 100%;
+  
 }
+.sheet-overlay .overlay-item.overlay-box-11:hover, .sheet-overlay .overlay-item.overlay-box-11:hover * { animation-play-state: paused !important; }
 .sheet-overlay .overlay-item .hobbies-section h3 {
   opacity: 0.9;
   font-size: var(--text-4xl);
