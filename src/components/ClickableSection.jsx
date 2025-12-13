@@ -8,6 +8,7 @@ function ClickableSection({
   frontProjectId,
   frontExperienceId,
   onBringToFront,
+  tabLabel,
   children,
   style,
   className,
@@ -111,7 +112,7 @@ function ClickableSection({
               onClick={bringToFront}
               aria-label="Cycle project depth"
             >
-              {sectionId.toUpperCase()}
+              {(tabLabel ?? sectionId).toUpperCase()}
             </button>
           )}
           <div className="overlay-content" style={{ "--z": depth }}>

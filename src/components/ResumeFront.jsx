@@ -9,7 +9,6 @@ function ResumeFront({
   frontExperienceId = null,
   onBringToFront = () => {},
 }) {
-
   return (
     <div className="resume-front">
       <ClickableSection
@@ -64,6 +63,7 @@ function ResumeFront({
           onSectionClick={onSectionClick}
           frontProjectId={frontProjectId}
           onBringToFront={onBringToFront}
+          tabLabel={project.title.split("-")[0].trim()}
           className={`clickable-section box-${index + 3}`}
         >
           <section className="projects-section">
@@ -87,6 +87,7 @@ function ResumeFront({
           onSectionClick={onSectionClick}
           frontExperienceId={frontExperienceId}
           onBringToFront={onBringToFront}
+          tabLabel={job.role}
           className={`clickable-section box-${index + 6}`}
         >
           <section className="experience-section">
