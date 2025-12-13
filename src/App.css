@@ -295,7 +295,7 @@
 
 .hero-wrapper {
   grid-column: 37 / 45;
-  grid-row: 44 / 63;
+  grid-row: 46 / -1;
 }
 
 .pixel-hero {
@@ -505,6 +505,8 @@
 
 /* Overlay grid sits above sheet-wrapper, aligned to the outer container */
 .sheet-overlay {
+  perspective: 900px;
+  transform-style: preserve-3d;
   position: absolute;
   inset: 0;
   display: grid;
@@ -524,6 +526,8 @@
   animation: neonIgnite 1s ease-out both,
     neonFlicker 0.15s ease-in-out 1s infinite;
   animation-delay: 0.8s;
+  position: relative;
+  pointer-events: auto; /* enable interaction */
 }
 
 /* Allow text glow within overlays */
@@ -547,7 +551,7 @@
 
 /* Header */
 .sheet-overlay .overlay-box-1 {
-  grid-column: 14 / 37; /* centered wide header */
+  grid-column: 12 / 39; /* centered wide header */
   grid-row: 1 / 10;
 }
 .sheet-overlay .overlay-item .resume-header .contact-info {
@@ -557,8 +561,8 @@
 
 /* Summary Section */
 .sheet-overlay .overlay-box-2 {
-  grid-column: 1 / 20;
-  grid-row: 11 / 24;
+  grid-column: 1 / span 15;
+  grid-row: 12 / span 14;
   margin: 0;
 }
 .sheet-overlay .overlay-item .summary-section {
@@ -575,7 +579,8 @@
 /* technical Skills Section */
 .sheet-overlay .overlay-box-9 {
   grid-column: 35 / span 10;
-  grid-row: 11 / 38;
+  grid-row: 12 / 38;
+  margin: 0;
 }
 .sheet-overlay .overlay-item .technical-skills-section {
   text-align: center;
@@ -591,7 +596,7 @@
 /* Soft Skills Section */
 .sheet-overlay .overlay-box-10 {
   grid-column: 46 / span 4;
-  grid-row: 13 / span 25;
+  grid-row: 12 / span 26;
   margin: 0;
 }
 .sheet-overlay .overlay-item .soft-skills-section {
@@ -608,7 +613,7 @@
 /* Hobbies Section */
 .sheet-overlay .overlay-box-11 {
   grid-column: 35 / span 15;
-  grid-row: 39 / span 6;
+  grid-row: 40 / span 6;
   margin: 0;
   overflow: hidden;
 
@@ -661,8 +666,8 @@
 /* Battery progress meter */
 .sheet-overlay .overlay-box-12 {
   animation: none; /* Disable animation for battery box */
-  grid-column: 30 / span 6;
-  grid-row: 46 / span 18;
+  grid-column: 31 / span 5;
+  grid-row: 49 / -1;
   background: transparent;
   padding: 0;
   margin: 0;
@@ -677,7 +682,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(12, 1fr);
-  background: #000000;
+  background: #262626;
   position: relative;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -687,13 +692,13 @@
 
 .sheet-overlay .overlay-box-12 .battery .battery-segment {
   border-radius: 10px;
-  background: #00a94128;
-  border: #000000 solid 1px;
+  background: #262626;
+  border: #262626 solid 1px;
 }
 .sheet-overlay .overlay-box-12 .battery .battery-segment.charged {
   background: #00a941;
   box-shadow: 0 0 4px #00a941;
-  border: #000000 solid 1px;
+  border: #262626 solid 1px;
 }
 
 .sheet-overlay .overlay-box-12 ::before {
@@ -704,8 +709,42 @@
   transform: translateX(-50%);
   width: 80px;
   height: 12px;
-  background-color: #333333;
+  background-color: #262626;
   border-radius: 0 0 4px 4px;
+}
+
+/* Projects Section */
+
+.sheet-overlay .overlay-box-3,
+.sheet-overlay .overlay-box-4,
+.sheet-overlay .overlay-box-5 {
+  grid-column: 17 / span 17;
+  grid-row: 12 / span 20;
+  margin: 0;
+  overflow: visible;
+}
+
+/* Experience */
+
+.sheet-overlay .overlay-box-6 {
+  grid-column: 1 / span 15;
+  grid-row: 28 / span 20;
+  margin: 0;
+  overflow: hidden;
+}
+.sheet-overlay .overlay-box-7 {
+  grid-column: 1 / span 15;
+  grid-row: 28 / span 20;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* education */
+.sheet-overlay .overlay-box-8 {
+  grid-column: 1 / span 29;
+  grid-row: 50 / -1;
+  margin: 0;
+  overflow: hidden;
 }
 
 @keyframes hobbyHeaderScroll {
