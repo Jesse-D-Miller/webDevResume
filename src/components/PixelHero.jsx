@@ -17,7 +17,7 @@ function PixelHero({ level }) {
   }, []);
 
   const hints = {
-    1: "Hey! My name is Jesse and this is my Resume. Click around to help me level up!",
+    1: "Hey! I'm Jesse and this is my Resume. Click around to help me level up!",
     2: "Am...Am I glowing? Neat!",
     3: "Try clicking that blank space!",
     4: "Almost at max power!",

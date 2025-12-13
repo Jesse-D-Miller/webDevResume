@@ -1,4 +1,5 @@
 import { resumeData } from "../data/resume.js";
+import Battery from "./Battery.jsx";
 import ClickableSection from "./ClickableSection.jsx";
 
 function ResumeFront({
@@ -205,12 +206,12 @@ function ResumeFront({
       </ClickableSection>
 
       <ClickableSection
-        sectionId="bottom-right-blank"
+        sectionId="Battery-Indicator"
         clickedSections={clickedSections}
         onSectionClick={onSectionClick}
         className="clickable-section box-12"
       >
-        <div>Place Holder</div>
+        <Battery charge={Math.min(clickedSections.size, 12)} />
       </ClickableSection>
     </div>
   );

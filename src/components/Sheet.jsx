@@ -10,21 +10,21 @@ function Sheet() {
   const [clickedSections, setClickedSections] = useState(new Set()); //tracks clicked sections
 
   const burnPercentage = (clickedSections.size / 11) * 100;
-
+  
   const handleSectionClick = (sectionId, element) => {
     getRandomNeonColor(element);
     setClickedSections((prev) => new Set(prev).add(sectionId));
     setInteractionCount((count) => count + 1);
   };
-
+  
   const isFullyClicked = clickedSections.size === 12; //12 sections total
 
   useEffect(() => {
     // Update hero level based on interaction count
-    if (interactionCount >= 20) setHeroLevel(5);
-    else if (interactionCount >= 15) setHeroLevel(4);
-    else if (interactionCount >= 10) setHeroLevel(3);
-    else if (interactionCount >= 5) setHeroLevel(2);
+    if (interactionCount >= 12) setHeroLevel(5);
+    else if (interactionCount >= 9) setHeroLevel(4);
+    else if (interactionCount >= 6) setHeroLevel(3);
+    else if (interactionCount >= 3) setHeroLevel(2);
     else setHeroLevel(1);
   }, [interactionCount]);
 
@@ -58,9 +58,8 @@ function Sheet() {
           transformStyle: "preserve-3d",
           transform: `rotateY(${isFlipped ? 180 : 0}deg)`,
         }}
-        onClick={() => {
-          setInteractionCount((count) => count + 1);
-        }} //increment interaction count on click
+        // onClick={() => {setInteractionCount((count) => count + 1);}} 
+          //increment interaction count on click
       >
         <div
           className="sheet-face front-face"
@@ -72,6 +71,7 @@ function Sheet() {
           <ResumeFront
             clickedSections={clickedSections}
             onSectionClick={handleSectionClick}
+            
           />
         </div>
         <div
