@@ -551,7 +551,27 @@
   pointer-events: auto;
 }
 
-.sheet-overlay .overlay-item.overlay-front { z-index: 999; }
+.sheet-overlay .overlay-item:not(.overlay-front) .folder-tab {
+  filter: brightness(0.6) saturate(0.8);
+  opacity: 0.9;
+  animation: none;
+  border: #6a6a6a solid 4px;
+}
+
+.sheet-overlay .overlay-item.overlay-box-3:not(.overlay-front),
+.sheet-overlay .overlay-item.overlay-box-4:not(.overlay-front),
+.sheet-overlay .overlay-item.overlay-box-5:not(.overlay-front),
+.sheet-overlay .overlay-item.overlay-box-6:not(.overlay-front),
+.sheet-overlay .overlay-item.overlay-box-7:not(.overlay-front) {
+  filter: brightness(0.6) saturate(0.8);
+  opacity: 0.9;
+  animation: none;
+  border: #6a6a6a solid 4px;
+}
+
+.sheet-overlay .overlay-item.overlay-front {
+  z-index: 999;
+}
 
 .overlay-item .overlay-content {
   transform-style: preserve-3d;
