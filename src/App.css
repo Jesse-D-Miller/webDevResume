@@ -686,9 +686,11 @@
   display: inline-flex;
   align-items: center;
   width: 100%;
-  
 }
-.sheet-overlay .overlay-item.overlay-box-11:hover, .sheet-overlay .overlay-item.overlay-box-11:hover * { animation-play-state: paused !important; }
+.sheet-overlay .overlay-item.overlay-box-11:hover,
+.sheet-overlay .overlay-item.overlay-box-11:hover * {
+  animation-play-state: paused !important;
+}
 .sheet-overlay .overlay-item .hobbies-section h3 {
   opacity: 0.9;
   font-size: var(--text-4xl);
@@ -720,51 +722,67 @@
 /* Battery progress meter */
 .sheet-overlay .overlay-box-12 {
   animation: none; /* Disable animation for battery box */
-  grid-column: 31 / span 5;
-  grid-row: 49 / -1;
+  display: grid;
+  grid-column: 32 / span 4;
+  grid-row: 50 / span 15;
   background: transparent;
   padding: 0;
   margin: 0;
+  overflow: visible;
 }
 
 .sheet-overlay .overlay-box-12 .battery {
-  scale: 0.9;
-  padding: 6px;
-  margin: 0;
+  scale: 1;
+  padding: 2px;
+  margin: 10px;
   rotate: 180deg;
-  height: 100%;
+  height: 90%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(12, 1fr);
-  background: #262626;
+  background: #272727;
   position: relative;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
+  border: #8c8c8c solid 4px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .sheet-overlay .overlay-box-12 .battery .battery-segment {
-  border-radius: 10px;
-  background: #262626;
-  border: #262626 solid 1px;
+  border-radius: 5px;
+  border: #1a1919 solid 1px;
+  background: #8c8c8c;
 }
 .sheet-overlay .overlay-box-12 .battery .battery-segment.charged {
-  background: #00a941;
-  box-shadow: 0 0 4px #00a941;
-  border: #262626 solid 1px;
+  background-color: #00e077;
+}
+.sheet-overlay .overlay-box-12 .battery:hover .battery-segment.charged {
+  animation: batteryChargePulse 0.75s ease-in-out infinite;
 }
 
-.sheet-overlay .overlay-box-12 ::before {
+.sheet-overlay .overlay-box-12 .battery::before {
   content: "";
   position: absolute;
-  bottom: -12px;
+  top: -9px;
   left: 50%;
   transform: translateX(-50%);
   width: 80px;
+  height: 6px;
+  background-color: #8c8c8c;
+  border-radius: 4px 4px 0px 0px;
+}
+.sheet-overlay .overlay-box-12 .battery::after {
+  content: "";
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
   height: 12px;
-  background-color: #262626;
+  background-color: #8c8c8c;
   border-radius: 0 0 4px 4px;
+  z-index: 1;
 }
 
 /* Projects Section */
@@ -782,7 +800,7 @@
 
 .sheet-overlay .overlay-box-6,
 .sheet-overlay .overlay-box-7 {
-  grid-column: 1 / span 15; 
+  grid-column: 1 / span 15;
   grid-row: 28 / span 20;
   margin: 0;
   overflow: visible;
@@ -794,6 +812,21 @@
   grid-row: 50 / -1;
   margin: 0;
   overflow: hidden;
+}
+
+@keyframes batteryChargePulse {
+  0%,
+  100% {
+    scale: 100%;
+    background: var(--color-neon-success);
+    box-shadow: var(--shadow-neon), 0 0 20px var(--color-neon-success);
+    background-image: -webkit-linear-gradient(var(--color-neon-success), transparent);
+  }
+  50% {
+    scale: 99.5%;
+    background: #00e077;
+    box-shadow: var(--shadow-neon), 0 0 12px var(--color-neon-success);
+  }
 }
 
 @keyframes hobbyHeaderScroll {
