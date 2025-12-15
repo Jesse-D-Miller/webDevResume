@@ -50,39 +50,42 @@ function Sheet({ resumeData, theme }) {
 
   return (
     <div className="sheet-container">
-      <div
-        className="sheet-wrapper"
-        style={{
-          transformStyle: "preserve-3d",
-          transform: `rotateY(${isFlipped ? 180 : 0}deg)`,
-        }}
-      >
+      {theme === "dark" ? (
         <div
-          className="sheet-face front-face"
+          className="sheet-wrapper"
           style={{
-            backfaceVisibility: "hidden",
+            transformStyle: "preserve-3d",
+            transform: `rotateY(${isFlipped ? 180 : 0}deg)`,
           }}
         >
-          {theme === "dark" ? (
-            <ResumeFront
-              resumeData={resumeData}
-            />
-          ) : (
-            <CyberResume resumeData={resumeData} />
-          )}
+          <div
+            className="sheet-face front-face"
+            style={{
+              backfaceVisibility: "hidden",
+            }}
+          >
+            <ResumeFront resumeData={resumeData} />
+          </div>
+          <div
+            className="sheet-face back-face"
+            style={{
+              backfaceVisibility: "hidden",
+              transform: "rotateY(180deg)",
+            }}
+          >
+            Back: Secret Map Stats Here
+          </div>
         </div>
-        <div
-          className="sheet-face back-face"
-          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
-        >
-          Back: Secret Map Stats Here
-        </div>
-      </div>
+      ) : (
+        <CyberResume resumeData={resumeData} />
+      )}
+
       {heroLevel === 5 && (
         <button className="flip-hint" onClick={() => setIsFlipped(!isFlipped)}>
           {isFlipped ? "Show Resume" : "Show Secrets"}
         </button>
       )}
+
       <div className="hero-wrapper">
         <PixelHero level={heroLevel} />
       </div>
