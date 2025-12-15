@@ -2,6 +2,7 @@ import Battery from "../common/Battery.jsx";
 import ClickableSection from "../common/ClickableSection.jsx";
 import HeaderSection from "./HeaderSection.jsx";
 import SummarySection from "./SummarySection.jsx";
+import ProjectsSection from "./ProjectsSection.jsx";
 
 function ResumeFront({
   clickedSections = new Set(),
@@ -50,16 +51,7 @@ function ResumeFront({
           tabLabel={project.title.split("-")[0].trim()}
           className={`clickable-section box-${index + 3}`}
         >
-          <section className="projects-section">
-            {index === 0 && <h3>PROJECTS</h3>}
-            <h4>{project.title}</h4>
-            <p className="tech-stack">{project.stack.join(", ")}</p>
-            <ul>
-              {project.highlights.map((highlight, i) => (
-                <li key={i}>{highlight}</li>
-              ))}
-            </ul>
-          </section>
+          <ProjectsSection project={project} index={index} />
         </ClickableSection>
       ))}
 
