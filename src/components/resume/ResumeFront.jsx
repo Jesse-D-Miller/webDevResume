@@ -4,6 +4,7 @@ import HeaderSection from "./HeaderSection.jsx";
 import SummarySection from "./SummarySection.jsx";
 import ProjectsSection from "./ProjectsSection.jsx";
 import ExperienceSection from "./ExperienceSection.jsx";
+import EducationSection from "./EducationSection.jsx";
 
 function ResumeFront({
   clickedSections = new Set(),
@@ -77,22 +78,7 @@ function ResumeFront({
         onSectionClick={onSectionClick}
         className="clickable-section box-8"
       >
-        <section className="education-section">
-          <h3>EDUCATION</h3>
-          {resumeData.education.map((edu, index) => (
-            <div key={index} className="education-item">
-              <h4>{edu.school}</h4>
-              <p className="program-period">
-                {edu.program} | {edu.period}
-              </p>
-              <ul>
-                {edu.details.map((detail, i) => (
-                  <li key={i}>{detail}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </section>
+        <EducationSection resumeData={resumeData} />
       </ClickableSection>
 
       <ClickableSection
