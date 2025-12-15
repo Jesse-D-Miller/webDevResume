@@ -7,6 +7,7 @@ import ExperienceSection from "./ExperienceSection.jsx";
 import EducationSection from "./EducationSection.jsx";
 import TechnicalSkillsSection from "./TechnicalSkillsSection.jsx";
 import SoftSkillsSection from "./SoftSkillsSection.jsx";
+import HobbiesSection from "./HobbiesSection.jsx";
 
 function ResumeFront({
   clickedSections = new Set(),
@@ -15,9 +16,6 @@ function ResumeFront({
   frontExperienceId = null,
   onBringToFront = () => {},
   resumeData,
-  summaryOff,
-  setSummaryOff,
-  isOverlay,
 }) {
   return (
     <div className="resume-front">
@@ -107,14 +105,7 @@ function ResumeFront({
         onSectionClick={onSectionClick}
         className="clickable-section box-11"
       >
-        <section className="hobbies-section">
-          <h3>HOBBIES</h3>
-          <div>
-            {resumeData.hobbies.map((hobby, index) => (
-              <p key={index}>{hobby}</p>
-            ))}
-          </div>
-        </section>
+        <HobbiesSection resumeData={resumeData} />
       </ClickableSection>
 
       <ClickableSection
