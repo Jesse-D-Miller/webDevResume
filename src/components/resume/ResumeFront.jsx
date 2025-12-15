@@ -3,6 +3,7 @@ import ClickableSection from "../common/ClickableSection.jsx";
 import HeaderSection from "./HeaderSection.jsx";
 import SummarySection from "./SummarySection.jsx";
 import ProjectsSection from "./ProjectsSection.jsx";
+import ExperienceSection from "./ExperienceSection.jsx";
 
 function ResumeFront({
   clickedSections = new Set(),
@@ -66,18 +67,7 @@ function ResumeFront({
           tabLabel={job.role}
           className={`clickable-section box-${index + 6}`}
         >
-          <section className="experience-section">
-            {index === 0 && <h3>EXPERIENCE</h3>}
-            <h4>
-              {job.company} - {job.role}
-            </h4>
-            <p className="company-period">{job.period}</p>
-            <ul>
-              {job.bullets.map((bullet, i) => (
-                <li key={i}>{bullet}</li>
-              ))}
-            </ul>
-          </section>
+          <ExperienceSection job={job} index={index} />
         </ClickableSection>
       ))}
 
