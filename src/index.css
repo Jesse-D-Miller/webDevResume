@@ -61,12 +61,23 @@
   --transition-flip: 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.theme-dark {
+  --bg-color: var(--color-bg-dark);
+  --text-color: var(--color-ink);
+  --accent-color: var(--color-neon-primary);
+}
+
+.theme-cyberpunk {
+  --bg-color: var(--color-bg-dark);
+  --text-color: var(--color-neon-secondary);
+  --accent-color: var(--color-neon-success);
+}
 body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background: var(--color-bg-dark);
-  color: var(--color-ink);
+  background: var(--bg-color);
+  color: var(--text-color);
   font-family: var(--font-sans);
   font-size: var(--text-base);
   line-height: 1.6;

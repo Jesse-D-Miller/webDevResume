@@ -1,23 +1,16 @@
 import { useState, useEffect } from "react";
 import ResumeFront from "./resume/ResumeFront";
+import CyberResume from "./resume/CyberResume";
 import PixelHero from "./common/PixelHero";
 import { getRandomNeonColor } from "../utils/neonColor";
+import CyberResume from "./resume/CyberResume";
 
-function Sheet({ resumeData, summaryOff, setSummaryOff }) {
+function Sheet({ resumeData, theme }) {
   const [isFlipped, setIsFlipped] = useState(false); //tracks which side of the resume is shown
   const [interactionCount, setInteractionCount] = useState(0); //tracks number of interactions
   const [heroLevel, setHeroLevel] = useState(1); //tracks hero level based on interactions
-  const [clickedSections, setClickedSections] = useState(new Set()); //tracks clicked sections
   const [frontProjectId, setFrontProjectId] = useState(null);
   const [frontExperienceId, setFrontExperienceId] = useState(null);
-
-  const burnPercentage = (clickedSections.size / 12) * 100;
-
-  const handleSectionClick = (sectionId, element) => {
-    getRandomNeonColor(element);
-    setClickedSections((prev) => new Set(prev).add(sectionId));
-    setInteractionCount((count) => count + 1);
-  };
 
   const handleBringToFront = (group, sectionId) => {
     if (group === "project") {
@@ -26,8 +19,6 @@ function Sheet({ resumeData, summaryOff, setSummaryOff }) {
       setFrontExperienceId(sectionId);
     }
   };
-
-  const isFullyClicked = clickedSections.size === 12; //12 sections total
 
   useEffect(() => {
     // Update hero level based on interaction count
@@ -60,8 +51,6 @@ function Sheet({ resumeData, summaryOff, setSummaryOff }) {
 
   return (
     <div className="sheet-container">
-      {/* Overlay grid targeting the outer sheet container for burned sections */}
-      <div id="sheet-overlay-root" className="sheet-overlay" />
       <div
         className="sheet-wrapper"
         style={{
@@ -73,20 +62,18 @@ function Sheet({ resumeData, summaryOff, setSummaryOff }) {
           className="sheet-face front-face"
           style={{
             backfaceVisibility: "hidden",
-            "--burn-percentage": burnPercentage / 100,
           }}
         >
-          <ResumeFront
-            clickedSections={clickedSections}
-            onSectionClick={handleSectionClick}
-            frontProjectId={frontProjectId}
-            frontExperienceId={frontExperienceId}
-            onBringToFront={handleBringToFront}
-            resumeData={resumeData}
-            summaryOff={summaryOff}
-            setSummaryOff={setSummaryOff}
-            isOverlay={true}
-          />
+          {theme === "dark" ? (
+            <ResumeFront
+              frontProjectId={frontProjectId}
+              frontExperienceId={frontExperienceId}
+              onBringToFront={handleBringToFront}
+              resumeData={resumeData}
+            />
+          ) : (
+            <CyberResume resumeData={resumeData} />
+          )}
         </div>
         <div
           className="sheet-face back-face"
