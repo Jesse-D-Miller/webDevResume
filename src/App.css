@@ -341,149 +341,6 @@
 
 /* cyber punk version */
 
-/* Allow overflow when any section is burned, so header can escape */
-/* .sheet-face:has(.clickable-section.burned) {
-  overflow: visible;
-} */
-
-/* .clickable-section.burned {
-  background: var(--color-bg-dark);
-  border: 1px solid var(--color-neon-primary);
-  box-shadow: 0 0 20px var(--color-neon-glow);
-  transition: all 0.4s ease-out;
-} */
-
-/* .clickable-section.burned h1,
-.clickable-section.burned h3,
-.clickable-section.burned h4 {
-  color: var(--color-neon-secondary);
-  text-shadow: 0 0 10px var(--color-neon-secondary);
-}
-
-.clickable-section.burned p,
-.clickable-section.burned li {
-  color: var(--color-neon-success);
-  text-shadow: 0 0 8px var(--color-neon-success);
-}
-
-.clickable-section.burned a {
-  color: var(--color-neon-primary);
-  text-shadow: 0 0 8px var(--color-neon-primary);
-}
-
-.box-1.burned {
-  grid-column: 1 / -1;
-  grid-row: 1 / span 7;
-  background: #161414;
-}
-
-.clickable-section.burned .technical-skills-section {
-  transform: scale(1.2);
-  transform-origin: left center;
-  margin: 40px 0 40px 0;
-  width: 160%;
-  translate: 45px 0;
-  padding: var(--space-4);
-  transition: all 0.4s ease-in-out;
-  border-radius: 10px;
-  animation: neonIgnite 1s ease-out both,
-    neonFlicker 0.15s ease-in-out 1s infinite;
-  animation-delay: 1s;
-  background: #161414;
-}
-
-.clickable-section.burned .soft-skills-section {
-  transform: scale(1.2);
-  transform-origin: top center;
-  margin: 60px 0 80px 0;
-  width: 100%;
-  translate: 68px 0;
-  padding: var(--space-4);
-  transition: all 0.4s ease-in-out;
-  border-radius: 10px;
-  animation: neonIgnite 1s ease-out both,
-    neonFlicker 0.15s ease-in-out 1s infinite;
-  animation-delay: 1.1s;
-  background: #161414;
-  text-align: center;
-}
-
-.clickable-section.burned .hobbies-section {
-  transform: scale(1.2);
-  transform-origin: left center;
-  margin: 100px 0 40px 0;
-  width: 100%;
-  translate: 45px 0;
-  padding: var(--space-4);
-  transition: all 0.4s ease-in-out;
-  border-radius: 10px;
-  animation: neonIgnite 1s ease-out both,
-    neonFlicker 0.15s ease-in-out 1s infinite;
-  animation-delay: 1.5s;
-  background: #161414;
-  text-align: center;
-}
-
-.clickable-section.burned .summary-section {
-  transform: scale(1.5);
-  transform-origin: right center;
-  margin: 50px 0 70px 0;
-  width: 90%;
-  translate: 47px 0;
-  padding: var(--space-4);
-  transition: all 0.4s ease-in-out;
-  border-radius: 10px;
-  animation: neonIgnite 1s ease-out both,
-    neonFlicker 0.15s ease-in-out 1s infinite;
-  animation-delay: 1s;
-  background: #161414;
-}
-
-.clickable-section.burned .projects-section {
-  transform: scale(1.15);
-  transform-origin: top center;
-  margin: 50px 0 55px 0;
-  width: 90%;
-  translate: 0px 0;
-  padding: var(--space-4);
-  transition: all 0.4s ease-in-out;
-  border-radius: 10px;
-  animation: neonIgnite 1s ease-out both,
-    neonFlicker 0.15s ease-in-out 1s infinite;
-  animation-delay: 1s;
-  background: #161414;
-}
-
-.clickable-section.burned .experience-section {
-  transform: scale(1.1);
-  transform-origin: right center;
-  margin: 50px 0 80px 0;
-  width: 90%;
-  translate: 0px 0;
-  padding: var(--space-4);
-  transition: all 0.4s ease-in-out;
-  border-radius: 10px;
-  animation: neonIgnite 1s ease-out both,
-    neonFlicker 0.15s ease-in-out 1s infinite;
-  animation-delay: 1s;
-  background: #161414;
-}
-
-.clickable-section.burned .education-section {
-  transform: scale(1.1);
-  transform-origin: right center;
-  margin: 50px 0 80px 0;
-  width: 90%;
-  translate: 0px 0;
-  padding: var(--space-4);
-  transition: all 0.4s ease-in-out;
-  border-radius: 10px;
-  animation: neonIgnite 1s ease-out both,
-    neonFlicker 0.15s ease-in-out 1s infinite;
-  animation-delay: 1s;
-  background: #161414;
-} */
-
 .resume-front .clickable-section.burned p:not(.overlay-item),
 .resume-front .clickable-section.burned li:not(.overlay-item),
 .resume-front .clickable-section.burned a:not(.overlay-item),
@@ -601,6 +458,7 @@
   text-shadow: 0 0 8px var(--color-neon-primary);
 }
 
+
 /* Header */
 .sheet-overlay .overlay-box-1 {
   grid-column: 12 / 39; /* centered wide header */
@@ -613,17 +471,37 @@
 
 /* Summary Section */
 .sheet-overlay .overlay-box-2 {
-  grid-column: 1 / span 15;
-  grid-row: 12 / span 14;
+  animation: greenLinesScroll 5s linear infinite;
+  grid-column: 16 / span 18;
+  grid-row: 12 / span 16;
   margin: 0;
+  border: #262626 solid 10px;
+  background: #00460e70;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    #00ff002c 1px,
+    #0fc90f43 2px,
+    transparent 2px,
+    transparent 2px
+  );
+  border-radius: 0px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: var(--text-xs);
+  overflow-y: scroll;
 }
 .sheet-overlay .overlay-item .summary-section {
-  text-align: center;
-  font-size: var(--text-sm);
+  text-shadow: none;
+  text-align: left;
   padding: 0;
+  /* animation: powerOff 1.5s ease forwards infinite; */
+}
+.overlay-item .summary-section p,
+.overlay-item .summary-section h3 {
+ text-shadow: none;
 }
 .sheet-overlay .overlay-item .summary-section h3 {
   font-size: var(--text-2xl);
+  text-align: center;
   padding: 0;
   margin: 0;
 }
@@ -818,8 +696,8 @@
 .sheet-overlay .overlay-box-3,
 .sheet-overlay .overlay-box-4,
 .sheet-overlay .overlay-box-5 {
-  grid-column: 17 / span 17;
-  grid-row: 12 / span 20;
+  grid-column: 1 / span 14;
+  grid-row: 14 / span 20;
   margin: 0;
   overflow: visible;
 }
@@ -828,20 +706,68 @@
 
 .sheet-overlay .overlay-box-6,
 .sheet-overlay .overlay-box-7 {
-  grid-column: 1 / span 15;
-  grid-row: 28 / span 20;
+  grid-column: 1 / span 14;
+  grid-row: 38 / span 20;
   margin: 0;
   overflow: visible;
 }
 
 /* education */
 .sheet-overlay .overlay-box-8 {
-  grid-column: 1 / span 29;
+  grid-column: 16 / span 15;
   grid-row: 50 / -1;
   margin: 0;
   overflow: hidden;
 }
 
+@keyframes powerOn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+    box-shadow: 0 0 50px rgba(0, 255, 0, 0.1); 
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.01);
+    box-shadow: 0 0 50px rgba(0, 255, 0, 0.3);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 50px rgba(0, 255, 0, 0);
+  }
+}
+@keyframes powerOff {
+  0% {
+    background: #000000;
+    transform: scaleY(1) scaleX(1);
+  }
+  30% {
+    background: #000000;
+    transform: scaleY(0.04) scaleX(1);
+  }
+  35% {
+    background: #ffffff;
+    transform: scaleY(0.04) scaleX(1);
+  }
+  50% {
+    background: #ffffff;
+    transform: scaleY(0.03) scaleX(1);
+  }
+  100% {
+    background: #ffffff;
+    transform: scaleY(0.01) scaleX(0);
+  }
+}
+
+@keyframes greenLinesScroll {
+  0% {
+    background-position-y: 0;
+  }
+  100% {
+    background-position-y: 20px;
+  }
+}
 @keyframes batteryCoverSlide {
   from { background-position: 0 0; }
   to   { background-position: -2158px 0; }
