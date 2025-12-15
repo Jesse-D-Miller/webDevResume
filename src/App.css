@@ -30,55 +30,60 @@
 .resume-front > .box-2 {
   grid-column: 1 / span 16;
   grid-row: 8 / span 7;
+  margin-top: 8px;
 }
 
 .resume-front > .box-3 {
   grid-column: 1 / span 16;
   grid-row: 15 / span 7;
+  margin-top: -2px;
 }
 
 .resume-front > .box-4 {
   grid-column: 1 / span 16;
   grid-row: 22 / span 7;
+  margin-top: 8px;
 }
 
 .resume-front > .box-5 {
   grid-column: 1 / span 16;
   grid-row: 29 / span 6;
+  margin-top: -1px;
 }
 .resume-front > .box-6 {
   grid-column: 1 / span 16;
   grid-row: 35 / span 11;
+  margin-top: 9px;
 }
 
 .resume-front > .box-7 {
   grid-column: 1 / span 16;
   grid-row: 46 / span 8;
+  margin-top: 16px;
 }
 
 .resume-front > .box-8 {
   grid-column: 1 / span 16;
   grid-row: 54 / span 7;
+  margin-top: 6px;
 }
 
 .resume-front > .box-9 {
   grid-column: 17 / span 5;
   grid-row: 8 / span 17;
+  margin-top: 8px;
 }
 
 .resume-front > .box-10 {
   grid-column: 17 / span 5;
   grid-row: 25 / span 12;
+  margin-top: 5px;
 }
 
 .resume-front > .box-11 {
   grid-column: 17 / span 5;
   grid-row: 37 / span 11;
-}
-
-.resume-front > .box-12 {
-  grid-column: 17 / span 5;
-  grid-row: 48 / span 13;
+  margin-top: 1px;
 }
 
 .sheet-wrapper {
@@ -239,43 +244,6 @@
   font-weight: 500;
 }
 
-.clickable-section:nth-child(2),
-.clickable-section:nth-child(9) {
-  margin-top: 8px;
-}
-
-.clickable-section:nth-child(3) {
-  margin-top: -2px;
-}
-
-.clickable-section:nth-child(4) {
-  margin-top: 8px;
-}
-
-.clickable-section:nth-child(5) {
-  margin-top: -1px;
-}
-
-.clickable-section:nth-child(6) {
-  margin-top: 9px;
-}
-
-.clickable-section:nth-child(7) {
-  margin-top: 16px;
-}
-
-.clickable-section:nth-child(8) {
-  margin-top: 6px;
-}
-
-.clickable-section:nth-child(10) {
-  margin-top: 5px;
-}
-
-.clickable-section:nth-child(11) {
-  margin-top: 1px;
-}
-
 .projects-section h3 {
   margin-top: var(--space-3);
 }
@@ -341,16 +309,16 @@
 
 /* cyber punk version */
 
-.resume-front .clickable-section.burned p:not(.overlay-item),
-.resume-front .clickable-section.burned li:not(.overlay-item),
-.resume-front .clickable-section.burned a:not(.overlay-item),
-.resume-front .clickable-section.burned h1:not(.overlay-item),
-.resume-front .clickable-section.burned h3:not(.overlay-item),
-.resume-front .clickable-section.burned h4:not(.overlay-item),
-.resume-front .clickable-section.burned .contact-info:not(.overlay-item),
-.resume-front .clickable-section.burned .tech-stack:not(.overlay-item),
-.resume-front .clickable-section.burned .company-period:not(.overlay-item),
-.resume-front .clickable-section.burned .program-period:not(.overlay-item) {
+/* .resume-front p,
+.resume-front li,
+.resume-front a,
+.resume-front h1,
+.resume-front h3,
+.resume-front h4,
+.resume-front .contact-info,
+.resume-front .tech-stack,
+.resume-front .company-period,
+.resume-front .program-period {
   opacity: 0;
   translate: -200px 0;
   transition: opacity 4s ease, filter 2s ease, color 3s ease, translate 2s ease;
@@ -358,7 +326,7 @@
 
   color: var(--neon-color);
   text-shadow: 0 0 4px var(--neon-color), 0 0 12px var(--neon-color);
-}
+} */
 
 /* Overlay grid sits above sheet-wrapper, aligned to the outer container */
 .sheet-overlay {

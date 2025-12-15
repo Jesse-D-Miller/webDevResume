@@ -3,7 +3,6 @@ import ResumeFront from "./resume/ResumeFront";
 import CyberResume from "./resume/CyberResume";
 import PixelHero from "./common/PixelHero";
 import { getRandomNeonColor } from "../utils/neonColor";
-import CyberResume from "./resume/CyberResume";
 
 function Sheet({ resumeData, theme }) {
   const [isFlipped, setIsFlipped] = useState(false); //tracks which side of the resume is shown
@@ -66,9 +65,6 @@ function Sheet({ resumeData, theme }) {
         >
           {theme === "dark" ? (
             <ResumeFront
-              frontProjectId={frontProjectId}
-              frontExperienceId={frontExperienceId}
-              onBringToFront={handleBringToFront}
               resumeData={resumeData}
             />
           ) : (

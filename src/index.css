@@ -64,7 +64,7 @@
 .theme-dark {
   --bg-color: var(--color-bg-dark);
   --text-color: var(--color-ink);
-  --accent-color: var(--color-neon-primary);
+  --accent-color: var(--color-ink-light);
 }
 
 .theme-cyberpunk {

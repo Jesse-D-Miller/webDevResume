@@ -1,4 +1,4 @@
-function HeaderSection({ resumeData, onSectionClick }) {
+function HeaderSection({ resumeData }) {
   return (
     <header className="resume-header">
       <h1>{resumeData.meta.name}</h1>
@@ -9,7 +9,6 @@ function HeaderSection({ resumeData, onSectionClick }) {
           href={resumeData.meta.links.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={(e) => onSectionClick("linkedin-xp")}
         >
           LinkedIn
         </a>{" "}
@@ -18,7 +17,6 @@ function HeaderSection({ resumeData, onSectionClick }) {
           href={resumeData.meta.links.github}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={(e) => onSectionClick("github-xp")}
         >
           GitHub
         </a>
