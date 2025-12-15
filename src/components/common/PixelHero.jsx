@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import spriteLevel1 from "../assets/pixelHeroLevel1.png";
-import spriteLevel2 from "../assets/pixelHeroLevel2.png";
-import spriteLevel3 from "../assets/pixelHeroLevel3.png";
-import spriteLevel4 from "../assets/pixelHeroLevel4.png";
-import spriteLevel5 from "../assets/pixelHeroLevel5.png";
+import spriteLevel1 from "../../assets/pixelHeroLevel1.png";
+import spriteLevel2 from "../../assets/pixelHeroLevel2.png";
+import spriteLevel3 from "../../assets/pixelHeroLevel3.png";
+import spriteLevel4 from "../../assets/pixelHeroLevel4.png";
+import spriteLevel5 from "../../assets/pixelHeroLevel5.png";
 
 function PixelHero({ level }) {
   const [frameIndex, setFrameIndex] = useState(0);

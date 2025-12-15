@@ -1,19 +1,18 @@
 import { useState, useEffect } from "react";
-import ResumeFront from "./ResumeFront";
-import PixelHero from "./PixelHero";
+import ResumeFront from "./resume/ResumeFront";
+import PixelHero from "./common/PixelHero";
 import { getRandomNeonColor } from "../utils/neonColor";
 
-function Sheet() {
+function Sheet({ resumeData, summaryOff, setSummaryOff }) {
   const [isFlipped, setIsFlipped] = useState(false); //tracks which side of the resume is shown
   const [interactionCount, setInteractionCount] = useState(0); //tracks number of interactions
   const [heroLevel, setHeroLevel] = useState(1); //tracks hero level based on interactions
   const [clickedSections, setClickedSections] = useState(new Set()); //tracks clicked sections
   const [frontProjectId, setFrontProjectId] = useState(null);
   const [frontExperienceId, setFrontExperienceId] = useState(null);
-  
 
-  const burnPercentage = (clickedSections.size / 11) * 100;
-  
+  const burnPercentage = (clickedSections.size / 12) * 100;
+
   const handleSectionClick = (sectionId, element) => {
     getRandomNeonColor(element);
     setClickedSections((prev) => new Set(prev).add(sectionId));
@@ -27,7 +26,7 @@ function Sheet() {
       setFrontExperienceId(sectionId);
     }
   };
-  
+
   const isFullyClicked = clickedSections.size === 12; //12 sections total
 
   useEffect(() => {
@@ -69,8 +68,6 @@ function Sheet() {
           transformStyle: "preserve-3d",
           transform: `rotateY(${isFlipped ? 180 : 0}deg)`,
         }}
-        // onClick={() => {setInteractionCount((count) => count + 1);}} 
-          //increment interaction count on click
       >
         <div
           className="sheet-face front-face"
@@ -85,7 +82,10 @@ function Sheet() {
             frontProjectId={frontProjectId}
             frontExperienceId={frontExperienceId}
             onBringToFront={handleBringToFront}
-            
+            resumeData={resumeData}
+            summaryOff={summaryOff}
+            setSummaryOff={setSummaryOff}
+            isOverlay={true}
           />
         </div>
         <div

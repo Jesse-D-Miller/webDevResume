@@ -458,7 +458,6 @@
   text-shadow: 0 0 8px var(--color-neon-primary);
 }
 
-
 /* Header */
 .sheet-overlay .overlay-box-1 {
   grid-column: 12 / 39; /* centered wide header */
@@ -471,12 +470,33 @@
 
 /* Summary Section */
 .sheet-overlay .overlay-box-2 {
-  animation: greenLinesScroll 5s linear infinite;
+  animation: none;
   grid-column: 16 / span 18;
   grid-row: 12 / span 16;
   margin: 0;
   border: #262626 solid 10px;
+  border-width: 10px 10px 20px 10px;
+  background: #000000;
+  border-radius: 2px;
+  overflow-y: scroll;
+}
+.sheet-overlay .overlay-item .summary-section {
+  text-shadow: none;
+  text-align: left;
+  padding: 0;
+}
+.sheet-overlay .overlay-item.overlay-box-2 .summary-section {
+  position: relative;
+}
+.sheet-overlay .overlay-item.overlay-box-2 .summary-toggle-button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -18px;
+}
+.sheet-overlay .overlay-item.overlay-box-2 .summary-section.on {
   background: #00460e70;
+  animation: greenLinesScroll 5s linear infinite, powerOn 1.5s ease forwards;
   background-image: repeating-linear-gradient(
     to bottom,
     #00ff002c 1px,
@@ -484,20 +504,18 @@
     transparent 2px,
     transparent 2px
   );
-  border-radius: 0px;
-  font-family: 'Press Start 2P', monospace;
+  font-family: "Press Start 2P", monospace;
   font-size: var(--text-xs);
-  overflow-y: scroll;
 }
-.sheet-overlay .overlay-item .summary-section {
+.sheet-overlay .overlay-item.overlay-box-2 .summary-section.off {
   text-shadow: none;
   text-align: left;
   padding: 0;
-  /* animation: powerOff 1.5s ease forwards infinite; */
+  animation: powerOff 1.5s ease forwards;
 }
 .overlay-item .summary-section p,
 .overlay-item .summary-section h3 {
- text-shadow: none;
+  text-shadow: none;
 }
 .sheet-overlay .overlay-item .summary-section h3 {
   font-size: var(--text-2xl);
@@ -621,11 +639,17 @@
   pointer-events: none;
 }
 
-.sheet-overlay .overlay-box-12 .battery .battery-cover.cover-animating.cover-open {
+.sheet-overlay
+  .overlay-box-12
+  .battery
+  .battery-cover.cover-animating.cover-open {
   animation: batteryCoverSlide 2s steps(13) forwards;
   animation-direction: normal;
 }
-.sheet-overlay .overlay-box-12 .battery .battery-cover.cover-animating.cover-closed {
+.sheet-overlay
+  .overlay-box-12
+  .battery
+  .battery-cover.cover-animating.cover-closed {
   animation: batteryCoverSlide 2s steps(13) forwards;
   animation-direction: reverse;
 }
@@ -635,7 +659,6 @@
 .sheet-overlay .overlay-box-12 .battery .battery-cover.cover-closed {
   background-position: 0 0;
 }
-
 
 .sheet-overlay .overlay-box-12 .battery {
   scale: 1;
@@ -724,7 +747,7 @@
   0% {
     opacity: 0;
     transform: scale(0.95);
-    box-shadow: 0 0 50px rgba(0, 255, 0, 0.1); 
+    box-shadow: 0 0 50px rgba(0, 255, 0, 0.1);
   }
   60% {
     opacity: 1;
@@ -769,8 +792,12 @@
   }
 }
 @keyframes batteryCoverSlide {
-  from { background-position: 0 0; }
-  to   { background-position: -2158px 0; }
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -2158px 0;
+  }
 }
 
 @keyframes batteryChargePulse {
@@ -779,7 +806,10 @@
     scale: 100%;
     background: var(--color-neon-success);
     box-shadow: var(--shadow-neon), 0 0 20px var(--color-neon-success);
-    background-image: -webkit-linear-gradient(var(--color-neon-success), transparent);
+    background-image: -webkit-linear-gradient(
+      var(--color-neon-success),
+      transparent
+    );
   }
   50% {
     scale: 99.5%;

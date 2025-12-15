@@ -1,5 +1,5 @@
 import { useState } from "react";
-import batteryCoverSpriteSheet from "../assets/batteryCoverSpriteSheet.png";
+import batteryCoverSpriteSheet from "../../assets/batteryCoverSpriteSheet.png";
 
 function Battery({ charge }) {
   const [coverOpen, setCoverOpen] = useState(false);
