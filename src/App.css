@@ -5,13 +5,41 @@
   justify-content: center;
   padding: var(--space-2);
   overflow: visible;
+  background: var(--color-bg-dark);
 }
+
+/* theme switch */
+.battery-toggle {
+  position: fixed;
+  top: 24px;
+  right: 32px;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 10;
+}
+.battery-toggle svg {
+  width: 96px;
+  height: 96px;
+  pointer-events: none;
+  color: var(--color-neon-primary);
+}
+.battery-toggle:hover {
+  filter: drop-shadow(0 0 10px var(--color-neon-primary));
+}
+.battery-toggle:active svg {
+  filter:
+    drop-shadow(0 0 12px var(--color-neon-primary))
+    drop-shadow(0 0 24px var(--color-neon-primary));
+  transform: translateX(2px);
+}
+
 
 .sheet-container {
   display: grid;
   grid-template-columns: repeat(49, 1fr);
   grid-template-rows: repeat(64, 1fr);
   position: relative;
+
 }
 
 .resume-front {
