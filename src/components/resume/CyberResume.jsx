@@ -8,7 +8,16 @@ import SoftSkillsSection from "./SoftSkillsSection.jsx";
 import HobbiesSection from "./HobbiesSection.jsx";
 import Battery from "../common/Battery.jsx";
 
+import { getRandomNeonColor } from "../../utils/neonColor.js";
+import { useEffect } from "react";
+
 function CyberResume({ resumeData }) {
+  useEffect(() => {
+  // Select all .box- elements and apply random neon colors from the utility function getRandomNeonColor
+  const boxes = document.querySelectorAll(".cyber-resume .box-1, .cyber-resume .box-2, .cyber-resume .box-3, .cyber-resume .box-4, .cyber-resume .box-5, .cyber-resume .box-6, .cyber-resume .box-7, .cyber-resume .box-8, .cyber-resume .box-9, .cyber-resume .box-10, .cyber-resume .box-11, .cyber-resume .box-12");
+  boxes.forEach(box => getRandomNeonColor(box));
+}, []);
+
   return (
     <div className="cyber-resume">
       <div className="box-1">
