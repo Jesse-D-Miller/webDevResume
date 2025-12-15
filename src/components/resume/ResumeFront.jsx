@@ -6,6 +6,7 @@ import ProjectsSection from "./ProjectsSection.jsx";
 import ExperienceSection from "./ExperienceSection.jsx";
 import EducationSection from "./EducationSection.jsx";
 import TechnicalSkillsSection from "./TechnicalSkillsSection.jsx";
+import SoftSkillsSection from "./SoftSkillsSection.jsx";
 
 function ResumeFront({
   clickedSections = new Set(),
@@ -97,16 +98,7 @@ function ResumeFront({
         onSectionClick={onSectionClick}
         className="clickable-section box-10"
       >
-        <section className="soft-skills-section">
-          <h3>SOFT SKILLS</h3>
-          <div>
-            {resumeData.skills
-              .filter((skill) => skill.tags.includes("soft-skill"))
-              .map((skill, index) => (
-                <p key={index}>{skill.name}</p>
-              ))}
-          </div>
-        </section>
+        <SoftSkillsSection resumeData={resumeData} />
       </ClickableSection>
 
       <ClickableSection
