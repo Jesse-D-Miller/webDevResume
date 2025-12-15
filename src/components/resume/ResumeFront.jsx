@@ -1,6 +1,7 @@
 import Battery from "../common/Battery.jsx";
 import ClickableSection from "../common/ClickableSection.jsx";
 import HeaderSection from "./HeaderSection.jsx";
+import SummarySection from "./SummarySection.jsx";
 
 function ResumeFront({
   clickedSections = new Set(),
@@ -33,10 +34,9 @@ function ResumeFront({
         onSectionClick={onSectionClick}
         className="clickable-section box-2"
       >
-        <section className="summary-section">
-          <h3>SUMMARY</h3>
-          <p>{resumeData.summary}</p>
-        </section>
+        <SummarySection
+          resumeData={resumeData}
+        />
       </ClickableSection>
 
       {resumeData.projects.map((project, index) => (
