@@ -396,39 +396,44 @@
   --neon-flicker-inset: 32px;
 }
 
-.cyber-resume .projects-section .folder-tab {
-  position: absolute;
-  top: -28px;
-
-  padding: 2px 15px;
-  font: 600 var(--text-sm) var(--font-mono);
-  letter-spacing: 0.02em;
-  background: #262626;
-  color: var(--neon-color);
-  animation: neonIgnite 1s ease-out both,
-    neonFlicker 0.15s ease-in-out 1s infinite;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  cursor: pointer;
-  pointer-events: auto;
+.project-tabs-row {
+  grid-column: 2 / span 10;
+  grid-row: 13 / span 3;
+  display: flex;
+  gap: -1px;
+  margin-bottom: 0;
+  position: relative;
+  transform: translateY(-8px);
   z-index: 1;
 }
 
-
-
-/* .cyber-resume .folder-tab.front,
-.cyber-resume .projects-section.front {
-  z-index: 2;
+.folder-tab {
+  padding: 4px 18px;
+  font: 600 var(--text-sm) var(--font-mono);
+  background: #262626;
+  color: var(--neon-color, #0ff);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+  border: #c0c0c0 solid 4px;
 }
-
-.cyber-resume .projects-section:not(.front),
-.cyber-resume .folder-tab:not(.front) {
-  filter: brightness(0.6) saturate(0.8);
+.folder-tab.active {
+  z-index: 10;
+  animation: neonIgnite 1s ease-out both,
+    neonFlicker 0.15s ease-in-out 1s infinite;
+  animation-delay: 2s;
+}
+.cyber-resume [class^="box-"] {
+  z-index: 1;
+}
+.cyber-resume [class^="box-"].front {
+  z-index: 3;
+}
+.cyber-resume .box-3:not(.front),
+.cyber-resume .box-4:not(.front),
+.cyber-resume .box-5:not(.front) {
   animation: none;
-  box-shadow: none;
-  z-index: 2;
-  pointer-events: auto;
-} */
+}
 
 
 .cyber-resume .box-1 {

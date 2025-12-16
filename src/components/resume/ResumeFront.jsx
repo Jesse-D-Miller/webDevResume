@@ -29,7 +29,7 @@ function ResumeFront({
           className={`box-${index + 3}`}
           showHeader={index === 0}
         >
-          <ProjectsSection project={project} index={index} theme={theme} />
+          <ProjectsSection project={project} index={index} theme={theme} showHeader={index === 0} />
         </div>
       ))}
       {resumeData.experience.map((job, index) => (

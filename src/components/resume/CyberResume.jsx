@@ -12,7 +12,9 @@ import { getRandomNeonColor } from "../../utils/neonColor.js";
 import { useEffect, useState } from "react";
 
 function CyberResume({ resumeData, theme }) {
-  const [frontProjectId, setFrontProjectId] = useState(resumeData.projects[0]?.id ?? null); // Track front project in tab stacks
+  const [frontProjectId, setFrontProjectId] = useState(
+    resumeData.projects[0]?.id ?? null
+  ); // Track front project in tab stacks
 
   useEffect(() => {
     // Select all .box- elements and apply random neon colors from the utility function getRandomNeonColor
@@ -32,13 +34,25 @@ function CyberResume({ resumeData, theme }) {
         <SummarySection resumeData={resumeData} />
       </div>
 
+      <div className="project-tabs-row">
+        {resumeData.projects.map((project) => (
+          <div
+            key={project.id}
+            className={`folder-tab${
+              frontProjectId === project.id ? " active" : ""
+            }`}
+            onClick={() => setFrontProjectId(project.id)}
+          >
+            {project.title.split("-")[0].trim()}
+          </div>
+        ))}
+      </div>
       {resumeData.projects.map((project, index) => (
-        <div key={project.id} className={`box-${index + 3}`}>
+        <div key={project.id} className={`box-${index + 3}${frontProjectId === project.id ? " front" : ""}`}>
           <ProjectsSection
             project={project}
             isFront={frontProjectId === project.id}
             showHeader={true}
-            
           />
         </div>
       ))}
