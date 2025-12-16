@@ -6,7 +6,6 @@
   padding: var(--space-2);
   overflow: visible;
   background: var(--color-bg-dark);
-
 }
 
 /* theme switch */
@@ -408,7 +407,6 @@
   --neon-flicker-shadow: 40px;
   --neon-flicker-inset: 32px;
   animation-play-state: paused !important;
-
 }
 
 /* ======================================== General / Default Styles ========================================*/
@@ -477,7 +475,7 @@
 /* ================================================ Box Grid ================================================*/
 /* ================================================= Header =================================================*/
 
-.cyber-resume .box-1 .resume-header{
+.cyber-resume .box-1 .resume-header {
   text-align: center;
   align-items: center;
 }
@@ -492,7 +490,7 @@
     neonFlicker 0.15s ease-in-out 1s infinite;
   border-bottom: #3a3a3a solid 4px;
   animation-delay: 1s;
-    background-color: rgba(1, 34, 13, 0.52);
+  background-color: rgba(1, 34, 13, 0.52);
   background-image: linear-gradient(
     180deg,
     rgba(2, 83, 34, 0) 0%,
@@ -513,7 +511,44 @@
 /* ================================================= Header =================================================*/
 /* ================================================= Summary =================================================*/
 
+.cyber-resume .box-2 {
+  animation: none;
+  border: #262626 solid 10px;
+  border-width: 10px 10px 30px 10px;
+  background: #000000;
+  border-radius: 2px;
+  padding: 0;
+  background-color: rgba(1, 68, 26, 0.52);
+  background-image: linear-gradient(
+    180deg,
+    rgba(2, 83, 34, 0) 0%,
+    rgba(2, 83, 34, 0.6) 40%,
+    rgba(2, 83, 34, 0) 100%
+  );
+}
+.cyber-resume .box-2:hover {
+  animation: greenLinesScroll 1s ease-in-out both !important;
+}
 
+.cyber-resume .box-2 .summary-section {
+  font-family: "Press Start 2P", monospace;
+  border: #000000 solid 1px;
+  height: 100%;
+}
+
+.cyber-resume .summary-section h3 {
+  font-size: var(--text-2xl);
+  text-align: center;
+  padding: 0;
+  margin: 0;
+} 
+.cyber-resume .summary-section p {
+  font-size: var(--text-2xs);
+  text-align: left;
+  padding: var(--space-1);
+  margin: 0;
+  line-height: var(--space-6);
+} 
 
 /* ================================================= Summary =================================================*/
 /* ========================================= Projects and Experience =========================================*/
@@ -636,19 +671,19 @@
   font-size: var(--text-2xl);
   padding: 0;
   margin: 0;
-} 
+}
 
 .cyber-resume .technical-skills-section h4 {
   font-size: var(--text-base);
   margin: 0;
   padding: 0.25em 0 0 0;
-} 
+}
 
 .cyber-resume .technical-skills-section p {
   font-size: var(--text-sm);
   margin: 0;
   padding: 0.35em 0;
-} 
+}
 
 /* ============================================= Technical Skills ============================================*/
 /* =============================================== Soft Skills ===============================================*/
@@ -767,7 +802,7 @@
 
 .cyber-resume .box-12 .battery .battery-cover.cover-closed {
   background-position: 0 0;
-} 
+}
 
 .cyber-resume .box-12 .battery {
   scale: 1;
@@ -799,7 +834,7 @@
 
 .cyber-resume .box-12 .battery:hover .battery-segment.charged {
   animation: batteryChargePulse 0.75s ease-in-out infinite;
-} 
+}
 
 .cyber-resume .box-12 .battery::before {
   content: "";
@@ -811,7 +846,7 @@
   height: 6px;
   background-color: #8c8c8c;
   border-radius: 4px 4px 0px 0px;
-} 
+}
 
 .cyber-resume .box-12 .battery::after {
   content: "";
@@ -824,7 +859,7 @@
   background-color: #8c8c8c;
   border-radius: 0 0 4px 4px;
   z-index: 1;
-} 
+}
 
 /*================================================== Battery ==================================================*/
 /*================================================= Keyframes =================================================*/
@@ -871,10 +906,92 @@
 
 @keyframes greenLinesScroll {
   0% {
-    background-position-y: 0;
+    background-image: linear-gradient(
+      180deg,
+      rgba(2, 83, 34, 0) 0%,
+      rgba(2, 83, 34, 0.6) 40%,
+      rgba(2, 83, 34, 0) 100%
+    );
+  }
+  10% {
+    background-image: linear-gradient(
+      180deg,
+      rgba(2, 83, 34, 0) 0%,
+      rgba(2, 83, 34, 0.6) 44%,
+      rgba(2, 83, 34, 0) 100%
+    );
+  }
+  20% {
+    background-image: linear-gradient(
+      180deg,
+      rgba(2, 83, 34, 0) 0%,
+      rgba(2, 83, 34, 0.6) 48%,
+      rgba(2, 83, 34, 0) 100%
+    );
+  }
+  30% {
+    background-image: linear-gradient(
+      180deg,
+      rgba(2, 83, 34, 0) 0%,
+      rgba(2, 83, 34, 0.6) 52%,
+      rgba(2, 83, 34, 0) 100%
+    );
+  }
+  40% {
+    background-image: linear-gradient(
+      180deg,
+      rgba(2, 83, 34, 0) 0%,
+      rgba(2, 83, 34, 0.6) 56%,
+      rgba(2, 83, 34, 0) 100%
+    );
+  }
+  50% {
+    background-image: linear-gradient(
+      180deg,
+      rgba(2, 83, 34, 0) 0%,
+      rgba(2, 83, 34, 0.6) 60%,
+      rgba(2, 83, 34, 0) 100%
+    );
+  }
+  60% {
+    background-image: linear-gradient(
+      180deg,
+      rgba(2, 83, 34, 0) 0%,
+      rgba(2, 83, 34, 0.6) 64%,
+      rgba(2, 83, 34, 0) 100%
+    );
+  }
+  70% {
+    background-image: linear-gradient(
+      180deg,
+      rgba(2, 83, 34, 0) 0%,
+      rgba(2, 83, 34, 0.6) 68%,
+      rgba(2, 83, 34, 0) 100%
+    );
+  }
+  80% {
+    background-image: linear-gradient(
+      180deg,
+      rgba(2, 83, 34, 0) 0%,
+      rgba(2, 83, 34, 0.6) 72%,
+      rgba(2, 83, 34, 0) 100%
+    );
+  }
+  90% {
+    background-image: linear-gradient(
+      180deg,
+      rgba(2, 83, 34, 0) 0%,
+      rgba(2, 83, 34, 0.6) 76%,
+      rgba(2, 83, 34, 0) 100%
+    );
   }
   100% {
-    background-position-y: 20px;
+    background-image: linear-gradient(
+      180deg,
+      rgba(2, 83, 34, 0) 0%,
+      rgba(2, 83, 34, 0.6) 80%,
+      rgba(2, 83, 34, 0) 100%
+    );
   }
 }
 @keyframes batteryCoverSlide {
