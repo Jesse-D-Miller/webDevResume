@@ -408,7 +408,16 @@
   z-index: 1;
 }
 
-
+.experience-tabs-row {
+  grid-column: 2 / span 10;
+  grid-row: 37 / span 3;
+  display: flex;
+  gap: -1px;
+  margin-bottom: 0;
+  position: relative;
+  transform: translateY(-8px);
+  z-index: 1;
+}
 .folder-tab {
   padding: 4px 18px;
   font: 600 var(--text-sm) var(--font-mono);
@@ -420,12 +429,14 @@
   box-shadow: none;
   border: #3a3a3a solid 4px;
 }
+
 .folder-tab.active {
   z-index: 10;
   animation: neonIgnite 1s ease-out both,
     neonFlicker 0.15s ease-in-out 1s infinite;
-  animation-delay: 2s;
+    animation-delay: 2s;
 }
+
 .cyber-resume [class^="box-"] {
   z-index: 1;
 }
@@ -434,21 +445,13 @@
 }
 .cyber-resume .box-3:not(.front),
 .cyber-resume .box-4:not(.front),
-.cyber-resume .box-5:not(.front) {
+.cyber-resume .box-5:not(.front),
+.cyber-resume .box-6:not(.front),
+.cyber-resume .box-7:not(.front) {
   animation: none;
 }
 
 
-.experience-tabs-row {
-  grid-column: 2 / span 10;
-  grid-row: 37 / span 3;
-  display: flex;
-  gap: -1px;
-  margin-bottom: 0;
-  position: relative;
-  transform: translateY(-8px);
-  z-index: 1;
-}
 
 
 
@@ -473,7 +476,7 @@
 .cyber-resume .box-7 {
   grid-column: 1 / span 14;
   grid-row: 38 / span 20;
-  animation-delay: 3s;
+  animation-delay: 2s;
 }
 .cyber-resume .box-8 {
   grid-column: 16 / span 15;

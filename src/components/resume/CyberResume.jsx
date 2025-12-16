@@ -51,7 +51,7 @@ function CyberResume({ resumeData, theme }) {
   useEffect(() => {
     // Select all .box- elements and apply random neon colors from the utility function getRandomNeonColor
     const boxes = document.querySelectorAll(
-      ".cyber-resume .box-1, .cyber-resume .box-2, .cyber-resume .box-6, .cyber-resume .box-7, .cyber-resume .box-8, .cyber-resume .box-9, .cyber-resume .box-10, .cyber-resume .box-11, .cyber-resume .box-12"
+      ".cyber-resume .box-1, .cyber-resume .box-2, .cyber-resume .box-8, .cyber-resume .box-9, .cyber-resume .box-10, .cyber-resume .box-11, .cyber-resume .box-12"
     );
     boxes.forEach((box) => getRandomNeonColor(box));
   }, []);
