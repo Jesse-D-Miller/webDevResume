@@ -15,11 +15,43 @@ function CyberResume({ resumeData, theme }) {
   const [frontProjectId, setFrontProjectId] = useState(
     resumeData.projects[0]?.id ?? null
   ); // Track front project in tab stacks
+  const [frontExperienceId, setFrontExperienceId] = useState(
+    resumeData.experience[0]?.id ?? null
+  ); // Track front experience in tab stacks
+
+  const [neonColors, setNeonColors] = useState({});
+  const [experienceNeonColors, setExperienceNeonColors] = useState({});
+
+  useEffect(() => {
+    const boxes = document.querySelectorAll(
+      ".cyber-resume .box-3, .cyber-resume .box-4, .cyber-resume .box-5"
+    );
+    const colors = {};
+    boxes.forEach((box, idx) => {
+      const color = getRandomNeonColor(box);
+      const projectId = resumeData.projects[idx]?.id;
+      if (projectId) colors[projectId] = color;
+    });
+    setNeonColors(colors);
+  }, [resumeData.projects]);
+
+  useEffect(() => {
+    const experienceBoxes = document.querySelectorAll(
+      ".cyber-resume .box-6, .cyber-resume .box-7"
+    );
+    const experienceColors = {};
+    experienceBoxes.forEach((box, idx) => {
+      const color = getRandomNeonColor(box);
+      const experienceId = resumeData.experience[idx]?.id;
+      if (experienceId) experienceColors[experienceId] = color;
+    });
+    setExperienceNeonColors(experienceColors);
+  }, [resumeData.experience]);
 
   useEffect(() => {
     // Select all .box- elements and apply random neon colors from the utility function getRandomNeonColor
     const boxes = document.querySelectorAll(
-      ".cyber-resume .box-1, .cyber-resume .box-2, .cyber-resume .box-3, .cyber-resume .box-4, .cyber-resume .box-5, .cyber-resume .box-6, .cyber-resume .box-7, .cyber-resume .box-8, .cyber-resume .box-9, .cyber-resume .box-10, .cyber-resume .box-11, .cyber-resume .box-12"
+      ".cyber-resume .box-1, .cyber-resume .box-2, .cyber-resume .box-6, .cyber-resume .box-7, .cyber-resume .box-8, .cyber-resume .box-9, .cyber-resume .box-10, .cyber-resume .box-11, .cyber-resume .box-12"
     );
     boxes.forEach((box) => getRandomNeonColor(box));
   }, []);
@@ -41,6 +73,12 @@ function CyberResume({ resumeData, theme }) {
             className={`folder-tab${
               frontProjectId === project.id ? " active" : ""
             }`}
+            style={{
+              "--neon-color": neonColors[project.id]?.rgb
+                ? `rgb(${neonColors[project.id].rgb})`
+                : undefined,
+              "--neon-color-opacity": neonColors[project.id]?.opacity,
+            }}
             onClick={() => setFrontProjectId(project.id)}
           >
             {project.title.split("-")[0].trim()}
@@ -48,7 +86,12 @@ function CyberResume({ resumeData, theme }) {
         ))}
       </div>
       {resumeData.projects.map((project, index) => (
-        <div key={project.id} className={`box-${index + 3}${frontProjectId === project.id ? " front" : ""}`}>
+        <div
+          key={project.id}
+          className={`box-${index + 3}${
+            frontProjectId === project.id ? " front" : ""
+          }`}
+        >
           <ProjectsSection
             project={project}
             isFront={frontProjectId === project.id}
@@ -56,9 +99,39 @@ function CyberResume({ resumeData, theme }) {
           />
         </div>
       ))}
+
+      <div className="experience-tabs-row">
+        {resumeData.experience.map((job) => (
+          <div
+            key={job.id}
+            className={`folder-tab${
+              frontExperienceId === job.id ? " active" : ""
+            }`}
+            style={{
+              "--neon-color": experienceNeonColors[job.id]?.rgb
+                ? `rgb(${experienceNeonColors[job.id].rgb})`
+                : undefined,
+              "--neon-color-opacity": experienceNeonColors[job.id]?.opacity,
+            }}
+            onClick={() => setFrontExperienceId(job.id)}
+          >
+            {job.role}
+          </div>
+        ))}
+      </div>
       {resumeData.experience.map((job, index) => (
-        <div key={`experience-${index}`} className={`box-${index + 6}`}>
-          <ExperienceSection job={job} index={index} />
+        <div
+          key={job.id}
+          className={`box-${index + 6}${
+            frontExperienceId === job.id ? " front" : ""
+          }`}
+        >
+          <ExperienceSection
+            job={job}
+            index={index}
+            isFront={frontExperienceId === job.id}
+            showHeader={true}
+          />
         </div>
       ))}
 

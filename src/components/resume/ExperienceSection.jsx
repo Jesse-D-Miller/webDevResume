@@ -1,7 +1,7 @@
-function ExperienceSection({ job, index }) {
+function ExperienceSection({ job, isFront, showHeader }) {
   return (
-    <section className="experience-section">
-      {index === 0 && <h3>EXPERIENCE</h3>}
+    <section className={`experience-section${isFront ? " front" : ""}`}>
+      {showHeader && <h3>EXPERIENCE</h3>}
       <h4>
         {job.company} - {job.role}
       </h4>

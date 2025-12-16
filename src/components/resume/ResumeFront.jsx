@@ -27,7 +27,6 @@ function ResumeFront({
         <div
           key={project.id}
           className={`box-${index + 3}`}
-          showHeader={index === 0}
         >
           <ProjectsSection project={project} index={index} theme={theme} showHeader={index === 0} />
         </div>
@@ -37,7 +36,7 @@ function ResumeFront({
           key={`experience-${index}`}
           className={`box-${index + 6}`}
         >
-          <ExperienceSection job={job} index={index} />
+          <ExperienceSection job={job} index={index} theme={theme} showHeader={index === 0} />
         </div>
       ))}
 
