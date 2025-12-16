@@ -1,7 +1,7 @@
-function projectsSection({ project, index }) {
+function ProjectsSection({ project, isFront, showHeader }) {
   return (
-    <section className="projects-section">
-      {index === 0 && <h3>PROJECTS</h3>}
+    <section className={`projects-section${isFront ? " front" : ""}`}>
+      {showHeader && <h3>PROJECTS</h3>}
       <h4>{project.title}</h4>
       <p className="tech-stack">{project.stack.join(", ")}</p>
       <ul>
@@ -13,4 +13,4 @@ function projectsSection({ project, index }) {
   );
 }
 
-export default projectsSection;
+export default ProjectsSection;

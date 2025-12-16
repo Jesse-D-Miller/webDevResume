@@ -368,59 +368,118 @@
 .cyber-resume .box-10,
 .cyber-resume .box-11,
 .cyber-resume .box-12 {
+  --neon-flicker-shadow: 10px;
+  --neon-flicker-inset: 15px;
   background: #262626;
   border-radius: 10px;
   border: #ffffff solid 4px;
   padding: var(--space-4);
   pointer-events: auto;
   position: relative;
-  /* z-index: 1; */
   animation: neonIgnite 1s ease-out both,
-  neonFlicker 0.15s ease-in-out 1s infinite;
-  /* transition: all 0.4s ease-out; */
-  /* animation-delay: 1s; */
+    neonFlicker 0.15s ease-in-out 1s infinite;
 }
+
+.cyber-resume .box-1:hover,
+.cyber-resume .box-2:hover,
+.cyber-resume .box-3:hover,
+.cyber-resume .box-4:hover,
+.cyber-resume .box-5:hover,
+.cyber-resume .box-6:hover,
+.cyber-resume .box-7:hover,
+.cyber-resume .box-8:hover,
+.cyber-resume .box-9:hover,
+.cyber-resume .box-10:hover,
+.cyber-resume .box-11:hover,
+.cyber-resume .box-12:hover {
+  --neon-flicker-shadow: 40px;
+  --neon-flicker-inset: 32px;
+}
+
+.cyber-resume .projects-section .folder-tab {
+  position: absolute;
+  top: -28px;
+
+  padding: 2px 15px;
+  font: 600 var(--text-sm) var(--font-mono);
+  letter-spacing: 0.02em;
+  background: #262626;
+  color: var(--neon-color);
+  animation: neonIgnite 1s ease-out both,
+    neonFlicker 0.15s ease-in-out 1s infinite;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+
+
+/* .cyber-resume .folder-tab.front,
+.cyber-resume .projects-section.front {
+  z-index: 2;
+}
+
+.cyber-resume .projects-section:not(.front),
+.cyber-resume .folder-tab:not(.front) {
+  filter: brightness(0.6) saturate(0.8);
+  animation: none;
+  box-shadow: none;
+  z-index: 2;
+  pointer-events: auto;
+} */
+
 
 .cyber-resume .box-1 {
   grid-column: 12 / 39;
   grid-row: 1 / 10;
+  animation-delay: 1s;
 }
 .cyber-resume .box-2 {
   grid-column: 16 / span 18;
   grid-row: 12 / span 16;
+  animation-delay: 3s;
 }
 .cyber-resume .box-3,
 .cyber-resume .box-4,
 .cyber-resume .box-5 {
   grid-column: 1 / span 14;
   grid-row: 14 / span 20;
+  animation-delay: 2s;
 }
-.cyber-resume .box-6, 
-.cyber-resume .box-7{
+.cyber-resume .box-6,
+.cyber-resume .box-7 {
   grid-column: 1 / span 14;
   grid-row: 38 / span 20;
+  animation-delay: 3s;
 }
 .cyber-resume .box-8 {
   grid-column: 16 / span 15;
   grid-row: 50 / -1;
+  animation-delay: 3.6s;
   margin: 0;
   overflow: hidden;
 }
 .cyber-resume .box-9 {
-    grid-column: 35 / span 10;
+  grid-column: 35 / span 10;
   grid-row: 12 / 38;
+  animation-delay: 3.6s;
 }
 .cyber-resume .box-10 {
-   grid-column: 46 / span 4;
+  grid-column: 46 / span 4;
   grid-row: 12 / span 26;
+  animation-delay: 3.6s;
 }
 .cyber-resume .box-11 {
-   grid-column: 35 / span 15;
+  grid-column: 35 / span 15;
   grid-row: 40 / span 6;
+  animation-delay: 2s;
 }
 .cyber-resume .box-12 {
   grid-column: 32 / span 4;
   grid-row: 50 / span 15;
+  animation-delay: 3s;
 }
 
 @keyframes powerOn {
@@ -614,16 +673,17 @@
   60%,
   80%,
   100% {
-    box-shadow: 0 0 10px var(--neon-color),
-      inset 0 0 15px var(--neon-color-opacity);
+    box-shadow: 0 0 var(--neon-flicker-shadow, 10px) var(--neon-color),
+      inset 0 0 var(--neon-flicker-inset, 15px) var(--neon-color-opacity);
   }
   10%,
   30%,
   50%,
   70%,
   90% {
-    box-shadow: 0 0 5px var(--neon-color),
-      inset 0 0 5px var(--neon-color-opacity);
+    box-shadow: 0 0 calc(var(--neon-flicker-shadow, 10px) / 2) var(--neon-color),
+      inset 0 0 calc(var(--neon-flicker-inset, 15px) / 3)
+        var(--neon-color-opacity);
   }
 }
 

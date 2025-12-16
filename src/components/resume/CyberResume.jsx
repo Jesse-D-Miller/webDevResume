@@ -9,14 +9,18 @@ import HobbiesSection from "./HobbiesSection.jsx";
 import Battery from "../common/Battery.jsx";
 
 import { getRandomNeonColor } from "../../utils/neonColor.js";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-function CyberResume({ resumeData }) {
+function CyberResume({ resumeData, theme }) {
+  const [frontProjectId, setFrontProjectId] = useState(resumeData.projects[0]?.id ?? null); // Track front project in tab stacks
+
   useEffect(() => {
-  // Select all .box- elements and apply random neon colors from the utility function getRandomNeonColor
-  const boxes = document.querySelectorAll(".cyber-resume .box-1, .cyber-resume .box-2, .cyber-resume .box-3, .cyber-resume .box-4, .cyber-resume .box-5, .cyber-resume .box-6, .cyber-resume .box-7, .cyber-resume .box-8, .cyber-resume .box-9, .cyber-resume .box-10, .cyber-resume .box-11, .cyber-resume .box-12");
-  boxes.forEach(box => getRandomNeonColor(box));
-}, []);
+    // Select all .box- elements and apply random neon colors from the utility function getRandomNeonColor
+    const boxes = document.querySelectorAll(
+      ".cyber-resume .box-1, .cyber-resume .box-2, .cyber-resume .box-3, .cyber-resume .box-4, .cyber-resume .box-5, .cyber-resume .box-6, .cyber-resume .box-7, .cyber-resume .box-8, .cyber-resume .box-9, .cyber-resume .box-10, .cyber-resume .box-11, .cyber-resume .box-12"
+    );
+    boxes.forEach((box) => getRandomNeonColor(box));
+  }, []);
 
   return (
     <div className="cyber-resume">
@@ -29,8 +33,13 @@ function CyberResume({ resumeData }) {
       </div>
 
       {resumeData.projects.map((project, index) => (
-        <div key={`project-${index}`} className={`box-${index + 3}`}>
-          <ProjectsSection project={project} index={index} />
+        <div key={project.id} className={`box-${index + 3}`}>
+          <ProjectsSection
+            project={project}
+            isFront={frontProjectId === project.id}
+            showHeader={true}
+            
+          />
         </div>
       ))}
       {resumeData.experience.map((job, index) => (
@@ -56,7 +65,7 @@ function CyberResume({ resumeData }) {
       </div>
       <div className="box-12">
         <Battery />
-      </div> 
+      </div>
     </div>
   );
 }

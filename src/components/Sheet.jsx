@@ -64,7 +64,7 @@ function Sheet({ resumeData, theme }) {
               backfaceVisibility: "hidden",
             }}
           >
-            <ResumeFront resumeData={resumeData} />
+            <ResumeFront resumeData={resumeData} theme={theme} />
           </div>
           <div
             className="sheet-face back-face"
@@ -77,7 +77,7 @@ function Sheet({ resumeData, theme }) {
           </div>
         </div>
       ) : (
-        <CyberResume resumeData={resumeData} />
+        <CyberResume resumeData={resumeData} theme={theme} />
       )}
 
       {heroLevel === 5 && (

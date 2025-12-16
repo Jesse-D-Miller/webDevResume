@@ -9,6 +9,7 @@ import HobbiesSection from "./HobbiesSection.jsx";
 
 function ResumeFront({
   resumeData,
+  theme,
 }) {
   return (
     <div className="resume-front">
@@ -24,10 +25,11 @@ function ResumeFront({
 
       {resumeData.projects.map((project, index) => (
         <div
-          key={`project-${index}`}
+          key={project.id}
           className={`box-${index + 3}`}
+          showHeader={index === 0}
         >
-          <ProjectsSection project={project} index={index} />
+          <ProjectsSection project={project} index={index} theme={theme} />
         </div>
       ))}
       {resumeData.experience.map((job, index) => (

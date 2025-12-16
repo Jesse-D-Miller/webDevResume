@@ -57,6 +57,7 @@ export const resumeData = {
   ],
   projects: [
     {
+      id: "project-1",
       title: "Plot Twist - Collaborative Storytelling App",
       period: "2024",
       stack: ["React", "Node.js", "Express", "PostgreSQL", "SCSS"],
@@ -69,6 +70,7 @@ export const resumeData = {
       skills: ["React", "Node.js", "Express", "PostgreSQL", "CSS/SCSS"]
     },
     {
+      id: "project-2",
       title: "What's Cookin' - AI Assisted Recipe Book",
       period: "2024",
       stack: ["React", "Node.js", "Express", "PostgreSQL", "SCSS"],
@@ -81,6 +83,7 @@ export const resumeData = {
       skills: ["React", "Node.js", "Express", "PostgreSQL", "REST APIs"]
     },
     {
+      id: "project-3",
       title: "Jungle Rails - Amazon Clone e-Commerce App",
       period: "2024",
       stack: ["Ruby on Rails", "PostgreSQL", "SCSS", "Bootstrap"],
@@ -95,6 +98,7 @@ export const resumeData = {
   ],
   experience: [
     {
+      id: "experience-1",
       role: "Crew Supervisor",
       company: "BC Wildfire Service",
       period: "May 2023 – March 2025",
@@ -108,6 +112,7 @@ export const resumeData = {
       skills: ["Leadership", "Problem Solving", "Strategic Thinking", "Accountability", "Mentorship"]
     },
     {
+      id: "experience-2",
       role: "Crew Leader / Member",
       company: "BC Wildfire Service",
       period: "2018 – 2023",
