@@ -356,6 +356,13 @@
   text-shadow: 0 0 8px var(--color-neon-primary);
 }
 
+.cyber-resume h1,
+.cyber-resume h3,
+.cyber-resume h4 {
+  color: var(--color-neon-secondary);
+  text-shadow: 0 0 10px var(--color-neon-secondary);
+}
+
 .cyber-resume .box-1,
 .cyber-resume .box-2,
 .cyber-resume .box-3,
@@ -378,7 +385,6 @@
   position: relative;
   animation: neonIgnite 1s ease-out both,
     neonFlicker 0.15s ease-in-out 1s infinite;
-  
 }
 
 .cyber-resume .box-1:hover,
@@ -434,7 +440,7 @@
   z-index: 10;
   animation: neonIgnite 1s ease-out both,
     neonFlicker 0.15s ease-in-out 1s infinite;
-    animation-delay: 2s;
+  animation-delay: 2s;
 }
 
 .cyber-resume [class^="box-"] {
@@ -450,10 +456,6 @@
 .cyber-resume .box-7:not(.front) {
   animation: none;
 }
-
-
-
-
 
 .cyber-resume .box-1 {
   grid-column: 12 / 39;
