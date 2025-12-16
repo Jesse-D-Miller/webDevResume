@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Press+Start+2P&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Press+Start+2P&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
 
 :root {
   /* color palette - paper + neon HUD */
@@ -15,8 +15,8 @@
   --color-neon-glow: rgba(0, 255, 255, 0.4);
 
   /* typography */
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'Courier New', monospace;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "Courier New", monospace;
 
   --text-xs: 0.75rem; /* 12px */
   --text-sm: 0.875rem; /* 14px */
@@ -44,17 +44,13 @@
   --radius-lg: 12px;
 
   /* shadows - 3D paper effect */
-  --shadow-paper:
-    0 4px 8px rgba(0, 0, 0, 0.1),
-    0 8px 16px rgba(0, 0, 0, 0.08);
-  --shadow-paper-hover:
-    0 8px 16px rgba(0, 0, 0, 0.15),
+  --shadow-paper: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.08);
+  --shadow-paper-hover: 0 8px 16px rgba(0, 0, 0, 0.15),
     0 16px 32px rgba(0, 0, 0, 0.12);
-  --shadow-neon:
-    0 0 10px var(--color-neon-glow),
+  --shadow-neon: 0 0 10px var(--color-neon-glow),
     0 0 20px var(--color-neon-glow);
 
-    /* transitions */
+  /* transitions */
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
   --transition-slow: 400ms ease;
@@ -76,11 +72,14 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background: var(--bg-color);
+  background: var(--color-bg-dark);
   color: var(--text-color);
   font-family: var(--font-sans);
   font-size: var(--text-base);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
+
+

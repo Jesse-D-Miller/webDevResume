@@ -1,11 +1,12 @@
 .App {
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: var(--space-2);
   overflow: visible;
   background: var(--color-bg-dark);
+
 }
 
 /* theme switch */
@@ -284,11 +285,11 @@
   font-style: bold;
 }
 
-/* pixel hero */
+/* =============================================== Pixel Hero ===============================================*/
 
 .hero-wrapper {
   grid-column: 37 / 45;
-  grid-row: 46 / -1;
+  grid-row: 44 / 64;
 }
 
 .pixel-hero {
@@ -331,11 +332,14 @@
   line-height: 1.4;
   margin-bottom: 1em;
 }
+/* =============================================== Pixel Hero ===============================================*/
+/* ============================================ Regular Version ============================================*/
 
 /*=========================================== CYBER PUNK VERSION ===========================================*/
 /* ======================================== General / Default Styles ========================================*/
 
 .cyber-resume {
+  margin: 0;
   display: grid;
   width: 100%;
   height: 100%;
@@ -343,8 +347,8 @@
   grid-template-rows: repeat(64, 1fr);
   grid-column: 1/-1;
   grid-row: 1/-1;
-  max-width: 100vw;
-  max-height: 100vh;
+  max-width: 96vw;
+  max-height: 96vh;
   font-family: var(--font-mono);
   font-weight: 600;
 }
@@ -400,10 +404,11 @@
 .cyber-resume .box-8:hover,
 .cyber-resume .box-9:hover,
 .cyber-resume .box-10:hover,
-.cyber-resume .box-11:hover,
-.cyber-resume .box-12:hover {
+.cyber-resume .box-11:hover {
   --neon-flicker-shadow: 40px;
   --neon-flicker-inset: 32px;
+  animation-play-state: paused !important;
+
 }
 
 /* ======================================== General / Default Styles ========================================*/
@@ -446,12 +451,12 @@
   overflow: hidden;
 }
 .cyber-resume .box-9 {
-  grid-column: 35 / span 10;
+  grid-column: 35 / span 9;
   grid-row: 12 / 38;
   animation-delay: 3.6s;
 }
 .cyber-resume .box-10 {
-  grid-column: 46 / span 4;
+  grid-column: 45 / span 5;
   grid-row: 12 / span 26;
   animation-delay: 3.6s;
 }
@@ -463,7 +468,7 @@
 }
 .cyber-resume .box-12 {
   grid-column: 32 / span 4;
-  grid-row: 50 / span 15;
+  grid-row: 49 / span 16;
   animation-delay: 3s;
 }
 
@@ -578,6 +583,50 @@
 }
 
 /* ========================================= Projects and Experience =========================================*/
+/* ============================================= Technical Skills ============================================*/
+
+.cyber-resume .technical-skills-section {
+  text-align: center;
+  padding: 0;
+}
+.cyber-resume .technical-skills-section h3 {
+  font-size: var(--text-2xl);
+  padding: 0;
+  margin: 0;
+} 
+
+.cyber-resume .technical-skills-section h4 {
+  font-size: var(--text-base);
+  margin: 0;
+  padding: 0.25em 0 0 0;
+} 
+
+.cyber-resume .technical-skills-section p {
+  font-size: var(--text-sm);
+  margin: 0;
+  padding: 0.35em 0;
+} 
+
+/* ============================================= Technical Skills ============================================*/
+/* =============================================== Soft Skills ===============================================*/
+
+.cyber-resume .soft-skills-section {
+  text-align: center;
+  padding: 0;
+  white-space: nowrap;
+}
+.cyber-resume .soft-skills-section h3 {
+  font-size: var(--text-2xl);
+  padding: 0;
+  margin: 0;
+}
+
+.cyber-resume .soft-skills-section p {
+  font-size: var(--text-sm);
+  padding-top: 0.5em;
+}
+
+/* =============================================== Soft Skills ===============================================*/
 /* ================================================= Hobbies =================================================*/
 
 .cyber-resume .hobbies-section {
@@ -604,7 +653,7 @@
     rgba(2, 83, 34, 0.6) 50%,
     rgba(2, 83, 34, 0) 100%
   );
-  backdrop-filter: blur(5px); 
+  backdrop-filter: blur(5px);
 }
 
 .cyber-resume .hobbies-section h3 {
@@ -637,6 +686,104 @@
 }
 
 /*================================================== Hobbies ==================================================*/
+/*================================================== Battery ==================================================*/
+
+.cyber-resume .box-12 {
+  animation: none;
+  display: grid;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+}
+
+.cyber-resume .box-12 .battery .battery-cover {
+  position: absolute;
+  rotate: 180deg;
+  top: -37px;
+  left: -25px;
+  width: 166px;
+  height: 305px;
+  background-repeat: no-repeat;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.cyber-resume .box-12 .battery .battery-cover.cover-animating.cover-open {
+  animation: batteryCoverSlide 2s steps(13) forwards;
+  animation-direction: normal;
+}
+
+.cyber-resume .box-12 .battery .battery-cover.cover-animating.cover-closed {
+  animation: batteryCoverSlide 2s steps(13) forwards;
+  animation-direction: reverse;
+}
+
+.cyber-resume .box-12 .battery .battery-cover.cover-open {
+  background-position: -2158px 0;
+}
+
+.cyber-resume .box-12 .battery .battery-cover.cover-closed {
+  background-position: 0 0;
+} 
+
+.cyber-resume .box-12 .battery {
+  scale: 1;
+  padding: 2px;
+  margin: 10px;
+  rotate: 180deg;
+  height: 90%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(12, 1fr);
+  background: #272727;
+  position: relative;
+  border: #8c8c8c solid 4px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.cyber-resume .box-12 .battery .battery-segment {
+  border-radius: 5px;
+  border: #1a1919 solid 1px;
+  background: #8c8c8c;
+}
+
+.cyber-resume .box-12 .battery .battery-segment.charged {
+  background-color: #00e077;
+}
+
+.cyber-resume .box-12 .battery:hover .battery-segment.charged {
+  animation: batteryChargePulse 0.75s ease-in-out infinite;
+} 
+
+.cyber-resume .box-12 .battery::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 6px;
+  background-color: #8c8c8c;
+  border-radius: 4px 4px 0px 0px;
+} 
+
+.cyber-resume .box-12 .battery::after {
+  content: "";
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 12px;
+  background-color: #8c8c8c;
+  border-radius: 0 0 4px 4px;
+  z-index: 1;
+} 
+
+/*================================================== Battery ==================================================*/
 /*================================================= Keyframes =================================================*/
 
 @keyframes powerOn {
@@ -878,3 +1025,5 @@
     transform: scale(1.2) rotate(0deg) translateX(0px);
   }
 }
+
+/*================================================= Keyframes =================================================*/
