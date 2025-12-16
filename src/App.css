@@ -332,7 +332,8 @@
   margin-bottom: 1em;
 }
 
-/* cyber punk version */
+/*=========================================== CYBER PUNK VERSION ===========================================*/
+/* ======================================== General / Default Styles ========================================*/
 
 .cyber-resume {
   display: grid;
@@ -344,23 +345,25 @@
   grid-row: 1/-1;
   max-width: 100vw;
   max-height: 100vh;
+  font-family: var(--font-mono);
+  font-weight: 600;
 }
 
 .cyber-resume p,
 .cyber-resume li {
   color: var(--color-neon-success);
-  text-shadow: 0 0 8px var(--color-neon-success);
+  /* text-shadow: 0 0 8px var(--color-neon-success); */
 }
 .cyber-resume a {
   color: var(--color-neon-primary);
-  text-shadow: 0 0 8px var(--color-neon-primary);
+  /* text-shadow: 0 0 8px var(--color-neon-primary); */
 }
 
 .cyber-resume h1,
 .cyber-resume h3,
 .cyber-resume h4 {
   color: var(--color-neon-secondary);
-  text-shadow: 0 0 10px var(--color-neon-secondary);
+  /* text-shadow: 0 0 10px var(--color-neon-secondary); */
 }
 
 .cyber-resume .box-1,
@@ -403,59 +406,8 @@
   --neon-flicker-inset: 32px;
 }
 
-.project-tabs-row {
-  grid-column: 2 / span 10;
-  grid-row: 13 / span 3;
-  display: flex;
-  gap: -1px;
-  margin-bottom: 0;
-  position: relative;
-  transform: translateY(-8px);
-  z-index: 1;
-}
-
-.experience-tabs-row {
-  grid-column: 2 / span 10;
-  grid-row: 37 / span 3;
-  display: flex;
-  gap: -1px;
-  margin-bottom: 0;
-  position: relative;
-  transform: translateY(-8px);
-  z-index: 1;
-}
-.folder-tab {
-  padding: 4px 18px;
-  font: 600 var(--text-sm) var(--font-mono);
-  background: #262626;
-  color: var(--neon-color, #0ff);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  cursor: pointer;
-  box-shadow: none;
-  border: #3a3a3a solid 4px;
-}
-
-.folder-tab.active {
-  z-index: 10;
-  animation: neonIgnite 1s ease-out both,
-    neonFlicker 0.15s ease-in-out 1s infinite;
-  animation-delay: 2s;
-}
-
-.cyber-resume [class^="box-"] {
-  z-index: 1;
-}
-.cyber-resume [class^="box-"].front {
-  z-index: 3;
-}
-.cyber-resume .box-3:not(.front),
-.cyber-resume .box-4:not(.front),
-.cyber-resume .box-5:not(.front),
-.cyber-resume .box-6:not(.front),
-.cyber-resume .box-7:not(.front) {
-  animation: none;
-}
+/* ======================================== General / Default Styles ========================================*/
+/* ================================================ Box Grid ================================================*/
 
 .cyber-resume .box-1 {
   grid-column: 12 / 39;
@@ -473,12 +425,18 @@
   grid-column: 1 / span 14;
   grid-row: 14 / span 20;
   animation-delay: 2s;
+  margin: 0;
+  padding: 0.1em;
+  overflow: scroll;
 }
 .cyber-resume .box-6,
 .cyber-resume .box-7 {
   grid-column: 1 / span 14;
   grid-row: 38 / span 20;
   animation-delay: 2s;
+  margin: 0;
+  padding: 0.1em;
+  overflow: scroll;
 }
 .cyber-resume .box-8 {
   grid-column: 16 / span 15;
@@ -507,6 +465,120 @@
   grid-row: 50 / span 15;
   animation-delay: 3s;
 }
+
+/* ================================================ Box Grid ================================================*/
+/* ========================================= Projects and Experience =========================================*/
+
+.project-tabs-row {
+  grid-column: 2 / span 10;
+  grid-row: 13 / span 3;
+  display: flex;
+  gap: -1px;
+  margin-bottom: 0;
+  position: relative;
+  transform: translateY(-8px);
+  z-index: 1;
+}
+
+.experience-tabs-row {
+  grid-column: 2 / span 12;
+  grid-row: 37 / span 2;
+  display: flex;
+  gap: -1px;
+  margin-bottom: 0;
+  position: relative;
+  transform: translateY(-8px);
+  z-index: 1;
+}
+
+.folder-tab {
+  white-space: nowrap;
+  padding: 4px 18px;
+  font: 600 var(--text-sm) var(--font-mono);
+  background: #262626;
+  color: var(--neon-color, #0ff);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+  box-shadow: none;
+  border: #3a3a3a solid 4px;
+}
+
+.folder-tab.active {
+  z-index: 10;
+  animation: neonIgnite 1s ease-out both,
+    neonFlicker 0.15s ease-in-out 1s infinite;
+  animation-delay: 2s;
+}
+
+.cyber-resume [class^="box-"] {
+  z-index: 1; /* this and next set z position when tabs are clicked */
+}
+.cyber-resume [class^="box-"].front {
+  z-index: 3;
+}
+.cyber-resume .box-3:not(.front),
+.cyber-resume .box-4:not(.front),
+.cyber-resume .box-5:not(.front),
+.cyber-resume .box-6:not(.front),
+.cyber-resume .box-7:not(.front) {
+  animation: none;
+}
+.cyber-resume .projects-section,
+.cyber-resume .experience-section {
+  display: grid;
+  grid-template-columns: 2.5em 1fr;
+  align-items: start;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+.cyber-resume .projects-section h3,
+.cyber-resume .experience-section h3 {
+  grid-column: 1;
+  grid-row: 1;
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  letter-spacing: 0.4em;
+  justify-self: start;
+  align-self: center;
+  margin: 0;
+  padding: 0;
+  transform: rotate(180deg);
+  font-size: var(--text-xl);
+}
+.cyber-resume .projects-section .section-content,
+.cyber-resume .experience-section .section-content {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.cyber-resume .projects-section .section-content h4,
+.cyber-resume .experience-section .section-content h4 {
+  margin: 0;
+  padding: 0.75em 0 0 0;
+  font-size: var(--text-lg);
+}
+
+.cyber-resume .projects-section .section-content p,
+.cyber-resume .experience-section .section-content p {
+  margin: 0;
+  padding: 0;
+  font-size: var(--text-sm);
+  font-weight: 300;
+  font-style: italic;
+}
+
+.cyber-resume .projects-section .section-content ul,
+.cyber-resume .experience-section .section-content ul {
+  margin: 0;
+  padding: 0.75em 0 0 1em;
+  font-size: var(--text-sm);
+}
+
+
+/* ========================================= Projects and Experience =========================================*/
+/*================================================= Keyframes =================================================*/
 
 @keyframes powerOn {
   0% {
