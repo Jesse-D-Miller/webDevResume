@@ -1,13 +1,18 @@
+import { useXP } from "../../hooks/useXP.js";
 import { useState } from "react";
 import batteryCoverSpriteSheet from "../../assets/batteryCoverSpriteSheet.png";
 
 function Battery({ charge }) {
   const [coverOpen, setCoverOpen] = useState(false);
   const [animating, setAnimating] = useState(false);
+  const { xp, maxXp, grantXp, hasClicked } = useXP();
 
   const handleClick = () => {
     setAnimating(true);
     setCoverOpen((open) => !open);
+    if (!hasClicked("battery-click")) {
+      grantXp("battery-click", 1, "The Battery is Charging! Exploring my resume charges the battery. Once it's full, something special happens!");
+    }
   };
 
   const handleAnimationEnd = () => {
@@ -23,10 +28,10 @@ function Battery({ charge }) {
         style={{backgroundImage: `url(${batteryCoverSpriteSheet})`}}
         onAnimationEnd={handleAnimationEnd}
       />
-      {Array.from({ length: 12 }).map((_, index) => (
+      {Array.from({ length: maxXp }).map((_, index) => (
         <div
           key={index}
-          className={`battery-segment ${index < charge ? "charged" : ""}`}
+          className={`battery-segment ${index < xp ? "charged" : ""}`}
         />
       ))}
     </div>
