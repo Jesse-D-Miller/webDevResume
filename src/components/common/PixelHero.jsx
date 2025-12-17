@@ -1,3 +1,4 @@
+import { useXP } from "../../hooks/useXP";
 import { useState, useEffect } from "react";
 import spriteLevel1 from "../../assets/pixelHeroLevel1.png";
 import spriteLevel2 from "../../assets/pixelHeroLevel2.png";
@@ -5,8 +6,12 @@ import spriteLevel3 from "../../assets/pixelHeroLevel3.png";
 import spriteLevel4 from "../../assets/pixelHeroLevel4.png";
 import spriteLevel5 from "../../assets/pixelHeroLevel5.png";
 
-function PixelHero({ level }) {
+function PixelHero() {
   const [frameIndex, setFrameIndex] = useState(0);
+  const [showLevelUpMessage, setShowLevelUpMessage] = useState(true);
+  const { xp, grantXp, heroMessage } = useXP();
+
+  const level = Math.min(1 + Math.floor(xp / 3), 5); // level 1-5 based on xp
 
   // Animate sprite frames (1000ms per frame)
   useEffect(() => {
@@ -16,12 +21,22 @@ function PixelHero({ level }) {
     return () => clearInterval(interval);
   }, []);
 
+  // if hero level changes, show level up message briefly
+  useEffect(() => {
+    setShowLevelUpMessage(true);
+    const timer = setTimeout(() => {
+      setShowLevelUpMessage(false);
+    }, 4000); // hide after 4 seconds
+    return () => clearTimeout(timer);
+  }, [level]);
+
+  //level up messages
   const hints = {
-    1: "Hey! I'm Jesse and this is my Resume. Click around to help me level up!",
+    1: "Hey! I'm Jesse and this is my resume.",
     2: "Am...Am I glowing? Neat!",
-    3: "Try clicking that blank space!",
-    4: "Almost at max power!",
-    5: "Ready to see my secrets?",
+    3: "Another level! Keep exploring!",
+    4: "Oh wow, I'm feeling powerful!",
+    5: "Congrats! Only one more secret to unlock!",
   };
 
   // Sprite dimensions per level (width is single frame, height is total)
@@ -66,14 +81,14 @@ function PixelHero({ level }) {
     };
 
     return (
-      <div className="pixel-hero">
+      <div className="pixel-hero" onClick={() => grantXp("pixel-hero-click", 0, "Hey! That tickles! No XP here!")}>
         <div
           className="hero-speech-bubble"
           style={{
             transform: `translate(${bubblePositions[level].x}px, ${bubblePositions[level].y}px)`,
           }}
         >
-          {hints[level] || "Welcome!"}
+          {showLevelUpMessage ? hints[level] || "Click around to help me level up!" : heroMessage || "Click around to help me level up!"}
         </div>
         <div
           className="hero-sprite"
