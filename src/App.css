@@ -923,6 +923,7 @@
   60% {
     opacity: 1;
     transform: scale(1.01);
+    filter: brightness(1.4);
   }
   100% {
     opacity: 1;
