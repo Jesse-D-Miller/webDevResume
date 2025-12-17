@@ -1,3 +1,4 @@
+import { useXP } from "../../hooks/useXP.js";
 import HeaderSection from "./HeaderSection.jsx";
 import SummarySection from "./SummarySection.jsx";
 import ProjectsSection from "./ProjectsSection.jsx";
@@ -21,6 +22,8 @@ function CyberResume({ resumeData, theme }) {
 
   const [neonColors, setNeonColors] = useState({});
   const [experienceNeonColors, setExperienceNeonColors] = useState({});
+
+  const { grantXp } = useXP();
 
   useEffect(() => {
     const boxes = document.querySelectorAll(
@@ -63,7 +66,7 @@ function CyberResume({ resumeData, theme }) {
       </div>
 
       <div className="box-2">
-        <SummarySection resumeData={resumeData} theme={theme}/>
+        <SummarySection resumeData={resumeData} theme={theme} />
       </div>
 
       <div className="project-tabs-row">
@@ -101,7 +104,10 @@ function CyberResume({ resumeData, theme }) {
         </div>
       ))}
 
-      <div className="experience-tabs-row">
+      <div
+        className="experience-tabs-row"
+        onClick={() => grantXp("experience-tabs", 1, "My most recent experience was with the BC Wildfire Service, but I’ve worn a lot of hats—tree planter, bartender, farmhand, and more. I’m always up for a new challenge, and I’d love the chance to bring my skills to your team next.")}
+      >
         {resumeData.experience.map((job) => (
           <div
             key={job.id}
