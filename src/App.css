@@ -586,11 +586,20 @@ background-color: rgba(1, 68, 26, 0.52);
   animation: powerOn 0.5s ease forwards !important; 
 }
 
+.cyber-resume .box-2 .summary-section.powered-off-initial {
+  background: #000000;
+}
+
+.cyber-resume .box-2 .summary-section .summary-content.powered-off-initial {
+  opacity: 0;
+}
+
 .cyber-resume .box-2 .summary-section .summary-content.powered-off {
   animation: powerOff 0.5s ease forwards !important; 
 }
 
-.cyber-resume .box-2 .summary-section.powered-off .power-btn svg {
+.cyber-resume .box-2 .summary-section.powered-off .power-btn svg,
+.cyber-resume .box-2 .summary-section.powered-off-initial .power-btn svg {
   animation: powerButtonSTBFlash 2s ease infinite;
 }
 

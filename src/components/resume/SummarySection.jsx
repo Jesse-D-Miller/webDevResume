@@ -1,9 +1,12 @@
+import { useXP } from "../../hooks/useXP";
 import { useState } from "react";
 
 function SummarySection({ resumeData, theme }) {
   const [isPowered, setIsPowered] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const { grantXp, hasClicked, heroMessage } = useXP();
 
+  // Handle power button click so that hasInteracted is set to true only after first click
   const handlePowerClick = () => {
     setHasInteracted(true);
     setIsPowered((prev) => !prev);
@@ -20,14 +23,31 @@ function SummarySection({ resumeData, theme }) {
       ? " powered-off"
       : " powered-off-initial");
 
+  const contentClass =
+    "summary-content" +
+    (isPowered
+      ? hasInteracted
+        ? " powered-on"
+        : " powered-on-initial"
+      : hasInteracted
+      ? " powered-off"
+      : " powered-off-initial");
+
   return (
-    <section
-      className={summaryClass}
-    >
+    <section className={summaryClass}>
       {theme === "cyber" && (
         <button
           className="power-btn"
-          onClick={ handlePowerClick }
+          onClick={() => {
+            handlePowerClick();
+            if (!hasClicked("power-click")) {
+              grantXp(
+                "power-click",
+                1,
+                `That\'s my summary! Give it a read to learn a little about me!`
+              );
+            }
+          }}
           aria-label="Power On"
         >
           <svg
@@ -41,11 +61,7 @@ function SummarySection({ resumeData, theme }) {
           </svg>
         </button>
       )}
-      <div
-        className={`summary-content${
-          isPowered ? " powered-on" : " powered-off"
-        }`}
-      >
+      <div className={contentClass}>
         <h3>SUMMARY</h3>
         <p>{resumeData.summary}</p>
       </div>
