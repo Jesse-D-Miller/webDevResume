@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useXP } from "../../hooks/useXP";
 
 const BatteryLevels = [
   <svg
@@ -79,6 +80,7 @@ function BatteryToggle({ onClick, theme }) {
   const defaultIndex = theme === "dark" ? 0 : 7;
   const [frame, setFrame] = useState(defaultIndex);
   const intervalRef = useRef(null);
+  const { heroMessage, grantXp, hasClicked } = useXP();
 
   useEffect(() => {
     setFrame(defaultIndex);
@@ -109,6 +111,13 @@ function BatteryToggle({ onClick, theme }) {
       onClick={(e) => {
         stopAnimation();
         onClick(e);
+        if (!hasClicked("mode-click")) {
+          grantXp(
+            "mode-click",
+            0,
+            "This is my Cyber Resume. It's like my regular resume but much more ...\"cybery.\""
+          );
+        }
       }}
     >
       {BatteryLevels[frame]}

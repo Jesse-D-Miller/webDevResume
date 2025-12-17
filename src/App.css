@@ -515,10 +515,14 @@
   animation: none;
   border: #262626 solid 10px;
   border-width: 10px 10px 30px 10px;
-  background: #000000;
+  /* background: #000000; */
   border-radius: 2px;
   padding: 0;
-  background-color: rgba(1, 68, 26, 0.52);
+  
+}
+
+.cyber-resume .box-2 .summary-section.powered-on {
+background-color: rgba(1, 68, 26, 0.52);
   background-image: linear-gradient(
     180deg,
     rgba(2, 83, 34, 0) 0%,
@@ -527,6 +531,7 @@
   );
   box-shadow: inset 0 0 40px rgba(2, 83, 34, 0.7);
 }
+
 .cyber-resume .box-2:hover {
   animation: greenLinesScroll 1s ease-in-out both !important;
 }

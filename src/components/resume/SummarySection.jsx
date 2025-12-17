@@ -1,16 +1,33 @@
 import { useState } from "react";
 
 function SummarySection({ resumeData, theme }) {
-  const [isPowered, setIsPowered] = useState(true);
+  const [isPowered, setIsPowered] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
+
+  const handlePowerClick = () => {
+    setHasInteracted(true);
+    setIsPowered((prev) => !prev);
+  };
+
+  // Only animate after first interaction
+  const summaryClass =
+    "summary-section" +
+    (isPowered
+      ? hasInteracted
+        ? " powered-on"
+        : " powered-on-initial"
+      : hasInteracted
+      ? " powered-off"
+      : " powered-off-initial");
 
   return (
     <section
-      className={`summary-section${isPowered ? " powered-on" : " powered-off"}`}
+      className={summaryClass}
     >
       {theme === "cyber" && (
         <button
           className="power-btn"
-          onClick={() => setIsPowered((prev) => !prev)}
+          onClick={ handlePowerClick }
           aria-label="Power On"
         >
           <svg
@@ -24,7 +41,11 @@ function SummarySection({ resumeData, theme }) {
           </svg>
         </button>
       )}
-      <div className={`summary-content${isPowered ? " powered-on" : " powered-off"}`}>
+      <div
+        className={`summary-content${
+          isPowered ? " powered-on" : " powered-off"
+        }`}
+      >
         <h3>SUMMARY</h3>
         <p>{resumeData.summary}</p>
       </div>
