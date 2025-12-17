@@ -96,6 +96,7 @@ function CyberResume({ resumeData, theme }) {
             project={project}
             isFront={frontProjectId === project.id}
             showHeader={true}
+            theme={theme}
           />
         </div>
       ))}

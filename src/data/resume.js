@@ -67,7 +67,8 @@ export const resumeData = {
         "Implemented secure user authentication, story versioning, and a clean, responsive UI",
         "Designed optimized SQL queries to improve story retrieval and database efficiency"
       ],
-      skills: ["React", "Node.js", "Express", "PostgreSQL", "CSS/SCSS"]
+      skills: ["React", "Node.js", "Express", "PostgreSQL", "CSS/SCSS"],
+      heroMessage: "You opened the Plot Twist project! A classmate and I built this as a midterm project for my bootcamp. It was my first major full-stack app."
     },
     {
       id: "project-2",
@@ -80,7 +81,8 @@ export const resumeData = {
         "Engineered dynamic search and filtering features with persistent user data storage",
         "Streamlined state management for a smooth, intuitive user experience"
       ],
-      skills: ["React", "Node.js", "Express", "PostgreSQL", "REST APIs"]
+      skills: ["React", "Node.js", "Express", "PostgreSQL", "REST APIs"],
+      heroMessage: "Diving into the What's Cookin' project! This was my bootcamp final project, where I teamed up with classmates to build an AI-assisted recipe app."
     },
     {
       id: "project-3",
@@ -93,7 +95,8 @@ export const resumeData = {
         "Implemented admin dashboards for inventory and order management",
         "Applied MVC design principles and RESTful routing to improve scalability and maintainability"
       ],
-      skills: ["Rails", "PostgreSQL", "Bootstrap", "Ruby"]
+      skills: ["Rails", "PostgreSQL", "Bootstrap", "Ruby"],
+      heroMessage: "Exploring the Jungle Rails project! I made this Amazon clone as a Lighthouse Labs Bootcamp project."
     }
   ],
   experience: [

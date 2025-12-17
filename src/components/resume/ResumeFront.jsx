@@ -7,16 +7,11 @@ import TechnicalSkillsSection from "./TechnicalSkillsSection.jsx";
 import SoftSkillsSection from "./SoftSkillsSection.jsx";
 import HobbiesSection from "./HobbiesSection.jsx";
 
-function ResumeFront({
-  resumeData,
-  theme,
-}) {
+function ResumeFront({ resumeData, theme }) {
   return (
     <div className="resume-front">
       <div className="box-1">
-        <HeaderSection
-          resumeData={resumeData}
-        />
+        <HeaderSection resumeData={resumeData} />
       </div>
 
       <div className="box-2">
@@ -24,19 +19,23 @@ function ResumeFront({
       </div>
 
       {resumeData.projects.map((project, index) => (
-        <div
-          key={project.id}
-          className={`box-${index + 3}`}
-        >
-          <ProjectsSection project={project} index={index} theme={theme} showHeader={index === 0} />
+        <div key={project.id} className={`box-${index + 3}`}>
+          <ProjectsSection
+            project={project}
+            index={index}
+            theme={theme}
+            showHeader={index === 0}
+          />
         </div>
       ))}
       {resumeData.experience.map((job, index) => (
-        <div
-          key={`experience-${index}`}
-          className={`box-${index + 6}`}
-        >
-          <ExperienceSection job={job} index={index} theme={theme} showHeader={index === 0} />
+        <div key={`experience-${index}`} className={`box-${index + 6}`}>
+          <ExperienceSection
+            job={job}
+            index={index}
+            theme={theme}
+            showHeader={index === 0}
+          />
         </div>
       ))}
 
