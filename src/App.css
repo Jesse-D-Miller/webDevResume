@@ -501,6 +501,12 @@
   backdrop-filter: blur(5px);
 }
 
+.cyber-resume .box-1 .resume-header h1.case-1 {
+  font-family: "Press Start 2P", monospace;
+  font-size: 48px;
+  letter-spacing: 22px;
+}
+
 .cyber-resume .box-1 .resume-header .contact-info {
   margin: 0 0 var(--space-6) 0;
   padding: 10px 0 50px 0;
@@ -767,7 +773,6 @@
   justify-content: flex-start;
   width: 100%;
   height: 100px;
-  
 }
 
 /* =============================================== Soft Skills ===============================================*/

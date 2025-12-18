@@ -1,4 +1,4 @@
-import {useSoftSkills} from "../../hooks/useSoftSkills.js";
+import { useSoftSkills } from "../../hooks/useSoftSkills.js";
 import { useXP } from "../../hooks/useXP.js";
 import { useState } from "react";
 
@@ -23,15 +23,15 @@ function SoftSkillsSection({ resumeData, theme }) {
     }
   };
 
-
   // reduce font size and padding based on number of displayed skills
-  const fontCalc = Math.max(4.5, Math.min(14 - (displayedSkills.length - 8) * 0.3, 14));
-  const paddingCalc =Math.max(0, (150 - fontCalc * (displayedSkills.length - 8)) / (displayedSkills.length));
-    
-
-
-  console.log(paddingCalc);
-  console.log(fontCalc);
+  const fontCalc = Math.max(
+    4.5,
+    Math.min(14 - (displayedSkills.length - 8) * 0.3, 14)
+  );
+  const paddingCalc = Math.max(
+    0,
+    (150 - fontCalc * (displayedSkills.length - 8)) / displayedSkills.length
+  );
 
   return (
     <section className="soft-skills-section">

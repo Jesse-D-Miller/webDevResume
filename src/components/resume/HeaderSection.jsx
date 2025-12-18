@@ -1,11 +1,46 @@
 import { useXP } from "../../hooks/useXP.js";
+import { useState } from "react";
 
-function HeaderSection({ resumeData }) {
+function HeaderSection({ resumeData, theme }) {
+  const [screenState, setScreenState] = useState(0);
   const { hasClicked, grantXp } = useXP();
+
+  const handleClick = () => {
+    setScreenState((prevState) => (prevState + 1) % 3);
+  };
+
+  console.log(screenState);
+
+  let headerContent;
+  if (theme !== "cyber") {
+    headerContent = <h1>{resumeData.meta.name.toUpperCase()}</h1>;
+  } else {
+    switch (screenState) {
+      case 0:
+        headerContent = (
+          <h1 onClick={handleClick}>{resumeData.meta.name.toUpperCase()}</h1>
+        );
+        break;
+      case 1:
+        headerContent = (
+          <h1 onClick={handleClick} className="case-1">
+            {resumeData.meta.name.toUpperCase()}
+          </h1>
+        );
+        break;
+      case 2:
+        headerContent = (
+          <h1 onClick={handleClick} className="case-2">
+            {resumeData.meta.name.toUpperCase()}
+          </h1>
+        );
+        break;
+    }
+  }
 
   return (
     <header className="resume-header">
-      <h1>{resumeData.meta.name}</h1>
+      {headerContent}
       <p className="contact-info">
         {resumeData.meta.location} | (604) 698-8224 |{" "}
         {resumeData.meta.links.email} |{" "}

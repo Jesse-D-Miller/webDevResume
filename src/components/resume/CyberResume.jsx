@@ -62,7 +62,7 @@ function CyberResume({ resumeData, theme }) {
   return (
     <div className="cyber-resume">
       <div className="box-1">
-        <HeaderSection resumeData={resumeData} />
+        <HeaderSection resumeData={resumeData} theme={theme} />
       </div>
 
       <div className="box-2">
