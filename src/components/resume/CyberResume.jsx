@@ -29,7 +29,7 @@ function CyberResume({ resumeData, theme }) {
 
   // Define the different technical skills views and which is currently active
   const techViews = [
-    <TechnicalSkillsSection resumeData={resumeData}/>,
+    <TechnicalSkillsSection resumeData={resumeData} />,
     <GithubLanguageSkills />,
   ];
 
@@ -118,7 +118,13 @@ function CyberResume({ resumeData, theme }) {
 
       <div
         className="experience-tabs-row"
-        onClick={() => grantXp("experience-tabs", 1, "My most recent experience was with the BC Wildfire Service, but I’ve worn a lot of hats—tree planter, bartender, farmhand, and more. I’m always up for a new challenge, and I’d love the chance to bring my skills to your team next.")}
+        onClick={() =>
+          grantXp(
+            "experience-tabs",
+            1,
+            "My most recent experience was with the BC Wildfire Service, but I’ve worn a lot of hats—tree planter, bartender, farmhand, and more. I’m always up for a new challenge, and I’d love the chance to bring my skills to your team next."
+          )
+        }
       >
         {resumeData.experience.map((job) => (
           <div
@@ -159,11 +165,19 @@ function CyberResume({ resumeData, theme }) {
       </div>
 
       <div className="box-9" onClick={handleNextView}>
+        <div className="page-indicator">
+          {[0, 1, 2].map((i) => (
+            <span
+              key={i}
+              className={`indicator-circle${viewIndex === i ? " filled" : ""}`}
+            />
+          ))}
+        </div>
         {techViews[viewIndex]}
       </div>
 
       <div className="box-10">
-        <SoftSkillsSection resumeData={resumeData} theme={theme}/>
+        <SoftSkillsSection resumeData={resumeData} theme={theme} />
       </div>
 
       <div className="box-11">

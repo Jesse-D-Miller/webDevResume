@@ -749,6 +749,30 @@
 
 /* ========================================= Projects and Experience =========================================*/
 /* ============================================= Technical Skills ============================================*/
+
+.cyber-resume .box-9 .page-indicator {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin: 0;
+}
+
+.cyber-resume .box-9 .indicator-circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #222222;
+  border: 2px solid var(--color-neon-primary);
+  opacity: 0.5;
+  transition: background 0.8s;
+}
+
+.cyber-resume .box-9 .indicator-circle.filled {
+  background: var(--color-neon-primary);
+  opacity: 1;
+  box-shadow: 0 0 5px var(--color-neon-primary);
+}
+
 /*=============== Tech Skills ===============*/
 
 .cyber-resume .technical-skills-section {
