@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function HeaderSection({ resumeData, theme }) {
   const [screenState, setScreenState] = useState(0);
-  const { hasClicked, grantXp } = useXP();
+  const { hasClicked, grantXp, xp, maxXp } = useXP();
 
   const handleClick = () => {
     setScreenState((prevState) => (prevState + 1) % 3);
@@ -31,7 +31,12 @@ function HeaderSection({ resumeData, theme }) {
       case 2:
         headerContent = (
           <h1 onClick={handleClick} className="case-2">
-            {resumeData.meta.name.toUpperCase()}
+            <div className="progress-bar">
+              <div
+                className="progress-fill"
+                style={{ width: (xp / maxXp) * 100 + "%" }}
+              >{maxXp ? ((xp / maxXp) * 100).toFixed(2) + "%" : "0%"}</div>
+            </div>
           </h1>
         );
         break;

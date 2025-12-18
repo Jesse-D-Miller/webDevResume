@@ -287,8 +287,8 @@
 /* =============================================== Pixel Hero ===============================================*/
 
 .hero-wrapper {
-  grid-column: 37 / 45;
-  grid-row: 30 / 64;
+  grid-column: 40 / span 8;
+  grid-row: 30 / 65;
 }
 
 .pixel-hero {
@@ -445,8 +445,8 @@
   overflow: scroll;
 }
 .cyber-resume .box-8 {
-  grid-column: 16 / span 15;
-  grid-row: 50 / -1;
+  grid-column: 16 / span 18;
+  grid-row: 34 / -1;
   animation-delay: 3.6s;
   margin: 0;
   overflow: hidden;
@@ -468,7 +468,7 @@
   overflow: hidden;
 }
 .cyber-resume .box-12 {
-  grid-column: 32 / span 4;
+  grid-column: 35 / span 4;
   grid-row: 49 / span 16;
   animation-delay: 3s;
 }
@@ -482,6 +482,9 @@
 }
 
 .cyber-resume .box-1 .resume-header h1 {
+  height: 95px;
+  max-height: 95px;
+  box-sizing: border-box;
   margin: 0;
   padding-top: 0.25em;
   font-size: var(--text-5xl);
@@ -505,6 +508,26 @@
   font-family: "Press Start 2P", monospace;
   font-size: 48px;
   letter-spacing: 22px;
+}
+
+.cyber-resume .box-1 .resume-header h1.case-2 {
+  padding: 0;
+}
+
+.cyber-resume .box-1 .resume-header h1.case-2 .progress-bar {
+  font-family: "Press Start 2P", monospace;
+  height: 100%;
+}
+
+.cyber-resume .box-1 .resume-header h1.case-2 .progress-bar .progress-fill {
+  font-size: var(--text-base);
+  height: 100%;
+  background-image: linear-gradient(90deg, var(--color-neon-primary), var(--color-neon-secondary));
+  transition: width 0.7s cubic-bezier(0.4,1.6,0.4,1);
+  color:#000000;
+  align-content: center;
+  border-right: var(--color-neon-primary) solid 1px;
+  box-shadow: inset 0 0 20px var(--color-neon-primary);
 }
 
 .cyber-resume .box-1 .resume-header .contact-info {
