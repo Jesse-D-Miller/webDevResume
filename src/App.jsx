@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { XPProvider } from "./context/XPProvider.jsx";
+import { SoftSkillsProvider } from "./context/SoftSkillsProvider.jsx";
 import "./App.css";
 import { resumeData } from "./data/resume.js";
 import Sheet from "./components/Sheet.jsx";
@@ -14,10 +15,12 @@ function App() {
 
   return (
     <XPProvider>
+      <SoftSkillsProvider>
       <div className={`App theme-${theme}`}>
         <BatteryToggle onClick={toggleTheme} theme={theme} />
         <Sheet theme={theme} resumeData={resumeData} />
       </div>
+      </SoftSkillsProvider>
     </XPProvider>
   );
 }

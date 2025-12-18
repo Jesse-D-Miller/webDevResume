@@ -757,8 +757,7 @@
 
 .cyber-resume .soft-skills-section p {
   white-space: nowrap;
-  font-size: var(--text-sm);
-  padding-top: 0.5em;
+  margin: 0;
 }
 
 .cyber-resume .soft-skills-section .skills-list {
