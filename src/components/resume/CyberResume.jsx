@@ -8,11 +8,13 @@ import TechnicalSkillsSection from "./TechnicalSkillsSection.jsx";
 import SoftSkillsSection from "./SoftSkillsSection.jsx";
 import HobbiesSection from "./HobbiesSection.jsx";
 import Battery from "../common/Battery.jsx";
+import GithubLanguageSkills from "./GithubLanguageSkills";
 
 import { getRandomNeonColor } from "../../utils/neonColor.js";
 import { useEffect, useState } from "react";
 
 function CyberResume({ resumeData, theme }) {
+  const [viewIndex, setViewIndex] = useState(0); // Track current view index for technical skills
   const [frontProjectId, setFrontProjectId] = useState(
     resumeData.projects[0]?.id ?? null
   ); // Track front project in tab stacks
@@ -24,6 +26,16 @@ function CyberResume({ resumeData, theme }) {
   const [experienceNeonColors, setExperienceNeonColors] = useState({});
 
   const { grantXp } = useXP();
+
+  // Define the different technical skills views and which is currently active
+  const techViews = [
+    <TechnicalSkillsSection resumeData={resumeData}/>,
+    <GithubLanguageSkills />,
+  ];
+
+  const handleNextView = () => {
+    setViewIndex((prevIndex) => (prevIndex + 1) % techViews.length);
+  };
 
   useEffect(() => {
     const boxes = document.querySelectorAll(
@@ -146,8 +158,8 @@ function CyberResume({ resumeData, theme }) {
         <EducationSection resumeData={resumeData} />
       </div>
 
-      <div className="box-9">
-        <TechnicalSkillsSection resumeData={resumeData} />
+      <div className="box-9" onClick={handleNextView}>
+        {techViews[viewIndex]}
       </div>
 
       <div className="box-10">
