@@ -455,6 +455,7 @@
   grid-column: 35 / span 9;
   grid-row: 12 / 38;
   animation-delay: 3.6s;
+  overflow: scroll;
 }
 .cyber-resume .box-10 {
   grid-column: 45 / span 5;
@@ -522,9 +523,13 @@
 .cyber-resume .box-1 .resume-header h1.case-2 .progress-bar .progress-fill {
   font-size: var(--text-base);
   height: 100%;
-  background-image: linear-gradient(90deg, var(--color-neon-primary), var(--color-neon-secondary));
-  transition: width 0.7s cubic-bezier(0.4,1.6,0.4,1);
-  color:#000000;
+  background-image: linear-gradient(
+    90deg,
+    var(--color-neon-primary),
+    var(--color-neon-secondary)
+  );
+  transition: width 0.7s cubic-bezier(0.4, 1.6, 0.4, 1);
+  color: #000000;
   align-content: center;
   border-right: var(--color-neon-primary) solid 1px;
   box-shadow: inset 0 0 20px var(--color-neon-primary);
@@ -744,6 +749,7 @@
 
 /* ========================================= Projects and Experience =========================================*/
 /* ============================================= Technical Skills ============================================*/
+/*=============== Tech Skills ===============*/
 
 .cyber-resume .technical-skills-section {
   text-align: center;
@@ -758,7 +764,7 @@
 .cyber-resume .technical-skills-section h4 {
   font-size: var(--text-base);
   margin: 0;
-  padding: 0.25em 0 0 0;
+  padding: 0.1em 0 0 0;
 }
 
 .cyber-resume .technical-skills-section p {
@@ -767,6 +773,94 @@
   padding: 0.35em 0;
 }
 
+/*=============== Tech Skills ===============*/
+/*========== GitHub Language Skills ==========*/
+
+.cyber-resume .box-9 .github-languages-section {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.cyber-resume .github-languages-section h3 {
+  font-size: var(--text-2xl);
+  padding: 0;
+  margin: 0;
+}
+
+.cyber-resume .github-languages-section h4 {
+  font-size: var(--text-xs);
+  margin: -8px;
+  padding: 0;
+  color: var(--color-ink-light);
+}
+
+.cyber-resume .github-languages-section ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cyber-resume .github-languages-section li {
+  font-size: var(--text-xs);
+  margin: 0;
+  padding: 12px 0;
+}
+
+.cyber-resume .github-languages-section .levelUpMeter {
+  position: relative;
+  font-size: var(--text-base);
+  border: #000000 solid 1px;
+  width: 100%;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: inset 4px -4px 10px #000000be;
+}
+
+.cyber-resume .github-languages-section .levelUpMeter .xp-fill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--color-neon-success) 0%,
+    var(--color-neon-primary)
+  );
+  border-radius: 14px 0 0 14px;
+  transition: width 0.7s cubic-bezier(0.4, 1.6, 0.4, 1);
+  box-shadow: inset 4px -4px 10px #000000be;
+}
+
+.cyber-resume .github-languages-section .levelUpMeter .xp-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  /* color: var(--color-neon-success); */
+  font-family: "Press Start 2P", monospace;
+  font-size: var(--text-2xs);
+  text-shadow: 2px 0 8px #000000, 2px 0 2px #000000;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.cyber-resume .github-languages-section p {
+  text-align: left;
+  margin: 0;
+  padding: 0 0 0 10px;
+}
+.cyber-resume .github-languages-section .xp-tick {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #222222;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+/*========== GitHub Language Skills ==========*/
 /* ============================================= Technical Skills ============================================*/
 /* =============================================== Soft Skills ===============================================*/
 

@@ -1,6 +1,11 @@
+import { useXP } from "../../hooks/useXP.js";
+
 function TechnicalSkillsSection({ resumeData }) {
+  const { grantXp } = useXP();
+
   return (
-    <section className="technical-skills-section">
+    <section className="technical-skills-section"
+    onClick={() => grantXp("technical-skills-section", 0, "Programming levels! I'm proud of this one. It shows, in order, the total bytes of code I've written in each language across all my GitHub projects.")}>
       <h3>TECHNICAL SKILLS</h3>
       <h4>Languages:</h4>
       <p>
