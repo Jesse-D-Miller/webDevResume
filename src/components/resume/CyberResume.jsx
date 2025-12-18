@@ -151,7 +151,7 @@ function CyberResume({ resumeData, theme }) {
       </div>
 
       <div className="box-10">
-        <SoftSkillsSection resumeData={resumeData} />
+        <SoftSkillsSection resumeData={resumeData} theme={theme}/>
       </div>
 
       <div className="box-11">

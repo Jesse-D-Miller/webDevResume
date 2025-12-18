@@ -519,11 +519,10 @@
   /* background: #000000; */
   border-radius: 2px;
   padding: 0;
-  
 }
 
 .cyber-resume .box-2 .summary-section.powered-on {
-background-color: rgba(1, 68, 26, 0.52);
+  background-color: rgba(1, 68, 26, 0.52);
   background-image: linear-gradient(
     180deg,
     rgba(2, 83, 34, 0) 0%,
@@ -549,14 +548,14 @@ background-color: rgba(1, 68, 26, 0.52);
   text-align: center;
   padding: 20px 0 5px 0;
   margin: 0;
-} 
+}
 .cyber-resume .summary-section p {
   font-size: var(--text-2xs);
   text-align: left;
   padding: var(--space-1);
   margin: 0;
   line-height: var(--space-6);
-} 
+}
 
 .power-btn {
   position: absolute;
@@ -580,11 +579,11 @@ background-color: rgba(1, 68, 26, 0.52);
 }
 
 .cyber-resume .box-2 .summary-section.powered-off {
- background: #000000;
+  background: #000000;
 }
 
 .cyber-resume .box-2 .summary-section .summary-content.powered-on {
-  animation: powerOn 0.5s ease forwards !important; 
+  animation: powerOn 0.5s ease forwards !important;
 }
 
 .cyber-resume .box-2 .summary-section.powered-off-initial {
@@ -596,7 +595,7 @@ background-color: rgba(1, 68, 26, 0.52);
 }
 
 .cyber-resume .box-2 .summary-section .summary-content.powered-off {
-  animation: powerOff 0.5s ease forwards !important; 
+  animation: powerOff 0.5s ease forwards !important;
 }
 
 .cyber-resume .box-2 .summary-section.powered-off .power-btn svg,
@@ -744,18 +743,32 @@ background-color: rgba(1, 68, 26, 0.52);
 
 .cyber-resume .soft-skills-section {
   text-align: center;
+  width: 100%;
+  height: 100%;
   padding: 0;
-  white-space: nowrap;
 }
+
 .cyber-resume .soft-skills-section h3 {
+  white-space: nowrap;
   font-size: var(--text-2xl);
   padding: 0;
   margin: 0;
 }
 
 .cyber-resume .soft-skills-section p {
+  white-space: nowrap;
   font-size: var(--text-sm);
   padding-top: 0.5em;
+}
+
+.cyber-resume .soft-skills-section .skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100px;
+  
 }
 
 /* =============================================== Soft Skills ===============================================*/
@@ -925,7 +938,7 @@ background-color: rgba(1, 68, 26, 0.52);
   50% {
     color: #8383833f;
   }
-  100%{
+  100% {
     color: #db0202;
   }
 }

@@ -53,8 +53,59 @@ export const resumeData = {
     { name: "Accountability", level: "advanced", tags: ["soft-skill", "reliability"] },
     { name: "Mentorship", level: "advanced", tags: ["soft-skill", "teaching"] },
     { name: "Strategic Thinking", level: "advanced", tags: ["soft-skill", "planning"] },
-    { name: "Reliability", level: "advanced", tags: ["soft-skill", "dependability"] }
+    { name: "Reliability", level: "advanced", tags: ["soft-skill", "dependability"] },
+
+    
   ],
+
+  // bonus Soft Skills
+  bonusSoftSkills: [
+  { name: "Situational Awareness", level: "advanced", tags: ["soft-skill-bonus", "fieldwork"] },
+  { name: "Stress Tolerance", level: "advanced", tags: ["soft-skill-bonus", "resilience"] },
+  { name: "Decision Making Under Fatigue", level: "advanced", tags: ["soft-skill-bonus", "judgment"] },
+  { name: "Conflict De-escalation", level: "advanced", tags: ["soft-skill-bonus", "interpersonal"] },
+  { name: "Time Prioritization", level: "advanced", tags: ["soft-skill-bonus", "productivity"] },
+  { name: "Clear Direction-Giving", level: "advanced", tags: ["soft-skill-bonus", "coordination"] },
+  { name: "Emotional Regulation", level: "advanced", tags: ["soft-skill-bonus", "self-management"] },
+  { name: "Working Under Pressure", level: "advanced", tags: ["soft-skill-bonus", "performance"] },
+  { name: "Reading a Room", level: "advanced", tags: ["soft-skill-bonus", "social"] },
+  { name: "Handling Difficult Personalities", level: "advanced", tags: ["soft-skill-bonus", "interpersonal"] },
+
+  { name: "Physical Endurance", level: "advanced", tags: ["soft-skill-bonus", "stamina"] },
+  { name: "Mental Toughness", level: "advanced", tags: ["soft-skill-bonus", "resilience"] },
+  { name: "Risk Assessment", level: "advanced", tags: ["soft-skill-bonus", "safety"] },
+  { name: "Operational Awareness", level: "advanced", tags: ["soft-skill-bonus", "coordination"] },
+  { name: "Task Delegation", level: "advanced", tags: ["soft-skill-bonus", "management-adjacent"] },
+  { name: "Boundary Setting", level: "advanced", tags: ["soft-skill-bonus", "interpersonal"] },
+  { name: "Expectation Management", level: "advanced", tags: ["soft-skill-bonus", "planning"] },
+  { name: "Professional Composure", level: "advanced", tags: ["soft-skill-bonus", "presence"] },
+  { name: "Rapid Context Switching", level: "advanced", tags: ["soft-skill-bonus", "cognitive"] },
+  { name: "Handling Ambiguity", level: "advanced", tags: ["soft-skill-bonus", "adaptation"] },
+
+  { name: "Customer Empathy", level: "advanced", tags: ["soft-skill-bonus", "service"] },
+  { name: "Clear Verbal Instruction", level: "advanced", tags: ["soft-skill-bonus", "coordination"] },
+  { name: "Team Morale Maintenance", level: "advanced", tags: ["soft-skill-bonus", "culture"] },
+  { name: "Account Load Balancing", level: "advanced", tags: ["soft-skill-bonus", "operations"] },
+  { name: "Shift-Level Planning", level: "advanced", tags: ["soft-skill-bonus", "execution"] },
+  { name: "Fatigue Recognition (Self & Others)", level: "advanced", tags: ["soft-skill-bonus", "safety"] },
+  { name: "Receiving Feedback Without Ego", level: "advanced", tags: ["soft-skill-bonus", "growth"] },
+  { name: "Giving Feedback Without Being a Jerk", level: "advanced", tags: ["soft-skill-bonus", "interpersonal"] },
+  { name: "Situational Humor", level: "advanced", tags: ["soft-skill-bonus", "culture"] },
+  { name: "Staying Calm When Things Are On Fire", level: "advanced", tags: ["soft-skill-bonus", "literally"] },
+
+  { name: "Long-Horizon Thinking", level: "advanced", tags: ["soft-skill-bonus", "planning"] },
+  { name: "Resource Awareness", level: "advanced", tags: ["soft-skill-bonus", "logistics"] },
+  { name: "Work Ethic", level: "advanced", tags: ["soft-skill-bonus", "discipline"] },
+  { name: "Personal Accountability to the Team", level: "advanced", tags: ["soft-skill-bonus", "trust"] },
+  { name: "Non-Verbal Communication", level: "advanced", tags: ["soft-skill-bonus", "coordination"] },
+  { name: "Handling Repetitive Grind", level: "advanced", tags: ["soft-skill-bonus", "endurance"] },
+  { name: "Kindness", level: "advanced", tags: ["soft-skill-bonus", "professionalism"] },
+  { name: "Knowing When to Speak Up", level: "advanced", tags: ["soft-skill-bonus", "judgment"] },
+  { name: "Responsibility Without Recognition", level: "advanced", tags: ["soft-skill-bonus", "maturity"] },
+  { name: "Getting Stuff Done Anyway", level: "advanced", tags: ["soft-skill-bonus", "execution"] },
+  { name: "Showing Up Ready", level: "advanced", tags: ["soft-skill-bonus", "reliability-adjacent"] }
+  ],
+
   projects: [
     {
       id: "project-1",
