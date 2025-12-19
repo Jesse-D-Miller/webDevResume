@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchGithubLanguageStats } from "../../utils/fetchGithubLanguageStats.js";
+import { fetchGithubStats } from "../../utils/fetchGithubStats.js";
 import {
   saveLanguageStatsToCache,
   getLanguageStatsFromCache,
@@ -20,12 +20,9 @@ function GithubLanguageSkills() {
       setError(null);
       try {
         if (isCacheStale()) {
-          const stats = await fetchGithubLanguageStats(
-            GITHUB_USERNAME,
-            GITHUB_TOKEN
-          );
-          saveLanguageStatsToCache(stats);
-          setLanguageStats(stats);
+          const stats = await fetchGithubStats(GITHUB_USERNAME, GITHUB_TOKEN);
+          saveLanguageStatsToCache(stats.languageTotals);
+          setLanguageStats(stats.languageTotals);
         } else {
           const cached = getLanguageStatsFromCache();
           setLanguageStats(cached ? cached.data : null);
@@ -59,7 +56,7 @@ function GithubLanguageSkills() {
 
   return (
     <div className="github-languages-section">
-      <h3>Programming Levels</h3>
+      <h3>PROGRAMMING LEVELS</h3>
       <h4>(based on my github project language stats)</h4>
       <ul>
         {sortedLanguages.map(([language, bytes]) => (

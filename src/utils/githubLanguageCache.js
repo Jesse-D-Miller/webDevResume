@@ -1,5 +1,5 @@
 const CACHE_KEY = 'githubLanguageCache';
-const CACHE_TTL = 7*24 * 60 * 60 * 1000; // 7 days
+const CACHE_TTL = 24 * 60 * 60 * 1000; // 1 day
 
 
 // Saves language stats data along with the current timestamp

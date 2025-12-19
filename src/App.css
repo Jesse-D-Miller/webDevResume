@@ -754,12 +754,13 @@
   display: flex;
   gap: 15px;
   justify-content: center;
-  margin: 0;
+  margin: -10px 0 0 0;
+  padding: 0;
 }
 
 .cyber-resume .box-9 .indicator-circle {
-  width: 8px;
-  height: 8px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   background: #222222;
   border: 2px solid var(--color-neon-primary);

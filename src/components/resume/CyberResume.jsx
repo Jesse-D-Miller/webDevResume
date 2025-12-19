@@ -9,6 +9,7 @@ import SoftSkillsSection from "./SoftSkillsSection.jsx";
 import HobbiesSection from "./HobbiesSection.jsx";
 import Battery from "../common/Battery.jsx";
 import GithubLanguageSkills from "./GithubLanguageSkills";
+import GithubStatsView from "./GithubStatsView.jsx";
 
 import { getRandomNeonColor } from "../../utils/neonColor.js";
 import { useEffect, useState } from "react";
@@ -31,6 +32,7 @@ function CyberResume({ resumeData, theme }) {
   const techViews = [
     <TechnicalSkillsSection resumeData={resumeData} />,
     <GithubLanguageSkills />,
+    <GithubStatsView />,
   ];
 
   const handleNextView = () => {
