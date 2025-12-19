@@ -5,6 +5,7 @@ import {
   getLanguageStatsFromCache,
   isCacheStale,
 } from "../../utils/githubLanguageCache.js";
+import { useXP } from "../../hooks/useXP.js";
 
 const GITHUB_USERNAME = "Jesse-D-Miller";
 const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
@@ -13,6 +14,7 @@ function GithubLanguageSkills() {
   const [languageStats, setLanguageStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { grantXp } = useXP();
 
   useEffect(() => {
     async function loadStats() {
@@ -55,7 +57,9 @@ function GithubLanguageSkills() {
   );
 
   return (
-    <div className="github-languages-section">
+    <div className="github-languages-section" 
+    onClick={() => grantXp("github-stats-link", 1, "These stats are all live. They update automatically every 24 hours and give insight into what im working on right now!")}
+    >
       <h3>PROGRAMMING LEVELS</h3>
       <h4>(based on my github project language stats)</h4>
       <ul>
