@@ -195,6 +195,17 @@ export const resumeData = {
     "Biking",
     "Reading"
   ],
+  bonusHobbies: [
+    "3D Printing",
+    "Videogames",
+    "Dad Jokes",
+    "Woodworking",
+    "Traveling",
+    "Miniature Painting",
+    "Gardening",
+    "DIY Projects",
+    
+  ],
   secrets: {
     questLog: [
       { id: "proj", label: "Open a project card", done: false },
