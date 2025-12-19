@@ -1,11 +1,14 @@
 import { useXP } from "../../hooks/useXP.js";
 import { useState } from "react";
+import randomBetween from "../../utils/randomBetween.js";
 
 function HobbiesSection({ resumeData, theme }) {
-  const { grantXp } = useXP();
   const [bonusIndex, setBonusIndex] = useState(0);
   const [displayedHobbies, setDisplayedHobbies] = useState(resumeData.hobbies);
+  const [flashes, setFlashes] = useState([]);
+  const { grantXp } = useXP();
 
+  // each click adds a hobby to the hobbies section. the first click also adds XP
   const handleClick = () => {
     if (theme === "cyber" && bonusIndex < resumeData.bonusHobbies.length) {
       setDisplayedHobbies([
@@ -13,6 +16,20 @@ function HobbiesSection({ resumeData, theme }) {
         resumeData.bonusHobbies[bonusIndex],
       ]);
       setBonusIndex(bonusIndex + 1);
+
+      const key = Date.now() + Math.random();
+      setFlashes(() => [
+        {
+          x: randomBetween(-200, 200),
+          y: randomBetween(-15, 15),
+          rotation: randomBetween(-50, 50),
+          key: key,
+        },
+      ]);
+      setTimeout(() => {
+        setFlashes((prev) => prev.filter((f) => f.key !== key));
+      }, 1500);
+
       grantXp(
         `hobby-click`,
         1,
@@ -24,6 +41,19 @@ function HobbiesSection({ resumeData, theme }) {
   return (
     <section className="hobbies-section" onClick={handleClick}>
       <h3>HOBBIES</h3>
+      {flashes.map((flash) => (
+        <span
+          key={flash.key}
+          style={{
+            left: `calc(50% + ${flash.x}px)`,
+            top: `calc(50% + ${flash.y}px)`,
+            "--plus-one-rotate": `${flash.rotation}deg`,
+          }}
+          className="plus-one-flash"
+        >
+          +1
+        </span>
+      ))}
       <div>
         {theme === "cyber"
           ? displayedHobbies.map((hobby, index) => <p key={index}>{hobby}</p>)

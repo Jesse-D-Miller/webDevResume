@@ -406,7 +406,7 @@
 .cyber-resume .box-10:hover,
 .cyber-resume .box-11:hover {
   --neon-flicker-shadow: 40px;
-  --neon-flicker-inset: 32px;
+  --neon-flicker-inset: 40px;
   animation-play-state: paused !important;
 }
 
@@ -908,7 +908,7 @@
 }
 
 .cyber-resume .github-stats-view span {
-  padding: 10px
+  padding: 10px;
 }
 
 .cyber-resume .github-stats-view ul {
@@ -917,7 +917,7 @@
 }
 
 .cyber-resume .github-stats-view li {
-  margin:  0;
+  margin: 0;
   padding: 0;
 }
 
@@ -969,7 +969,7 @@
 
 .cyber-resume .box-11:hover,
 .cyber-resume .box-11:hover * {
-  animation-play-state: paused !important;
+  /* animation-play-state: paused !important; */
 }
 
 .cyber-resume .box-11 {
@@ -1010,6 +1010,16 @@
   opacity: 0.9;
   margin: 0;
   max-width: none;
+}
+
+.cyber-resume .hobbies-section .plus-one-flash {
+  font-style: "PRESS START 2P", monospace;
+  position: absolute;
+  pointer-events: none;
+  color: var(--color-neon-primary);
+  text-shadow: #000000 6px 6px 8px;
+  animation: plusOneFlash 1.5s ease-in-out forwards;
+  animation-delay: 0.1s;
 }
 
 /*================================================== Hobbies ==================================================*/
@@ -1112,6 +1122,24 @@
 
 /*================================================== Battery ==================================================*/
 /*================================================= Keyframes =================================================*/
+
+@keyframes plusOneFlash {
+  0% {
+    opacity: 1;
+    transform: rotate(var(--plus-one-rotate)) scale(1);
+    filter: brightness(1);
+  }
+  10%, 20% {
+    opacity: 1;
+    transform: rotate(var(--plus-one-rotate)) scale(2);
+    filter: brightness(1.2);
+  }
+  21%, 100% {
+    opacity: 0;
+    transform: rotate(var(--plus-one-rotate)) scale(1);
+    filter: brightness(1);
+  }
+}
 
 @keyframes powerButtonSTBFlash {
   0% {
