@@ -45,10 +45,20 @@ function GithubStatsView() {
   return (
     <div className="github-stats-view">
       <h3>GITHUB STATS</h3>
-      <div>Total Public Repos: {stats.publicRepos}</div>
-      <div>Total Commits: {stats.totalCommits}</div>
       <div>
-        Recent Activity:
+        <h4>Public Repositories:</h4>
+        <span className="stat-value">{stats.publicRepos}</span>
+      </div>
+      <div>
+        <h4>Total Repo Size:</h4>
+        <span className="stat-value">{(stats.totalSize / 1024).toFixed(2)} MB</span>
+      </div>
+      <div>
+        <h4>Total Commits:</h4>
+        <span className="stat-value">{stats.totalCommits}</span>
+      </div>
+      <div>
+        <h4>Recent Activity:</h4>
         <ul>
           {stats.recentActivity.map((repo) => (
             <li key={repo.name}>
@@ -57,7 +67,6 @@ function GithubStatsView() {
           ))}
         </ul>
       </div>
-      <div>Total Repo Size: {(stats.totalSize / 1024).toFixed(2)} MB</div>
     </div>
   );
 }
