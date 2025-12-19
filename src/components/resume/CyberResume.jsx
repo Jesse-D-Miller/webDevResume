@@ -183,7 +183,7 @@ function CyberResume({ resumeData, theme }) {
       </div>
 
       <div className="box-11">
-        <HobbiesSection resumeData={resumeData} />
+        <HobbiesSection resumeData={resumeData} theme={theme} />
       </div>
       <div className="box-12">
         <Battery />
