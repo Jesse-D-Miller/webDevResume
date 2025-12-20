@@ -6,8 +6,9 @@ const nodes = [
   { id: 2, color: "green", x: 13, y: 337, tooltip: "High School" },
   { id: 3, color: "green", x: 170, y: 337, tooltip: "Capilano University" },
   { id: 4, color: "green", x: 269, y: 238, tooltip: "Simon Fraser University" },
+  { id: 5, color: "green", x: 447, y: 79, tooltip: "Lighthouse Labs" },
 
-  { id: 5, color: "red", x: 180, y: 200, tooltip: "Red Node" },
+  { id: 6, color: "red", x: 180, y: 200, tooltip: "Red Node" },
 ];
 
 function HoloMap() {
@@ -30,14 +31,16 @@ function HoloMap() {
             width: 24,
             height: 24,
             zIndex: 5,
+            transform: hoveredNode?.id === node.id ? "scale(1.2)" : "scale(1)",
+            transition: "transform 0.2s cubic-bezier(0.4,1.6,0.4,1)",
           }}
           onMouseEnter={() => setHoveredNode(node)}
           onMouseLeave={() => setHoveredNode(null)}
-          >
-            {hoveredNode?.id === node.id && (
-              <div className="node-tooltip">{node.tooltip}</div>
-            )}
-          </div>
+        >
+          {hoveredNode?.id === node.id && (
+            <div className="node-tooltip">{node.tooltip}</div>
+          )}
+        </div>
       ))}
     </section>
   );
