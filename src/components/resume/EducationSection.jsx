@@ -1,12 +1,5 @@
-function EducationSection({ resumeData, theme }) {
-  return theme === "cyber" ? (
-    <section className="education-section">
-      <div className="bg-layer bg-base" />
-      <div className="bg-layer bg-education" />
-      <div className="bg-layer bg-career" />
-      <div className="bg-layer bg-skills" />
-    </section>
-  ) : (
+function EducationSection({ resumeData }) {
+  return (
     <section className="education-section">
       <h3>EDUCATION</h3>
       {resumeData.education.map((edu, index) => (

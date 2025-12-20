@@ -753,16 +753,15 @@
   border: var(--color-neon-primary) solid 1px;
   border-radius: 5px;
   background: #0080ff30;
-  animation: holoSlateGlow 3s ease-in-out infinite;
-  box-shadow: 
-    0 0 4px #00f0ff, 
-    0 0 8px #00f0ff,
-    inset 0 0 4px #00f0ff, 
-    inset 0 0 12px #00f0ff,
-    inset 0 0 24px #00f0ff;
+  animation: holoSlateGlow 5s ease-in-out infinite;
+  box-shadow: 0 0 4px var(--color-neon-primary),
+    0 0 8px var(--color-neon-primary), inset 0 0 4px var(--color-neon-primary),
+    inset 0 0 12px var(--color-neon-primary),
+    inset 0 0 24px var(--color-neon-primary);
+  filter: brightness(1.1)
 }
 
-.cyber-resume .box-8 .education-section {
+.cyber-resume .box-8 .holo-map-container {
   position: relative;
   width: 100%;
   height: 100%;
@@ -771,7 +770,7 @@
   overflow: hidden;
 }
 
-.cyber-resume .box-8 .education-section .bg-layer {
+.cyber-resume .box-8 .holo-map-container .bg-layer {
   position: absolute;
   top: 0;
   left: 0;
@@ -781,29 +780,47 @@
   background-position: center;
 }
 
-.cyber-resume .box-8 .education-section .bg-layer.bg-base {
+.cyber-resume .box-8 .holo-map-container .bg-layer.bg-base {
   background-image: url("./src/assets/dataSlate/dataSlateBackground.png");
   z-index: 1;
   opacity: 0.8;
   animation: holoSlateGlow 3s ease-in-out infinite;
 }
-.cyber-resume .box-8 .education-section .bg-layer.bg-education {
+.cyber-resume .box-8 .holo-map-container .bg-layer.bg-education {
   background-image: url("./src/assets/dataSlate/educationRoute.png");
   z-index: 4;
   opacity: 0.9;
-  filter: drop-shadow(inset 0 0 7px var(--color-neon-primary));
+  filter: drop-shadow(0 0 4px #ffffff);
 }
 
-.cyber-resume .box-8 .education-section .bg-layer.bg-career {
+.cyber-resume .box-8 .holo-map-container .bg-layer.bg-career {
   background-image: url("./src/assets/dataSlate/careerRoute.png");
   z-index: 3;
   opacity: 0.9;
+  filter: drop-shadow(0 0 4px #ffffff);
 }
 
-.cyber-resume .box-8 .education-section .bg-layer.bg-skills {
+.cyber-resume .box-8 .holo-map-container .bg-layer.bg-skills {
   background-image: url("./src/assets/dataSlate/skillsRoute.png");
   z-index: 2;
   opacity: 0.9;
+  filter: drop-shadow(0 0 4px #ffffff);
+}
+
+.cyber-resume .box-8 .holo-map-container .map-node.yellow {
+  background: #ffffff;
+  box-shadow: 0 0 8px #fff700, inset 0 0 20px #fff700;
+  filter: brightness(1.2);
+}
+.cyber-resume .box-8 .holo-map-container .map-node.red {
+  background: #ffffff;
+  box-shadow: 0 0 8px #ff0019, inset 0 0 20px #ff0019;
+  filter: brightness(1.2);
+}
+.cyber-resume .box-8 .holo-map-container .map-node.green {
+  background: #ffffff;
+  box-shadow: 0 0 8px #00ff33, inset 0 0 20px #00ff33;
+  filter: brightness(0.8);
 }
 
 /* ================================================= Education ================================================*/

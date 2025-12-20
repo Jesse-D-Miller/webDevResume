@@ -10,6 +10,7 @@ import HobbiesSection from "./HobbiesSection.jsx";
 import Battery from "../common/Battery.jsx";
 import GithubLanguageSkills from "./GithubLanguageSkills";
 import GithubStatsView from "./GithubStatsView.jsx";
+import HoloMap from "./HoloMap.jsx";
 
 import { getRandomNeonColor } from "../../utils/neonColor.js";
 import { useEffect, useState } from "react";
@@ -163,7 +164,7 @@ function CyberResume({ resumeData, theme }) {
       ))}
 
       <div className="box-8">
-        <EducationSection resumeData={resumeData} theme={theme} />
+        {theme === "cyber" ? <HoloMap /> : <EducationSection resumeData={resumeData}/>}
       </div>
 
       <div className="box-9" onClick={handleNextView}>
