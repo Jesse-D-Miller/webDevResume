@@ -758,7 +758,7 @@
     0 0 8px var(--color-neon-primary), inset 0 0 4px var(--color-neon-primary),
     inset 0 0 12px var(--color-neon-primary),
     inset 0 0 24px var(--color-neon-primary);
-  filter: brightness(1.1)
+  filter: brightness(1.1);
 }
 
 .cyber-resume .box-8 .holo-map-container {
@@ -807,20 +807,79 @@
   filter: drop-shadow(0 0 4px #ffffff);
 }
 
+.cyber-resume .box-8 .holo-map-container .map-node {
+  position: absolute;
+  z-index: 5;
+}
+
 .cyber-resume .box-8 .holo-map-container .map-node.yellow {
   background: #ffffff;
   box-shadow: 0 0 8px #fff700, inset 0 0 20px #fff700;
-  filter: brightness(1.2);
+  filter: brightness(0.8);
+  z-index: 6;
 }
 .cyber-resume .box-8 .holo-map-container .map-node.red {
   background: #ffffff;
   box-shadow: 0 0 8px #ff0019, inset 0 0 20px #ff0019;
-  filter: brightness(1.2);
+  filter: brightness(0.8);
+  z-index: 6;
 }
 .cyber-resume .box-8 .holo-map-container .map-node.green {
   background: #ffffff;
   box-shadow: 0 0 8px #00ff33, inset 0 0 20px #00ff33;
   filter: brightness(0.8);
+  z-index: 6;
+}
+
+.cyber-resume .box-8 .holo-map-container .map-node.green .node-tooltip,
+.cyber-resume .box-8 .holo-map-container .map-node.red .node-tooltip,
+.cyber-resume .box-8 .holo-map-container .map-node.yellow .node-tooltip {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 180, 255, 0.85) 60%,
+    rgba(0, 80, 255, 0.65) 100%
+  );
+  border: 2px solid #00eaff;
+  box-shadow: 0 0 16px #00eaff, 0 0 32px #00eaff55, inset 0 0 12px #00eaff99;
+  color: #eaffff;
+  text-shadow: 0 0 4px #00eaff, 0 0 2px #000;
+  border-radius: 8px;
+  backdrop-filter: blur(2px) brightness(1.2);
+
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--text-2xs);
+
+  width: max-content;
+  min-width: 120px;
+  max-width: 200px;
+  height: auto;
+
+  z-index: 100;
+  white-space: pre-line;
+  overflow: hidden;
+}
+
+.cyber-resume .box-8 .holo-map-container .map-node .node-tooltip h4 {
+  margin: 0;
+  padding: 0 0 0 4px;
+  font-size: var(--text-sm);
+  color: #000000;
+  background-color: #00eaff;
+  border-bottom: #00eaff solid 1px;
+  width: 100%;
+  height: 100%;
+}
+
+.cyber-resume .box-8 .holo-map-container .map-node .node-tooltip p {
+  margin: -15px 0 0 0;
+  padding: 4px;
+  font-size: var(--text-xs);
+  color: #000000;
+  width: 100%;
+  height: 100%;
 }
 
 /* ================================================= Education ================================================*/

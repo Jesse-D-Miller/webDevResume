@@ -164,7 +164,7 @@ function CyberResume({ resumeData, theme }) {
       ))}
 
       <div className="box-8">
-        {theme === "cyber" ? <HoloMap /> : <EducationSection resumeData={resumeData}/>}
+        {theme === "cyber" ? <HoloMap resumeData={resumeData} /> : <EducationSection resumeData={resumeData}/>}
       </div>
 
       <div className="box-9" onClick={handleNextView}>
