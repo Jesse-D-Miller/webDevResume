@@ -163,7 +163,7 @@ function CyberResume({ resumeData, theme }) {
       ))}
 
       <div className="box-8">
-        <EducationSection resumeData={resumeData} />
+        <EducationSection resumeData={resumeData} theme={theme} />
       </div>
 
       <div className="box-9" onClick={handleNextView}>

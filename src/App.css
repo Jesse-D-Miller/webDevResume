@@ -377,7 +377,6 @@
 .cyber-resume .box-5,
 .cyber-resume .box-6,
 .cyber-resume .box-7,
-.cyber-resume .box-8,
 .cyber-resume .box-9,
 .cyber-resume .box-10,
 .cyber-resume .box-11,
@@ -748,6 +747,66 @@
 }
 
 /* ========================================= Projects and Experience =========================================*/
+/* ================================================= Education ================================================*/
+
+.cyber-resume .box-8 {
+  border: var(--color-neon-primary) solid 1px;
+  border-radius: 5px;
+  background: #0080ff30;
+  animation: holoSlateGlow 3s ease-in-out infinite;
+  box-shadow: 
+    0 0 4px #00f0ff, 
+    0 0 8px #00f0ff,
+    inset 0 0 4px #00f0ff, 
+    inset 0 0 12px #00f0ff,
+    inset 0 0 24px #00f0ff;
+}
+
+.cyber-resume .box-8 .education-section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.cyber-resume .box-8 .education-section .bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.cyber-resume .box-8 .education-section .bg-layer.bg-base {
+  background-image: url("./src/assets/dataSlate/dataSlateBackground.png");
+  z-index: 1;
+  opacity: 0.8;
+  animation: holoSlateGlow 3s ease-in-out infinite;
+}
+.cyber-resume .box-8 .education-section .bg-layer.bg-education {
+  background-image: url("./src/assets/dataSlate/educationRoute.png");
+  z-index: 4;
+  opacity: 0.9;
+  filter: drop-shadow(inset 0 0 7px var(--color-neon-primary));
+}
+
+.cyber-resume .box-8 .education-section .bg-layer.bg-career {
+  background-image: url("./src/assets/dataSlate/careerRoute.png");
+  z-index: 3;
+  opacity: 0.9;
+}
+
+.cyber-resume .box-8 .education-section .bg-layer.bg-skills {
+  background-image: url("./src/assets/dataSlate/skillsRoute.png");
+  z-index: 2;
+  opacity: 0.9;
+}
+
+/* ================================================= Education ================================================*/
 /* ============================================= Technical Skills ============================================*/
 
 .cyber-resume .box-9 .page-indicator {
@@ -1132,6 +1191,18 @@
 /*================================================== Battery ==================================================*/
 /*================================================= Keyframes =================================================*/
 
+@keyframes holoSlateGlow {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
 @keyframes batteryXpFloat {
   0% {
     opacity: 1;
@@ -1153,12 +1224,14 @@
     transform: rotate(var(--plus-one-rotate)) scale(1);
     filter: brightness(1);
   }
-  10%, 20% {
+  10%,
+  20% {
     opacity: 1;
     transform: rotate(var(--plus-one-rotate)) scale(2);
     filter: brightness(1.2);
   }
-  21%, 100% {
+  21%,
+  100% {
     opacity: 0;
     transform: rotate(var(--plus-one-rotate)) scale(1);
     filter: brightness(1);
