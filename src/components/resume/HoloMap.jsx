@@ -1,9 +1,10 @@
+import { useHoveredNodes } from "../../hooks/useHoveredNodes";
 import { useState } from "react";
 import { useXP } from "../../hooks/useXP";
 
 function HoloMap({ resumeData }) {
-  const [hoveredNode, setHoveredNode] = useState(null);
-  const [hoveredNodeIds, setHoveredNodeIds] = useState(new Set());
+  const { hoveredNode, setHoveredNode, hoveredNodeIds, setHoveredNodeIds } =
+    useHoveredNodes();
   const { grantXp } = useXP();
 
   const allNodes = [
