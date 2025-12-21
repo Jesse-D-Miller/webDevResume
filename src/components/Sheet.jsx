@@ -2,38 +2,18 @@ import { useState, useEffect } from "react";
 import ResumeFront from "./resume/ResumeFront";
 import CyberResume from "./resume/CyberResume";
 import PixelHero from "./common/PixelHero";
-import { getRandomNeonColor } from "../utils/neonColor";
+import { useXP } from "../hooks/useXP.js";
 
 function Sheet({ resumeData, theme }) {
   const [isFlipped, setIsFlipped] = useState(false); //tracks which side of the resume is shown
-  const [interactionCount, setInteractionCount] = useState(0); //tracks number of interactions
-  const [heroLevel, setHeroLevel] = useState(1); //tracks hero level based on interactions
-  const [frontProjectId, setFrontProjectId] = useState(null);
-  const [frontExperienceId, setFrontExperienceId] = useState(null);
-
-  const handleBringToFront = (group, sectionId) => {
-    if (group === "project") {
-      setFrontProjectId(sectionId);
-    } else if (group === "experience") {
-      setFrontExperienceId(sectionId);
-    }
-  };
-
-  useEffect(() => {
-    // Update hero level based on interaction count
-    if (interactionCount >= 12) setHeroLevel(5);
-    else if (interactionCount >= 9) setHeroLevel(4);
-    else if (interactionCount >= 6) setHeroLevel(3);
-    else if (interactionCount >= 3) setHeroLevel(2);
-    else setHeroLevel(1);
-  }, [interactionCount]);
+  const { xp, maxXP } = useXP();
 
   useEffect(() => {
     // Handle spacebar press to flip the sheet
     const handleKeyDown = (event) => {
       if (event.code === "Space") {
         event.preventDefault();
-        if (heroLevel === 5) {
+        if (xp === 1) {
           setIsFlipped((prev) => !prev);
         } else {
           return;
@@ -46,7 +26,7 @@ function Sheet({ resumeData, theme }) {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [heroLevel]);
+  }, [xp, maxXP]);
 
   return (
     <div className="sheet-container">
@@ -80,14 +60,14 @@ function Sheet({ resumeData, theme }) {
         <CyberResume resumeData={resumeData} theme={theme} />
       )}
 
-      {heroLevel === 5 && (
+      {xp === 1 && (
         <button className="flip-hint" onClick={() => setIsFlipped(!isFlipped)}>
           {isFlipped ? "Show Resume" : "Show Secrets"}
         </button>
       )}
 
       <div className="hero-wrapper">
-        <PixelHero level={heroLevel} />
+        <PixelHero />
       </div>
     </div>
   );

@@ -222,6 +222,7 @@
 }
 
 .resume-front h3 {
+  display: inline-block;
   margin: 0 0 var(--space-1) 0;
   font-size: var(--text-base);
   font-weight: 850;
