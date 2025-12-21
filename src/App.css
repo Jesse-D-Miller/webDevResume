@@ -441,7 +441,7 @@
   animation-delay: 2s;
   margin: 0;
   padding: 0.1em;
-  overflow: scroll;
+  overflow: visible;
 }
 .cyber-resume .box-8 {
   grid-column: 16 / span 18;
@@ -752,13 +752,11 @@
 .cyber-resume .box-8 {
   border: var(--color-neon-primary) solid 1px;
   border-radius: 5px;
-  /* background: rgba(0, 128, 255, 0.188); */
    background: linear-gradient(
     125deg,
     rgba(0, 128, 255, 0.188) 70%,
     rgba(0, 80, 255, 0.65) 100%
   );
-  /* animation: holoSlateGlow 5s ease-in-out infinite; */
   box-shadow: 0 0 4px var(--color-neon-primary),
     0 0 8px var(--color-neon-primary), inset 0 0 4px var(--color-neon-primary),
     inset 0 0 12px var(--color-neon-primary),
@@ -847,9 +845,8 @@
   backdrop-filter: blur(2px) brightness(1.2);
 
   position: absolute;
-  top: 110%;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 25%;
+  left: 25%;
   font-size: var(--text-2xs);
 
   width: max-content;
