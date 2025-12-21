@@ -1,3 +1,5 @@
+/* ============================================= General Styles =============================================*/
+
 .App {
   min-height: 100%;
   display: flex;
@@ -8,7 +10,8 @@
   background: var(--color-bg-dark);
 }
 
-/* theme switch */
+/* ============================================== Theme Switch ==============================================*/
+
 .battery-toggle {
   position: fixed;
   top: 24px;
@@ -31,6 +34,12 @@
     drop-shadow(0 0 24px var(--color-neon-primary));
   transform: translateX(2px);
 }
+
+/* ============================================== Theme Switch ==============================================*/
+/* ============================================= General Styles =============================================*/
+
+/* ============================================ Regular Version ============================================*/
+/* =============================================== Grid Boxes ===============================================*/
 
 .sheet-container {
   display: grid;
@@ -123,6 +132,8 @@
   grid-column: 15 / 36;
   grid-row: 3 / 63;
 }
+
+/* =============================================== Grid Boxes ===============================================*/
 
 .sheet-wrapper:hover {
   filter: brightness(1.05);
@@ -753,7 +764,7 @@
 .cyber-resume .box-8 {
   border: var(--color-neon-primary) solid 1px;
   border-radius: 5px;
-   background: linear-gradient(
+  background: linear-gradient(
     125deg,
     rgba(0, 128, 255, 0.188) 70%,
     rgba(0, 80, 255, 0.65) 100%
@@ -1263,6 +1274,107 @@
 }
 
 /*================================================== Battery ==================================================*/
+/*================================================ Secret Resume ==============================================*/
+
+.secret-resume h3 {
+  display: inline-block;
+  margin: 0 0 var(--space-1) 0;
+  font-size: var(--text-xl);
+  font-weight: 850;
+  color: var(--color-ink-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.1px;
+  border-bottom: 1px solid var(--color-ink-blue);
+  line-height: 0.9;
+  width: auto;
+}
+
+
+.secret-resume p {
+  margin: 0.5em;
+}
+
+.secret-resume li {
+  list-style: none;
+  text-align: left;
+
+}
+
+/*================== Header ==================*/
+
+.secret-resume .secret-header {
+  text-align: center;
+  border-bottom: 2px solid var(--color-ink);
+}
+
+.secret-resume .secret-header h1 {
+  margin: 0;
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  color: var(--color-ink);
+}
+
+.secret-resume .secret-header p {
+  margin: 0 0 var(--space-6) 0;
+  font-size: var(--text-sm);
+  color: var(--color-ink);
+  font-weight: 400;
+}
+
+/*================== Header ==================*/
+/*================== Summary ==================*/
+
+.secret-resume .secret-summary {
+  margin: 1rem;
+}
+
+/*================== Summary ==================*/
+/*========== Image / Skills / Hobbies ==========*/
+
+.secret-resume .secret-left-right {
+  display: flex;
+  gap: var(--space-6);
+  margin: 1rem;
+  gap: var(--space-6);
+}
+
+.secret-resume .secret-left-right .secret-right {
+  text-align: start;
+}
+
+.secret-resume .secret-left-right .secret-right ul {
+margin: 0.5em 1rem;
+padding: 0;
+}
+
+/*========== Image / Skills / Hobbies ==========*/
+/*================= Education =================*/
+
+.secret-resume .secret-education {
+  margin: 1rem;
+}
+
+.secret-resume .secret-education p {
+  margin: 0 0 0 0.5rem;
+}
+
+.secret-resume h4 {
+  margin: 0.5rem 0 0 0.5rem;
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.secret-resume .secret-education p:first-of-type {
+    margin: -0.5rem 0 0 0.5rem;
+  padding-top: 0;
+  font-size: var(--text-xs);
+  color: var(--color-ink-light);
+  font-style: italic;
+}
+
+/*================= Education =================*/
+/*================================================ Secret Resume ===============================================*/
 /*================================================= Keyframes =================================================*/
 
 @keyframes holoSlateGlow {
