@@ -43,7 +43,7 @@ function SecretResume({ secretResumeData }) {
             <ul>
               {secretResumeData.skills.map((skill) => (
                 <li key={skill.name}>
-                  {skill.name} - {skill.level}
+                  {skill.name}
                 </li>
               ))}
             </ul>
@@ -62,9 +62,9 @@ function SecretResume({ secretResumeData }) {
 
       <div className="secret-education">
         <h3>Education</h3>
-        <h4>{secretResumeData.education.degree}</h4>
+        <h4>{secretResumeData.education.institution}</h4>
         <p>
-          {secretResumeData.education.institution} - {secretResumeData.education.period}
+          {secretResumeData.education.degree} - {secretResumeData.education.period}
         </p>
         
         <p>{secretResumeData.education.details}</p>

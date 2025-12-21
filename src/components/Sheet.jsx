@@ -40,31 +40,22 @@ function Sheet({ resumeData, theme }) {
             transform: `rotateY(${isFlipped ? 180 : 0}deg)`,
           }}
         >
-          <div
-            className="sheet-face front-face"
-            style={{
-              backfaceVisibility: "hidden",
-            }}
-          >
-            <ResumeFront resumeData={resumeData} theme={theme} />
-          </div>
-          <div
-            className="sheet-face back-face"
-            style={{
-              backfaceVisibility: "hidden",
-              transform: "rotateY(180deg)",
-            }}
-          >
-            <SecretResume secretResumeData={secretResumeData} />
-          </div>
+            <div className="sheet-face front-face">
+              <ResumeFront resumeData={resumeData} theme={theme} />
+            </div>
+
+            <div className="sheet-face back-face">
+              <SecretResume secretResumeData={secretResumeData} />
+            </div>
+
         </div>
       ) : (
         <CyberResume resumeData={resumeData} theme={theme} />
       )}
 
-      {xp === 1 && (
+      {xp === 1 && theme === "dark" && (
         <button className="flip-hint" onClick={() => setIsFlipped(!isFlipped)}>
-          {isFlipped ? "Show Resume" : "Show Secrets"}
+          {isFlipped ? "press SPACE to show Resume" : "press SPACE to show Secret Resume"}
         </button>
       )}
 
