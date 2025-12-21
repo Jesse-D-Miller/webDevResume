@@ -1,4 +1,4 @@
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 import { useState } from "react";
 import { XPProvider } from "./context/XPProvider.jsx";
 import { SoftSkillsProvider } from "./context/SoftSkillsProvider.jsx";
