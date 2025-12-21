@@ -798,28 +798,28 @@
 }
 
 .cyber-resume .box-8 .holo-map-container .bg-layer.bg-base {
-  background-image: url("./src/assets/dataSlate/dataSlateBackground.png");
+  background-image: url("./dataSlate/dataSlateBackground.png");
   position: relative;
   z-index: 1;
   opacity: 0.8;
   animation: holoSlateGlow 3s ease-in-out infinite;
 }
 .cyber-resume .box-8 .holo-map-container .bg-layer.bg-education {
-  background-image: url("./src/assets/dataSlate/educationRoute.png");
+  background-image: url("./dataSlate/educationRoute.png");
   z-index: 4;
   opacity: 0.9;
   filter: drop-shadow(0 0 4px #ffffff);
 }
 
 .cyber-resume .box-8 .holo-map-container .bg-layer.bg-career {
-  background-image: url("./src/assets/dataSlate/careerRoute.png");
+  background-image: url("./dataSlate/careerRoute.png");
   z-index: 3;
   opacity: 0.9;
   filter: drop-shadow(0 0 4px #ffffff);
 }
 
 .cyber-resume .box-8 .holo-map-container .bg-layer.bg-skills {
-  background-image: url("./src/assets/dataSlate/skillsRoute.png");
+  background-image: url("./dataSlate/skillsRoute.png");
   z-index: 2;
   opacity: 0.9;
   filter: drop-shadow(0 0 4px #ffffff);
