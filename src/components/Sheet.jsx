@@ -3,6 +3,8 @@ import ResumeFront from "./resume/ResumeFront";
 import CyberResume from "./resume/CyberResume";
 import PixelHero from "./common/PixelHero";
 import { useXP } from "../hooks/useXP.js";
+import SecretResume from "./SecretResume.jsx";
+import { secretResumeData } from "../data/secretResume.js";
 
 function Sheet({ resumeData, theme }) {
   const [isFlipped, setIsFlipped] = useState(false); //tracks which side of the resume is shown
@@ -53,7 +55,7 @@ function Sheet({ resumeData, theme }) {
               transform: "rotateY(180deg)",
             }}
           >
-            Back: Secret Map Stats Here
+            <SecretResume secretResumeData={secretResumeData} />
           </div>
         </div>
       ) : (
