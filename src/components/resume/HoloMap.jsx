@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useXP } from "../../hooks/useXP";
 
 function HoloMap({ resumeData }) {
   const [hoveredNode, setHoveredNode] = useState(null);
   const [hoveredNodeIds, setHoveredNodeIds] = useState(new Set());
+  const { grantXp } = useXP();
 
   const allNodes = [
     ...resumeData.mapNodes.education,
@@ -17,6 +19,13 @@ function HoloMap({ resumeData }) {
   const hoveredNodes = hoveredNode ? [hoveredNode] : [];
 
   const handleHover = (node) => {
+    if (hoveredNodeIds.size >= 16) {
+      grantXp(
+        `holo-map-explorer`,
+        1,
+        `Great job exploring my holo map! You've uncovered a lot about my background and skills.`
+      );
+    }
     setHoveredNode(node);
     setHoveredNodeIds((prev) => {
       if (prev.has(node.id)) return prev;
