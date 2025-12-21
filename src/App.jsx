@@ -22,6 +22,7 @@ function App() {
           <div className={`App theme-${theme}`}>
             <BatteryToggle onClick={toggleTheme} theme={theme} />
             <Sheet theme={theme} resumeData={resumeData} />
+            <Analytics />
           </div>
         </HoveredNodesProvider>
       </SoftSkillsProvider>
