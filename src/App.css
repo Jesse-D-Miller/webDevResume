@@ -1339,8 +1339,8 @@
 
 .cyber-resume .box-12 .battery .battery-xp-float {
   position: absolute;
-  left: 50%;
-  bottom: -30px;
+  left: -90px;
+  bottom: 40px;
   transform: translateX(-50%);
   font-family: "Press Start 2P", monospace;
   font-size: 1.1em;
