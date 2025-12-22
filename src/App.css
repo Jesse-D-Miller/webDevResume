@@ -696,10 +696,9 @@
 /* ========================================= Projects and Experience =========================================*/
 
 .project-tabs-row {
-  grid-column: 2 / span 10;
-  grid-row: 13 / span 3;
+  grid-column: 1 / -1;
+  grid-row: 33 / span 2;
   display: flex;
-  gap: -1px;
   margin-bottom: 0;
   position: relative;
   transform: translateY(-8px);
@@ -707,8 +706,8 @@
 }
 
 .experience-tabs-row {
-  grid-column: 2 / span 12;
-  grid-row: 37 / span 2;
+  grid-column: 1 / -1;
+  grid-row: 56 / span 2;
   display: flex;
   gap: -1px;
   margin-bottom: 0;
@@ -718,6 +717,7 @@
 }
 
 .folder-tab {
+  margin-right: -2%;
   white-space: nowrap;
   padding: 4px 18px;
   font: 600 var(--text-sm) var(--font-mono);
