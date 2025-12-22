@@ -87,6 +87,8 @@
   position: relative;
   width: 208mm;
   height: 269mm;
+  max-width: 100vw;
+  max-height: 100vh;
   padding: var(--space-2);
   box-sizing: border-box;
   transform-style: preserve-3d;
