@@ -67,12 +67,12 @@
 /* ============================================ Regular Version ============================================*/
 /* =============================================== Grid Boxes ===============================================*/
 
-.sheet-container {
+/* .sheet-container { */
   /* display: grid;
   grid-template-columns: repeat(49, 1fr);
   grid-template-rows: repeat(64, 1fr);
   position: relative; */
-}
+/* } */
 
 .resume-front {
   display: flex;
@@ -386,12 +386,14 @@
   display: grid;
   width: 100%;
   height: 100%;
-  grid-template-columns: repeat(49, 1fr);
-  grid-template-rows: repeat(64, 1fr);
-  grid-column: 1/-1;
-  grid-row: 1/-1;
-  max-width: 96vw;
-  max-height: 96vh;
+  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-columns: repeat(49, 1fr); */
+  grid-template-rows: repeat(160, 2vh);
+  /* grid-template-rows: repeat(64, 1fr); */
+  /* grid-column: 1/-1;
+  grid-row: 1/-1; */
+  max-width: 99vw;
+  /* max-height: 96vh; */
   font-family: var(--font-mono);
   font-weight: 600;
 }
@@ -456,22 +458,26 @@
 /* ================================================ Box Grid ================================================*/
 
 .cyber-resume .box-1 {
-  grid-column: 12 / 39;
-  grid-row: 1 / 10;
+  grid-column: 1 / -1;
+  /* grid-column: 12 / 39; */
+  grid-row: 2 / 10;
   animation-delay: 1s;
   padding: 0;
   overflow: hidden;
 }
 .cyber-resume .box-2 {
-  grid-column: 16 / span 18;
-  grid-row: 12 / span 20;
+  grid-column: 1 / -1;
+  /* grid-column: 16 / span 18; */
+  grid-row: 11 / span 20;
   animation-delay: 3s;
 }
 .cyber-resume .box-3,
 .cyber-resume .box-4,
 .cyber-resume .box-5 {
-  grid-column: 1 / span 14;
-  grid-row: 14 / span 20;
+  grid-column: 1 / -1;
+  /* grid-column: 1 / span 14; */
+  grid-row: 34 / span 20;
+  /* grid-row: 14 / span 20; */
   animation-delay: 2s;
   margin: 0;
   padding: 0.1em;
@@ -479,40 +485,47 @@
 }
 .cyber-resume .box-6,
 .cyber-resume .box-7 {
-  grid-column: 1 / span 14;
-  grid-row: 38 / span 20;
+  grid-column: 1 / -1;
+  /* grid-column: 1 / span 14; */
+  grid-row: 57 / span 20;
+  /* grid-row: 38 / span 20; */
   animation-delay: 2s;
   margin: 0;
   padding: 0.1em;
   overflow: visible;
 }
 .cyber-resume .box-8 {
-  grid-column: 16 / span 18;
-  grid-row: 34 / -1;
+  grid-column: 1 / -1;
+  /* grid-column: 16 / span 18; */
+  grid-row: 78 / span 22;
   animation-delay: 3.6s;
   margin: 0;
   overflow: visible;
 }
 .cyber-resume .box-9 {
-  grid-column: 35 / span 9;
-  grid-row: 12 / 38;
+  grid-column: 1 / -1;
+  /* grid-column: 35 / span 9; */
+  grid-row: 101 / span 20;
   animation-delay: 3.6s;
   overflow: scroll;
 }
 .cyber-resume .box-10 {
-  grid-column: 45 / span 5;
-  grid-row: 12 / span 26;
+  grid-column: 1 / -1;
+  /* grid-column: 45 / span 5; */
+  grid-row: 122 / span 23;
   animation-delay: 3.6s;
 }
 .cyber-resume .box-11 {
-  grid-column: 35 / span 15;
-  grid-row: 40 / span 6;
+  grid-column: 1 / -1;
+  /* grid-column: 35 / span 15; */
+  grid-row: 146 / span 6;
   animation-delay: 2s;
   overflow: hidden;
 }
 .cyber-resume .box-12 {
-  grid-column: 35 / span 4;
-  grid-row: 49 / span 16;
+  /* grid-column: 1 / -1; */
+  /* grid-column: 35 / span 4; */
+  /* grid-row: 153 / span 10; */
   animation-delay: 3s;
 }
 
@@ -1201,15 +1214,21 @@
   padding: 0;
   margin: 0;
   overflow: visible;
+  position: fixed;
+  bottom: 0%;
+  left: 50%;
+  transform: translateX(-50%) translateY(30%) rotate(90deg) scale(0.85);
+  z-index: 10000;
 }
 
 .cyber-resume .box-12 .battery .battery-cover {
   position: absolute;
   rotate: 180deg;
-  top: -37px;
-  left: -25px;
-  width: 166px;
-  height: 305px;
+  top: 0%;
+  right: 0%;
+  transform: translateX(2%) translateY(18%) scale(1.3, 1.7);
+  aspect-ratio: 10 / 23;
+  height: 100%;
   background-repeat: no-repeat;
   z-index: 2;
   pointer-events: none;
@@ -1234,11 +1253,16 @@
 }
 
 .cyber-resume .box-12 .battery {
-  scale: 1;
+  /* position: absolute; */
   padding: 2px;
   margin: 10px;
   rotate: 180deg;
-  height: 90%;
+  aspect-ratio: 10 / 23;
+  height: 90vw;
+  top: 0%;
+  left: 0%;
+  transform: translate(0%, 0%);
+  /* width: 25vw; */
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(12, 1fr);
@@ -1302,6 +1326,12 @@
   pointer-events: none;
   animation: batteryXpFloat 1.1s ease-out forwards;
   z-index: 5;
+}
+
+@media (min-width: 768px) {
+  /* Tablet and up: switch to two columns, fixed aspect, or your desktop styles */
+
+
 }
 
 /*================================================== Battery ==================================================*/
