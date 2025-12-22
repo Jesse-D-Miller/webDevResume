@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--space-2);
-  overflow: scroll;
+  overflow: hidden;
   background: var(--color-bg-dark);
 }
 
@@ -51,6 +51,7 @@
   grid-template-rows: repeat(64, 1fr);
   position: relative; */
   /* overflow: scroll; */
+
 }
 
 .resume-front {
@@ -87,6 +88,7 @@
   position: relative;
   width: 208mm;
   height: 269mm;
+
   padding: var(--space-2);
   box-sizing: border-box;
   transform-style: preserve-3d;
@@ -121,17 +123,13 @@
   box-shadow: var(--shadow-paper);
   overflow: hidden;
   font-family: var(--font-sans);
+  margin-top: var(--space-24);
 }
 
 .sheet-face.front-face {
-  background: linear-gradient(
-      rgba(10, 10, 15, var(--burn-percentage, 0)),
-      rgba(10, 10, 15, var(--burn-percentage, 0))
-    ),
-    var(--color-paper);
-  transition: background 0.4s ease-out;
-  overflow: scroll;
-  transform: scale(0.35);
+  
+  transform-origin: top;
+  transform: scale(.45);
 }
 
 .sheet-face.back-face {
