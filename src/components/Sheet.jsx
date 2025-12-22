@@ -15,7 +15,7 @@ function Sheet({ resumeData, theme }) {
     const handleKeyDown = (event) => {
       if (event.code === "Space") {
         event.preventDefault();
-        if (xp === 1) {
+        if (xp >= maxXP) {
           setIsFlipped((prev) => !prev);
         } else {
           return;
@@ -53,7 +53,7 @@ function Sheet({ resumeData, theme }) {
         <CyberResume resumeData={resumeData} theme={theme} />
       )}
 
-      {xp === 1 && theme === "dark" && (
+      {xp >= maxXP && theme === "dark" && (
         <button className="flip-hint" onClick={() => setIsFlipped(!isFlipped)}>
           {isFlipped ? "press SPACE to show Resume" : "press SPACE to show Secret Resume"}
         </button>

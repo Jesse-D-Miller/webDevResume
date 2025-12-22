@@ -11,7 +11,7 @@ export const secretResumeData = {
   ],
   skills: [
     { name: "fetching", level: "expert" },
-    { name: "catchin' frisbees", level: "advanced" },
+    { name: "catching frisbees", level: "advanced" },
     { name: "swimming", level: "obsessive" },
     { name: "napping", level: "master" },
     { name: "sniffing out snacks", level: "professional" },

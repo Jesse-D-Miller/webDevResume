@@ -1,7 +1,8 @@
 /* ============================================= General Styles =============================================*/
 
 .App {
-  min-height: 100%;
+  min-height: 100vh;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,21 +15,24 @@
 
 .battery-toggle {
   position: fixed;
-  top: 24px;
-  right: 32px;
+  top: var(--space-1);
+  right: var(--space-1);
   cursor: pointer;
   pointer-events: auto;
   z-index: 10;
 }
+
 .battery-toggle svg {
-  width: 96px;
-  height: 96px;
+  width: 2.5rem;
+  height: 2.5rem;
   pointer-events: none;
   color: var(--color-neon-primary);
 }
+
 .battery-toggle:hover {
   filter: drop-shadow(0 0 10px var(--color-neon-primary));
 }
+
 .battery-toggle:active svg {
   filter: drop-shadow(0 0 12px var(--color-neon-primary))
     drop-shadow(0 0 24px var(--color-neon-primary));
@@ -49,81 +53,44 @@
 }
 
 .resume-front {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
-  grid-template-columns: repeat(21, 1fr);
-  grid-template-rows: repeat(60, 1fr);
+  gap: var(--space-3, 1rem);
 }
 
-.resume-front .box-1 {
-  grid-column: 1 / span 21;
-  grid-row: 1 / span 7;
-}
-
-.resume-front .box-2 {
-  grid-column: 1 / span 16;
-  grid-row: 8 / span 7;
-  margin-top: 8px;
-}
-
-.resume-front .box-3 {
-  grid-column: 1 / span 16;
-  grid-row: 15 / span 7;
-  margin-top: -2px;
-}
-
-.resume-front .box-4 {
-  grid-column: 1 / span 16;
-  grid-row: 22 / span 7;
-  margin-top: 8px;
-}
-
-.resume-front .box-5 {
-  grid-column: 1 / span 16;
-  grid-row: 29 / span 6;
-  margin-top: -1px;
-}
-.resume-front .box-6 {
-  grid-column: 1 / span 16;
-  grid-row: 35 / span 11;
-  margin-top: 9px;
-}
-
-.resume-front .box-7 {
-  grid-column: 1 / span 16;
-  grid-row: 46 / span 8;
-  margin-top: 16px;
-}
-
-.resume-front .box-8 {
-  grid-column: 1 / span 16;
-  grid-row: 54 / span 7;
-  margin-top: 6px;
-}
-
-.resume-front .box-9 {
-  grid-column: 17 / span 5;
-  grid-row: 8 / span 17;
-  margin-top: 8px;
-}
-
-.resume-front .box-10 {
-  grid-column: 17 / span 5;
-  grid-row: 25 / span 12;
-  margin-top: 5px;
-}
-
+.resume-front .box-1,
+.resume-front .box-2,
+.resume-front .box-3,
+.resume-front .box-4,
+.resume-front .box-5,
+.resume-front .box-6,
+.resume-front .box-7,
+.resume-front .box-8,
+.resume-front .box-9,
+.resume-front .box-10,
 .resume-front .box-11 {
-  grid-column: 17 / span 5;
-  grid-row: 37 / span 11;
-  margin-top: 1px;
+  width: 100%;
+  margin: 0;
 }
 
 .sheet-wrapper {
   position: relative;
-  width: 208mm; /* this is letter size, but adjust to show as the actual size on screen. normally 216mm */
-  height: 269mm; /* this is letter size, but adjust to show as the actual size on screen. normally 279mm */
+  aspect-ratio: 208 / 269;
+  width: 100%;
+  max-height: 100vh;
+  max-width: 100vw;
+  padding: var(--space-2);
+  box-sizing: border-box;
+  transform-style: preserve-3d;
+  transition: transform var(--transition-flip);
+}
+
+/* .sheet-wrapper {
+  position: relative;
+  width: 208mm;
+  height: 269mm;
 
   box-sizing: border-box;
   transform-style: preserve-3d;
@@ -131,7 +98,7 @@
   cursor: pointer;
   grid-column: 15 / 36;
   grid-row: 3 / 63;
-}
+}  */
 
 /* =============================================== Grid Boxes ===============================================*/
 
@@ -157,7 +124,6 @@
     var(--color-paper);
   transition: background 0.4s ease-out;
 }
-
 
 .sheet-face.back-face {
   position: absolute;
@@ -185,7 +151,7 @@
   cursor: pointer;
   transition: all var(--transition-fast);
   text-shadow: 0 0 8px var(--color-neon-glow);
-  height: 100px; 
+  height: 100px;
   width: 200px;
 
   position: absolute;
@@ -301,28 +267,29 @@
 
 /* =============================================== Pixel Hero ===============================================*/
 
-.hero-wrapper {
+/* .hero-wrapper {
   grid-column: 40 / span 8;
   grid-row: 30 / 65;
-}
+} */
 
 .pixel-hero {
-  position: relative;
+  position: fixed;
+  top: var(--space-1);
+  left: var(--space-1);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-end;
-  width: 100%;
-  height: 100%;
+
 }
 
 .hero-sprite {
-  font-size: 80px;
+  font-size: 40px;
   transition: transform var(--transition-base), filter var(--transition-base);
 }
 
 .hero-sprite:active {
-  transform: scale(1.1);
+  transform: scale(1);
 }
 
 .hero-speech-bubble {
