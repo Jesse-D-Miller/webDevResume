@@ -68,7 +68,7 @@
 /* =============================================== Grid Boxes ===============================================*/
 
 /* .sheet-container { */
-  /* display: grid;
+/* display: grid;
   grid-template-columns: repeat(49, 1fr);
   grid-template-rows: repeat(64, 1fr);
   position: relative; */
@@ -219,7 +219,6 @@
 .resume-front .resume-header a:hover {
   text-decoration: underline;
 }
-
 
 .resume-front h3 {
   text-align: center;
@@ -392,7 +391,8 @@
   /* grid-template-rows: repeat(64, 1fr); */
   /* grid-column: 1/-1;
   grid-row: 1/-1; */
-  max-width: 99vw;
+  max-width: 600px;
+  min-width: 375px;
   /* max-height: 96vh; */
   font-family: var(--font-mono);
   font-weight: 600;
@@ -460,15 +460,16 @@
 .cyber-resume .box-1 {
   grid-column: 1 / -1;
   /* grid-column: 12 / 39; */
-  grid-row: 2 / 10;
+  grid-row: 2 / 12;
   animation-delay: 1s;
   padding: 0;
   overflow: hidden;
 }
+
 .cyber-resume .box-2 {
   grid-column: 1 / -1;
   /* grid-column: 16 / span 18; */
-  grid-row: 11 / span 20;
+  grid-row: 13 / span 20;
   animation-delay: 3s;
 }
 .cyber-resume .box-3,
@@ -497,7 +498,7 @@
 .cyber-resume .box-8 {
   grid-column: 1 / -1;
   /* grid-column: 16 / span 18; */
-  grid-row: 78 / span 22;
+  grid-row: 78 / span 17;
   animation-delay: 3.6s;
   margin: 0;
   overflow: visible;
@@ -535,15 +536,15 @@
 .cyber-resume .box-1 .resume-header {
   text-align: center;
   align-items: center;
+  height: 100%;
 }
 
 .cyber-resume .box-1 .resume-header h1 {
-  height: 95px;
-  max-height: 95px;
+  height: 55%;
   box-sizing: border-box;
   margin: 0;
   padding-top: 0.25em;
-  font-size: var(--text-5xl);
+  font-size: var(--text-3xl);
   font-weight: 800;
   background: #000000;
   animation: neonIgniteBottomOnly 1s ease-out both,
@@ -558,12 +559,16 @@
     rgba(2, 83, 34, 0) 100%
   );
   backdrop-filter: blur(5px);
+  text-align: center;
 }
 
 .cyber-resume .box-1 .resume-header h1.case-1 {
   font-family: "Press Start 2P", monospace;
-  font-size: 48px;
+  font-size: var(--text-base);
   letter-spacing: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cyber-resume .box-1 .resume-header h1.case-2 {
@@ -591,11 +596,28 @@
 }
 
 .cyber-resume .box-1 .resume-header .contact-info {
-  margin: 0 0 var(--space-6) 0;
-  padding: 10px 0 50px 0;
-  font-size: var(--text-base);
+  margin: 0 0 0 0;
+  padding: 5px 5px 50px 5px;
+  font-size: var(--text-xs);
   color: var(--color-neon-success);
   font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  /* Tablet and up: switch to two columns, fixed aspect, or your desktop styles */
+  .cyber-resume .box-1 .resume-header h1 {
+    font-size: var(--text-5xl);
+  }
+
+  .cyber-resume .box-1 .resume-header h1.case-1 {
+    font-size: 48px;
+    letter-spacing: 22px;
+  }
+
+  .cyber-resume .box-1 .resume-header .contact-info {
+    margin: 0 0 var(--space-6) 0;
+    font-size: var(--text-base);
+  }
 }
 
 /* ================================================= Header =================================================*/
@@ -1330,8 +1352,6 @@
 
 @media (min-width: 768px) {
   /* Tablet and up: switch to two columns, fixed aspect, or your desktop styles */
-
-
 }
 
 /*================================================== Battery ==================================================*/
