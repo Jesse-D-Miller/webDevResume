@@ -83,14 +83,6 @@ function PixelHero() {
     return (
       <div className="pixel-hero" onClick={() => grantXp("pixel-hero-click", 0, "Hey! That tickles! No XP here!")}>
         <div
-          className="hero-speech-bubble"
-          style={{
-            transform: `translate(${bubblePositions[level].x}px, ${bubblePositions[level].y}px)`,
-          }}
-        >
-          {showLevelUpMessage ? hints[level] || "Click around to help me level up!" : heroMessage || "Click around to help me level up!"}
-        </div>
-        <div
           className="hero-sprite"
           style={{
             backgroundImage: `url(${spritesheets[level]})`,
@@ -103,6 +95,15 @@ function PixelHero() {
             transition: "none",
           }}
         />
+        <div
+          className="hero-speech-bubble"
+          style={{
+            transform: `translate(${bubblePositions[level].x}px, ${bubblePositions[level].y}px)`,
+          }}
+        >
+          {showLevelUpMessage ? hints[level] || "Click around to help me level up!" : heroMessage || "Click around to help me level up!"}
+        </div>
+        
       </div>
     );
   }
