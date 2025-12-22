@@ -50,12 +50,14 @@ function ResumeFront({ resumeData, theme }) {
             <TechnicalSkillsSection resumeData={resumeData} />
           </div>
 
-          <div className="box-10">
-            <SoftSkillsSection resumeData={resumeData} />
-          </div>
+          <div className="mobile-sub-grid-inner">
+            <div className="box-10">
+              <SoftSkillsSection resumeData={resumeData} />
+            </div>
 
-          <div className="box-11">
-            <HobbiesSection resumeData={resumeData} />
+            <div className="box-11">
+              <HobbiesSection resumeData={resumeData} />
+            </div>
           </div>
         </div>
       </div>

@@ -79,7 +79,6 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  gap: var(--space-1);
 }
 
 .resume-front .box-1,
@@ -99,7 +98,7 @@
 
 .sheet-wrapper {
   position: relative;
-  padding: var(--space-2);
+  padding: var(--space-1);
   width: 100vw;
   max-width: 100vw;
   transform-style: preserve-3d;
@@ -154,10 +153,10 @@
   transform: rotateY(180deg);
 }
 
-/* .sheet-face.front-face:hover,
+.sheet-face.front-face:hover,
 .sheet-face.back-face:hover {
   filter: brightness(1.05);
-} */
+}
 
 .flip-hint {
   background: transparent;
@@ -195,7 +194,7 @@
 .resume-front .resume-header {
   text-align: center;
   border-bottom: 2px solid var(--color-ink);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-3);
 }
 
 .resume-front .resume-header h1 {
@@ -221,14 +220,12 @@
   text-decoration: underline;
 }
 
-.resume-front main {
-  display: contents;
-}
 
 .resume-front h3 {
-  display: inline-block;
-  margin: var(--space-2) 0 var(--space-1) 0;
-  font-size: var(--text-base);
+  text-align: center;
+  /* display: inline-block; */
+  margin: var(--space-6) 0 var(--space-6) 0;
+  font-size: var(--text-lg);
   font-weight: 850;
   color: var(--color-ink-blue);
   text-transform: uppercase;
@@ -239,9 +236,9 @@
 }
 
 .resume-front .box-3 .projects-section h3 {
-  display: inline-block;
-  margin: var(--space-2) 0 var(--space-1) 0;
-  font-size: var(--text-base);
+  /* display: inline-block; */
+  margin: var(--space-6) 0 var(--space-6) 0;
+  font-size: var(--text-lg);
   font-weight: 850;
   color: var(--color-ink-blue);
   text-transform: uppercase;
@@ -287,10 +284,6 @@
   font-weight: 500;
 }
 
-.resume-front .projects-section h3 {
-  margin-top: var(--space-1);
-}
-
 .resume-front .project-item,
 .resume-front .experience-item,
 .resume-front .education-item {
@@ -303,8 +296,10 @@
 }
 
 .resume-front .technical-skills-section,
-.resume-front .soft-skills-section {
+.resume-front .soft-skills-section,
+.resume-front .hobbies-section {
   margin-bottom: var(--space-3);
+  text-align: center;
 }
 
 .resume-front .projects-section,
@@ -312,8 +307,22 @@
   margin-bottom: var(--space-2);
 }
 
+.resume-front .mobile-sub-grid-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.resume-front .projects-section a {
+  color: var(--color-ink);
+}
+
 @media (min-width: 768px) {
   /* Tablet and up: switch to two columns, fixed aspect, or your desktop styles */
+  .resume-front .technical-skills-section,
+  .resume-front .soft-skills-section,
+  .resume-front .hobbies-section {
+    text-align: start;
+  }
 }
 
 /* ====================================== General Styles Resume Front ======================================*/
