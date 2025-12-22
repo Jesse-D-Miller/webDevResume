@@ -82,15 +82,17 @@
 }
 
 .sheet-wrapper {
-  position: relative;
+  position: fixed;
   width: 95vw;
-  height: calc(80vh);
-  
+  height: calc(85vh);
+  top: 10%;
+  left: 0%;
 
   padding: var(--space-2) var(--space-2) var(--space-2) var(--space-2);
   /* box-sizing: border-box; */
   transform-style: preserve-3d;
   transition: transform var(--transition-flip);
+  overflow: hidden;
 }
 
 /* .sheet-wrapper {
@@ -141,7 +143,6 @@
 .sheet-face.front-face {
   /* transform-origin: top; */
   margin: 0;
-
 }
 
 .sheet-face.back-face {
