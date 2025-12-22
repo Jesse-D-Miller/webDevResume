@@ -11,7 +11,7 @@
   margin: 0;
   padding: 0;
   overflow: auto;
-  padding-top: 100px;
+  padding: 100px 0 var(--space-6) 0; /* to offset top bar */
 }
 
 /* ============================================= General Styles =============================================*/
