@@ -83,8 +83,8 @@
 
 .sheet-wrapper {
   position: fixed;
-  width: 95vw;
-  height: calc(85vh);
+  /* width: 95vw;
+  height: calc(85vh); */
   top: 10%;
   left: 0%;
 
@@ -100,8 +100,8 @@
   top: 10%;
   left: 0%;
   width: 100vw;
-  max-width: 95vh;
-  height: 80vh;
+  max-width: 85vh;
+  height: 70vh;
   padding: var(--space-2);
   box-sizing: border-box;
   transform-style: preserve-3d;
@@ -139,7 +139,7 @@
   box-sizing: border-box;
   box-shadow: var(--shadow-paper);
   font-family: var(--font-sans);
-  margin-top: var(--space-6);
+  /* margin-top: var(--space-6); */
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
