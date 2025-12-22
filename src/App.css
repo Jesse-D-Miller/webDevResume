@@ -335,7 +335,7 @@
 .pixel-hero {
   position: fixed;
   top: var(--space-1);
-  left: var(--space-1);
+  left: var(--space-12);
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -366,7 +366,7 @@
   border: 2px solid var(--color-ink);
   box-shadow: var(--shadow-paper);
   font-size: var(--text-2xs);
-  max-width: 63vw;
+  max-width: 50vw;
   min-width: 50vw;
   white-space: normal;
   word-wrap: break-word;
@@ -387,7 +387,7 @@
   height: 100%;
   grid-template-columns: repeat(4, 1fr);
   /* grid-template-columns: repeat(49, 1fr); */
-  grid-template-rows: repeat(160, 2vh);
+  grid-template-rows: repeat(160, 16px);
   /* grid-template-rows: repeat(64, 1fr); */
   /* grid-column: 1/-1;
   grid-row: 1/-1; */
@@ -477,7 +477,7 @@
 .cyber-resume .box-5 {
   grid-column: 1 / -1;
   /* grid-column: 1 / span 14; */
-  grid-row: 34 / span 20;
+  grid-row: 37 / span 20;
   /* grid-row: 14 / span 20; */
   animation-delay: 2s;
   margin: 0;
@@ -488,17 +488,17 @@
 .cyber-resume .box-7 {
   grid-column: 1 / -1;
   /* grid-column: 1 / span 14; */
-  grid-row: 57 / span 20;
+  grid-row: 61 / span 20;
   /* grid-row: 38 / span 20; */
   animation-delay: 2s;
   margin: 0;
   padding: 0.1em;
-  overflow: visible;
+  overflow: scroll;
 }
 .cyber-resume .box-8 {
   grid-column: 1 / -1;
   /* grid-column: 16 / span 18; */
-  grid-row: 78 / span 17;
+  grid-row: 82 / span 17;
   animation-delay: 3.6s;
   margin: 0;
   overflow: visible;
@@ -506,20 +506,20 @@
 .cyber-resume .box-9 {
   grid-column: 1 / -1;
   /* grid-column: 35 / span 9; */
-  grid-row: 101 / span 20;
+  grid-row: 100 / span 25;
   animation-delay: 3.6s;
   overflow: scroll;
 }
 .cyber-resume .box-10 {
   grid-column: 1 / -1;
   /* grid-column: 45 / span 5; */
-  grid-row: 122 / span 23;
+  grid-row: 126 / span 27;
   animation-delay: 3.6s;
 }
 .cyber-resume .box-11 {
   grid-column: 1 / -1;
   /* grid-column: 35 / span 15; */
-  grid-row: 146 / span 6;
+  grid-row: 154 / span 6;
   animation-delay: 2s;
   overflow: hidden;
 }
@@ -719,7 +719,7 @@
 
 .project-tabs-row {
   grid-column: 1 / -1;
-  grid-row: 33 / span 2;
+  grid-row: 36 / span 3;
   display: flex;
   margin-bottom: 0;
   position: relative;
@@ -729,7 +729,7 @@
 
 .experience-tabs-row {
   grid-column: 1 / -1;
-  grid-row: 56 / span 2;
+  grid-row: 60 / span 3;
   display: flex;
   gap: -1px;
   margin-bottom: 0;
@@ -739,7 +739,8 @@
 }
 
 .folder-tab {
-  margin-right: -2%;
+  margin-right: -8%;
+  max-width: 100vw;
   white-space: nowrap;
   padding: 4px 18px;
   font: 600 var(--text-sm) var(--font-mono);
@@ -1231,26 +1232,27 @@
 /*================================================== Battery ==================================================*/
 
 .cyber-resume .box-12 {
+  height: 115px;
+  width : 60px;
   animation: none;
   display: grid;
   padding: 0;
   margin: 0;
   overflow: visible;
   position: fixed;
-  bottom: 0%;
-  left: 50%;
-  transform: translateX(-50%) translateY(30%) rotate(90deg) scale(0.85);
+  top: 0%;
+  left: 0%;
+  transform: translateX(-8%) translateY(-6%) scale(0.75) rotate(180deg);
   z-index: 10000;
 }
 
 .cyber-resume .box-12 .battery .battery-cover {
   position: absolute;
-  rotate: 180deg;
   top: 0%;
   right: 0%;
-  transform: translateX(2%) translateY(18%) scale(1.3, 1.7);
-  aspect-ratio: 10 / 23;
-  height: 100%;
+  transform: translateX(36%) translateY(-32%) scale(0.47) rotate(180deg);
+  height: 305px;
+  width: 166px;
   background-repeat: no-repeat;
   z-index: 2;
   pointer-events: none;
@@ -1278,12 +1280,11 @@
   /* position: absolute; */
   padding: 2px;
   margin: 10px;
-  rotate: 180deg;
   aspect-ratio: 10 / 23;
-  height: 90vw;
+  height: 100px;
   top: 0%;
   left: 0%;
-  transform: translate(0%, 0%);
+  transform: translateX(-14%) translateY(-6%) scale(.9);
   /* width: 25vw; */
   display: grid;
   grid-template-columns: 1fr;
@@ -1298,7 +1299,7 @@
 }
 
 .cyber-resume .box-12 .battery .battery-segment {
-  border-radius: 5px;
+  border-radius: 1px;
   border: #1a1919 solid 1px;
   background: #8c8c8c;
 }
@@ -1314,11 +1315,11 @@
 .cyber-resume .box-12 .battery::before {
   content: "";
   position: absolute;
-  top: -9px;
+  top: -7px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
-  height: 6px;
+  width: 40px;
+  height: 3px;
   background-color: #8c8c8c;
   border-radius: 4px 4px 0px 0px;
 }
@@ -1326,11 +1327,11 @@
 .cyber-resume .box-12 .battery::after {
   content: "";
   position: absolute;
-  bottom: -14px;
+  bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 40px;
-  height: 12px;
+  width: 20px;
+  height: 6px;
   background-color: #8c8c8c;
   border-radius: 0 0 4px 4px;
   z-index: 1;
