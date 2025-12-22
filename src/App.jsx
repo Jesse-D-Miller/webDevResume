@@ -19,6 +19,9 @@ function App() {
     <XPProvider>
       <SoftSkillsProvider>
         <HoveredNodesProvider>
+          {theme === "dark" && 
+            <div className="top-bar" />
+            }
           <div className={`App theme-${theme}`}>
             <BatteryToggle onClick={toggleTheme} theme={theme} />
             <Sheet theme={theme} resumeData={resumeData} />
