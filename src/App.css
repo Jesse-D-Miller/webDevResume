@@ -160,10 +160,10 @@
   transform: rotateY(180deg);
 }
 
-.sheet-face.front-face:hover,
+/* .sheet-face.front-face:hover,
 .sheet-face.back-face:hover {
   filter: brightness(1.05);
-}
+} */
 
 .flip-hint {
   background: transparent;
