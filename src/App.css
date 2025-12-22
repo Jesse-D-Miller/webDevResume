@@ -655,9 +655,9 @@
 }
 
 .cyber-resume .summary-section h3 {
-  font-size: var(--text-2xl);
+  font-size: var(--text-lg);
   text-align: center;
-  padding: 20px 0 5px 0;
+  padding: 10px 0 5px 0;
   margin: 0;
 }
 .cyber-resume .summary-section p {
@@ -665,7 +665,7 @@
   text-align: left;
   padding: var(--space-1);
   margin: 0;
-  line-height: var(--space-6);
+  line-height: var(--space-4);
 }
 
 .power-btn {
@@ -679,6 +679,7 @@
   background: #262626;
   color: #02c31fa1;
   scale: 0.8;
+  z-index: 5;
 }
 
 .power-btn:hover {
