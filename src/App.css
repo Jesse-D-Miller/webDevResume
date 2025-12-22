@@ -9,6 +9,8 @@
   padding: var(--space-2);
   overflow: hidden;
   background: var(--color-bg-dark);
+  margin: 0;
+  padding: 0;
 }
 
 /* ============================================== Theme Switch ==============================================*/
@@ -82,14 +84,13 @@
 .sheet-wrapper {
   position: relative;
   width: 100vw;
-  height: calc(100vh - 64px);
+  height: calc(90vh);
   
 
-  padding: var(--space-2) var(--space-2) var(--space-12) var(--space-2);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-2);
   box-sizing: border-box;
   transform-style: preserve-3d;
   transition: transform var(--transition-flip);
-  overflow-y: scroll;
 }
 
 /* .sheet-wrapper {
@@ -132,13 +133,15 @@
   padding: var(--space-2) var(--space-4);
   box-sizing: border-box;
   box-shadow: var(--shadow-paper);
-  overflow: hidden;
   font-family: var(--font-sans);
   margin-top: var(--space-6);
+  overflow-y: scroll;
 }
 
 .sheet-face.front-face {
   /* transform-origin: top; */
+  margin: 0;
+
 }
 
 .sheet-face.back-face {
