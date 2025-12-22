@@ -2,15 +2,15 @@
 
 .App {
   min-height: 100vh;
+  min-width: 100vw;
   position: relative;
   display: flex;
-  align-items: end;
+  align-items: center;
   justify-content: center;
-  padding: var(--space-2);
-  overflow: hidden;
   background: var(--color-bg-dark);
   margin: 0;
   padding: 0;
+  overflow: auto;
 }
 
 /* ============================================== Theme Switch ==============================================*/
@@ -95,18 +95,21 @@
   overflow: hidden;
 }
 
-/* .sheet-wrapper {
-  position: relative;
-  width: 208mm;
-  height: 269mm;
-
+.sheet-wrapper {
+  position: fixed;
+  top: 10%;
+  left: 0%;
+  width: 100vw;
+  max-width: 95vh;
+  height: 80vh;
+  padding: var(--space-2);
   box-sizing: border-box;
   transform-style: preserve-3d;
   transition: transform var(--transition-flip);
-  cursor: pointer;
-  grid-column: 15 / 36;
-  grid-row: 3 / 63;
-}  */
+  overflow: hidden;
+  z-index: 2;
+}
+
 
 @media (min-width: 768px) {
   /* Tablet and up: switch to two columns, fixed aspect, or your desktop styles */
@@ -137,7 +140,8 @@
   box-shadow: var(--shadow-paper);
   font-family: var(--font-sans);
   margin-top: var(--space-6);
-  overflow-y: scroll;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .sheet-face.front-face {
