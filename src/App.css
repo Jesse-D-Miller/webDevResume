@@ -86,8 +86,10 @@
 
 .sheet-wrapper {
   position: relative;
-  width: 208mm;
-  height: 269mm;
+  /* width: 208mm;
+  height: 269mm; */
+  aspect-ratio: 208 / 269;
+  width: 100vw;
 
   padding: var(--space-2);
   box-sizing: border-box;
@@ -126,10 +128,8 @@
   margin-top: var(--space-24);
 }
 
-.sheet-face.front-face {
-  
+.sheet-face.front-face { 
   transform-origin: top;
-  transform: scale(.45);
 }
 
 .sheet-face.back-face {
