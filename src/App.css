@@ -14,6 +14,10 @@
   padding: 100px 0 var(--space-6) 0; /* to offset top bar */
 }
 
+@media (min-width: 768px) {
+  /* Tablet and up: switch to two columns, fixed aspect, or desktop styles */
+}
+
 /* ============================================= General Styles =============================================*/
 /* ================================================ Top Bar ================================================*/
 
@@ -59,6 +63,10 @@
 
 @media (min-width: 768px) {
   /* Tablet and up: switch to two columns, fixed aspect, or desktop styles */
+  .battery-toggle svg {
+    width: 5rem;
+    height: 5rem;
+  }
 }
 
 /* ============================================== Theme Switch ==============================================*/
@@ -297,6 +305,26 @@
   .resume-front .soft-skills-section,
   .resume-front .hobbies-section {
     text-align: start;
+    /* display: inline-block; */
+  }
+
+  .resume-front h3 {
+    font-size: var(--text-base);
+    text-align: start;
+    display: inline-block;
+    margin: var(--space-3) 0 var(--space-1) 0;
+  }
+
+  .resume-front .box-3 .projects-section h3 {
+    font-size: var(--text-base);
+    margin: var(--space-3) 0 var(--space-1) 0;
+  }
+  .resume-front ul {
+    padding-left: var(--space-6);
+  }
+  .resume-front .mobile-sub-grid-inner {
+    display: grid;
+    grid-template-columns: 43mm;
   }
 }
 
@@ -818,7 +846,6 @@
     inset 0 0 12px var(--color-neon-primary),
     inset 0 0 24px var(--color-neon-primary);
   filter: brightness(1.1);
-  
 }
 
 .cyber-resume .box-8 .holo-map-container {
@@ -837,7 +864,7 @@
   top: 0;
   left: 0;
   /* aspect-ratio: 677 / 500; */
-  
+
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -978,7 +1005,7 @@
   left: 54%;
 }
 /* Bartender */
-.map-node.node-7 {  
+.map-node.node-7 {
   top: 4%;
   left: 25%;
 }
@@ -1000,32 +1027,32 @@
 /* Jr Web Dev */
 .map-node.node-11 {
   top: 24%;
-  left: 85%; 
+  left: 85%;
 }
 /* Gov General Award */
 .map-node.node-12 {
   top: 50%;
-  left: 2%; 
+  left: 2%;
 }
 /* Outrigger */
 .map-node.node-13 {
   top: 7.8%;
-  left: 2%; 
+  left: 2%;
 }
 /* Hiring Team */
 .map-node.node-14 {
   top: 23%;
-  left: 25%; 
+  left: 25%;
 }
 /* Ops Meet */
 .map-node.node-15 {
   top: 35%;
-  left: 65.5%; 
+  left: 65.5%;
 }
 /* Above and Beyond */
 .map-node.node-16 {
   top: 60%;
-  left: 74.5%; 
+  left: 74.5%;
 }
 
 /*===== Node Logic =====*/
@@ -1307,7 +1334,7 @@
 
 .cyber-resume .box-12 {
   height: 115px;
-  width : 60px;
+  width: 60px;
   animation: none;
   display: grid;
   padding: 0;
@@ -1358,7 +1385,7 @@
   height: 100px;
   top: 0%;
   left: 0%;
-  transform: translateX(-14%) translateY(-6%) scale(.9);
+  transform: translateX(-14%) translateY(-6%) scale(0.9);
   /* width: 25vw; */
   display: grid;
   grid-template-columns: 1fr;
