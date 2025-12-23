@@ -53,14 +53,9 @@ function Sheet({ resumeData, theme }) {
         <CyberResume resumeData={resumeData} theme={theme} />
       )}
 
-      {xp >= maxXP && theme === "dark" && (
-        <button className="flip-hint" onClick={() => setIsFlipped(!isFlipped)}>
-          {isFlipped ? "press SPACE to show Resume" : "press SPACE to show Secret Resume"}
-        </button>
-      )}
 
       <div className="hero-wrapper">
-        <PixelHero />
+        <PixelHero setIsFlipped={setIsFlipped} isFlipped={isFlipped} theme={theme} />
       </div>
     </div>
   );

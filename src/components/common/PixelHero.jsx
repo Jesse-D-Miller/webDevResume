@@ -6,7 +6,7 @@ import spriteLevel3 from "../../assets/pixelHeroLevel3.png";
 import spriteLevel4 from "../../assets/pixelHeroLevel4.png";
 import spriteLevel5 from "../../assets/pixelHeroLevel5.png";
 
-function PixelHero() {
+function PixelHero({ setIsFlipped, isFlipped, theme }) {
   const [frameIndex, setFrameIndex] = useState(0);
   const [showLevelUpMessage, setShowLevelUpMessage] = useState(true);
   const { xp, grantXp, heroMessage } = useXP();
@@ -81,9 +81,12 @@ function PixelHero() {
     };
 
     return (
-      <div className="pixel-hero" onClick={() => grantXp("pixel-hero-click", 0, "Hey! That tickles! No XP here!")}>
+      <div className="pixel-hero">
         <div
           className="hero-sprite"
+          onClick={() =>
+            grantXp("pixel-hero-click", 0, "Hey! That tickles! No XP here!")
+          }
           style={{
             backgroundImage: `url(${spritesheets[level]})`,
             backgroundPosition: `${frameOffsets[frameIndex]}px 0`,
@@ -99,11 +102,18 @@ function PixelHero() {
           className="hero-speech-bubble"
           style={{
             transform: `translate(${bubblePositions[level].x}px, ${bubblePositions[level].y}px)`,
+            cursor: xp >= 12 && theme === "dark" ? "pointer" : "default",
           }}
+          onClick={
+            xp >= 12 && theme === "dark"
+              ? () => setIsFlipped && setIsFlipped(!isFlipped)
+              : undefined
+          }
         >
-          {showLevelUpMessage ? hints[level] || "Click around to help me level up!" : heroMessage || "Click around to help me level up!"}
+          {showLevelUpMessage
+            ? hints[level] || "Click around to help me level up!"
+            : heroMessage || "Click around to help me level up!"}
         </div>
-        
       </div>
     );
   }
@@ -120,7 +130,13 @@ function PixelHero() {
   return (
     <div className="pixel-hero">
       <div className="hero-sprite">{fallbackData[level] || "💻"}</div>
-      <div className="hero-speech-bubble">{hints[level] || "Welcome!"}</div>
+      <div
+        className="hero-speech-bubble"
+        style={{ cursor: "pointer" }}
+        onClick={() => setIsFlipped && setIsFlipped(!isFlipped)}
+      >
+        {hints[level] || "Welcome!"}
+      </div>
     </div>
   );
 }

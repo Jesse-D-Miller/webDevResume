@@ -33,7 +33,6 @@ function SecretResume({ secretResumeData }) {
           <img
             src={finneganImg}
             alt="Finnegan the dog"
-            style={{ width: "450px", borderRadius: "10px" }}
           />
         </div>
 
