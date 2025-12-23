@@ -116,7 +116,7 @@
 }
 
 @media (min-width: 768px) {
-  /* Tablet and up: switch to two columns, fixed aspect, or your desktop styles */
+  /* Tablet and up: switch to two columns, fixed aspect, or desktop styles */
   .resume-front .resume-columns {
     display: grid;
     grid-template-columns: 1fr 43mm;
@@ -169,7 +169,7 @@
 }
 
 @media (min-width: 768px) {
-  /* Tablet and up: switch to two columns, fixed aspect, or your desktop styles */
+  /* Tablet and up: switch to two columns, fixed aspect, or desktop styles */
 }
 
 /* =========================================== Front / Back Faces ===========================================*/
@@ -300,7 +300,7 @@
 }
 
 @media (min-width: 768px) {
-  /* Tablet and up: switch to two columns, fixed aspect, or your desktop styles */
+  /* Tablet and up: switch to two columns, fixed aspect, or desktop styles */
   .resume-front .technical-skills-section,
   .resume-front .soft-skills-section,
   .resume-front .hobbies-section {
@@ -380,7 +380,7 @@
 }
 
 @media (min-width: 768px) {
-  /* Tablet and up: switch to two columns, fixed aspect, or your desktop styles */
+  /* Tablet and up: switch to two columns, fixed aspect, or desktop styles */
   .pixel-hero {
     left: var(--space-32);
   }
@@ -468,7 +468,7 @@
 }
 
 @media (min-width: 768px) {
-  /* Tablet and up: switch to two columns, fixed aspect, or your desktop styles */
+  /* Tablet and up: switch to two columns, fixed aspect, or desktop styles */
   .cyber-resume {
     max-width: 750px;
     grid-template-rows: repeat(153, 16px);
@@ -647,18 +647,19 @@
 }
 
 @media (min-width: 768px) {
-  /* Tablet and up: switch to two columns, fixed aspect, or your desktop styles */
+  /* Tablet and up: switch to two columns, fixed aspect, or desktop styles */
   .cyber-resume .box-1 .resume-header h1 {
     font-size: var(--text-5xl);
+    padding: 0;
   }
 
   .cyber-resume .box-1 .resume-header h1.case-1 {
-    font-size: 48px;
-    letter-spacing: 22px;
+    font-size: var(--text-4xl);
+    letter-spacing: 20px;
+    white-space: nowrap;
   }
 
   .cyber-resume .box-1 .resume-header .contact-info {
-    margin: 0 0 var(--space-6) 0;
     font-size: var(--text-base);
   }
 }
@@ -703,6 +704,7 @@
   padding: 10px 0 5px 0;
   margin: 0;
 }
+
 .cyber-resume .summary-section p {
   font-size: var(--text-2xs);
   text-align: left;
@@ -756,6 +758,19 @@
 .cyber-resume .box-2 .summary-section.powered-off .power-btn svg,
 .cyber-resume .box-2 .summary-section.powered-off-initial .power-btn svg {
   animation: powerButtonSTBFlash 2s ease infinite;
+}
+
+@media (min-width: 768px) {
+  /* Tablet and up: switch to two columns, fixed aspect, or desktop styles */
+  .cyber-resume .summary-section h3 {
+  font-size: var(--text-2xl);
+  padding: 20px 0 5px 0;
+}
+.cyber-resume .summary-section p {
+  font-size: var(--text-xs);
+  padding: var(--space-4);
+  line-height: var(--space-5);
+}
 }
 
 /* ================================================= Summary =================================================*/
@@ -1492,7 +1507,7 @@
 }
 
 @media (min-width: 768px) {
-  /* Tablet and up: switch to two columns, fixed aspect, or your desktop styles */
+  /* Tablet and up: switch to two columns, fixed aspect, or desktop styles */
 }
 
 /*================================================== Battery ==================================================*/
