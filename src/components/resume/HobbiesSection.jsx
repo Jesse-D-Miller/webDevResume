@@ -43,7 +43,7 @@ function HobbiesSection({ resumeData, theme }) {
 
   return (
     <section className="hobbies-section" onClick={handleClick}>
-      <h3>HOBBIES</h3>
+      <h3 key={scrollKey}>HOBBIES</h3>
       {flashes.map((flash) => (
         <span
           key={flash.key}
