@@ -64,8 +64,8 @@
 @media (min-width: 768px) {
   /* Tablet and up: switch to two columns, fixed aspect, or desktop styles */
   .battery-toggle svg {
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
   }
 }
 
@@ -1147,13 +1147,10 @@
 
 @media (min-width: 768px) {
   /* Tablet and up: switch to two columns, fixed aspect, or desktop styles */
-
   .map-node {
-  width: 24px;
-  height: 24px;
-}
-
-
+    width: 24px;
+    height: 24px;
+  }
 }
 /* ================================================= Education ================================================*/
 /* ============================================= Technical Skills ============================================*/
@@ -1553,6 +1550,9 @@
 
 @media (min-width: 768px) {
   /* Tablet and up: switch to two columns, fixed aspect, or desktop styles */
+  .cyber-resume .box-12 {
+  transform: translateX(50%) translateY(-6%) scale(0.75) rotate(180deg);
+}
 }
 
 /*================================================== Battery ==================================================*/
@@ -1644,6 +1644,26 @@
 .secret-resume .secret-left-right .secret-right ul {
   margin: 0.5em 1rem;
   padding: 0;
+}
+
+@media (min-width: 768px) {
+  /* Tablet and up: switch to two columns, fixed aspect, or desktop styles */
+
+  .secret-resume img {
+    width: 100%;
+    border-radius: 1%;
+  }
+  .secret-resume .secret-left-right {
+    display: flex;
+    flex-direction: row;
+  }
+  .secret-resume .secret-left-right .secret-right {
+    text-align: start;
+  }
+  .secret-resume .secret-left-right .secret-right ul {
+    margin-left: 0;
+    padding: 0;
+  }
 }
 
 /*========== Image / Skills / Hobbies ==========*/
