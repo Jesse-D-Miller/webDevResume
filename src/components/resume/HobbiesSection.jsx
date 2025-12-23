@@ -6,6 +6,7 @@ function HobbiesSection({ resumeData, theme }) {
   const [bonusIndex, setBonusIndex] = useState(0);
   const [displayedHobbies, setDisplayedHobbies] = useState(resumeData.hobbies);
   const [flashes, setFlashes] = useState([]);
+  const [scrollKey, setScrollKey] = useState(0);
   const { grantXp } = useXP();
 
   // each click adds a hobby to the hobbies section. the first click also adds XP
@@ -29,6 +30,8 @@ function HobbiesSection({ resumeData, theme }) {
       setTimeout(() => {
         setFlashes((prev) => prev.filter((f) => f.key !== key));
       }, 1500);
+
+      setScrollKey((k) => k + 1);
 
       grantXp(
         `hobby-click`,
@@ -54,7 +57,7 @@ function HobbiesSection({ resumeData, theme }) {
           +1
         </span>
       ))}
-      <div>
+      <div key={scrollKey}>
         {theme === "cyber"
           ? displayedHobbies.map((hobby, index) => <p key={index}>{hobby}</p>)
           : resumeData.hobbies.map((hobby, index) => (
