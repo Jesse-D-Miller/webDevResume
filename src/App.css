@@ -1177,6 +1177,8 @@
   display: inline-flex;
   align-items: center;
   width: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
 .cyber-resume .box-11 {
@@ -1188,6 +1190,8 @@
     rgba(2, 83, 34, 0) 100%
   );
   backdrop-filter: blur(5px);
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .cyber-resume .hobbies-section h3 {
@@ -1208,8 +1212,9 @@
   gap: var(--space-12);
   margin: 0;
   padding: 0;
-  width: auto;
+  width: max-content;
   max-width: none;
+  /* min-width: 100%; */
   animation: hobbyScroll 35s linear infinite;
 }
 
@@ -1703,13 +1708,13 @@
 
 @keyframes hobbyScroll {
   0% {
-    transform: translate3d(0%, 0, 0);
+    transform: translateX(0%);
   }
   90% {
-    transform: translate3d(-155%, 0, 0);
+    transform: translateX(-155%);
   }
   100% {
-    transform: translate3d(-155%, 0, 0);
+    transform: translateX(-155%);
   }
 }
 
