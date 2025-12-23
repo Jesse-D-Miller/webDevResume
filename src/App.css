@@ -366,8 +366,8 @@
   border: 2px solid var(--color-ink);
   box-shadow: var(--shadow-paper);
   font-size: var(--text-2xs);
-  max-width: 50vw;
-  min-width: 50vw;
+  max-width: 47vw;
+  /* min-width: 50vw; */
   white-space: normal;
   word-wrap: break-word;
   line-height: 1.4;
@@ -842,20 +842,26 @@
     inset 0 0 12px var(--color-neon-primary),
     inset 0 0 24px var(--color-neon-primary);
   filter: brightness(1.1);
+  
 }
 
 .cyber-resume .box-8 .holo-map-container {
   position: relative;
-  width: 100%;
+  aspect-ratio: 677 / 500; /* this is just the ratio I drew the pngs for */
   height: 100%;
-  margin: 0;
+  margin: 0 auto 0 auto;
   padding: 0;
+  border-right: var(--color-neon-primary) solid 1px;
+  border-left: var(--color-neon-primary) solid 1px;
+  /* width: 677px; */
 }
 
 .cyber-resume .box-8 .holo-map-container .bg-layer {
   position: absolute;
   top: 0;
   left: 0;
+  /* aspect-ratio: 677 / 500; */
+  
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -959,6 +965,94 @@
   height: 100%;
 }
 
+/*===== Node Logic =====*/
+
+.map-node {
+  width: 10px;
+  height: 10px;
+}
+/* high school */
+.map-node.node-1 {
+  top: 67.5%;
+  left: 2%;
+}
+/* CAPU */
+.map-node.node-2 {
+  top: 67.5%;
+  left: 25%;
+}
+/* SFU */
+.map-node.node-3 {
+  top: 47.5%;
+  left: 39.7%;
+}
+/* LHL */
+.map-node.node-4 {
+  top: 16%;
+  left: 66%;
+}
+/* Tree Planting 1 */
+.map-node.node-5 {
+  top: 79%;
+  left: 68.5%;
+}
+/* Tree Planting 2 */
+.map-node.node-6 {
+  top: 60%;
+  left: 54%;
+}
+/* Bartender */
+.map-node.node-7 {  
+  top: 4%;
+  left: 25%;
+}
+/* BCWS1 */
+.map-node.node-8 {
+  top: 35.5%;
+  left: 39.7%;
+}
+/* BCWS2 */
+.map-node.node-9 {
+  top: 16%;
+  left: 39.7%;
+}
+/* BCWS3 */
+.map-node.node-10 {
+  top: 16%;
+  left: 55.4%;
+}
+/* Jr Web Dev */
+.map-node.node-11 {
+  top: 24%;
+  left: 85%; 
+}
+/* Gov General Award */
+.map-node.node-12 {
+  top: 50%;
+  left: 2%; 
+}
+/* Outrigger */
+.map-node.node-13 {
+  top: 7.8%;
+  left: 2%; 
+}
+/* Hiring Team */
+.map-node.node-14 {
+  top: 23%;
+  left: 25%; 
+}
+/* Ops Meet */
+.map-node.node-15 {
+  top: 35%;
+  left: 65.5%; 
+}
+/* Above and Beyond */
+.map-node.node-16 {
+  top: 60%;
+  left: 74.5%; 
+}
+
+/*===== Node Logic =====*/
 /* ================================================= Education ================================================*/
 /* ============================================= Technical Skills ============================================*/
 

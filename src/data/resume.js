@@ -465,8 +465,8 @@ export const resumeData = {
       {
         id: 1,
         color: "green",
-        x: "51.5%",
-        y: "117.5%",
+        x: 12,
+        y: 337,
         institution: "High School",
         intel:
           "Awarded Govenor General's Academic Medal for highest academic standing in graduating class.",

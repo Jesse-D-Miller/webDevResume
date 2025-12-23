@@ -48,14 +48,14 @@ function HoloMap({ resumeData }) {
         return (
           <div
             key={node.id}
-            className={`map-node ${node.color} ${isLit ? "" : "dim"}`}
+            className={`map-node node-${node.id} ${node.color} ${isLit ? "lit" : "dim"}`}
             style={{
               border: "2px solid transparent",
               position: "absolute",
-              left: `calc(${node.x} - 50%)`,
-              top: `calc(${node.y} - 50%)`,
-              width: "clamp(10px, 3vw, 24px)",
-              height: "clamp(10px, 3vw, 24px)",
+              // left: `calc(${node.x} - 50%)`,
+              // top: `calc(${node.y} - 50%)`,
+              // width: "clamp(10px, 3vw, 24px)",
+              // height: "clamp(10px, 3vw, 24px)",
               zIndex: 5,
               filter: isLit ? "none" : "grayscale(1) brightness(0.5)",
               transform:
@@ -74,14 +74,15 @@ function HoloMap({ resumeData }) {
         return (
           <div
             key={node.id}
-            className={`map-node ${node.color} ${isLit ? "" : "dim"}`}
+            className={`map-node node-${node.id} ${node.color} ${isLit ? "lit" : "dim"}`}
+            
             style={{
-              border: "2px solid transparent",
               position: "absolute",
-              left: `calc(${node.x} - 50%)`,
-              top: `calc(${node.y} - 50%)`,
-              width: "clamp(10px, 3vw, 24px)",
-              height: "clamp(10px, 3vw, 24px)",
+              // left: `calc(${node.x} - 50%)`,
+              // top: `calc(${node.y} - 50%)`,
+              // width: "clamp(10px, 3vw, 24px)",
+              // height: "clamp(10px, 3vw, 24px)",    
+              border: "2px solid transparent",
               zIndex: 5,
               filter: isLit ? "none" : "grayscale(1) brightness(0.5)",
               transform: "scale(1.2)",

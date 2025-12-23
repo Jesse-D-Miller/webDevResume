@@ -43,9 +43,9 @@ function PixelHero() {
   const spriteSizes = {
     1: { width: 64, height: 100 },
     2: { width: 64, height: 100 },
-    3: { width: 125, height: 100 },
-    4: { width: 112, height: 130 },
-    5: { width: 128, height: 128 },
+    3: { width: 80, height: 100 },
+    4: { width: 80, height: 100 },
+    5: { width: 80, height: 100 },
   };
 
   // Spritesheet mapping for levels 1-5
