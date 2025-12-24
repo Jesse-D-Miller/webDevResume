@@ -18,6 +18,12 @@
   /* Tablet and up: switch to two columns, fixed aspect, or desktop styles */
 }
 
+@media (min-width: 1440px) {
+  .App {
+    padding: 0.5rem;
+  }
+}
+
 /* ============================================= General Styles =============================================*/
 /* ================================================ Top Bar ================================================*/
 
@@ -30,6 +36,12 @@
   background: rgba(10, 10, 15, 0.92);
   border-bottom: #000000 solid var(--space-1);
   z-index: 9;
+}
+
+@media (min-width: 1440px) {
+  .top-bar {
+    filter: opacity(0);
+  }
 }
 
 /* ================================================ Top Bar ================================================*/
@@ -168,10 +180,6 @@
   filter: brightness(1.05);
 }
 
-@media (min-width: 768px) {
-  /* Tablet and up: switch to two columns, fixed aspect, or desktop styles */
-}
-
 /* =========================================== Front / Back Faces ===========================================*/
 /* ====================================== General Styles Resume Front ======================================*/
 
@@ -305,7 +313,6 @@
   .resume-front .soft-skills-section,
   .resume-front .hobbies-section {
     text-align: start;
-    /* display: inline-block; */
   }
 
   .resume-front h3 {
@@ -478,6 +485,14 @@
   }
 }
 
+@media (min-width: 1440px) {
+  .cyber-resume {
+    max-width: 1400px;
+    grid-template-rows: repeat(60, 16px);
+    grid-template-columns: repeat(16, 1fr);
+  }
+}
+
 /* ======================================== General / Default Styles ========================================*/
 /* ================================================ Box Grid ================================================*/
 
@@ -614,6 +629,57 @@
   }
   .cyber-resume .box-11 {
     grid-row: 131 / span 6;
+  }
+}
+
+@media (min-width: 1440px) {
+  .cyber-resume .box-1 {
+    width: 1000px;
+    max-width: 1000px;
+  }
+
+  .cyber-resume .box-2 {
+    grid-column: 6 / span 6;
+    max-width: none;
+    margin: 0 var(--space-8);
+  }
+
+  .cyber-resume .box-3,
+  .cyber-resume .box-4,
+  .cyber-resume .box-5 {
+    grid-column: 1 / 6;
+    grid-row: 17 / span 21;
+    margin: 0;
+  }
+
+  .cyber-resume .box-6,
+  .cyber-resume .box-7 {
+    grid-column: 1 / 6;
+    grid-row: 41 / span 21;
+    margin: 0;
+  }
+
+  .cyber-resume .box-8 {
+    grid-row: 36 / span 22;
+    max-width: fit-content;
+    justify-self: center;
+  }
+
+  .cyber-resume .box-9 {
+    grid-row: 14 / span 27;
+    grid-column: 12 / span 3;
+    margin: 0;
+  }
+
+  .cyber-resume .box-10 {
+    grid-row: 14 / span 27;
+    grid-column: 15 / span 2;
+    margin: 0 0 0 var(--space-8);
+  }
+
+  .cyber-resume .box-11 {
+    grid-row: 43 / span 6;
+    grid-column: 12 / -1;
   }
 }
 
@@ -968,7 +1034,6 @@
     font-size: var(--text-base);
     line-height: var(--space-6);
   }
-
 }
 
 @media (min-width: 1024px) {
@@ -985,7 +1050,24 @@
   .folder-tab {
     margin-right: -2%;
   }
+}
 
+@media (min-width: 1440px) {
+  .project-tabs-row {
+    grid-column: 1 / 4;
+    grid-row: 16 / span 3;
+    transform: translateY(-10px) translateX(20px);
+  }
+
+  .experience-tabs-row {
+    grid-column: 1 / 4;
+    grid-row: 40 / span 3;
+    transform: translateY(-10px) translateX(calc(20px + 0.5em));
+  }
+
+  .folder-tab {
+    margin-right: -2%;
+  }
 }
 
 /* ========================================= Projects and Experience =========================================*/
