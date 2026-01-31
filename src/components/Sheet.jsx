@@ -8,14 +8,14 @@ import { secretResumeData } from "../data/secretResume.js";
 
 function Sheet({ resumeData, theme }) {
   const [isFlipped, setIsFlipped] = useState(false); //tracks which side of the resume is shown
-  const { xp, maxXP } = useXP();
+  const { xp, maxXp } = useXP();
 
   useEffect(() => {
     // Handle spacebar press to flip the sheet
     const handleKeyDown = (event) => {
       if (event.code === "Space") {
         event.preventDefault();
-        if (xp >= maxXP) {
+        if (xp >= maxXp) {
           setIsFlipped((prev) => !prev);
         } else {
           return;
@@ -28,7 +28,7 @@ function Sheet({ resumeData, theme }) {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [xp, maxXP]);
+  }, [xp, maxXp]);
 
   return (
     <div className="sheet-container">

@@ -119,16 +119,7 @@ function CyberResume({ resumeData, theme }) {
         </div>
       ))}
 
-      <div
-        className="experience-tabs-row"
-        onClick={() =>
-          grantXp(
-            "experience-tabs",
-            1,
-            "My most recent experience was with the BC Wildfire Service, but I’ve worn a lot of hats—tree planter, bartender, farmhand, and more. I’m always up for a new challenge, and I’d love the chance to bring my skills to your team next."
-          )
-        }
-      >
+      <div className="experience-tabs-row">
         {resumeData.experience.map((job) => (
           <div
             key={job.id}
@@ -141,7 +132,14 @@ function CyberResume({ resumeData, theme }) {
                 : undefined,
               "--neon-color-opacity": experienceNeonColors[job.id]?.opacity,
             }}
-            onClick={() => setFrontExperienceId(job.id)}
+            onClick={() => {
+              setFrontExperienceId(job.id);
+              grantXp(
+                "experience-tabs",
+                1,
+                "My most recent experience was with the BC Wildfire Service, but I’ve worn a lot of hats—tree planter, bartender, farmhand, and more. I’m always up for a new challenge, and I’d love the chance to bring my skills to your team next."
+              );
+            }}
           >
             {job.role}
           </div>

@@ -30,7 +30,7 @@ function ResumeFront({ resumeData, theme }) {
             </div>
           ))}
           {resumeData.experience.map((job, index) => (
-            <div key={`experience-${index}`} className={`box-${index + 6}`}>
+            <div key={job.id} className={`box-${index + 6}`}>
               <ExperienceSection
                 job={job}
                 index={index}
