@@ -1,3 +1,10 @@
 import { useContext } from "react";
 import { XPContext } from "../context/XPContext";
-export const useXP = () => useContext(XPContext);
+
+export const useXP = () => {
+	const context = useContext(XPContext);
+	if (!context) {
+		throw new Error("useXP must be used within XPProvider");
+	}
+	return context;
+};
