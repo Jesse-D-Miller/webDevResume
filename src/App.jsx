@@ -9,7 +9,7 @@ import Sheet from "./components/Sheet.jsx";
 import BatteryToggle from "./components/common/BatteryToggle.jsx";
 
 function App() {
-  const [theme, setTheme] = useState("dark"); //toggle state beteween dark and cyber themes
+  const [theme, setTheme] = useState("dark"); //toggle state between dark and cyber themes
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "dark" ? "cyber" : "dark"));

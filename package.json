@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "mocha \"test/**/*.test.js\""
+    "test": "npm run test:unit && npm run test:components",
+    "test:unit": "node --import tsx node_modules/mocha/bin/mocha.js \"test/**/*.test.js\" --require ./test/setup.js",
+    "test:components": "vitest run"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
@@ -15,11 +17,17 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
     "chai": "^6.2.2",
+    "jsdom": "^27.4.0",
     "mocha": "^11.7.5",
-    "vite": "^6.0.1"
+    "tsx": "^4.21.0",
+    "vite": "^6.0.1",
+    "vitest": "^4.0.18"
   }
 }
