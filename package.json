@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "mocha"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
@@ -17,6 +18,8 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
+    "chai": "^6.2.2",
+    "mocha": "^11.7.5",
     "vite": "^6.0.1"
   }
 }
