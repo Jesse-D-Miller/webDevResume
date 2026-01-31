@@ -6,9 +6,8 @@ export const secretResumeData = {
       treat: "Click here and I'll give Finnegan a treat on your behalf!",
     },
   },
-  summary: [
+  summary:
     "Woof! I'm Finnegan. I specialize in tail wags, playful antics, and providing emotional support during long coding sessions. My skills include fetching sticks, taste testing treats, and being an all-around good boy.",
-  ],
   skills: [
     { name: "fetching", level: "expert" },
     { name: "catching frisbees", level: "advanced" },
@@ -24,7 +23,7 @@ export const secretResumeData = {
     "playing with other dogs",
     "treats",
   ],
-  education:
+  education: [
     {
       institution: "Puppy Training Academy",
       degree: "Certified Good Boy",
@@ -32,4 +31,5 @@ export const secretResumeData = {
       details:
         "Graduated top of my class in obedience and playing well (enough) with others.",
     },
+  ],
 };

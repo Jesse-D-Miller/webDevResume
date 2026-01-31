@@ -25,7 +25,7 @@ function SecretResume({ secretResumeData }) {
 
       <div className="secret-summary">
         <h3>Summary</h3>
-        <p>{secretResumeData.summary[0]}</p>
+        <p>{secretResumeData.summary}</p>
       </div>
 
       <div className="secret-left-right">
@@ -61,12 +61,15 @@ function SecretResume({ secretResumeData }) {
 
       <div className="secret-education">
         <h3>Education</h3>
-        <h4>{secretResumeData.education.institution}</h4>
-        <p>
-          {secretResumeData.education.degree} - {secretResumeData.education.period}
-        </p>
-        
-        <p>{secretResumeData.education.details}</p>
+        {secretResumeData.education.map((education) => (
+          <div key={education.institution}>
+            <h4>{education.institution}</h4>
+            <p>
+              {education.degree} - {education.period}
+            </p>
+            <p>{education.details}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

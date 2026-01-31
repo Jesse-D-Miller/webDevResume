@@ -11,9 +11,8 @@ export const resumeData = {
       resumePdf: "/Jesse_Miller_WebDeveloper_Resume.pdf",
     },
   },
-  summary: [
+  summary:
     "Junior full-stack developer with hands-on experience building responsive, database-driven web applications using React, Node.js, Express, Ruby on Rails, and PostgreSQL. Lighthouse Labs full-stack graduate with strong problem-solving skills, clean coding habits, and a focus on building intuitive user experiences. Brings proven leadership, calm decision-making, and reliability from several years as a BC Wildfire Crew Supervisor.",
-  ],
   skills: [
     // Languages
     {
@@ -469,7 +468,7 @@ export const resumeData = {
         y: 337,
         institution: "High School",
         intel:
-          "Awarded Govenor General's Academic Medal for highest academic standing in graduating class.",
+          "Awarded Governor General's Academic Medal for highest academic standing in graduating class.",
       },
       {
         id: 2,
@@ -566,7 +565,7 @@ export const resumeData = {
         color: "yellow",
         x: 12,
         y: 250,
-        achievement: "Govenor Generals Award",
+        achievement: "Governor General's Award",
         intel:
           "Awarded for achieving the highest academic standing in graduating class.",
       },
