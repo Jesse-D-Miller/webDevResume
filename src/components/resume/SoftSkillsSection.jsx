@@ -4,22 +4,24 @@ import { useState } from "react";
 
 function SoftSkillsSection({ resumeData, theme }) {
   const [bonusIndex, setBonusIndex] = useState(0);
-  const { grantXp } = useXP();
+  const { grantXp, hasClicked } = useXP();
   const { displayedSkills, setDisplayedSkills } = useSoftSkills();
 
   // each click adds a skill to the soft skills section. 42 bonus skills available
   const handleClick = () => {
     if (theme === "cyber" && bonusIndex < resumeData.bonusSoftSkills.length) {
-      setDisplayedSkills([
-        ...displayedSkills,
+      setDisplayedSkills((prev) => [
+        ...prev,
         resumeData.bonusSoftSkills[bonusIndex],
       ]);
-      setBonusIndex(bonusIndex + 1);
-      grantXp(
-        `soft-skill-click`,
-        1,
-        `When I was writing this section, I was told that I listed too many soft skills. Don't worry, you can still see them by clicking here!`
-      );
+      setBonusIndex((prev) => prev + 1);
+      if (!hasClicked("soft-skill-click")) {
+        grantXp(
+          "soft-skill-click",
+          1,
+          "When I was writing this section, I was told that I listed too many soft skills. Don't worry, you can still see them by clicking here!"
+        );
+      }
     }
   };
 
@@ -30,7 +32,10 @@ function SoftSkillsSection({ resumeData, theme }) {
   );
   const paddingCalc = Math.max(
     0,
-    (150 - fontCalc * (displayedSkills.length - 8)) / displayedSkills.length
+    displayedSkills.length
+      ? (150 - fontCalc * (displayedSkills.length - 8)) /
+          displayedSkills.length
+      : 0
   );
 
   return (
@@ -40,7 +45,7 @@ function SoftSkillsSection({ resumeData, theme }) {
         {theme === "cyber"
           ? displayedSkills.map((skill, index) => (
               <p
-                key={index}
+                key={skill.name}
                 style={{
                   paddingTop: `${paddingCalc}px`,
                   fontSize: `${fontCalc}px`,
@@ -51,7 +56,7 @@ function SoftSkillsSection({ resumeData, theme }) {
             ))
           : resumeData.skills
               .filter((skill) => skill.tags.includes("soft-skill"))
-              .map((skill, index) => <p key={index}>{skill.name}</p>)}
+              .map((skill) => <p key={skill.name}>{skill.name}</p>)}
       </div>
     </section>
   );
