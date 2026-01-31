@@ -19,7 +19,7 @@ function PixelHero({ setIsFlipped, isFlipped, theme }) {
       setFrameIndex((prevIndex) => (prevIndex + 1) % 3); // 3 frames per level
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [theme]);
 
   // if hero level changes, show level up message briefly
   useEffect(() => {
@@ -37,6 +37,22 @@ function PixelHero({ setIsFlipped, isFlipped, theme }) {
     3: "Another level! Keep exploring!",
     4: "Oh wow, I'm feeling powerful!",
     5: "Congrats! Only one more secret to unlock!",
+  };
+
+  const spritePositions = {
+    1: { x: 0, y: 0 },
+    2: { x: 0, y: 0 },
+    3: { x: 0, y: 0 },
+    4: { x: 0, y: 0 },
+    5: { x: 0, y: 0 },
+  };
+
+  const bubblePositions = {
+    1: { x: 0, y: 0 },
+    2: { x: 0, y: 0 },
+    3: { x: 0, y: 0 },
+    4: { x: 0, y: 0 },
+    5: { x: 0, y: 0 },
   };
 
   // Sprite dimensions per level (width is single frame, height is total)
@@ -62,24 +78,6 @@ function PixelHero({ setIsFlipped, isFlipped, theme }) {
     const spriteSize = spriteSizes[level];
     const frameOffsets = [0, -spriteSize.width, -spriteSize.width * 2];
 
-    // Custom positioning per level (x: left/right, y: up/down)
-    const spritePositions = {
-      1: { x: 0, y: 0 },
-      2: { x: 0, y: 0 },
-      3: { x: 0, y: 0 },
-      4: { x: 0, y: 0 },
-      5: { x: 0, y: 0 },
-    };
-
-    // Bubble positions per level
-    const bubblePositions = {
-      1: { x: 0, y: 0 },
-      2: { x: 0, y: 0 },
-      3: { x: 0, y: 0 },
-      4: { x: 0, y: 0 },
-      5: { x: 0, y: 0 },
-    };
-
     return (
       <div className="pixel-hero">
         <div
@@ -87,6 +85,7 @@ function PixelHero({ setIsFlipped, isFlipped, theme }) {
           onClick={() =>
             grantXp("pixel-hero-click", 0, "Hey! That tickles! No XP here!")
           }
+          aria-label="Pixel hero"
           style={{
             backgroundImage: `url(${spritesheets[level]})`,
             backgroundPosition: `${frameOffsets[frameIndex]}px 0`,
@@ -106,9 +105,10 @@ function PixelHero({ setIsFlipped, isFlipped, theme }) {
           }}
           onClick={
             xp >= 12 && theme === "dark"
-              ? () => setIsFlipped && setIsFlipped(!isFlipped)
+              ? () => setIsFlipped?.((prev) => !prev)
               : undefined
           }
+          aria-label="Pixel hero hint"
         >
           {showLevelUpMessage
             ? hints[level] || "Click around to help me level up!"
@@ -133,7 +133,8 @@ function PixelHero({ setIsFlipped, isFlipped, theme }) {
       <div
         className="hero-speech-bubble"
         style={{ cursor: "pointer" }}
-        onClick={() => setIsFlipped && setIsFlipped(!isFlipped)}
+        onClick={() => setIsFlipped?.((prev) => !prev)}
+        aria-label="Pixel hero hint"
       >
         {hints[level] || "Welcome!"}
       </div>
