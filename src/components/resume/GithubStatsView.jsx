@@ -11,32 +11,68 @@ const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 
 function GithubStatsView() {
   const [stats, setStats] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     async function loadStats() {
-      if (isStatsCacheStale()) {
-        const data = await fetchGithubStats(GITHUB_USERNAME, GITHUB_TOKEN);
-        saveStatsToCache(data);
-        setStats({
-          publicRepos: data.totalRepos,
-          totalCommits: data.totalCommits,
-          recentActivity: data.recentActivity,
-          totalSize: data.totalRepoSize,
-        });
-      } else {
+      setError(null);
+      try {
+        if (isStatsCacheStale()) {
+          const data = await fetchGithubStats(GITHUB_USERNAME, GITHUB_TOKEN);
+          saveStatsToCache(data);
+          if (isMounted) {
+            setStats({
+              publicRepos: data.totalRepos,
+              totalCommits: data.totalCommits,
+              recentActivity: data.recentActivity,
+              totalSize: data.totalRepoSize,
+            });
+          }
+        } else {
+          const cached = getStatsFromCache();
+          if (isMounted) {
+            if (cached && cached.data) {
+              setStats({
+                publicRepos: cached.data.totalRepos,
+                totalCommits: cached.data.totalCommits,
+                recentActivity: cached.data.recentActivity,
+                totalSize: cached.data.totalRepoSize,
+              });
+            } else {
+              setStats(null);
+            }
+          }
+        }
+      } catch (err) {
         const cached = getStatsFromCache();
-        if (cached && cached.data) {
-          setStats({
-            publicRepos: cached.data.totalRepos,
-            totalCommits: cached.data.totalCommits,
-            recentActivity: cached.data.recentActivity,
-            totalSize: cached.data.totalRepoSize,
-          });
+        if (isMounted) {
+          if (cached && cached.data) {
+            setStats({
+              publicRepos: cached.data.totalRepos,
+              totalCommits: cached.data.totalCommits,
+              recentActivity: cached.data.recentActivity,
+              totalSize: cached.data.totalRepoSize,
+            });
+          } else {
+            setError("Failed to load GitHub stats");
+            setStats(null);
+          }
         }
       }
     }
+
     loadStats();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
+
+  if (error) {
+    return <div className="error">{error}</div>;
+  }
 
   if (!stats) {
     return <div>Loading GitHub stats...</div>;
@@ -60,7 +96,7 @@ function GithubStatsView() {
       <div>
         <h4>Recent Activity:</h4>
         <ul>
-          {stats.recentActivity.map((repo) => (
+          {(stats.recentActivity || []).map((repo) => (
             <li key={repo.name}>
               {repo.name}: {new Date(repo.pushed_at).toLocaleDateString()}
             </li>
