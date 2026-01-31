@@ -14,9 +14,14 @@ function GithubLanguageSkills() {
   const [languageStats, setLanguageStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { grantXp } = useXP();
+  const { grantXp, hasClicked } = useXP();
+
+  const xpMessage =
+    "These stats are all live. They update automatically every 24 hours and give insight into what I'm working on right now!";
 
   useEffect(() => {
+    let isMounted = true;
+
     async function loadStats() {
       setLoading(true);
       setError(null);
@@ -24,19 +29,29 @@ function GithubLanguageSkills() {
         if (isCacheStale()) {
           const stats = await fetchGithubStats(GITHUB_USERNAME, GITHUB_TOKEN);
           saveLanguageStatsToCache(stats.languageTotals);
-          setLanguageStats(stats.languageTotals);
+          if (isMounted) setLanguageStats(stats.languageTotals);
         } else {
           const cached = getLanguageStatsFromCache();
-          setLanguageStats(cached ? cached.data : null);
+          if (isMounted) setLanguageStats(cached ? cached.data : null);
         }
       } catch (err) {
-        setError("Failed to load GitHub language stats");
         const cached = getLanguageStatsFromCache();
-        setLanguageStats(cached ? cached.data : null);
+        if (isMounted) {
+          if (cached && cached.data) {
+            setLanguageStats(cached.data);
+          } else {
+            setError("Failed to load GitHub language stats");
+            setLanguageStats(null);
+          }
+        }
       }
-      setLoading(false);
+      if (isMounted) setLoading(false);
     }
     loadStats();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   if (loading) {
@@ -57,8 +72,13 @@ function GithubLanguageSkills() {
   );
 
   return (
-    <div className="github-languages-section" 
-    onClick={() => grantXp("github-stats-link", 1, "These stats are all live. They update automatically every 24 hours and give insight into what im working on right now!")}
+    <div
+      className="github-languages-section"
+      onClick={() => {
+        if (!hasClicked("github-stats-link")) {
+          grantXp("github-stats-link", 1, xpMessage);
+        }
+      }}
     >
       <h3>PROGRAMMING LEVELS</h3>
       <h4>(based on my github project language stats)</h4>
