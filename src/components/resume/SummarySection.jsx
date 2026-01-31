@@ -4,7 +4,7 @@ import { useState } from "react";
 function SummarySection({ resumeData, theme }) {
   const [isPowered, setIsPowered] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
-  const { grantXp, hasClicked, heroMessage } = useXP();
+  const { grantXp, hasClicked } = useXP();
 
   // Handle power button click so that hasInteracted is set to true only after first click
   const handlePowerClick = () => {
@@ -44,11 +44,11 @@ function SummarySection({ resumeData, theme }) {
               grantXp(
                 "power-click",
                 1,
-                `That\'s my summary! Give it a read to learn a little about me!`
+                "That's my summary! Give it a read to learn a little about me!"
               );
             }
           }}
-          aria-label="Power On"
+          aria-label="Toggle power"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
