@@ -80,7 +80,7 @@ function BatteryToggle({ onClick, theme }) {
   const defaultIndex = theme === "dark" ? 0 : 7;
   const [frame, setFrame] = useState(defaultIndex);
   const intervalRef = useRef(null);
-  const { heroMessage, grantXp, hasClicked } = useXP();
+  const { grantXp, hasClicked } = useXP();
 
   useEffect(() => {
     setFrame(defaultIndex);
@@ -90,10 +90,8 @@ function BatteryToggle({ onClick, theme }) {
     if (intervalRef.current) return;
     if (theme === "cyber") return;
 
-    let i = frame;
     intervalRef.current = setInterval(() => {
-      setFrame(i);
-      i = (i + 1) % BatteryLevels.length;
+      setFrame((prev) => (prev + 1) % BatteryLevels.length);
     }, 500);
   };
 
@@ -103,6 +101,12 @@ function BatteryToggle({ onClick, theme }) {
     intervalRef.current = null;
   };
 
+  useEffect(() => {
+    return () => {
+      stopAnimation();
+    };
+  }, []);
+
   return (
     <div
       className="battery-toggle"
@@ -110,7 +114,7 @@ function BatteryToggle({ onClick, theme }) {
       onMouseLeave={stopAnimation}
       onClick={(e) => {
         stopAnimation();
-        onClick(e);
+        onClick?.(e);
         if (!hasClicked("mode-click")) {
           grantXp(
             "mode-click",
