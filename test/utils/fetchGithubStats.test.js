@@ -91,4 +91,48 @@ describe("fetchGithubStats", () => {
     const commitCalls = fetchCalls.filter((url) => url.includes("/commits"));
     expect(commitCalls).to.have.length(1);
   });
+
+  it("throws when repository fetch fails", async () => {
+    globalThis.fetch = async () => ({ ok: false, json: async () => ({}) });
+
+    let error;
+    try {
+      await fetchGithubStats("test-user");
+    } catch (err) {
+      error = err;
+    }
+
+    expect(error).to.be.instanceOf(Error);
+  });
+
+  it("defaults commit count to 1 when Link header is missing", async () => {
+    const repos = [
+      {
+        name: "repo-one",
+        fork: false,
+        size: 10,
+        pushed_at: "2025-01-02T00:00:00Z",
+        languages_url: "https://api.github.com/repos/user/repo-one/languages",
+      },
+    ];
+
+    globalThis.fetch = async (url) => {
+      if (url.includes("/users/test-user/repos")) {
+        return { ok: true, json: async () => repos };
+      }
+
+      if (url.endsWith("/languages")) {
+        return { ok: true, json: async () => ({ JavaScript: 100 }) };
+      }
+
+      if (url.includes("/commits")) {
+        return { ok: true, headers: { get: () => null } };
+      }
+
+      return { ok: false, json: async () => ({}) };
+    };
+
+    const result = await fetchGithubStats("test-user");
+    expect(result.totalCommits).to.equal(1);
+  });
 });

@@ -53,4 +53,15 @@ describe("githubLanguageCache", () => {
     Date.now = () => 1_000_000 + 2 * 24 * 60 * 60 * 1000;
     expect(isCacheStale()).to.equal(true);
   });
+
+  it("returns null when cache is missing", () => {
+    const cached = getLanguageStatsFromCache();
+    expect(cached).to.equal(null);
+  });
+
+  it("returns null when cache JSON is malformed", () => {
+    globalThis.localStorage.setItem("githubLanguageCache", "not-json");
+    const cached = getLanguageStatsFromCache();
+    expect(cached).to.equal(null);
+  });
 });
