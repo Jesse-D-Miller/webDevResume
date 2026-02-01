@@ -42,7 +42,7 @@ function HobbiesSection({ resumeData, theme }) {
   };
 
   return (
-    <section className="hobbies-section" onClick={handleClick}  key={scrollKey}>
+    <section className="hobbies-section" onClick={handleClick} key={scrollKey}>
       <h3>HOBBIES</h3>
       {flashes.map((flash) => (
         <span
@@ -57,12 +57,14 @@ function HobbiesSection({ resumeData, theme }) {
           +1
         </span>
       ))}
-      <div>
-        {theme === "cyber"
-          ? displayedHobbies.map((hobby, index) => <p key={index}>{hobby}</p>)
-          : resumeData.hobbies.map((hobby, index) => (
-              <p key={index}>{hobby}</p>
-            ))}
+      <div className="hobbies-scroll-mask">
+        <div className="hobbies-scroll">
+          {theme === "cyber"
+            ? displayedHobbies.map((hobby, index) => <p key={index}>{hobby}</p>)
+            : resumeData.hobbies.map((hobby, index) => (
+                <p key={index}>{hobby}</p>
+              ))}
+        </div>
       </div>
     </section>
   );

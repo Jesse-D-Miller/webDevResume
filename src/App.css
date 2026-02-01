@@ -1583,11 +1583,14 @@
   font-size: var(--text-lg);
   text-transform: uppercase;
   margin: 0;
-  padding: 0;
-  display: inline-flex;
+  padding: var(--space-4) 0 0 0;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  width: 100vw;
-  overflow: hidden;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  overflow: visible;
 }
 
 .cyber-resume .box-11 {
@@ -1606,14 +1609,30 @@
 .cyber-resume .hobbies-section h3 {
   opacity: 0.9;
   font-size: var(--text-4xl);
-  flex: 0 0 100%;
   text-align: center;
-  margin: 0 var(--space-12) 0 0;
+  margin: 0;
+  width: 100%;
+  position: absolute;
+  top: var(--space-1);
+  left: 0;
+  right: 0;
+  z-index: 2;
+  line-height: 1.1;
   animation: hobbyHeaderFlash 1s ease infinite,
     hobbyHeaderScroll 35s linear infinite;
+  pointer-events: none;
 }
 
-.cyber-resume .hobbies-section > div {
+.cyber-resume .hobbies-section .hobbies-scroll-mask {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.cyber-resume .hobbies-section .hobbies-scroll {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -1624,9 +1643,10 @@
   width: max-content;
   max-width: none;
   animation: hobbyScroll 35s linear infinite;
+  z-index: 1;
 }
 
-.cyber-resume .hobbies-section > div p {
+.cyber-resume .hobbies-section .hobbies-scroll p {
   opacity: 0.9;
   margin: 0;
   max-width: none;
@@ -1640,6 +1660,7 @@
   text-shadow: #000000 6px 6px 8px;
   animation: plusOneFlash 1.5s ease-in-out forwards;
   animation-delay: 0.1s;
+  z-index: 3;
 }
 
 /*================================================== Hobbies ==================================================*/
@@ -2129,19 +2150,16 @@
 
 @keyframes hobbyHeaderScroll {
   0%,
-  85% {
-    scale: 0;
+  90% {
+    transform: scale(0);
   }
-  /* Rush onto the grid quickly */
-  86% {
-    scale: 1;
-  }
-  /* Hold visible on the grid */
+  /* Show header after scroll finishes */
+  92%,
   99% {
-    scale: 1;
+    transform: scale(1);
   }
   100% {
-    scale: 0;
+    transform: scale(0);
   }
 }
 
@@ -2152,19 +2170,19 @@
   }
   50% {
     filter: brightness(2);
-    scale: 1.02;
+    transform: scale(1.02);
   }
 }
 
 @keyframes hobbyScroll {
   0% {
-    transform: translateX(0%);
+    transform: translateX(70%);
   }
   90% {
-    transform: translateX(-155%);
+    transform: translateX(-70%);
   }
   100% {
-    transform: translateX(-155%);
+    transform: translateX(-70%);
   }
 }
 
