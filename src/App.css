@@ -36,6 +36,7 @@
   background: rgba(10, 10, 15, 0.92);
   border-bottom: #000000 solid var(--space-1);
   z-index: 9;
+  pointer-events: none;
 }
 
 @media (min-width: 1440px) {
