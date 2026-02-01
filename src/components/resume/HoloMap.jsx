@@ -1,5 +1,4 @@
 import { useHoveredNodes } from "../../hooks/useHoveredNodes";
-import { useState } from "react";
 import { useXP } from "../../hooks/useXP";
 
 function HoloMap({ resumeData }) {
@@ -19,8 +18,10 @@ function HoloMap({ resumeData }) {
   );
   const hoveredNodes = hoveredNode ? [hoveredNode] : [];
 
-  const handleHover = (node) => {
-    if (hoveredNodeIds.size >= 16) {
+  const activateNode = (node) => {
+    const isNewNode = !hoveredNodeIds.has(node.id);
+    const nextSize = hoveredNodeIds.size + (isNewNode ? 1 : 0);
+    if (isNewNode && nextSize >= 16) {
       grantXp(
         `holo-map-explorer`,
         1,
@@ -34,6 +35,25 @@ function HoloMap({ resumeData }) {
       next.add(node.id);
       return next;
     });
+  };
+
+  const deactivateNode = () => {
+    setHoveredNode(null);
+  };
+
+  const toggleNode = (node) => {
+    if (hoveredNode?.id === node.id) {
+      setHoveredNode(null);
+      return;
+    }
+    activateNode(node);
+  };
+
+  const handleKeyDown = (event, node) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      toggleNode(node);
+    }
   };
 
   return (
@@ -52,18 +72,19 @@ function HoloMap({ resumeData }) {
             style={{
               border: "2px solid transparent",
               position: "absolute",
-              // left: `calc(${node.x} - 50%)`,
-              // top: `calc(${node.y} - 50%)`,
-              // width: "clamp(10px, 3vw, 24px)",
-              // height: "clamp(10px, 3vw, 24px)",
               zIndex: 5,
               filter: isLit ? "none" : "grayscale(1) brightness(0.5)",
               transform:
                 hoveredNode?.id === node.id ? "scale(1.2)" : "scale(1)",
               transition: "transform 0.2s cubic-bezier(0.4,1.6,0.4,1)",
             }}
-            onMouseEnter={() => handleHover(node)}
-            onMouseLeave={() => setHoveredNode(null)}
+            role="button"
+            tabIndex={0}
+            aria-label={node.institution || node.vocation || node.achievement}
+            onPointerEnter={() => activateNode(node)}
+            onPointerLeave={deactivateNode}
+            onClick={() => toggleNode(node)}
+            onKeyDown={(event) => handleKeyDown(event, node)}
           />
         );
       })}
@@ -75,23 +96,23 @@ function HoloMap({ resumeData }) {
           <div
             key={node.id}
             className={`map-node node-${node.id} ${node.color} ${isLit ? "lit" : "dim"}`}
-            
             style={{
               position: "absolute",
-              // left: `calc(${node.x} - 50%)`,
-              // top: `calc(${node.y} - 50%)`,
-              // width: "clamp(10px, 3vw, 24px)",
-              // height: "clamp(10px, 3vw, 24px)",    
               border: "2px solid transparent",
               zIndex: 5,
               filter: isLit ? "none" : "grayscale(1) brightness(0.5)",
               transform: "scale(1.2)",
               transition: "transform 0.2s cubic-bezier(0.4,1.6,0.4,1)",
             }}
-            onMouseEnter={() => handleHover(node)}
-            onMouseLeave={() => setHoveredNode(null)}
+            role="button"
+            tabIndex={0}
+            aria-label={node.institution || node.vocation || node.achievement}
+            onPointerEnter={() => activateNode(node)}
+            onPointerLeave={deactivateNode}
+            onClick={() => toggleNode(node)}
+            onKeyDown={(event) => handleKeyDown(event, node)}
           >
-            <div className="node-tooltip">
+            <div className="node-tooltip" style={{ pointerEvents: "none" }}>
               <h4>{node.institution || node.vocation || node.achievement}</h4>
               <br />
               <p>{node.intel}</p>
