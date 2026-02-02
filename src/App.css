@@ -450,8 +450,10 @@
   padding: var(--space-4);
   pointer-events: auto;
   position: relative;
+  filter: grayscale(1);
   animation: neonIgnite 1s ease-out both,
-    neonFlicker 0.15s ease-in-out 1s infinite;
+    neonFlicker 0.15s ease-in-out 1s infinite,
+    boxUnGray 0.6s ease-out both;
 }
 
 .cyber-resume .box-1:hover,
@@ -509,6 +511,8 @@
   grid-column: 1 / -1;
   grid-row: 14 / span 20;
   animation-delay: 3s;
+  filter: none;
+  animation-name: neonIgnite, neonFlicker;
 }
 .cyber-resume .box-3,
 .cyber-resume .box-4,
@@ -537,6 +541,8 @@
   overflow: visible;
   max-width: fit-content;
   justify-self: center;
+  filter: none;
+  animation-name: neonIgnite, neonFlicker;
 }
 .cyber-resume .box-9 {
   grid-column: 1 / -1;
@@ -557,6 +563,8 @@
 }
 .cyber-resume .box-12 {
   animation-delay: 3s;
+  filter: none;
+  animation-name: neonIgnite, neonFlicker;
 }
 
 @media (min-width: 768px) {
@@ -915,6 +923,9 @@
   position: relative;
   transform: translateY(-10px);
   z-index: 1;
+  filter: grayscale(1);
+  animation: boxUnGray 0.6s ease-out both;
+  animation-delay: 2s;
 }
 
 .experience-tabs-row {
@@ -925,6 +936,9 @@
   position: relative;
   transform: translateY(-10px);
   z-index: 1;
+  filter: grayscale(1);
+  animation: boxUnGray 0.6s ease-out both;
+  animation-delay: 2s;
 }
 
 .folder-tab {
@@ -2396,6 +2410,15 @@
     box-shadow: 0 0 calc(var(--neon-flicker-shadow, 10px) / 2) var(--neon-color),
       inset 0 0 calc(var(--neon-flicker-inset, 15px) / 3)
         var(--neon-color-opacity);
+  }
+}
+
+@keyframes boxUnGray {
+  0% {
+    filter: grayscale(1);
+  }
+  100% {
+    filter: grayscale(0);
   }
 }
 

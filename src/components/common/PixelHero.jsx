@@ -32,7 +32,7 @@ function PixelHero({ setIsFlipped, isFlipped, theme }) {
 
   //level up messages
   const hints = {
-    1: "Hey! I'm Jesse and this is my resume.",
+    1: "Hey! I'm Jesse and this is my resume. Click around to help me level up!",
     2: "Am...Am I glowing? Neat!",
     3: "Another level! Keep exploring!",
     4: "Oh wow, I'm feeling powerful!",
@@ -111,8 +111,8 @@ function PixelHero({ setIsFlipped, isFlipped, theme }) {
           aria-label="Pixel hero hint"
         >
           {showLevelUpMessage
-            ? hints[level] || "Click around to help me level up!"
-            : heroMessage || "Click around to help me level up!"}
+            ? hints[level] || "Start by toggling the mode by clicking the battery in the top right."
+            : heroMessage || "Start by toggling the mode by clicking the battery in the top right."}
         </div>
       </div>
     );
