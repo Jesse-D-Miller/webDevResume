@@ -41,7 +41,7 @@ describe("ProjectsSection", () => {
     expect(queryByText("PROJECTS")).toBeNull();
   });
 
-  it("renders project title as a link when code link is present", () => {
+  it("renders project title as a link when a live or code link exists", () => {
     const { getByText } = renderWithXP(
       <ProjectsSection project={project} isFront={false} showHeader theme="dark" />,
       { grantXp: vi.fn(), hasClicked: () => false }
@@ -52,7 +52,7 @@ describe("ProjectsSection", () => {
     expect(link.getAttribute("href")).toBe("https://example.com/repo");
   });
 
-  it("renders project title as text when code link is missing", () => {
+  it("renders project title as text when no links are available", () => {
     const { getByText } = renderWithXP(
       <ProjectsSection
         project={{ ...project, links: {} }}
@@ -64,17 +64,17 @@ describe("ProjectsSection", () => {
     );
 
     const title = getByText("Portfolio");
-    expect(title.tagName.toLowerCase()).toBe("span");
+    expect(title.tagName.toLowerCase()).toBe("h4");
   });
 
   it("grants XP on link click", () => {
     const grantXp = vi.fn();
     const { getByText } = renderWithXP(
-      <ProjectsSection project={project} isFront={false} showHeader theme="dark" />,
+      <ProjectsSection project={project} isFront={false} showHeader theme="cyber" />,
       { grantXp, hasClicked: () => false }
     );
 
-    fireEvent.click(getByText("Portfolio"));
+    fireEvent.click(getByText("GITHUB"));
 
     expect(grantXp).toHaveBeenCalledWith(
       "project-click-portfolio",
@@ -89,7 +89,7 @@ describe("ProjectsSection", () => {
       { grantXp: vi.fn(), hasClicked: () => true }
     );
 
-    const link = getByText("Portfolio");
+    const link = getByText("GITHUB");
     expect(link.style.color).toBe("var(--color-neon-secondary)");
   });
 
