@@ -28,7 +28,7 @@ function SecretResume({ secretResumeData }) {
     if (treatStatus !== "idle") return;
     setTreatStatus("sending");
     try {
-      await fetch("/api/dog-treat", { method: "POST" });
+      await fetch("src/utils/dogTreat.js", { method: "POST" });
     } finally {
       setTreatStatus("sent");
     }
