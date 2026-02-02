@@ -9,6 +9,7 @@ function ProjectsSection({ project, isFront, showHeader, theme }) {
   const projectHeroMessage = project?.heroMessage ?? "Project explored.";
   const projectCodeLink = project?.links?.code;
   const projectLiveLink = project?.links?.live;
+  const projectVideoLink = project?.links?.video;
   const projectPrimaryLink = projectLiveLink || projectCodeLink;
 
   const clickedLinkStyle = {
@@ -40,34 +41,55 @@ function ProjectsSection({ project, isFront, showHeader, theme }) {
             <li key={i}>{highlight}</li>
           ))}
         </ul>
-        {theme === "cyber" && (projectLiveLink || projectCodeLink) && (
+        {theme === "cyber" && (
           <div className="project-links">
-            {projectLiveLink && (
-              <a
-                href={projectLiveLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LIVE WEBSITE
-              </a>
-            )}
-            {projectCodeLink && (
-              <a
-                href={projectCodeLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() =>
-                  grantXp(`project-click-${projectId}`, 1, projectHeroMessage)
+            <a
+              href={projectLiveLink || "#"}
+              target={projectLiveLink ? "_blank" : undefined}
+              rel={projectLiveLink ? "noopener noreferrer" : undefined}
+              aria-disabled={!projectLiveLink}
+              className={!projectLiveLink ? "disabled" : undefined}
+              onClick={(event) => {
+                if (!projectLiveLink) event.preventDefault();
+              }}
+            >
+              WEBSITE
+            </a>
+            <span className="project-link-divider">|</span>
+            <a
+              href={projectCodeLink || "#"}
+              target={projectCodeLink ? "_blank" : undefined}
+              rel={projectCodeLink ? "noopener noreferrer" : undefined}
+              aria-disabled={!projectCodeLink}
+              className={!projectCodeLink ? "disabled" : undefined}
+              onClick={(event) => {
+                if (!projectCodeLink) {
+                  event.preventDefault();
+                  return;
                 }
-                style={
-                  hasClicked(`project-click-${projectId}`)
-                    ? clickedLinkStyle
-                    : {}
-                }
-              >
-                GITHUB
-              </a>
-            )}
+                grantXp(`project-click-${projectId}`, 1, projectHeroMessage);
+              }}
+              style={
+                hasClicked(`project-click-${projectId}`)
+                  ? clickedLinkStyle
+                  : {}
+              }
+            >
+              GITHUB
+            </a>
+            <span className="project-link-divider">|</span>
+            <a
+              href={projectVideoLink || "#"}
+              target={projectVideoLink ? "_blank" : undefined}
+              rel={projectVideoLink ? "noopener noreferrer" : undefined}
+              aria-disabled={!projectVideoLink}
+              className={!projectVideoLink ? "disabled" : undefined}
+              onClick={(event) => {
+                if (!projectVideoLink) event.preventDefault();
+              }}
+            >
+              VIDEO
+            </a>
           </div>
         )}
       </div>

@@ -10,6 +10,7 @@ const project = {
   stack: ["React", "Vite"],
   links: {
     code: "https://example.com/repo",
+    video: "",
   },
   highlights: ["Fast", "Responsive"],
 };
@@ -91,6 +92,22 @@ describe("ProjectsSection", () => {
 
     const link = getByText("GITHUB");
     expect(link.style.color).toBe("var(--color-neon-secondary)");
+  });
+
+  it("renders disabled links when missing", () => {
+    const { getByText } = renderWithXP(
+      <ProjectsSection
+        project={{ ...project, links: { live: "", code: "", video: "" } }}
+        isFront={false}
+        showHeader
+        theme="cyber"
+      />,
+      { grantXp: vi.fn(), hasClicked: () => false }
+    );
+
+    expect(getByText("WEBSITE").className).toContain("disabled");
+    expect(getByText("GITHUB").className).toContain("disabled");
+    expect(getByText("VIDEO").className).toContain("disabled");
   });
 
   it("renders tech stack and highlights", () => {
