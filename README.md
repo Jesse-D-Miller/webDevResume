@@ -9,7 +9,7 @@ A modern React + Vite portfolio/resume site with an alternate “cyber” presen
 
 ## Demo
 - Live site: https://www.jesse-miller.com/
-- Video walkthrough (optional): _add link_
+- Video walkthrough: _add link_
 
 ## Screenshots
 

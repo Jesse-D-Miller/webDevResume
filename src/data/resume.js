@@ -346,15 +346,57 @@ export const resumeData = {
 
   projects: [
     {
+      id: "project-6",
+      title: "Web Dev Resume - Interactive Resume",
+      period: "2025",
+      stack: ["React", "Vite", "CSS", "Vitest", "Mocha", "Chai"],
+      links: {
+        live: "https://www.jesse-miller.com/",
+        code: "https://github.com/Jesse-D-Miller/webDevResume",
+        video: "",
+      },
+      highlights: [
+        "Built an interactive resume with standard/cyber themes, tabbed views, and animated UI",
+        "Structured reusable sections with stateful interactions and micro‑interactions",
+        "Added unit + component tests to keep the UI stable as content evolves",
+      ],
+      skills: ["React", "Vite", "CSS", "Testing", "UI/UX"],
+      heroMessage:
+        "You opened the Web Dev Resume project! I built this interactive resume to showcase my work in a fun, polished way while keeping it easy to navigate and update.",
+    },
+    {
+      id: "project-5",
+      title: "KTSpeedrun - Kill Team Companion App",
+      period: "2026",
+      stack: ["React", "Vite", "React Router", "Express", "WebSocket", "CSS"],
+      links: {
+        live: "",
+        code: "https://github.com/Jesse-D-Miller/KillTeamSpeedrun",
+        video: "",
+      },
+      highlights: [
+        "Built a multi-screen Kill Team flow (army, loadouts, strategy, turn transitions)",
+        "Added a real-time lobby with join codes and WebSocket sync",
+        "Shipped an attack workflow with dice tracking and damage previews",
+      ],
+      skills: ["React", "Vite", "React Router", "Express", "WebSockets", "CSS"],
+      heroMessage:
+        "You opened the KillTeamSpeedrun project! I built this to streamline Kill Team setup and combat resolution with a fast, game-ready UI.",
+    },
+    {
       id: "project-4",
       title: "Across The Creek Organics - Seed Potato Catalog & Order Request",
       period: "2026",
       stack: ["React", "Vite", "React Router", "SendGrid", "CSS"],
-      links: { live: "https://acrossthecreekorganics.jesse-miller.com/", code: "https://github.com/Jesse-D-Miller/AcrossTheCreekOrganics" },
+      links: {
+        live: "https://acrossthecreekorganics.jesse-miller.com/",
+        code: "https://github.com/Jesse-D-Miller/AcrossTheCreekOrganics",
+        video: "",
+      },
       highlights: [
-        "Built a responsive product catalog with detailed product pages, image galleries, and structured agricultural data",
-        "Implemented a cart-style request flow with quantity controls, contact details, and confirmation screens",
-        "Created secure serverless contact and order endpoints with input validation, sanitization, CORS, and rate limiting",
+        "Built a responsive catalog with product pages, galleries, and structured data",
+        "Implemented a cart-style request flow with quantities and confirmations",
+        "Created secure serverless contact/order endpoints with validation",
       ],
       skills: [
         "React",
@@ -372,7 +414,7 @@ export const resumeData = {
       title: "Plot Twist - Collaborative Storytelling App",
       period: "2024",
       stack: ["React", "Node.js", "Express", "PostgreSQL", "SCSS"],
-      links: { live: "", code: "https://github.com/wizbren/plot-twist" },
+      links: { live: "", code: "https://github.com/wizbren/plot-twist", video: "" },
       highlights: [
         "Developed a full-stack web app where users can co-author and manage stories in real time",
         "Implemented secure user authentication, story versioning, and a clean, responsive UI",
@@ -387,7 +429,7 @@ export const resumeData = {
       title: "What's Cookin' - AI Assisted Recipe Book",
       period: "2024",
       stack: ["React", "Node.js", "Express", "PostgreSQL", "SCSS"],
-      links: { live: "", code: "https://github.com/wizbren/whats-cookin" },
+      links: { live: "", code: "https://github.com/wizbren/whats-cookin", video: "" },
       highlights: [
         "Created a full-stack recipe app integrating two external APIs for recipe discovery and AI-powered curation via ChatGPT",
         "Engineered dynamic search and filtering features with persistent user data storage",
@@ -405,6 +447,7 @@ export const resumeData = {
       links: {
         live: "",
         code: "https://github.com/Jesse-D-Miller/jungle-rails",
+        video: "",
       },
       highlights: [
         "Developed a full-stack e-commerce site replicating Amazon's core functionality, including carts and payments",
