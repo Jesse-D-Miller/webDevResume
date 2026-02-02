@@ -15,7 +15,7 @@ A modern React + Vite portfolio/resume site with an alternate “cyber” presen
 
 | Standard | Cyber | Secret | 
 | --- | --- | --- |
-| (https://github.com/Jesse-D-Miller/webDevResume/blob/main/src/assets/readmeScreenshots/resume.png) | (https://github.com/Jesse-D-Miller/webDevResume/blob/main/src/assets/readmeScreenshots/cyberResume.png) | (https://github.com/Jesse-D-Miller/webDevResume/blob/main/src/assets/readmeScreenshots/secretResume.png) |
+| ![Standard](https://github.com/Jesse-D-Miller/webDevResume/blob/main/src/assets/readmeScreenshots/resume.png) | ![Cyber](https://github.com/Jesse-D-Miller/webDevResume/blob/main/src/assets/readmeScreenshots/cyberResume.png) | ![Secret](https://github.com/Jesse-D-Miller/webDevResume/blob/main/src/assets/readmeScreenshots/secretResume.png) |
 
 ## Local Development
 If you’re cloning this repo to customize or run locally, use the standard Vite commands.
