@@ -17,7 +17,7 @@ function GithubLanguageSkills() {
   const { grantXp, hasClicked } = useXP();
 
   const xpMessage =
-    "These stats are all live. They update automatically every 24 hours and give insight into what I'm working on right now!";
+    "These stats are all live. They give insight into what I'm working on right now!";
 
   useEffect(() => {
     let isMounted = true;

@@ -381,7 +381,7 @@ export const resumeData = {
       ],
       skills: ["React", "Vite", "React Router", "Express", "WebSockets", "CSS"],
       heroMessage:
-        "You opened the KillTeamSpeedrun project! I built this to streamline Kill Team setup and combat resolution with a fast, game-ready UI.",
+        "You opened the KillTeamSpeedrun project! I built this to help streamline Kill Team gameplay for my friends and I, with real-time syncing so no one has to keep track of anything manually.",
     },
     {
       id: "project-4",

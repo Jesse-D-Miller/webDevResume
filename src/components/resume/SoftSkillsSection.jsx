@@ -19,7 +19,7 @@ function SoftSkillsSection({ resumeData, theme }) {
         grantXp(
           "soft-skill-click",
           1,
-          "When I was writing this section, I was told that I listed too many soft skills. Don't worry, you can still see them by clicking here!"
+          "When I was writing this section, I was told that I listed too many soft skills. Don't worry, you can still see them by clicking the section!"
         );
       }
     }

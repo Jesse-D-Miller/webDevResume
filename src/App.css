@@ -469,7 +469,7 @@
 .cyber-resume .box-11:hover {
   --neon-flicker-shadow: 40px;
   --neon-flicker-inset: 40px;
-  animation-play-state: paused !important;
+  animation-play-state: running, paused, running;
 }
 
 @media (min-width: 768px) {

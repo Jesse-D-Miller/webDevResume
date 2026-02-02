@@ -41,7 +41,7 @@ function Battery() {
       grantXp(
         "battery-click",
         1,
-        "The Battery is Charging! Exploring my resume charges the battery. Once it's full, something special happens!"
+        "Exploring my resume charges the battery. Once it's full, something special happens!"
       );
     }
   };

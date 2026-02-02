@@ -36,7 +36,7 @@ function PixelHero({ setIsFlipped, isFlipped, theme }) {
     2: "Am...Am I glowing? Neat!",
     3: "Another level! Keep exploring!",
     4: "Oh wow, I'm feeling powerful!",
-    5: "Congrats! Only one more secret to unlock!",
+    5: "Only one more secret to unlock!",
   };
 
   const spritePositions = {
