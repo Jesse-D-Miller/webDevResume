@@ -942,6 +942,10 @@
   border: #3a3a3a solid 4px;
 }
 
+.folder-tab[data-long="true"] {
+  margin-right: -16%;
+}
+
 .folder-tab.active {
   z-index: 5;
   animation: neonIgnite 1s ease-out both,
@@ -1025,7 +1029,7 @@
   }
 
   .folder-tab {
-    margin-right: -2%;
+    margin-right: -8%;
   }
 
   .cyber-resume .projects-section,
@@ -1067,7 +1071,7 @@
   }
 
   .folder-tab {
-    margin-right: -2%;
+    margin-right: -8%;
   }
 }
 
@@ -1085,7 +1089,7 @@
   }
 
   .folder-tab {
-    margin-right: -2%;
+    margin-right: -8%;
   }
 
   .cyber-resume .projects-section .section-content h4,

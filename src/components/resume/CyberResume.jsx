@@ -13,12 +13,24 @@ import GithubStatsView from "./GithubStatsView.jsx";
 import HoloMap from "./HoloMap.jsx";
 
 import { getRandomNeonColor } from "../../utils/neonColor.js";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 function CyberResume({ resumeData, theme }) {
+  const getProjectNumber = (id) => {
+    const match = String(id ?? "").match(/\d+/);
+    return match ? Number.parseInt(match[0], 10) : 0;
+  };
+  const topProjects = useMemo(
+    () =>
+      [...resumeData.projects]
+        .sort((a, b) => getProjectNumber(b.id) - getProjectNumber(a.id))
+        .slice(0, 3),
+    [resumeData.projects]
+  );
+
   const [viewIndex, setViewIndex] = useState(0); // Track current view index for technical skills
   const [frontProjectId, setFrontProjectId] = useState(
-    resumeData.projects[0]?.id ?? null
+    topProjects[0]?.id ?? null
   ); // Track front project in tab stacks
   const [frontExperienceId, setFrontExperienceId] = useState(
     resumeData.experience[0]?.id ?? null
@@ -47,11 +59,11 @@ function CyberResume({ resumeData, theme }) {
     const colors = {};
     boxes.forEach((box, idx) => {
       const color = getRandomNeonColor(box);
-      const projectId = resumeData.projects[idx]?.id;
+      const projectId = topProjects[idx]?.id;
       if (projectId) colors[projectId] = color;
     });
     setNeonColors(colors);
-  }, [resumeData.projects]);
+  }, [topProjects]);
 
   useEffect(() => {
     const experienceBoxes = document.querySelectorAll(
@@ -85,25 +97,30 @@ function CyberResume({ resumeData, theme }) {
       </div>
 
       <div className="project-tabs-row">
-        {resumeData.projects.map((project) => (
-          <div
-            key={project.id}
-            className={`folder-tab${
-              frontProjectId === project.id ? " active" : ""
-            }`}
-            style={{
-              "--neon-color": neonColors[project.id]?.rgb
-                ? `rgb(${neonColors[project.id].rgb})`
-                : undefined,
-              "--neon-color-opacity": neonColors[project.id]?.opacity,
-            }}
-            onClick={() => setFrontProjectId(project.id)}
-          >
-            {project.title.split("-")[0].trim()}
-          </div>
-        ))}
+        {topProjects.map((project) => {
+          const shortTitle = project.title.split("-")[0].trim();
+          const isLong = shortTitle.length > 18;
+          return (
+            <div
+              key={project.id}
+              className={`folder-tab${
+                frontProjectId === project.id ? " active" : ""
+              }`}
+              data-long={isLong ? "true" : "false"}
+              style={{
+                "--neon-color": neonColors[project.id]?.rgb
+                  ? `rgb(${neonColors[project.id].rgb})`
+                  : undefined,
+                "--neon-color-opacity": neonColors[project.id]?.opacity,
+              }}
+              onClick={() => setFrontProjectId(project.id)}
+            >
+              {shortTitle}
+            </div>
+          );
+        })}
       </div>
-      {resumeData.projects.map((project, index) => (
+      {topProjects.map((project, index) => (
         <div
           key={project.id}
           className={`box-${index + 3}${

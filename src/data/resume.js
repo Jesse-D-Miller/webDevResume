@@ -346,6 +346,28 @@ export const resumeData = {
 
   projects: [
     {
+      id: "project-4",
+      title: "Across The Creek Organics - Seed Potato Catalog & Order Request",
+      period: "2026",
+      stack: ["React", "Vite", "React Router", "SendGrid", "CSS"],
+      links: { live: "https://acrossthecreekorganics.jesse-miller.com/", code: "https://github.com/Jesse-D-Miller/AcrossTheCreekOrganics" },
+      highlights: [
+        "Built a responsive product catalog with detailed product pages, image galleries, and structured agricultural data",
+        "Implemented a cart-style request flow with quantity controls, contact details, and confirmation screens",
+        "Created secure serverless contact and order endpoints with input validation, sanitization, CORS, and rate limiting",
+      ],
+      skills: [
+        "React",
+        "Vite",
+        "React Router",
+        "SendGrid",
+        "CSS",
+        "Form Validation",
+      ],
+      heroMessage:
+        "You opened the Across The Creek Organics project! I built this to showcase a clean, real-world ordering flow for a small organic farm, from product discovery to request submission.",
+    },
+    {
       id: "project-1",
       title: "Plot Twist - Collaborative Storytelling App",
       period: "2024",

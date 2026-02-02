@@ -8,6 +8,14 @@ import SoftSkillsSection from "./SoftSkillsSection.jsx";
 import HobbiesSection from "./HobbiesSection.jsx";
 
 function ResumeFront({ resumeData, theme }) {
+  const getProjectNumber = (id) => {
+    const match = String(id ?? "").match(/\d+/);
+    return match ? Number.parseInt(match[0], 10) : 0;
+  };
+  const topProjects = [...resumeData.projects]
+    .sort((a, b) => getProjectNumber(b.id) - getProjectNumber(a.id))
+    .slice(0, 3);
+
   return (
     <div className="resume-front">
       <div className="box-1">
@@ -19,7 +27,7 @@ function ResumeFront({ resumeData, theme }) {
             <SummarySection resumeData={resumeData} />
           </div>
 
-          {resumeData.projects.map((project, index) => (
+          {topProjects.map((project, index) => (
             <div key={project.id} className={`box-${index + 3}`}>
               <ProjectsSection
                 project={project}
