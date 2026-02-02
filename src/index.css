@@ -71,6 +71,7 @@
   --text-color: var(--color-neon-secondary);
   --accent-color: var(--color-neon-success);
 }
+
 body, html {
   margin: 0;
   padding: 0;

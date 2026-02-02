@@ -26,6 +26,7 @@ describe("PixelHero", () => {
       xp: 0,
       grantXp: vi.fn(),
       heroMessage: "",
+      setHeroMessage: vi.fn(),
     };
 
     const { getByLabelText } = renderWithXP(
@@ -44,6 +45,7 @@ describe("PixelHero", () => {
       xp: 0,
       grantXp: vi.fn(),
       heroMessage: "",
+      setHeroMessage: vi.fn(),
     };
 
     const { getByLabelText } = renderWithXP(
@@ -67,6 +69,7 @@ describe("PixelHero", () => {
       xp: 0,
       grantXp: vi.fn(),
       heroMessage: "Custom message",
+      setHeroMessage: vi.fn(),
     };
 
     const { getByLabelText } = renderWithXP(
@@ -89,6 +92,7 @@ describe("PixelHero", () => {
       xp: 0,
       grantXp,
       heroMessage: "",
+      setHeroMessage: vi.fn(),
     };
 
     const { getByLabelText } = renderWithXP(
@@ -111,6 +115,7 @@ describe("PixelHero", () => {
       xp: 12,
       grantXp: vi.fn(),
       heroMessage: "",
+      setHeroMessage: vi.fn(),
     };
 
     const { getByLabelText } = renderWithXP(
@@ -129,6 +134,7 @@ describe("PixelHero", () => {
       xp: 11,
       grantXp: vi.fn(),
       heroMessage: "",
+      setHeroMessage: vi.fn(),
     };
 
     const { getByLabelText } = renderWithXP(
@@ -147,6 +153,7 @@ describe("PixelHero", () => {
       xp: 12,
       grantXp: vi.fn(),
       heroMessage: "",
+      setHeroMessage: vi.fn(),
     };
 
     const { getByLabelText } = renderWithXP(
@@ -157,5 +164,53 @@ describe("PixelHero", () => {
     fireEvent.click(getByLabelText("Pixel hero hint"));
 
     expect(setIsFlipped).not.toHaveBeenCalled();
+  });
+
+  it("shows final hint when xp reaches max", () => {
+    const contextValue = {
+      xp: 12,
+      maxXp: 12,
+      grantXp: vi.fn(),
+      heroMessage: "",
+      setHeroMessage: vi.fn(),
+    };
+
+    const { getByLabelText } = renderWithXP(
+      <PixelHero theme="dark" isFlipped={false} setIsFlipped={vi.fn()} />,
+      contextValue
+    );
+
+    expect(getByLabelText("Pixel hero hint").textContent).toMatch(
+      /Navigate back to the regular resume/i
+    );
+  });
+
+  it("sets Finnegan message only after reveal", () => {
+    const setHeroMessage = vi.fn();
+    const setIsFlipped = vi.fn();
+    const contextValue = {
+      xp: 12,
+      maxXp: 12,
+      grantXp: vi.fn(),
+      heroMessage: "",
+      setHeroMessage,
+    };
+
+    const { getByLabelText, rerender } = renderWithXP(
+      <PixelHero theme="dark" isFlipped={false} setIsFlipped={setIsFlipped} />,
+      contextValue
+    );
+
+    fireEvent.click(getByLabelText("Pixel hero hint"));
+
+    rerender(
+      <XPContext.Provider value={contextValue}>
+        <PixelHero theme="dark" isFlipped={true} setIsFlipped={setIsFlipped} />
+      </XPContext.Provider>
+    );
+
+    expect(setHeroMessage).toHaveBeenCalledWith(
+      "This is finnegan! Click the button below and I'll give him a treat for you"
+    );
   });
 });

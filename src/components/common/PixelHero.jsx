@@ -9,9 +9,21 @@ import spriteLevel5 from "../../assets/pixelHeroLevel5.png";
 function PixelHero({ setIsFlipped, isFlipped, theme }) {
   const [frameIndex, setFrameIndex] = useState(0);
   const [showLevelUpMessage, setShowLevelUpMessage] = useState(true);
-  const { xp, grantXp, heroMessage } = useXP();
+  const { xp, grantXp, heroMessage, maxXp = 12, setHeroMessage } = useXP();
+  const [dismissedFinalHint, setDismissedFinalHint] = useState(false);
+  const [pendingFinalReveal, setPendingFinalReveal] = useState(false);
 
   const level = Math.min(1 + Math.floor(xp / 3), 5); // level 1-5 based on xp
+
+  const finalHintMessage = (
+    <>
+      Navigate back to the regular resume and click <strong>HERE</strong> to see
+      that last secret
+    </>
+  );
+  const postFinalHintMessage =
+    "This is finnegan! Click the button below and I'll give him a treat for you";
+  const isFinalHintActive = xp >= maxXp && !dismissedFinalHint;
 
   // Animate sprite frames (1000ms per frame)
   useEffect(() => {
@@ -30,13 +42,27 @@ function PixelHero({ setIsFlipped, isFlipped, theme }) {
     return () => clearTimeout(timer);
   }, [level]);
 
+  useEffect(() => {
+    if (xp < maxXp) {
+      setDismissedFinalHint(false);
+      setPendingFinalReveal(false);
+    }
+  }, [xp, maxXp]);
+
+  useEffect(() => {
+    if (pendingFinalReveal && isFlipped) {
+      setHeroMessage?.(postFinalHintMessage);
+      setPendingFinalReveal(false);
+    }
+  }, [pendingFinalReveal, isFlipped, postFinalHintMessage, setHeroMessage]);
+
   //level up messages
   const hints = {
     1: "Hey! I'm Jesse and this is my resume. Click around to help me level up!",
     2: "Am...Am I glowing? Neat!",
     3: "Another level! Keep exploring!",
     4: "Oh wow, I'm feeling powerful!",
-    5: "Only one more secret to unlock!",
+    5: "Thanks for exploring my resume!",
   };
 
   const spritePositions = {
@@ -101,18 +127,35 @@ function PixelHero({ setIsFlipped, isFlipped, theme }) {
           className="hero-speech-bubble"
           style={{
             transform: `translate(${bubblePositions[level].x}px, ${bubblePositions[level].y}px)`,
-            cursor: xp >= 12 && theme === "dark" ? "pointer" : "default",
+            cursor:
+              isFinalHintActive || (xp >= 12 && theme === "dark")
+                ? "pointer"
+                : "default",
           }}
           onClick={
-            xp >= 12 && theme === "dark"
-              ? () => setIsFlipped?.((prev) => !prev)
-              : undefined
+            isFinalHintActive
+              ? theme === "dark"
+                ? () => {
+                    setDismissedFinalHint(true);
+                    setShowLevelUpMessage(false);
+                    setPendingFinalReveal(true);
+                    setIsFlipped?.((prev) => !prev);
+                  }
+                : undefined
+              : xp >= 12 && theme === "dark"
+                ? () => setIsFlipped?.((prev) => !prev)
+                : undefined
           }
           aria-label="Pixel hero hint"
+          data-final-hint={isFinalHintActive ? "true" : "false"}
         >
-          {showLevelUpMessage
-            ? hints[level] || "Start by toggling the mode by clicking the battery in the top right."
-            : heroMessage || "Start by toggling the mode by clicking the battery in the top right."}
+          {isFinalHintActive
+            ? finalHintMessage
+            : showLevelUpMessage
+              ? hints[level] ||
+                "Start by toggling the mode by clicking the battery in the top right."
+              : heroMessage ||
+                "Start by toggling the mode by clicking the battery in the top right."}
         </div>
       </div>
     );
