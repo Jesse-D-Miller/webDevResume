@@ -1845,6 +1845,16 @@
   font-size: var(--text-sm);
   color: var(--color-ink);
   font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  flex-wrap: wrap;
+}
+
+.secret-resume .secret-header svg {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /*================== Header ==================*/
@@ -1898,6 +1908,7 @@
   }
   .secret-resume .secret-left-right .secret-right {
     text-align: start;
+    white-space: nowrap;
   }
   .secret-resume .secret-left-right .secret-right ul {
     margin-left: 0;

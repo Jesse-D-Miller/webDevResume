@@ -9,19 +9,19 @@ export const secretResumeData = {
   summary:
     "Woof! I'm Finnegan. I specialize in tail wags, playful antics, and providing emotional support during long coding sessions. My skills include fetching sticks, taste testing treats, and being an all-around good boy.",
   skills: [
-    { name: "fetching", level: "expert" },
-    { name: "catching frisbees", level: "advanced" },
-    { name: "swimming", level: "obsessive" },
-    { name: "napping", level: "master" },
-    { name: "sniffing out snacks", level: "professional" },
+    { name: "Fetching", level: "expert" },
+    { name: "Catching frisbees", level: "advanced" },
+    { name: "Swimming", level: "obsessive" },
+    { name: "Napping", level: "master" },
+    { name: "Sniffing out snacks", level: "professional" },
   ],
   hobbies: [
     "Sticks",
     "Barking",
-    "long walks",
-    "agility training",
-    "playing with other dogs",
-    "treats",
+    "Long walks",
+    "Agility training",
+    "Playing with other dogs",
+    "Treats",
   ],
   education: [
     {

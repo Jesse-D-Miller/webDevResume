@@ -1,3 +1,4 @@
+import { useState } from "react";
 import finneganImg from "../assets/finneganImg.jpeg";
 
 const dogTreat = (
@@ -13,19 +14,49 @@ const dogTreat = (
 );
 
 function SecretResume({ secretResumeData }) {
+  const [treatStatus, setTreatStatus] = useState("idle");
+  const meta = secretResumeData?.meta || {};
+  const links = meta.links || {};
+  const summary = secretResumeData?.summary || "";
+  const skills = secretResumeData?.skills || [];
+  const hobbies = secretResumeData?.hobbies || [];
+  const education = secretResumeData?.education || [];
+  const name = meta.name || "";
+  const location = meta.location || "";
+
+  const handleTreatClick = async () => {
+    if (treatStatus !== "idle") return;
+    setTreatStatus("sending");
+    try {
+      await fetch("/api/dog-treat", { method: "POST" });
+    } finally {
+      setTreatStatus("sent");
+    }
+  };
   return (
     <div className="secret-resume">
       <div className="secret-header">
-        <h1>{secretResumeData.meta.name}</h1>
+        <h1>{name}</h1>
         <p>
-          {secretResumeData.meta.location} | {secretResumeData.meta.links.treat}{" "}
+          {location} |{" "}
+          <button
+            type="button"
+            className="secret-treat-button"
+            onClick={handleTreatClick}
+            aria-disabled={treatStatus !== "idle"}
+          >
+            {treatStatus === "sent"
+              ? "Treat sent!"
+              : links.treat ||
+                "Click here and I'll give Finnegan a treat on your behalf!"}
+          </button>{" "}
           | {dogTreat}
         </p>
       </div>
 
       <div className="secret-summary">
         <h3>Summary</h3>
-        <p>{secretResumeData.summary}</p>
+        <p>{summary}</p>
       </div>
 
       <div className="secret-left-right">
@@ -33,6 +64,7 @@ function SecretResume({ secretResumeData }) {
           <img
             src={finneganImg}
             alt="Finnegan the dog"
+            loading="lazy"
           />
         </div>
 
@@ -40,10 +72,8 @@ function SecretResume({ secretResumeData }) {
           <div className="secret-skills">
             <h3>Skills</h3>
             <ul>
-              {secretResumeData.skills.map((skill) => (
-                <li key={skill.name}>
-                  {skill.name}
-                </li>
+              {skills.map((skill, index) => (
+                <li key={skill.id ?? skill.name ?? index}>{skill.name}</li>
               ))}
             </ul>
           </div>
@@ -51,8 +81,8 @@ function SecretResume({ secretResumeData }) {
           <div className="secret-hobbies">
             <h3>Hobbies</h3>
             <ul>
-              {secretResumeData.hobbies.map((hobby) => (
-                <li key={hobby}>{hobby}</li>
+              {hobbies.map((hobby, index) => (
+                <li key={hobby ?? index}>{hobby}</li>
               ))}
             </ul>
           </div>
@@ -61,13 +91,13 @@ function SecretResume({ secretResumeData }) {
 
       <div className="secret-education">
         <h3>Education</h3>
-        {secretResumeData.education.map((education) => (
-          <div key={education.institution}>
-            <h4>{education.institution}</h4>
+        {education.map((item, index) => (
+          <div key={item.id ?? item.institution ?? index}>
+            <h4>{item.institution}</h4>
             <p>
-              {education.degree} - {education.period}
+              {item.degree} - {item.period}
             </p>
-            <p>{education.details}</p>
+            <p>{item.details}</p>
           </div>
         ))}
       </div>
