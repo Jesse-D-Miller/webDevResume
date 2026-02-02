@@ -154,7 +154,7 @@ function CyberResume({ resumeData, theme }) {
               grantXp(
                 "experience-tabs",
                 1,
-                "My most recent experience was with the BC Wildfire Service, but I’ve worn a lot of hats—tree planter, bartender, farmhand, and more. I’m always up for a new challenge, and I’d love the chance to bring my skills to your team next."
+                "My most recent experience was with the BC Wildfire Service, but I’ve worn a lot of hats - tree planter, bartender, farmhand, and more. I’m always up for a new challenge, and I’d love the chance to bring my skills to your team next."
               );
             }}
           >

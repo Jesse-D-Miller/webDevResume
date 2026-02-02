@@ -1,10 +1,13 @@
 import { useHoveredNodes } from "../../hooks/useHoveredNodes";
 import { useXP } from "../../hooks/useXP";
+import { useEffect, useRef, useState } from "react";
 
 function HoloMap({ resumeData }) {
   const { hoveredNode, setHoveredNode, hoveredNodeIds, setHoveredNodeIds } =
     useHoveredNodes();
   const { grantXp } = useXP();
+  const [isMobile, setIsMobile] = useState(false);
+  const containerRef = useRef(null);
 
   const allNodes = [
     ...resumeData.mapNodes.education,
@@ -56,8 +59,36 @@ function HoloMap({ resumeData }) {
     }
   };
 
+  useEffect(() => {
+    const updateIsMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    updateIsMobile();
+    window.addEventListener("resize", updateIsMobile);
+    return () => window.removeEventListener("resize", updateIsMobile);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile || !hoveredNode) return;
+
+    const handleOutsideClick = (event) => {
+      const target = event.target;
+      if (!target) return;
+      const nodeElement = target.closest?.(".map-node");
+      if (nodeElement) {
+        return;
+      }
+      deactivateNode();
+    };
+
+    document.addEventListener("pointerdown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("pointerdown", handleOutsideClick);
+    };
+  }, [isMobile, hoveredNode]);
+
   return (
-    <section className="holo-map-container">
+    <section className="holo-map-container" ref={containerRef}>
       <div className={"bg-layer bg-base"} />
       <div className="bg-layer bg-education" />
       <div className="bg-layer bg-career" />
@@ -81,10 +112,23 @@ function HoloMap({ resumeData }) {
             role="button"
             tabIndex={0}
             aria-label={node.institution || node.vocation || node.achievement}
-            onPointerEnter={() => activateNode(node)}
-            onPointerLeave={deactivateNode}
-            onClick={() => toggleNode(node)}
+            onPointerDown={(event) => {
+              if (isMobile || event.pointerType === "touch") {
+                event.preventDefault();
+                activateNode(node);
+              }
+            }}
+            onPointerEnter={() => {
+              if (!isMobile) activateNode(node);
+            }}
+            onPointerLeave={() => {
+              if (!isMobile) deactivateNode();
+            }}
+            onClick={() => {
+              if (!isMobile) toggleNode(node);
+            }}
             onKeyDown={(event) => handleKeyDown(event, node)}
+            onContextMenu={(event) => event.preventDefault()}
           />
         );
       })}
@@ -107,19 +151,46 @@ function HoloMap({ resumeData }) {
             role="button"
             tabIndex={0}
             aria-label={node.institution || node.vocation || node.achievement}
-            onPointerEnter={() => activateNode(node)}
-            onPointerLeave={deactivateNode}
-            onClick={() => toggleNode(node)}
+            onPointerDown={(event) => {
+              if (isMobile || event.pointerType === "touch") {
+                event.preventDefault();
+                activateNode(node);
+              }
+            }}
+            onPointerEnter={() => {
+              if (!isMobile) activateNode(node);
+            }}
+            onPointerLeave={() => {
+              if (!isMobile) deactivateNode();
+            }}
+            onClick={() => {
+              if (!isMobile) toggleNode(node);
+            }}
             onKeyDown={(event) => handleKeyDown(event, node)}
+            onContextMenu={(event) => event.preventDefault()}
           >
-            <div className="node-tooltip" style={{ pointerEvents: "none" }}>
-              <h4>{node.institution || node.vocation || node.achievement}</h4>
-              <br />
-              <p>{node.intel}</p>
-            </div>
+            {!isMobile && (
+              <div className="node-tooltip" style={{ pointerEvents: "none" }}>
+                <h4>{node.institution || node.vocation || node.achievement}</h4>
+                <br />
+                <p>{node.intel}</p>
+              </div>
+            )}
           </div>
         );
       })}
+
+      {isMobile && hoveredNode && (
+        <div className="node-tooltip map-centered-tooltip" style={{ pointerEvents: "none" }}>
+          <h4>
+            {hoveredNode.institution ||
+              hoveredNode.vocation ||
+              hoveredNode.achievement}
+          </h4>
+          <br />
+          <p>{hoveredNode.intel}</p>
+        </div>
+      )}
     </section>
   );
 }

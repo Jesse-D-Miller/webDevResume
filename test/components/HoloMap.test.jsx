@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, afterEach } from "vitest";
+import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
 import { render, fireEvent, cleanup } from "@testing-library/react";
 import { HoveredNodesContext } from "../../src/context/HoveredNodesContext.js";
 import { XPContext } from "../../src/context/XPContext.js";
@@ -48,6 +48,19 @@ function renderWithProviders(ui, hoveredState, xpValue) {
 }
 
 describe("HoloMap", () => {
+  const setViewportWidth = (width) => {
+    Object.defineProperty(window, "innerWidth", {
+      writable: true,
+      configurable: true,
+      value: width,
+    });
+    window.dispatchEvent(new Event("resize"));
+  };
+
+  beforeEach(() => {
+    setViewportWidth(1200);
+  });
+
   afterEach(() => {
     cleanup();
   });
@@ -162,5 +175,63 @@ describe("HoloMap", () => {
     );
 
     expect(container.querySelector(".node-tooltip")).not.toBeNull();
+  });
+
+  it("centers tooltips under 1024px", () => {
+    setViewportWidth(800);
+    const hoveredState = createHoveredNodesState();
+    const { container, rerender } = renderWithProviders(
+      <HoloMap resumeData={resumeData} />,
+      hoveredState,
+      { grantXp: vi.fn() }
+    );
+
+    const node = container.querySelector(".node-1");
+    fireEvent.pointerDown(node, { pointerType: "mouse" });
+
+    rerender(
+      <XPContext.Provider value={{ grantXp: vi.fn() }}>
+        <HoveredNodesContext.Provider value={hoveredState}>
+          <HoloMap resumeData={resumeData} />
+        </HoveredNodesContext.Provider>
+      </XPContext.Provider>
+    );
+
+    expect(container.querySelector(".map-centered-tooltip")).not.toBeNull();
+  });
+
+  it("keeps mobile tooltip open until an outside click", () => {
+    setViewportWidth(800);
+    const hoveredState = createHoveredNodesState();
+    const { container, rerender } = renderWithProviders(
+      <HoloMap resumeData={resumeData} />,
+      hoveredState,
+      { grantXp: vi.fn() }
+    );
+
+    const node = container.querySelector(".node-2");
+    fireEvent.pointerDown(node, { pointerType: "mouse" });
+
+    rerender(
+      <XPContext.Provider value={{ grantXp: vi.fn() }}>
+        <HoveredNodesContext.Provider value={hoveredState}>
+          <HoloMap resumeData={resumeData} />
+        </HoveredNodesContext.Provider>
+      </XPContext.Provider>
+    );
+
+    expect(container.querySelector(".map-centered-tooltip")).not.toBeNull();
+
+    fireEvent.pointerDown(document.body, { pointerType: "mouse" });
+
+    rerender(
+      <XPContext.Provider value={{ grantXp: vi.fn() }}>
+        <HoveredNodesContext.Provider value={hoveredState}>
+          <HoloMap resumeData={resumeData} />
+        </HoveredNodesContext.Provider>
+      </XPContext.Provider>
+    );
+
+    expect(container.querySelector(".map-centered-tooltip")).toBeNull();
   });
 });
