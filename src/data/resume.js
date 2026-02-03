@@ -342,6 +342,11 @@ export const resumeData = {
       level: "advanced",
       tags: ["soft-skill-bonus", "stamina"],
     },
+    {
+      name: "If you can read this you certainly zoomed in",
+      level: "advanced",
+      tags: ["soft-skill-bonus", "curiosity"],
+    }
   ],
 
   projects: [
