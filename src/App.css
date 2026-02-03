@@ -1,8 +1,15 @@
 /* ============================================= General Styles =============================================*/
 
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 .App {
   min-height: 100vh;
-  min-width: 100vw;
+  width: 100%;
+  /* min-width: 100vw; */
   position: relative;
   display: flex;
   align-items: center;
@@ -10,7 +17,8 @@
   background: var(--color-bg-dark);
   margin: 0;
   padding: 0;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   padding: 100px 0 var(--space-6) 0; /* to offset top bar */
 }
 
@@ -31,7 +39,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100px;
   background: rgba(10, 10, 15, 0.92);
   border-bottom: #000000 solid var(--space-1);
@@ -120,8 +128,8 @@
 .sheet-wrapper {
   position: relative;
   padding: var(--space-1);
-  width: 100vw;
-  max-width: 100vw;
+  width: 100%;
+  max-width: 100%;
   transform-style: preserve-3d;
   transition: transform var(--transition-flip);
   box-sizing: border-box;
@@ -425,22 +433,6 @@
   min-width: 375px;
   font-family: var(--font-mono);
   font-weight: 600;
-}
-
-@media (max-width: 1023px) {
-  .App {
-    width: 100svw;
-    max-width: 100svw;
-  }
-}
-
-@supports not (width: 100svw) {
-  @media (max-width: 1023px) {
-    .App {
-      width: 100vw;
-      max-width: 100vw;
-    }
-  }
 }
 
 .cyber-resume p,
@@ -1234,16 +1226,6 @@
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
-  flex-shrink: 0;
-}
-
-@media (max-width: 1023px) {
-  .cyber-resume .box-8 .holo-map-container {
-    left: 0;
-    transform: none;
-    margin-left: auto;
-    margin-right: auto;
-  }
 }
 
 .cyber-resume .box-8 .holo-map-container .bg-layer {

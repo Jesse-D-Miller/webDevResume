@@ -69,22 +69,6 @@ function HoloMap({ resumeData }) {
   }, []);
 
   useEffect(() => {
-    if (window.innerWidth >= 1024) return;
-    const raf = requestAnimationFrame(() => {
-      containerRef.current?.getBoundingClientRect();
-      window.dispatchEvent(new Event("resize"));
-    });
-    const timeout = setTimeout(() => {
-      containerRef.current?.getBoundingClientRect();
-      window.dispatchEvent(new Event("resize"));
-    }, 150);
-    return () => {
-      cancelAnimationFrame(raf);
-      clearTimeout(timeout);
-    };
-  }, []);
-
-  useEffect(() => {
     if (!isMobile || !hoveredNode) return;
 
     const handleOutsideClick = (event) => {
@@ -102,53 +86,6 @@ function HoloMap({ resumeData }) {
       document.removeEventListener("pointerdown", handleOutsideClick);
     };
   }, [isMobile, hoveredNode]);
-
-  useEffect(() => {
-    if (!containerRef.current || window.innerWidth >= 1024) return;
-
-    const sources = [
-      "/public/dataSlate/dataSlateBackground.png",
-      "/public/dataSlate/educationRoute.png",
-      "/public/dataSlate/careerRoute.png",
-      "/public/dataSlate/skillsRoute.png",
-    ];
-
-    let loaded = 0;
-    let rafId = null;
-    let timeoutId = null;
-    let cancelled = false;
-
-    const triggerLayout = () => {
-      if (cancelled) return;
-      containerRef.current?.getBoundingClientRect();
-      window.dispatchEvent(new Event("resize"));
-    };
-
-    const handleLoad = () => {
-      loaded += 1;
-      if (loaded < sources.length) return;
-      rafId = requestAnimationFrame(triggerLayout);
-      timeoutId = setTimeout(triggerLayout, 150);
-    };
-
-    const images = sources.map((src) => {
-      const img = new Image();
-      img.onload = handleLoad;
-      img.onerror = handleLoad;
-      img.src = src;
-      return img;
-    });
-
-    return () => {
-      cancelled = true;
-      images.forEach((img) => {
-        img.onload = null;
-        img.onerror = null;
-      });
-      if (rafId) cancelAnimationFrame(rafId);
-      if (timeoutId) clearTimeout(timeoutId);
-    };
-  }, []);
 
   return (
     <section className="holo-map-container" ref={containerRef}>
