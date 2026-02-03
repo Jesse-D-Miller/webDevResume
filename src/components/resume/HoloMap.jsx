@@ -69,6 +69,22 @@ function HoloMap({ resumeData }) {
   }, []);
 
   useEffect(() => {
+    if (window.innerWidth >= 1024) return;
+    const raf = requestAnimationFrame(() => {
+      containerRef.current?.getBoundingClientRect();
+      window.dispatchEvent(new Event("resize"));
+    });
+    const timeout = setTimeout(() => {
+      containerRef.current?.getBoundingClientRect();
+      window.dispatchEvent(new Event("resize"));
+    }, 150);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(timeout);
+    };
+  }, []);
+
+  useEffect(() => {
     if (!isMobile || !hoveredNode) return;
 
     const handleOutsideClick = (event) => {
