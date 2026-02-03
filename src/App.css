@@ -1359,6 +1359,24 @@ html, body {
   width: 10px;
   height: 10px;
 }
+
+@media (max-width: 767px) {
+  .map-node {
+    position: absolute;
+  }
+
+  .map-node::before {
+    content: "";
+    position: absolute;
+    top: -14px;
+    left: -14px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.01);
+    pointer-events: auto;
+  }
+}
 /* high school */
 .map-node.node-1 {
   top: 67.5%;
