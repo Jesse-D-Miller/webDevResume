@@ -5,7 +5,7 @@ function TechnicalSkillsSection({ resumeData }) {
 
   return (
     <section className="technical-skills-section"
-    onClick={() => grantXp("technical-skills-section", 0, "Programming levels! I'm proud of this one. It shows the total bytes of code I've written in each language across all my GitHub projects.")}>
+    onClick={() => grantXp("technical-skills-section", 1, "Programming levels! I'm proud of this one. It shows the total bytes of code I've written in each language across all my GitHub projects.")}>
       <h3>TECHNICAL SKILLS</h3>
       <h4>Languages:</h4>
       <p>

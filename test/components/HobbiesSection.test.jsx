@@ -9,7 +9,7 @@ const resumeData = {
   bonusHobbies: ["Retro games", "Synths"],
 };
 
-function renderWithXP(ui, value = { grantXp: vi.fn() }) {
+function renderWithXP(ui, value = { grantXp: vi.fn(), hasClicked: () => false }) {
   return render(<XPContext.Provider value={value}>{ui}</XPContext.Provider>);
 }
 
@@ -40,7 +40,7 @@ describe("HobbiesSection", () => {
     const grantXp = vi.fn();
     const { getByText, queryByText, container } = renderWithXP(
       <HobbiesSection resumeData={resumeData} theme="cyber" />,
-      { grantXp }
+      { grantXp, hasClicked: () => false }
     );
 
     expect(queryByText("Retro games")).toBeNull();
@@ -58,7 +58,7 @@ describe("HobbiesSection", () => {
     const grantXp = vi.fn();
     const { queryByText, getByText, container } = renderWithXP(
       <HobbiesSection resumeData={resumeData} theme="dark" />,
-      { grantXp }
+      { grantXp, hasClicked: () => false }
     );
 
     await act(async () => {
@@ -72,7 +72,8 @@ describe("HobbiesSection", () => {
 
   it("removes flash after timeout", async () => {
     const { getByText, container } = renderWithXP(
-      <HobbiesSection resumeData={resumeData} theme="cyber" />
+      <HobbiesSection resumeData={resumeData} theme="cyber" />,
+      { grantXp: vi.fn(), hasClicked: () => false }
     );
 
     await act(async () => {
@@ -88,7 +89,8 @@ describe("HobbiesSection", () => {
 
   it("stops adding bonuses after the list is exhausted", async () => {
     const { getByText, queryByText } = renderWithXP(
-      <HobbiesSection resumeData={resumeData} theme="cyber" />
+      <HobbiesSection resumeData={resumeData} theme="cyber" />,
+      { grantXp: vi.fn(), hasClicked: () => false }
     );
 
     await act(async () => {
@@ -105,5 +107,31 @@ describe("HobbiesSection", () => {
       fireEvent.click(getByText("HOBBIES"));
     });
     expect(queryByText("Synths")).toBeTruthy();
+  });
+
+  it("grants XP with a hero message on the final bonus click", async () => {
+    const clicked = new Set();
+    const grantXp = vi.fn((id) => {
+      clicked.add(id);
+    });
+    const hasClicked = (id) => clicked.has(id);
+    const { getByText } = renderWithXP(
+      <HobbiesSection resumeData={resumeData} theme="cyber" />,
+      { grantXp, hasClicked }
+    );
+
+    await act(async () => {
+      fireEvent.click(getByText("HOBBIES"));
+    });
+
+    await act(async () => {
+      fireEvent.click(getByText("HOBBIES"));
+    });
+
+    expect(grantXp).toHaveBeenCalledWith(
+      "hobby-final-click",
+      1,
+      "That's the full list. Let me know if we have any hobbies in common!"
+    );
   });
 });

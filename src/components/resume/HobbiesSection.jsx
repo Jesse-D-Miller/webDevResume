@@ -7,11 +7,13 @@ function HobbiesSection({ resumeData, theme }) {
   const [displayedHobbies, setDisplayedHobbies] = useState(resumeData.hobbies);
   const [flashes, setFlashes] = useState([]);
   const [scrollKey, setScrollKey] = useState(0);
-  const { grantXp } = useXP();
+  const { grantXp, hasClicked } = useXP();
 
   // each click adds a hobby to the hobbies section. the first click also adds XP
   const handleClick = () => {
     if (theme === "cyber" && bonusIndex < resumeData.bonusHobbies.length) {
+      const isLastBonusClick =
+        bonusIndex === resumeData.bonusHobbies.length - 1;
       setDisplayedHobbies([
         ...displayedHobbies,
         resumeData.bonusHobbies[bonusIndex],
@@ -33,11 +35,20 @@ function HobbiesSection({ resumeData, theme }) {
 
       setScrollKey((k) => k + 1);
 
-      grantXp(
-        `hobby-click`,
-        1,
-        `You found an extra hobby! I have a lot of interests outside of coding, and I'm always happy to share them.`
-      );
+      if (!hasClicked("hobby-click")) {
+        grantXp(
+          "hobby-click",
+          1,
+          "You found an extra hobby! I have a lot of interests outside of coding, and I'm always happy to share them."
+        );
+      }
+      if (isLastBonusClick && !hasClicked("hobby-final-click")) {
+        grantXp(
+          "hobby-final-click",
+          1,
+          "That's the full list. Let me know if we have any hobbies in common!"
+        );
+      }
     }
   };
 

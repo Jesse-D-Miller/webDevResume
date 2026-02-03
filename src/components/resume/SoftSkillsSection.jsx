@@ -10,6 +10,8 @@ function SoftSkillsSection({ resumeData, theme }) {
   // each click adds a skill to the soft skills section. 42 bonus skills available
   const handleClick = () => {
     if (theme === "cyber" && bonusIndex < resumeData.bonusSoftSkills.length) {
+      const isLastBonusClick =
+        bonusIndex === resumeData.bonusSoftSkills.length - 1;
       setDisplayedSkills((prev) => [
         ...prev,
         resumeData.bonusSoftSkills[bonusIndex],
@@ -20,6 +22,13 @@ function SoftSkillsSection({ resumeData, theme }) {
           "soft-skill-click",
           1,
           "When I was writing this section, I was told that I listed too many soft skills. Don't worry, you can still see them by clicking the section!"
+        );
+      }
+      if (isLastBonusClick && !hasClicked("soft-skill-final-click")) {
+        grantXp(
+          "soft-skill-final-click",
+          1,
+          "That's all of them. If you made it here, you probably value soft skills as much as I do."
         );
       }
     }

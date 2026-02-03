@@ -70,7 +70,7 @@ describe("HoloMap", () => {
     const { container } = renderWithProviders(
       <HoloMap resumeData={resumeData} />,
       hoveredState,
-      { grantXp: vi.fn() }
+      { grantXp: vi.fn(), hasClicked: () => false }
     );
 
     expect(container.querySelectorAll(".map-node").length).toBe(3);
@@ -81,14 +81,14 @@ describe("HoloMap", () => {
     const { container, rerender } = renderWithProviders(
       <HoloMap resumeData={resumeData} />,
       hoveredState,
-      { grantXp: vi.fn() }
+      { grantXp: vi.fn(), hasClicked: () => false }
     );
 
     const node = container.querySelector(".node-1");
     fireEvent.pointerEnter(node);
 
     rerender(
-      <XPContext.Provider value={{ grantXp: vi.fn() }}>
+      <XPContext.Provider value={{ grantXp: vi.fn(), hasClicked: () => false }}>
         <HoveredNodesContext.Provider value={hoveredState}>
           <HoloMap resumeData={resumeData} />
         </HoveredNodesContext.Provider>
@@ -105,14 +105,14 @@ describe("HoloMap", () => {
     const { container, rerender } = renderWithProviders(
       <HoloMap resumeData={resumeData} />,
       hoveredState,
-      { grantXp: vi.fn() }
+      { grantXp: vi.fn(), hasClicked: () => false }
     );
 
     const node = container.querySelector(".node-2");
     fireEvent.click(node);
 
     rerender(
-      <XPContext.Provider value={{ grantXp: vi.fn() }}>
+      <XPContext.Provider value={{ grantXp: vi.fn(), hasClicked: () => false }}>
         <HoveredNodesContext.Provider value={hoveredState}>
           <HoloMap resumeData={resumeData} />
         </HoveredNodesContext.Provider>
@@ -125,7 +125,7 @@ describe("HoloMap", () => {
     fireEvent.click(updatedNode);
 
     rerender(
-      <XPContext.Provider value={{ grantXp: vi.fn() }}>
+      <XPContext.Provider value={{ grantXp: vi.fn(), hasClicked: () => false }}>
         <HoveredNodesContext.Provider value={hoveredState}>
           <HoloMap resumeData={resumeData} />
         </HoveredNodesContext.Provider>
@@ -135,30 +135,37 @@ describe("HoloMap", () => {
     expect(container.querySelector(".node-tooltip")).toBeNull();
   });
 
-  it("grants XP when the final unique node is activated", () => {
-    const grantXp = vi.fn();
-    const totalNodes =
-      resumeData.mapNodes.education.length +
-      resumeData.mapNodes.career.length +
-      resumeData.mapNodes.skills.length;
-    const prefilledIds = Array.from(
-      { length: totalNodes - 1 },
-      (_, index) => index + 10
-    );
-    const hoveredState = createHoveredNodesState(null, prefilledIds);
+  it("grants XP when all nodes of each color are activated", () => {
+    const clicked = new Set();
+    const grantXp = vi.fn((id) => {
+      clicked.add(id);
+    });
+    const hasClicked = (id) => clicked.has(id);
+    const hoveredState = createHoveredNodesState();
     const { container } = renderWithProviders(
       <HoloMap resumeData={resumeData} />,
       hoveredState,
-      { grantXp }
+      { grantXp, hasClicked }
     );
 
-    const node = container.querySelector(".node-3");
-    fireEvent.pointerEnter(node);
+    fireEvent.pointerEnter(container.querySelector(".node-1"));
+    fireEvent.pointerEnter(container.querySelector(".node-2"));
+    fireEvent.pointerEnter(container.querySelector(".node-3"));
 
     expect(grantXp).toHaveBeenCalledWith(
-      "holo-map-explorer",
+      "holo-map-yellow-complete",
       1,
-      "Great job exploring my holo map! You've uncovered a lot about my background and skills."
+      "All yellow nodes active. Awards and accolades trail complete."
+    );
+    expect(grantXp).toHaveBeenCalledWith(
+      "holo-map-red-complete",
+      1,
+      "All red nodes lit. Career path fully traced."
+    );
+    expect(grantXp).toHaveBeenCalledWith(
+      "holo-map-green-complete",
+      1,
+      "All green nodes online. Education confirmed and humming."
     );
   });
 
@@ -167,14 +174,14 @@ describe("HoloMap", () => {
     const { container, rerender } = renderWithProviders(
       <HoloMap resumeData={resumeData} />,
       hoveredState,
-      { grantXp: vi.fn() }
+      { grantXp: vi.fn(), hasClicked: () => false }
     );
 
     const node = container.querySelector(".node-1");
     fireEvent.keyDown(node, { key: "Enter" });
 
     rerender(
-      <XPContext.Provider value={{ grantXp: vi.fn() }}>
+      <XPContext.Provider value={{ grantXp: vi.fn(), hasClicked: () => false }}>
         <HoveredNodesContext.Provider value={hoveredState}>
           <HoloMap resumeData={resumeData} />
         </HoveredNodesContext.Provider>
@@ -190,14 +197,14 @@ describe("HoloMap", () => {
     const { container, rerender } = renderWithProviders(
       <HoloMap resumeData={resumeData} />,
       hoveredState,
-      { grantXp: vi.fn() }
+      { grantXp: vi.fn(), hasClicked: () => false }
     );
 
     const node = container.querySelector(".node-1");
     fireEvent.pointerDown(node, { pointerType: "mouse" });
 
     rerender(
-      <XPContext.Provider value={{ grantXp: vi.fn() }}>
+      <XPContext.Provider value={{ grantXp: vi.fn(), hasClicked: () => false }}>
         <HoveredNodesContext.Provider value={hoveredState}>
           <HoloMap resumeData={resumeData} />
         </HoveredNodesContext.Provider>
@@ -213,14 +220,14 @@ describe("HoloMap", () => {
     const { container, rerender } = renderWithProviders(
       <HoloMap resumeData={resumeData} />,
       hoveredState,
-      { grantXp: vi.fn() }
+      { grantXp: vi.fn(), hasClicked: () => false }
     );
 
     const node = container.querySelector(".node-2");
     fireEvent.pointerDown(node, { pointerType: "mouse" });
 
     rerender(
-      <XPContext.Provider value={{ grantXp: vi.fn() }}>
+      <XPContext.Provider value={{ grantXp: vi.fn(), hasClicked: () => false }}>
         <HoveredNodesContext.Provider value={hoveredState}>
           <HoloMap resumeData={resumeData} />
         </HoveredNodesContext.Provider>
@@ -232,7 +239,7 @@ describe("HoloMap", () => {
     fireEvent.pointerDown(document.body, { pointerType: "mouse" });
 
     rerender(
-      <XPContext.Provider value={{ grantXp: vi.fn() }}>
+      <XPContext.Provider value={{ grantXp: vi.fn(), hasClicked: () => false }}>
         <HoveredNodesContext.Provider value={hoveredState}>
           <HoloMap resumeData={resumeData} />
         </HoveredNodesContext.Provider>

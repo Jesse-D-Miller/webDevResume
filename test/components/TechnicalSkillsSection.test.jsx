@@ -62,7 +62,7 @@ describe("TechnicalSkillsSection", () => {
 
     expect(grantXp).toHaveBeenCalledWith(
       "technical-skills-section",
-      0,
+      1,
       "Programming levels! I'm proud of this one. It shows the total bytes of code I've written in each language across all my GitHub projects."
     );
   });

@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 function HoloMap({ resumeData }) {
   const { hoveredNode, setHoveredNode, hoveredNodeIds, setHoveredNodeIds } =
     useHoveredNodes();
-  const { grantXp } = useXP();
+  const { grantXp, hasClicked } = useXP();
   const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef(null);
 
@@ -14,7 +14,20 @@ function HoloMap({ resumeData }) {
     ...resumeData.mapNodes.career,
     ...resumeData.mapNodes.skills,
   ];
-  const totalNodes = allNodes.length;
+  const colorCounts = allNodes.reduce(
+    (counts, node) => {
+      const nextCounts = counts;
+      nextCounts[node.color] = (nextCounts[node.color] || 0) + 1;
+      return nextCounts;
+    },
+    {}
+  );
+
+  const countActivatedByColor = (ids, color) =>
+    allNodes.reduce(
+      (count, node) => count + (node.color === color && ids.has(node.id) ? 1 : 0),
+      0
+    );
 
   // Split nodes into hovered and non-hovered for correct stacking
   const nonHoveredNodes = allNodes.filter(
@@ -24,13 +37,53 @@ function HoloMap({ resumeData }) {
 
   const activateNode = (node) => {
     const isNewNode = !hoveredNodeIds.has(node.id);
-    const nextSize = hoveredNodeIds.size + (isNewNode ? 1 : 0);
-    if (isNewNode && nextSize >= totalNodes) {
-      grantXp(
-        `holo-map-explorer`,
-        1,
-        `Great job exploring my holo map! You've uncovered a lot about my background and skills.`
-      );
+    if (isNewNode) {
+      const nextIds = new Set(hoveredNodeIds);
+      nextIds.add(node.id);
+
+      if (nextIds.size === 1 && !hasClicked("holo-map-intro")) {
+        grantXp(
+          "holo-map-intro",
+          0,
+          "This holomap is a combination of my education and career paths with some awards and acollades mixed in. Light up the nodes to gain XP."
+        );
+      }
+
+      if (
+        colorCounts.green &&
+        countActivatedByColor(nextIds, "green") === colorCounts.green &&
+        !hasClicked("holo-map-green-complete")
+      ) {
+        grantXp(
+          "holo-map-green-complete",
+          1,
+          "All green nodes online. Education confirmed and humming."
+        );
+      }
+
+      if (
+        colorCounts.red &&
+        countActivatedByColor(nextIds, "red") === colorCounts.red &&
+        !hasClicked("holo-map-red-complete")
+      ) {
+        grantXp(
+          "holo-map-red-complete",
+          1,
+          "All red nodes lit. Career path fully traced."
+        );
+      }
+
+      if (
+        colorCounts.yellow &&
+        countActivatedByColor(nextIds, "yellow") === colorCounts.yellow &&
+        !hasClicked("holo-map-yellow-complete")
+      ) {
+        grantXp(
+          "holo-map-yellow-complete",
+          1,
+          "All yellow nodes active. Awards and accolades trail complete."
+        );
+      }
     }
     setHoveredNode(node);
     setHoveredNodeIds((prev) => {

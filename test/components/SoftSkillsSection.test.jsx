@@ -105,4 +105,34 @@ describe("SoftSkillsSection", () => {
       resumeData.bonusSoftSkills.length
     );
   });
+
+  it("grants XP with a hero message on the final bonus click", () => {
+    const grantXp = vi.fn();
+    const setDisplayedSkills = vi.fn();
+
+    const { container } = renderWithContexts(
+      <SoftSkillsSection resumeData={resumeData} theme="cyber" />,
+      {
+        xpValue: { grantXp, hasClicked: () => false },
+        softSkillsValue: {
+          displayedSkills: resumeData.skills.filter((s) =>
+            s.tags.includes("soft-skill")
+          ),
+          setDisplayedSkills,
+        },
+      }
+    );
+
+    const list = container.querySelector(".soft-skills-list");
+    expect(list).not.toBeNull();
+
+    fireEvent.click(list);
+    fireEvent.click(list);
+
+    expect(grantXp).toHaveBeenCalledWith(
+      "soft-skill-final-click",
+      1,
+      "That's all of them. If you made it here, you probably value soft skills as much as I do."
+    );
+  });
 });

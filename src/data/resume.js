@@ -346,12 +346,12 @@ export const resumeData = {
 
   projects: [
     {
-      id: "project-6",
+      id: "project-4",
       title: "Web Dev Resume - Interactive Resume",
       period: "2025",
       stack: ["React", "Vite", "CSS", "Vitest", "Mocha", "Chai"],
       links: {
-        live: "https://www.jesse-miller.com/",
+        live: "",
         code: "https://github.com/Jesse-D-Miller/webDevResume",
         video: "",
       },
@@ -365,7 +365,7 @@ export const resumeData = {
         "You opened the Web Dev Resume project! I built this interactive resume to showcase my work in a fun, polished way while keeping it easy to navigate and update.",
     },
     {
-      id: "project-5",
+      id: "project-6",
       title: "KTSpeedrun - Kill Team Companion App",
       period: "2026",
       stack: ["React", "Vite", "React Router", "Express", "WebSocket", "CSS"],
@@ -384,7 +384,7 @@ export const resumeData = {
         "You opened the KillTeamSpeedrun project! I built this to help streamline Kill Team gameplay for my friends and I, with real-time syncing so no one has to keep track of anything manually.",
     },
     {
-      id: "project-4",
+      id: "project-5",
       title: "Across The Creek Organics - Seed Potato Catalog & Order Request",
       period: "2026",
       stack: ["React", "Vite", "React Router", "SendGrid", "CSS"],
