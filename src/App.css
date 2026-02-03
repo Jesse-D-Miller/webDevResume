@@ -1222,10 +1222,9 @@
 }
 
 @media (max-width: 1023px) {
-  .cyber-resume .box-8 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .cyber-resume .box-8 .holo-map-container {
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
