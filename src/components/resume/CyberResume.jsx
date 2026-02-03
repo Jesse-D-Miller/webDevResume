@@ -97,9 +97,10 @@ function CyberResume({ resumeData, theme }) {
       </div>
 
       <div className="project-tabs-row">
-        {topProjects.map((project) => {
+        {topProjects.map((project, index) => {
           const shortTitle = project.title.split("-")[0].trim();
           const isLong = shortTitle.length > 18;
+          const defaultTabZIndex = topProjects.length - index;
           return (
             <div
               key={project.id}
@@ -112,6 +113,8 @@ function CyberResume({ resumeData, theme }) {
                   ? `rgb(${neonColors[project.id].rgb})`
                   : undefined,
                 "--neon-color-opacity": neonColors[project.id]?.opacity,
+                zIndex:
+                  frontProjectId === project.id ? 6 : defaultTabZIndex,
               }}
               onClick={() => setFrontProjectId(project.id)}
             >

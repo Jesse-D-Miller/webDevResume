@@ -970,6 +970,17 @@
   margin-right: -16%;
 }
 
+@media (max-width: 480px) {
+  .folder-tab {
+    margin-right: -22%;
+    padding: 4px 14px;
+  }
+
+  .folder-tab[data-long="true"] {
+    margin-right: -34%;
+  }
+}
+
 .folder-tab.active {
   z-index: 5;
   animation: neonIgnite 1s ease-out both,
@@ -1200,6 +1211,7 @@
   position: relative;
   aspect-ratio: 677 / 500; /* this is just the ratio I drew the pngs for */
   height: 100%;
+  width: 100%;
   margin: 0 auto 0 auto;
   padding: 0;
   border-right: var(--color-neon-primary) solid 1px;
@@ -1207,6 +1219,18 @@
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
+}
+
+@media (max-width: 767px) {
+  .cyber-resume .box-8 {
+    max-width: 100%;
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .cyber-resume .box-8 .holo-map-container {
+    max-width: 100%;
+  }
 }
 
 .cyber-resume .box-8 .holo-map-container .bg-layer {
