@@ -604,7 +604,7 @@ export const resumeData = {
         y: 80,
         vocation: "Wildfire Crew Leader",
         intel:
-          "Promoted to leadership role; managed four personnel, field coordination, and communications.",
+          "Promoted to leadership role; managed four personnel, field coordination, crew logistics.",
       },
       {
         id: 10,
