@@ -137,7 +137,14 @@ describe("HoloMap", () => {
 
   it("grants XP when the final unique node is activated", () => {
     const grantXp = vi.fn();
-    const prefilledIds = Array.from({ length: 15 }, (_, index) => index + 10);
+    const totalNodes =
+      resumeData.mapNodes.education.length +
+      resumeData.mapNodes.career.length +
+      resumeData.mapNodes.skills.length;
+    const prefilledIds = Array.from(
+      { length: totalNodes - 1 },
+      (_, index) => index + 10
+    );
     const hoveredState = createHoveredNodesState(null, prefilledIds);
     const { container } = renderWithProviders(
       <HoloMap resumeData={resumeData} />,

@@ -533,7 +533,7 @@ export const resumeData = {
         y: 337,
         institution: "High School",
         intel:
-          "Awarded Governor General's Academic Medal for highest academic standing in graduating class.",
+          "Subject graduates in 2013. Awarded Governor General's Academic Medal for top academic standing in graduating class.",
       },
       {
         id: 2,
@@ -541,7 +541,7 @@ export const resumeData = {
         x: 170,
         y: 337,
         institution: "Capilano University",
-        intel: "Engineering (1st year) transfer program.",
+        intel: "Enrolls in engineering transfer program (Year 1).",
       },
       {
         id: 3,
@@ -550,7 +550,7 @@ export const resumeData = {
         y: 238,
         institution: "Simon Fraser University",
         intel:
-          "Engineering (2nd & 3rd year). Completed courses in calculus, physics, chemistry, and programming.",
+          "Continues engineering education (Years 2–3). Coursework: calculus, physics, chemistry, programming.",
       },
       {
         id: 4,
@@ -559,7 +559,7 @@ export const resumeData = {
         y: 79,
         institution: "Lighthouse Labs",
         intel:
-          "Completed intensive 12-week full-stack web development bootcamp.",
+          "Completed 12-week full‑stack web development bootcamp.",
       },
     ],
     career: [
@@ -570,7 +570,7 @@ export const resumeData = {
         y: 393,
         vocation: "Tree Planter (1)",
         intel:
-          "Planted trees in remote locations across BC, in order to fund education.",
+          "Season 1: remote BC deployment. Objective: fund education.",
       },
       {
         id: 6,
@@ -578,7 +578,7 @@ export const resumeData = {
         x: 267,
         y: 298,
         vocation: "Tree Planter (2)",
-        intel: "Returned for a second season in order to fund travel expenses.",
+        intel: "Season 2: return deployment. Objective: fund travel expenses.",
       },
       {
         id: 7,
@@ -587,7 +587,7 @@ export const resumeData = {
         y: 18,
         vocation: "Brewery Bartender",
         intel:
-          "Bartended at a craft brewery in Pemberton, BC during the winter months.",
+          "Winter work: craft brewery bartender, Pemberton BC.",
       },
       {
         id: 8,
@@ -595,7 +595,7 @@ export const resumeData = {
         x: 267,
         y: 177,
         vocation: "Wildfire Crew Member",
-        intel: "Joined BC Wildfire Service as an Initial Attack crew member.",
+        intel: "Joined BC Wildfire Service, Unit Crew Crew Member.",
       },
       {
         id: 9,
@@ -604,7 +604,7 @@ export const resumeData = {
         y: 80,
         vocation: "Wildfire Crew Leader",
         intel:
-          "Promoted to leadership position, managing on-the-ground coordination and communication.",
+          "Promoted to leadership role; managed four personnel, field coordination, and communications.",
       },
       {
         id: 10,
@@ -613,7 +613,7 @@ export const resumeData = {
         y: 80,
         vocation: "Wildfire Crew Supervisor",
         intel:
-          "Supervised five Initial Attack crews across two bases, ensuring safety, readiness, and performance.",
+          "Supervised five Initial Attack crews across two bases; ensured safety, readiness, performance.",
       },
       {
         id: 11,
@@ -621,7 +621,7 @@ export const resumeData = {
         x: 590,
         y: 119,
         vocation: "Jr. Web Dev",
-        intel: "ERROR: Node under construction.",
+        intel: "Status: Applicant has been building their web development skills. Currently seeking first role.",
       },
     ],
     skills: [
@@ -632,7 +632,7 @@ export const resumeData = {
         y: 250,
         achievement: "Governor General's Award",
         intel:
-          "Awarded for achieving the highest academic standing in graduating class.",
+          "Awarded for highest academic standing in graduating class.",
       },
       {
         id: 13,
@@ -640,7 +640,7 @@ export const resumeData = {
         x: 12,
         y: 37,
         achievement: "Outrigger World Championships",
-        intel: "Competed as part of the Canadian National Team.",
+        intel: "Competed as member of Canadian National Team.",
       },
       {
         id: 14,
@@ -648,7 +648,7 @@ export const resumeData = {
         x: 168,
         y: 117,
         achievement: "BC Wildfire Hiring",
-        intel: "Selected to join the BC Wildfire Hiring task force.",
+        intel: "Selected for BC Wildfire Hiring task force.",
       },
       {
         id: 15,
@@ -657,7 +657,7 @@ export const resumeData = {
         y: 117,
         achievement: "BC Wildfire Operations Conference",
         intel:
-          "Invited to present at the annual BC Wildfire Operations Conference. A responsibility usually reserved for senior wildfire personnel.",
+          "Invited presenter, annual BC Wildfire Operations Conference (role typically reserved for senior personnel).",
       },
       {
         id: 16,
@@ -666,8 +666,17 @@ export const resumeData = {
         y: 180,
         achievement: "Above & Beyond",
         intel:
-          "Received Above & Beyond award for exceptional performance during the 2024 wildfire season.",
+          "Recognized with Above & Beyond award for exceptional performance during 2024 wildfire season.",
       },
+      {
+        id: 17,
+        color: "yellow",
+        x: 447,
+        y: 100,
+        achievement: "Row to Podium",
+        intel:
+          "Joins high level rowing club; trains extensively and learns about discipline and teamwork.",
+      }
     ],
   },
 };

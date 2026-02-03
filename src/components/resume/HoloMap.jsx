@@ -14,6 +14,7 @@ function HoloMap({ resumeData }) {
     ...resumeData.mapNodes.career,
     ...resumeData.mapNodes.skills,
   ];
+  const totalNodes = allNodes.length;
 
   // Split nodes into hovered and non-hovered for correct stacking
   const nonHoveredNodes = allNodes.filter(
@@ -24,7 +25,7 @@ function HoloMap({ resumeData }) {
   const activateNode = (node) => {
     const isNewNode = !hoveredNodeIds.has(node.id);
     const nextSize = hoveredNodeIds.size + (isNewNode ? 1 : 0);
-    if (isNewNode && nextSize >= 16) {
+    if (isNewNode && nextSize >= totalNodes) {
       grantXp(
         `holo-map-explorer`,
         1,

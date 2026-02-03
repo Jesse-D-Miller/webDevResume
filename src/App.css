@@ -1439,6 +1439,11 @@ html, body {
   top: 60%;
   left: 74.5%;
 }
+/* Row to Podium */
+.map-node.node-17 {
+  top: 83%;
+  left: 39.5%;
+}
 
 /*===== Node Logic =====*/
 
