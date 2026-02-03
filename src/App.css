@@ -944,6 +944,8 @@ html, body {
   filter: grayscale(1);
   animation: boxUnGray 0.6s ease-out both;
   animation-delay: 2s;
+  width: 100%;
+  max-width: 100%;
 }
 
 .experience-tabs-row {
@@ -957,11 +959,13 @@ html, body {
   filter: grayscale(1);
   animation: boxUnGray 0.6s ease-out both;
   animation-delay: 2s;
+  width: 100%;
+  max-width: 100%;
 }
 
 .folder-tab {
   margin-right: -8%;
-  max-width: 100vw;
+  max-width: 100%;
   white-space: nowrap;
   padding: 4px 18px;
   font: 600 var(--text-sm) var(--font-mono);
