@@ -78,7 +78,7 @@ describe("ProjectsSection", () => {
     fireEvent.click(getByText("GITHUB"));
 
     expect(grantXp).toHaveBeenCalledWith(
-      "project-click-portfolio",
+      "project-link-portfolio-code",
       1,
       "Check out the build!"
     );
@@ -87,7 +87,7 @@ describe("ProjectsSection", () => {
   it("applies clicked style when hasClicked returns true", () => {
     const { getByText } = renderWithXP(
       <ProjectsSection project={project} isFront={false} showHeader theme="cyber" />,
-      { grantXp: vi.fn(), hasClicked: () => true }
+      { grantXp: vi.fn(), hasClicked: (id) => id === "project-link-portfolio-code" }
     );
 
     const link = getByText("GITHUB");

@@ -3,8 +3,10 @@ import { useState } from "react";
 
 function HeaderSection({ resumeData, theme }) {
   const [screenState, setScreenState] = useState(0);
-  const { hasClicked, grantXp, xp, maxXp } = useXP();
-  const safePercent = maxXp ? Math.min(100, (xp / maxXp) * 100) : 0;
+  const { hasClicked, grantXp, completedXpPoints = 0, maxXpPoints = 0 } = useXP();
+  const safePercent = maxXpPoints
+    ? Math.min(100, (completedXpPoints / maxXpPoints) * 100)
+    : 0;
   const headerName = resumeData?.meta?.name?.toUpperCase?.() || "";
   const headerLocation = resumeData?.meta?.location || "";
   const headerEmail = resumeData?.meta?.links?.email || "";
@@ -40,7 +42,7 @@ function HeaderSection({ resumeData, theme }) {
               <div
                 className="progress-fill"
                 style={{ width: `${safePercent}%` }}
-              >{maxXp ? `${safePercent.toFixed(2)}%` : "0%"}</div>
+              >{maxXpPoints ? `${safePercent.toFixed(2)}%` : "0%"}</div>
             </div>
           </h1>
         );

@@ -116,7 +116,16 @@ function CyberResume({ resumeData, theme }) {
                 zIndex:
                   frontProjectId === project.id ? 6 : defaultTabZIndex,
               }}
-              onClick={() => setFrontProjectId(project.id)}
+              onClick={() => {
+                setFrontProjectId(project.id);
+                if (index > 0) {
+                  grantXp(
+                    `project-tab-${project.id}`,
+                    1,
+                    "Swapped project tabs. Each one has details and links to explore."
+                  );
+                }
+              }}
             >
               {shortTitle}
             </div>

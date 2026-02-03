@@ -27,7 +27,12 @@ describe("HeaderSection", () => {
   it("renders header name and contact info", () => {
     const { getByText, container } = renderWithXP(
       <HeaderSection resumeData={resumeData} theme="dark" />,
-      { grantXp: vi.fn(), hasClicked: () => false, xp: 0, maxXp: 100 }
+      {
+        grantXp: vi.fn(),
+        hasClicked: () => false,
+        completedXpPoints: 0,
+        maxXpPoints: 100,
+      }
     );
 
     expect(getByText("ADA LOVELACE")).toBeTruthy();
@@ -42,7 +47,12 @@ describe("HeaderSection", () => {
   it("cycles header display on click in cyber theme", () => {
     const { container } = renderWithXP(
       <HeaderSection resumeData={resumeData} theme="cyber" />,
-      { grantXp: vi.fn(), hasClicked: () => false, xp: 50, maxXp: 100 }
+      {
+        grantXp: vi.fn(),
+        hasClicked: () => false,
+        completedXpPoints: 5,
+        maxXpPoints: 10,
+      }
     );
 
     const header = container.querySelector(".resume-header");
@@ -63,7 +73,12 @@ describe("HeaderSection", () => {
     const grantXp = vi.fn();
     const { container, getByText } = renderWithXP(
       <HeaderSection resumeData={resumeData} theme="cyber" />,
-      { grantXp, hasClicked: () => false, xp: 0, maxXp: 100 }
+      {
+        grantXp,
+        hasClicked: () => false,
+        completedXpPoints: 0,
+        maxXpPoints: 100,
+      }
     );
 
     const header = container.querySelector(".resume-header");

@@ -1,5 +1,5 @@
 import { useXP } from "../../hooks/useXP";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import spriteLevel1 from "../../assets/pixelHeroLevel1.png";
 import spriteLevel2 from "../../assets/pixelHeroLevel2.png";
 import spriteLevel3 from "../../assets/pixelHeroLevel3.png";
@@ -12,6 +12,8 @@ function PixelHero({ setIsFlipped, isFlipped, theme }) {
   const { xp, grantXp, heroMessage, maxXp = 12, setHeroMessage } = useXP();
   const [dismissedFinalHint, setDismissedFinalHint] = useState(false);
   const [pendingFinalReveal, setPendingFinalReveal] = useState(false);
+  const [temporaryHeroMessage, setTemporaryHeroMessage] = useState("");
+  const temporaryMessageTimeoutRef = useRef(null);
 
   const level = Math.min(1 + Math.floor(xp / 3), 5); // level 1-5 based on xp
 
@@ -48,6 +50,36 @@ function PixelHero({ setIsFlipped, isFlipped, theme }) {
       setPendingFinalReveal(false);
     }
   }, [xp, maxXp]);
+
+  useEffect(() => {
+    if (!isFinalHintActive) {
+      setTemporaryHeroMessage("");
+      if (temporaryMessageTimeoutRef?.current) {
+        clearTimeout(temporaryMessageTimeoutRef.current);
+        temporaryMessageTimeoutRef.current = null;
+      }
+      return;
+    }
+
+    if (!heroMessage) return;
+
+    if (temporaryMessageTimeoutRef?.current) {
+      clearTimeout(temporaryMessageTimeoutRef.current);
+    }
+
+    setTemporaryHeroMessage(heroMessage);
+    temporaryMessageTimeoutRef.current = setTimeout(() => {
+      setTemporaryHeroMessage("");
+      temporaryMessageTimeoutRef.current = null;
+    }, 5000);
+
+    return () => {
+      if (temporaryMessageTimeoutRef?.current) {
+        clearTimeout(temporaryMessageTimeoutRef.current);
+        temporaryMessageTimeoutRef.current = null;
+      }
+    };
+  }, [heroMessage, isFinalHintActive]);
 
   useEffect(() => {
     if (pendingFinalReveal && isFlipped) {
@@ -150,7 +182,7 @@ function PixelHero({ setIsFlipped, isFlipped, theme }) {
           data-final-hint={isFinalHintActive ? "true" : "false"}
         >
           {isFinalHintActive
-            ? finalHintMessage
+            ? temporaryHeroMessage || finalHintMessage
             : showLevelUpMessage
               ? hints[level] ||
                 "Start by toggling the mode by clicking the battery in the top right."

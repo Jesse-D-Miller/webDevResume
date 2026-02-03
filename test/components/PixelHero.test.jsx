@@ -185,6 +185,33 @@ describe("PixelHero", () => {
     );
   });
 
+  it("temporarily shows new hero message then restores final hint", () => {
+    const contextValue = {
+      xp: 12,
+      maxXp: 12,
+      grantXp: vi.fn(),
+      heroMessage: "New hero message",
+      setHeroMessage: vi.fn(),
+    };
+
+    const { getByLabelText } = renderWithXP(
+      <PixelHero theme="dark" isFlipped={false} setIsFlipped={vi.fn()} />,
+      contextValue
+    );
+
+    expect(getByLabelText("Pixel hero hint").textContent).toContain(
+      "New hero message"
+    );
+
+    act(() => {
+      vi.advanceTimersByTime(5000);
+    });
+
+    expect(getByLabelText("Pixel hero hint").textContent).toMatch(
+      /Navigate back to the regular resume/i
+    );
+  });
+
   it("sets Finnegan message only after reveal", () => {
     const setHeroMessage = vi.fn();
     const setIsFlipped = vi.fn();
