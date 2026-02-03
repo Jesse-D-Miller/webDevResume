@@ -103,6 +103,36 @@ function HoloMap({ resumeData }) {
     };
   }, [isMobile, hoveredNode]);
 
+  useEffect(() => {
+    if (!containerRef.current || window.innerWidth >= 1024) return;
+    if (typeof ResizeObserver === "undefined") return;
+
+    let rafId = null;
+    let timeoutId = null;
+    const observer = new ResizeObserver(() => {
+      if (rafId) cancelAnimationFrame(rafId);
+      if (timeoutId) clearTimeout(timeoutId);
+
+      rafId = requestAnimationFrame(() => {
+        containerRef.current?.getBoundingClientRect();
+        window.dispatchEvent(new Event("resize"));
+      });
+
+      timeoutId = setTimeout(() => {
+        containerRef.current?.getBoundingClientRect();
+        window.dispatchEvent(new Event("resize"));
+      }, 120);
+    });
+
+    observer.observe(containerRef.current);
+
+    return () => {
+      observer.disconnect();
+      if (rafId) cancelAnimationFrame(rafId);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, []);
+
   return (
     <section className="holo-map-container" ref={containerRef}>
       <div className={"bg-layer bg-base"} />
