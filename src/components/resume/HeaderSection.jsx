@@ -58,7 +58,7 @@ function HeaderSection({ resumeData, theme }) {
     >
       {headerContent}
       <p className="contact-info">
-        {headerLocation} | (604) 698-8224 | {headerEmail} |{" "}
+        {headerLocation} | {headerEmail} |{" "}
         <a
           href={headerLinkedIn}
           target="_blank"
